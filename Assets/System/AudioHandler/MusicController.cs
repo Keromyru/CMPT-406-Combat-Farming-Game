@@ -31,7 +31,7 @@ public class MusicController : MonoBehaviour
     private void FixedUpdate(){ 
         //Starts next file when song is over
         if (!musicPlayer.isPlaying && !isPaused){
-            playNext();
+            PlayNext();
         }
     }
 
@@ -50,12 +50,25 @@ public class MusicController : MonoBehaviour
         }
     }
 
-    private void playNext(){
+    private void PlayNext(){
         playNum ++;
         if (playNum >= currentPlaylist.Length){
             playNum = 0;
         }
         this.Play(currentPlaylist[playNum].name);
+    }
+
+    public void Pause(){
+        musicPlayer.Pause(); //Stops existing sounds
+    }
+
+    public void UnPause(){
+        musicPlayer.UnPause(); //Stops existing sounds
+    }
+
+    public void StopAll(){
+         musicPlayer.Stop();
+         ClearPlaylist();
     }
 
     public void StartTaggedPlaylist(string tag){
@@ -68,6 +81,7 @@ public class MusicController : MonoBehaviour
     public void ClearPlaylist(){
         currentPlaylist = null;
     }
+
 
     private float getVolume(){
         return 1f; //TODO
