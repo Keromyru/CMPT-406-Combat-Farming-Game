@@ -1071,6 +1071,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2047440513}
+  - component: {fileID: 2047440514}
   m_Layer: 0
   m_Name: MusicAudio
   m_TagString: Untagged
@@ -1092,6 +1093,30 @@ Transform:
   m_Father: {fileID: 27152650}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2047440514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047440512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff46d8abbe007542a83db7ce3fb821f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: BluegrassTechno
+    tags:
+    - Menu
+    clip: {fileID: 8300000, guid: 3dbd03495c6be314b839fd7c32391c08, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  scenePlaylist:
+  - name: MainMenu
+    musicTag: Menu
 --- !u!1 &2070064405
 GameObject:
   m_ObjectHideFlags: 0
