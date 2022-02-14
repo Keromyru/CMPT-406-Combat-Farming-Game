@@ -1,1 +1,74 @@
-{}
+{
+    "name": "InputActions",
+    "maps": [
+        {
+            "name": "Inventory",
+            "id": "82723ca6-7920-437a-a4a9-d5484dfe6e5f",
+            "actions": [
+                {
+                    "name": "Toggle Open/Close",
+                    "type": "Button",
+                    "id": "c89217a1-93cd-4028-841e-d649145d95c5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pickup Item",
+                    "type": "Button",
+                    "id": "bce3ab95-04d8-452e-b8b9-e8c32e76bf4f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Remove Item",
+                    "type": "Button",
+                    "id": "6ee07d6a-d62d-4f3d-a577-4a16a1632a3f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "93422afb-61a2-43d4-b2ca-ab0a13a9814c",
+                    "path": "<Keyboard>/i",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Toggle Open/Close",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e62c6ee6-d5f3-4f16-9607-d3491658ca95",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pickup Item",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f93331b3-749e-41cb-8385-b799ccac5828",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Remove Item",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
