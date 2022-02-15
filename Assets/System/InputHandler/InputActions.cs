@@ -61,6 +61,146 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""InputMovement"",
+            ""id"": ""f0d28e76-1db7-46f1-a770-d350120f8cd7"",
+            ""actions"": [
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""57ea25a1-a92c-408f-9f44-b3705851997a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""e749c18d-7d37-425d-9d36-9ea8fe4f134b"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""InputCombat"",
+            ""id"": ""2ba626b1-dca1-44c7-8478-410849d6dd86"",
+            ""actions"": [
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""da1adcaa-2901-45c7-b1ad-6db9e8e44430"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""31198409-b8a4-4186-b11e-7006e2d09633"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""InputFarming"",
+            ""id"": ""fef50850-7032-4f0c-8fe0-69670c101d0f"",
+            ""actions"": [
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""9b0e83a9-ea3b-4644-8a18-9ffe3c18c8e8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""21379e13-87af-4e39-bc78-67d660668ac1"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""InputMenu"",
+            ""id"": ""022769c2-2471-4428-968e-75acdf0f4c76"",
+            ""actions"": [
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""cd268110-c9d8-4213-9c07-cc42baf0c759"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""f462d14b-da35-4834-88f2-f4d992207cd5"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""InputUI"",
+            ""id"": ""d8e2910e-e4ff-4e8c-9bdc-d3e5805f43f2"",
+            ""actions"": [
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""9ee95941-c806-498f-bb1a-47da5b64c58a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""e3af9b0a-1132-4b86-a9aa-f5a409dcd158"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -68,6 +208,21 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         // Pointer
         m_Pointer = asset.FindActionMap("Pointer", throwIfNotFound: true);
         m_Pointer_Clicks = m_Pointer.FindAction("Clicks", throwIfNotFound: true);
+        // InputMovement
+        m_InputMovement = asset.FindActionMap("InputMovement", throwIfNotFound: true);
+        m_InputMovement_Newaction = m_InputMovement.FindAction("New action", throwIfNotFound: true);
+        // InputCombat
+        m_InputCombat = asset.FindActionMap("InputCombat", throwIfNotFound: true);
+        m_InputCombat_Newaction = m_InputCombat.FindAction("New action", throwIfNotFound: true);
+        // InputFarming
+        m_InputFarming = asset.FindActionMap("InputFarming", throwIfNotFound: true);
+        m_InputFarming_Newaction = m_InputFarming.FindAction("New action", throwIfNotFound: true);
+        // InputMenu
+        m_InputMenu = asset.FindActionMap("InputMenu", throwIfNotFound: true);
+        m_InputMenu_Newaction = m_InputMenu.FindAction("New action", throwIfNotFound: true);
+        // InputUI
+        m_InputUI = asset.FindActionMap("InputUI", throwIfNotFound: true);
+        m_InputUI_Newaction = m_InputUI.FindAction("New action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -156,8 +311,193 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         }
     }
     public PointerActions @Pointer => new PointerActions(this);
+
+    // InputMovement
+    private readonly InputActionMap m_InputMovement;
+    private IInputMovementActions m_InputMovementActionsCallbackInterface;
+    private readonly InputAction m_InputMovement_Newaction;
+    public struct InputMovementActions
+    {
+        private @InputActions m_Wrapper;
+        public InputMovementActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Newaction => m_Wrapper.m_InputMovement_Newaction;
+        public InputActionMap Get() { return m_Wrapper.m_InputMovement; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(InputMovementActions set) { return set.Get(); }
+        public void SetCallbacks(IInputMovementActions instance)
+        {
+            if (m_Wrapper.m_InputMovementActionsCallbackInterface != null)
+            {
+                @Newaction.started -= m_Wrapper.m_InputMovementActionsCallbackInterface.OnNewaction;
+                @Newaction.performed -= m_Wrapper.m_InputMovementActionsCallbackInterface.OnNewaction;
+                @Newaction.canceled -= m_Wrapper.m_InputMovementActionsCallbackInterface.OnNewaction;
+            }
+            m_Wrapper.m_InputMovementActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Newaction.started += instance.OnNewaction;
+                @Newaction.performed += instance.OnNewaction;
+                @Newaction.canceled += instance.OnNewaction;
+            }
+        }
+    }
+    public InputMovementActions @InputMovement => new InputMovementActions(this);
+
+    // InputCombat
+    private readonly InputActionMap m_InputCombat;
+    private IInputCombatActions m_InputCombatActionsCallbackInterface;
+    private readonly InputAction m_InputCombat_Newaction;
+    public struct InputCombatActions
+    {
+        private @InputActions m_Wrapper;
+        public InputCombatActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Newaction => m_Wrapper.m_InputCombat_Newaction;
+        public InputActionMap Get() { return m_Wrapper.m_InputCombat; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(InputCombatActions set) { return set.Get(); }
+        public void SetCallbacks(IInputCombatActions instance)
+        {
+            if (m_Wrapper.m_InputCombatActionsCallbackInterface != null)
+            {
+                @Newaction.started -= m_Wrapper.m_InputCombatActionsCallbackInterface.OnNewaction;
+                @Newaction.performed -= m_Wrapper.m_InputCombatActionsCallbackInterface.OnNewaction;
+                @Newaction.canceled -= m_Wrapper.m_InputCombatActionsCallbackInterface.OnNewaction;
+            }
+            m_Wrapper.m_InputCombatActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Newaction.started += instance.OnNewaction;
+                @Newaction.performed += instance.OnNewaction;
+                @Newaction.canceled += instance.OnNewaction;
+            }
+        }
+    }
+    public InputCombatActions @InputCombat => new InputCombatActions(this);
+
+    // InputFarming
+    private readonly InputActionMap m_InputFarming;
+    private IInputFarmingActions m_InputFarmingActionsCallbackInterface;
+    private readonly InputAction m_InputFarming_Newaction;
+    public struct InputFarmingActions
+    {
+        private @InputActions m_Wrapper;
+        public InputFarmingActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Newaction => m_Wrapper.m_InputFarming_Newaction;
+        public InputActionMap Get() { return m_Wrapper.m_InputFarming; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(InputFarmingActions set) { return set.Get(); }
+        public void SetCallbacks(IInputFarmingActions instance)
+        {
+            if (m_Wrapper.m_InputFarmingActionsCallbackInterface != null)
+            {
+                @Newaction.started -= m_Wrapper.m_InputFarmingActionsCallbackInterface.OnNewaction;
+                @Newaction.performed -= m_Wrapper.m_InputFarmingActionsCallbackInterface.OnNewaction;
+                @Newaction.canceled -= m_Wrapper.m_InputFarmingActionsCallbackInterface.OnNewaction;
+            }
+            m_Wrapper.m_InputFarmingActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Newaction.started += instance.OnNewaction;
+                @Newaction.performed += instance.OnNewaction;
+                @Newaction.canceled += instance.OnNewaction;
+            }
+        }
+    }
+    public InputFarmingActions @InputFarming => new InputFarmingActions(this);
+
+    // InputMenu
+    private readonly InputActionMap m_InputMenu;
+    private IInputMenuActions m_InputMenuActionsCallbackInterface;
+    private readonly InputAction m_InputMenu_Newaction;
+    public struct InputMenuActions
+    {
+        private @InputActions m_Wrapper;
+        public InputMenuActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Newaction => m_Wrapper.m_InputMenu_Newaction;
+        public InputActionMap Get() { return m_Wrapper.m_InputMenu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(InputMenuActions set) { return set.Get(); }
+        public void SetCallbacks(IInputMenuActions instance)
+        {
+            if (m_Wrapper.m_InputMenuActionsCallbackInterface != null)
+            {
+                @Newaction.started -= m_Wrapper.m_InputMenuActionsCallbackInterface.OnNewaction;
+                @Newaction.performed -= m_Wrapper.m_InputMenuActionsCallbackInterface.OnNewaction;
+                @Newaction.canceled -= m_Wrapper.m_InputMenuActionsCallbackInterface.OnNewaction;
+            }
+            m_Wrapper.m_InputMenuActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Newaction.started += instance.OnNewaction;
+                @Newaction.performed += instance.OnNewaction;
+                @Newaction.canceled += instance.OnNewaction;
+            }
+        }
+    }
+    public InputMenuActions @InputMenu => new InputMenuActions(this);
+
+    // InputUI
+    private readonly InputActionMap m_InputUI;
+    private IInputUIActions m_InputUIActionsCallbackInterface;
+    private readonly InputAction m_InputUI_Newaction;
+    public struct InputUIActions
+    {
+        private @InputActions m_Wrapper;
+        public InputUIActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Newaction => m_Wrapper.m_InputUI_Newaction;
+        public InputActionMap Get() { return m_Wrapper.m_InputUI; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(InputUIActions set) { return set.Get(); }
+        public void SetCallbacks(IInputUIActions instance)
+        {
+            if (m_Wrapper.m_InputUIActionsCallbackInterface != null)
+            {
+                @Newaction.started -= m_Wrapper.m_InputUIActionsCallbackInterface.OnNewaction;
+                @Newaction.performed -= m_Wrapper.m_InputUIActionsCallbackInterface.OnNewaction;
+                @Newaction.canceled -= m_Wrapper.m_InputUIActionsCallbackInterface.OnNewaction;
+            }
+            m_Wrapper.m_InputUIActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Newaction.started += instance.OnNewaction;
+                @Newaction.performed += instance.OnNewaction;
+                @Newaction.canceled += instance.OnNewaction;
+            }
+        }
+    }
+    public InputUIActions @InputUI => new InputUIActions(this);
     public interface IPointerActions
     {
         void OnClicks(InputAction.CallbackContext context);
+    }
+    public interface IInputMovementActions
+    {
+        void OnNewaction(InputAction.CallbackContext context);
+    }
+    public interface IInputCombatActions
+    {
+        void OnNewaction(InputAction.CallbackContext context);
+    }
+    public interface IInputFarmingActions
+    {
+        void OnNewaction(InputAction.CallbackContext context);
+    }
+    public interface IInputMenuActions
+    {
+        void OnNewaction(InputAction.CallbackContext context);
+    }
+    public interface IInputUIActions
+    {
+        void OnNewaction(InputAction.CallbackContext context);
     }
 }
