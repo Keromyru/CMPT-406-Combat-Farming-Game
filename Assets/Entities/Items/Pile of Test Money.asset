@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60a6d806f697c9b43bd7e7da5d07bbf1, type: 3}
-  m_Name: Pile of Test Seeds
+  m_Name: Pile of Test Money
   m_EditorClassIdentifier: 
-  name: Pile of Seeds
-  icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  name: Cash Pile
+  icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   isSellable: 1
   pricePoint: 900
   isPlantable: 0
