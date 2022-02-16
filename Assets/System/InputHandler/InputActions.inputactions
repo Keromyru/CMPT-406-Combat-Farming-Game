@@ -50,7 +50,7 @@
                     "id": "57ea25a1-a92c-408f-9f44-b3705851997a",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold(duration=0.01,pressPoint=1.401298E-45)",
                     "initialStateCheck": true
                 },
                 {
