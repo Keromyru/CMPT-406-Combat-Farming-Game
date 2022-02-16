@@ -4,6 +4,7 @@ using UnityEngine;
 // selecting it just generates an empty item that you can customize :)
 // if we want this option out of the menu, you can just comment the following line
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
+// I've been putting created items in Entities -> Items
 
 public class Item : ScriptableObject
 {

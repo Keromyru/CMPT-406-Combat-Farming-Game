@@ -1,7 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-// IDEALLY - this whole script gets thrown out and this just gets added to the Player Controller
+// IDEALLY - this whole script gets thrown out and this just gets integrated to the Player Controller
+
+// this is currently just being placed on the GameManager with Inventory.cs
 public class ItemGrabTester : MonoBehaviour
 {
     // in the actual player controller script, you would then just check if mouse down input
