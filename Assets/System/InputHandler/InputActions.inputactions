@@ -41,7 +41,7 @@
             ]
         },
         {
-            "name": "InputMovement",
+            "name": "InputPlayer",
             "id": "f0d28e76-1db7-46f1-a770-d350120f8cd7",
             "actions": [
                 {
@@ -52,6 +52,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "PrimaryAction",
+                    "type": "Button",
+                    "id": "edc53438-07c0-4b04-89e7-fb8bba08ee7f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SecondaryAction",
+                    "type": "Button",
+                    "id": "c19322a2-3116-464d-a06e-a431d186b0c3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -109,60 +127,26 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
-                }
-            ]
-        },
-        {
-            "name": "InputCombat",
-            "id": "2ba626b1-dca1-44c7-8478-410849d6dd86",
-            "actions": [
-                {
-                    "name": "Attack",
-                    "type": "Button",
-                    "id": "da1adcaa-2901-45c7-b1ad-6db9e8e44430",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
+                },
                 {
                     "name": "",
-                    "id": "31198409-b8a4-4186-b11e-7006e2d09633",
+                    "id": "acc51609-3974-4db8-b058-fb50fa418a0d",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "Hold",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
+                    "action": "PrimaryAction",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "InputFarming",
-            "id": "fef50850-7032-4f0c-8fe0-69670c101d0f",
-            "actions": [
-                {
-                    "name": "Farm",
-                    "type": "Button",
-                    "id": "9b0e83a9-ea3b-4644-8a18-9ffe3c18c8e8",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
+                },
                 {
                     "name": "",
-                    "id": "21379e13-87af-4e39-bc78-67d660668ac1",
-                    "path": "<Mouse>/leftButton",
+                    "id": "1a1757bc-d9d5-4087-87bf-31b88669d0f0",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Farm",
+                    "action": "SecondaryAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -173,26 +157,70 @@
             "id": "022769c2-2471-4428-968e-75acdf0f4c76",
             "actions": [
                 {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "cd268110-c9d8-4213-9c07-cc42baf0c759",
-                    "expectedControlType": "Button",
+                    "name": "Movement",
+                    "type": "Value",
+                    "id": "ee042df1-981b-434a-93c8-1fcc9053b32b",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "f462d14b-da35-4834-88f2-f4d992207cd5",
-                    "path": "",
+                    "name": "WASD",
+                    "id": "e5a2cec0-a515-4b6d-ab7d-df066f50cb54",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
+                    "action": "Movement",
+                    "isComposite": true,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "556f0b73-a8ac-4745-8883-ae96d3983a0c",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "5ded7b64-c9df-47c1-8a05-c3243f5f941a",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "6c2fa45d-6582-4abf-bfd3-92528670e636",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "f429ab6b-2dcc-459e-b246-0007f85b721f",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },
@@ -213,6 +241,42 @@
                     "name": "Interact",
                     "type": "Button",
                     "id": "11b9147e-e220-4339-b6b2-af6d7d66181f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Hotbar1",
+                    "type": "Button",
+                    "id": "1763e85e-8600-4625-ae77-09c0daaf8a33",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Hotbar2",
+                    "type": "Button",
+                    "id": "33fb08c7-039d-47ca-9cf7-636664ed1cd3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Hotbar3",
+                    "type": "Button",
+                    "id": "adbfb8a4-c9f7-4821-82b4-0430158de8e2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Hotbar4",
+                    "type": "Button",
+                    "id": "5f88be5f-528a-496a-a7db-72c6af0bc877",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -239,6 +303,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d0ed6ee8-8170-46a8-99da-739735fc5067",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Hotbar1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8f323a35-0934-430a-8d3a-52ac24a5aea5",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Hotbar2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "83e031d9-d267-4b09-ae28-622c1a3eec43",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Hotbar3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3bfd3c86-d6da-4993-b7c9-2002af27fa9d",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Hotbar4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

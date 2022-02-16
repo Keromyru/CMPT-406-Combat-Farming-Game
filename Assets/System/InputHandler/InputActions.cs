@@ -63,7 +63,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""InputMovement"",
+            ""name"": ""InputPlayer"",
             ""id"": ""f0d28e76-1db7-46f1-a770-d350120f8cd7"",
             ""actions"": [
                 {
@@ -74,6 +74,24 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""PrimaryAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""edc53438-07c0-4b04-89e7-fb8bba08ee7f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SecondaryAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""c19322a2-3116-464d-a06e-a431d186b0c3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -131,60 +149,26 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                }
-            ]
-        },
-        {
-            ""name"": ""InputCombat"",
-            ""id"": ""2ba626b1-dca1-44c7-8478-410849d6dd86"",
-            ""actions"": [
-                {
-                    ""name"": ""Attack"",
-                    ""type"": ""Button"",
-                    ""id"": ""da1adcaa-2901-45c7-b1ad-6db9e8e44430"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
+                },
                 {
                     ""name"": """",
-                    ""id"": ""31198409-b8a4-4186-b11e-7006e2d09633"",
+                    ""id"": ""acc51609-3974-4db8-b058-fb50fa418a0d"",
                     ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Attack"",
+                    ""action"": ""PrimaryAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""InputFarming"",
-            ""id"": ""fef50850-7032-4f0c-8fe0-69670c101d0f"",
-            ""actions"": [
-                {
-                    ""name"": ""Farm"",
-                    ""type"": ""Button"",
-                    ""id"": ""9b0e83a9-ea3b-4644-8a18-9ffe3c18c8e8"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
+                },
                 {
                     ""name"": """",
-                    ""id"": ""21379e13-87af-4e39-bc78-67d660668ac1"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""id"": ""1a1757bc-d9d5-4087-87bf-31b88669d0f0"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Farm"",
+                    ""action"": ""SecondaryAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -195,26 +179,70 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
             ""id"": ""022769c2-2471-4428-968e-75acdf0f4c76"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""cd268110-c9d8-4213-9c07-cc42baf0c759"",
-                    ""expectedControlType"": ""Button"",
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""ee042df1-981b-434a-93c8-1fcc9053b32b"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
-                    ""name"": """",
-                    ""id"": ""f462d14b-da35-4834-88f2-f4d992207cd5"",
-                    ""path"": """",
+                    ""name"": ""WASD"",
+                    ""id"": ""e5a2cec0-a515-4b6d-ab7d-df066f50cb54"",
+                    ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""556f0b73-a8ac-4745-8883-ae96d3983a0c"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""5ded7b64-c9df-47c1-8a05-c3243f5f941a"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""6c2fa45d-6582-4abf-bfd3-92528670e636"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""f429ab6b-2dcc-459e-b246-0007f85b721f"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -235,6 +263,42 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""11b9147e-e220-4339-b6b2-af6d7d66181f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Hotbar1"",
+                    ""type"": ""Button"",
+                    ""id"": ""1763e85e-8600-4625-ae77-09c0daaf8a33"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Hotbar2"",
+                    ""type"": ""Button"",
+                    ""id"": ""33fb08c7-039d-47ca-9cf7-636664ed1cd3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Hotbar3"",
+                    ""type"": ""Button"",
+                    ""id"": ""adbfb8a4-c9f7-4821-82b4-0430158de8e2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Hotbar4"",
+                    ""type"": ""Button"",
+                    ""id"": ""5f88be5f-528a-496a-a7db-72c6af0bc877"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -263,6 +327,50 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d0ed6ee8-8170-46a8-99da-739735fc5067"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hotbar1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8f323a35-0934-430a-8d3a-52ac24a5aea5"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hotbar2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""83e031d9-d267-4b09-ae28-622c1a3eec43"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hotbar3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3bfd3c86-d6da-4993-b7c9-2002af27fa9d"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hotbar4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -272,22 +380,22 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         // Pointer
         m_Pointer = asset.FindActionMap("Pointer", throwIfNotFound: true);
         m_Pointer_Clicks = m_Pointer.FindAction("Clicks", throwIfNotFound: true);
-        // InputMovement
-        m_InputMovement = asset.FindActionMap("InputMovement", throwIfNotFound: true);
-        m_InputMovement_Movement = m_InputMovement.FindAction("Movement", throwIfNotFound: true);
-        // InputCombat
-        m_InputCombat = asset.FindActionMap("InputCombat", throwIfNotFound: true);
-        m_InputCombat_Attack = m_InputCombat.FindAction("Attack", throwIfNotFound: true);
-        // InputFarming
-        m_InputFarming = asset.FindActionMap("InputFarming", throwIfNotFound: true);
-        m_InputFarming_Farm = m_InputFarming.FindAction("Farm", throwIfNotFound: true);
+        // InputPlayer
+        m_InputPlayer = asset.FindActionMap("InputPlayer", throwIfNotFound: true);
+        m_InputPlayer_Movement = m_InputPlayer.FindAction("Movement", throwIfNotFound: true);
+        m_InputPlayer_PrimaryAction = m_InputPlayer.FindAction("PrimaryAction", throwIfNotFound: true);
+        m_InputPlayer_SecondaryAction = m_InputPlayer.FindAction("SecondaryAction", throwIfNotFound: true);
         // InputMenu
         m_InputMenu = asset.FindActionMap("InputMenu", throwIfNotFound: true);
-        m_InputMenu_Newaction = m_InputMenu.FindAction("New action", throwIfNotFound: true);
+        m_InputMenu_Movement = m_InputMenu.FindAction("Movement", throwIfNotFound: true);
         // InputUI
         m_InputUI = asset.FindActionMap("InputUI", throwIfNotFound: true);
         m_InputUI_Inventory = m_InputUI.FindAction("Inventory", throwIfNotFound: true);
         m_InputUI_Interact = m_InputUI.FindAction("Interact", throwIfNotFound: true);
+        m_InputUI_Hotbar1 = m_InputUI.FindAction("Hotbar1", throwIfNotFound: true);
+        m_InputUI_Hotbar2 = m_InputUI.FindAction("Hotbar2", throwIfNotFound: true);
+        m_InputUI_Hotbar3 = m_InputUI.FindAction("Hotbar3", throwIfNotFound: true);
+        m_InputUI_Hotbar4 = m_InputUI.FindAction("Hotbar4", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -377,114 +485,64 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     }
     public PointerActions @Pointer => new PointerActions(this);
 
-    // InputMovement
-    private readonly InputActionMap m_InputMovement;
-    private IInputMovementActions m_InputMovementActionsCallbackInterface;
-    private readonly InputAction m_InputMovement_Movement;
-    public struct InputMovementActions
+    // InputPlayer
+    private readonly InputActionMap m_InputPlayer;
+    private IInputPlayerActions m_InputPlayerActionsCallbackInterface;
+    private readonly InputAction m_InputPlayer_Movement;
+    private readonly InputAction m_InputPlayer_PrimaryAction;
+    private readonly InputAction m_InputPlayer_SecondaryAction;
+    public struct InputPlayerActions
     {
         private @InputActions m_Wrapper;
-        public InputMovementActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Movement => m_Wrapper.m_InputMovement_Movement;
-        public InputActionMap Get() { return m_Wrapper.m_InputMovement; }
+        public InputPlayerActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Movement => m_Wrapper.m_InputPlayer_Movement;
+        public InputAction @PrimaryAction => m_Wrapper.m_InputPlayer_PrimaryAction;
+        public InputAction @SecondaryAction => m_Wrapper.m_InputPlayer_SecondaryAction;
+        public InputActionMap Get() { return m_Wrapper.m_InputPlayer; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(InputMovementActions set) { return set.Get(); }
-        public void SetCallbacks(IInputMovementActions instance)
+        public static implicit operator InputActionMap(InputPlayerActions set) { return set.Get(); }
+        public void SetCallbacks(IInputPlayerActions instance)
         {
-            if (m_Wrapper.m_InputMovementActionsCallbackInterface != null)
+            if (m_Wrapper.m_InputPlayerActionsCallbackInterface != null)
             {
-                @Movement.started -= m_Wrapper.m_InputMovementActionsCallbackInterface.OnMovement;
-                @Movement.performed -= m_Wrapper.m_InputMovementActionsCallbackInterface.OnMovement;
-                @Movement.canceled -= m_Wrapper.m_InputMovementActionsCallbackInterface.OnMovement;
+                @Movement.started -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnMovement;
+                @Movement.performed -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnMovement;
+                @Movement.canceled -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnMovement;
+                @PrimaryAction.started -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnPrimaryAction;
+                @PrimaryAction.performed -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnPrimaryAction;
+                @PrimaryAction.canceled -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnPrimaryAction;
+                @SecondaryAction.started -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnSecondaryAction;
+                @SecondaryAction.performed -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnSecondaryAction;
+                @SecondaryAction.canceled -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnSecondaryAction;
             }
-            m_Wrapper.m_InputMovementActionsCallbackInterface = instance;
+            m_Wrapper.m_InputPlayerActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @PrimaryAction.started += instance.OnPrimaryAction;
+                @PrimaryAction.performed += instance.OnPrimaryAction;
+                @PrimaryAction.canceled += instance.OnPrimaryAction;
+                @SecondaryAction.started += instance.OnSecondaryAction;
+                @SecondaryAction.performed += instance.OnSecondaryAction;
+                @SecondaryAction.canceled += instance.OnSecondaryAction;
             }
         }
     }
-    public InputMovementActions @InputMovement => new InputMovementActions(this);
-
-    // InputCombat
-    private readonly InputActionMap m_InputCombat;
-    private IInputCombatActions m_InputCombatActionsCallbackInterface;
-    private readonly InputAction m_InputCombat_Attack;
-    public struct InputCombatActions
-    {
-        private @InputActions m_Wrapper;
-        public InputCombatActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Attack => m_Wrapper.m_InputCombat_Attack;
-        public InputActionMap Get() { return m_Wrapper.m_InputCombat; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(InputCombatActions set) { return set.Get(); }
-        public void SetCallbacks(IInputCombatActions instance)
-        {
-            if (m_Wrapper.m_InputCombatActionsCallbackInterface != null)
-            {
-                @Attack.started -= m_Wrapper.m_InputCombatActionsCallbackInterface.OnAttack;
-                @Attack.performed -= m_Wrapper.m_InputCombatActionsCallbackInterface.OnAttack;
-                @Attack.canceled -= m_Wrapper.m_InputCombatActionsCallbackInterface.OnAttack;
-            }
-            m_Wrapper.m_InputCombatActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Attack.started += instance.OnAttack;
-                @Attack.performed += instance.OnAttack;
-                @Attack.canceled += instance.OnAttack;
-            }
-        }
-    }
-    public InputCombatActions @InputCombat => new InputCombatActions(this);
-
-    // InputFarming
-    private readonly InputActionMap m_InputFarming;
-    private IInputFarmingActions m_InputFarmingActionsCallbackInterface;
-    private readonly InputAction m_InputFarming_Farm;
-    public struct InputFarmingActions
-    {
-        private @InputActions m_Wrapper;
-        public InputFarmingActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Farm => m_Wrapper.m_InputFarming_Farm;
-        public InputActionMap Get() { return m_Wrapper.m_InputFarming; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(InputFarmingActions set) { return set.Get(); }
-        public void SetCallbacks(IInputFarmingActions instance)
-        {
-            if (m_Wrapper.m_InputFarmingActionsCallbackInterface != null)
-            {
-                @Farm.started -= m_Wrapper.m_InputFarmingActionsCallbackInterface.OnFarm;
-                @Farm.performed -= m_Wrapper.m_InputFarmingActionsCallbackInterface.OnFarm;
-                @Farm.canceled -= m_Wrapper.m_InputFarmingActionsCallbackInterface.OnFarm;
-            }
-            m_Wrapper.m_InputFarmingActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Farm.started += instance.OnFarm;
-                @Farm.performed += instance.OnFarm;
-                @Farm.canceled += instance.OnFarm;
-            }
-        }
-    }
-    public InputFarmingActions @InputFarming => new InputFarmingActions(this);
+    public InputPlayerActions @InputPlayer => new InputPlayerActions(this);
 
     // InputMenu
     private readonly InputActionMap m_InputMenu;
     private IInputMenuActions m_InputMenuActionsCallbackInterface;
-    private readonly InputAction m_InputMenu_Newaction;
+    private readonly InputAction m_InputMenu_Movement;
     public struct InputMenuActions
     {
         private @InputActions m_Wrapper;
         public InputMenuActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_InputMenu_Newaction;
+        public InputAction @Movement => m_Wrapper.m_InputMenu_Movement;
         public InputActionMap Get() { return m_Wrapper.m_InputMenu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -494,16 +552,16 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_InputMenuActionsCallbackInterface != null)
             {
-                @Newaction.started -= m_Wrapper.m_InputMenuActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_InputMenuActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_InputMenuActionsCallbackInterface.OnNewaction;
+                @Movement.started -= m_Wrapper.m_InputMenuActionsCallbackInterface.OnMovement;
+                @Movement.performed -= m_Wrapper.m_InputMenuActionsCallbackInterface.OnMovement;
+                @Movement.canceled -= m_Wrapper.m_InputMenuActionsCallbackInterface.OnMovement;
             }
             m_Wrapper.m_InputMenuActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
+                @Movement.started += instance.OnMovement;
+                @Movement.performed += instance.OnMovement;
+                @Movement.canceled += instance.OnMovement;
             }
         }
     }
@@ -514,12 +572,20 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     private IInputUIActions m_InputUIActionsCallbackInterface;
     private readonly InputAction m_InputUI_Inventory;
     private readonly InputAction m_InputUI_Interact;
+    private readonly InputAction m_InputUI_Hotbar1;
+    private readonly InputAction m_InputUI_Hotbar2;
+    private readonly InputAction m_InputUI_Hotbar3;
+    private readonly InputAction m_InputUI_Hotbar4;
     public struct InputUIActions
     {
         private @InputActions m_Wrapper;
         public InputUIActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Inventory => m_Wrapper.m_InputUI_Inventory;
         public InputAction @Interact => m_Wrapper.m_InputUI_Interact;
+        public InputAction @Hotbar1 => m_Wrapper.m_InputUI_Hotbar1;
+        public InputAction @Hotbar2 => m_Wrapper.m_InputUI_Hotbar2;
+        public InputAction @Hotbar3 => m_Wrapper.m_InputUI_Hotbar3;
+        public InputAction @Hotbar4 => m_Wrapper.m_InputUI_Hotbar4;
         public InputActionMap Get() { return m_Wrapper.m_InputUI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -535,6 +601,18 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_InputUIActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_InputUIActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_InputUIActionsCallbackInterface.OnInteract;
+                @Hotbar1.started -= m_Wrapper.m_InputUIActionsCallbackInterface.OnHotbar1;
+                @Hotbar1.performed -= m_Wrapper.m_InputUIActionsCallbackInterface.OnHotbar1;
+                @Hotbar1.canceled -= m_Wrapper.m_InputUIActionsCallbackInterface.OnHotbar1;
+                @Hotbar2.started -= m_Wrapper.m_InputUIActionsCallbackInterface.OnHotbar2;
+                @Hotbar2.performed -= m_Wrapper.m_InputUIActionsCallbackInterface.OnHotbar2;
+                @Hotbar2.canceled -= m_Wrapper.m_InputUIActionsCallbackInterface.OnHotbar2;
+                @Hotbar3.started -= m_Wrapper.m_InputUIActionsCallbackInterface.OnHotbar3;
+                @Hotbar3.performed -= m_Wrapper.m_InputUIActionsCallbackInterface.OnHotbar3;
+                @Hotbar3.canceled -= m_Wrapper.m_InputUIActionsCallbackInterface.OnHotbar3;
+                @Hotbar4.started -= m_Wrapper.m_InputUIActionsCallbackInterface.OnHotbar4;
+                @Hotbar4.performed -= m_Wrapper.m_InputUIActionsCallbackInterface.OnHotbar4;
+                @Hotbar4.canceled -= m_Wrapper.m_InputUIActionsCallbackInterface.OnHotbar4;
             }
             m_Wrapper.m_InputUIActionsCallbackInterface = instance;
             if (instance != null)
@@ -545,6 +623,18 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Hotbar1.started += instance.OnHotbar1;
+                @Hotbar1.performed += instance.OnHotbar1;
+                @Hotbar1.canceled += instance.OnHotbar1;
+                @Hotbar2.started += instance.OnHotbar2;
+                @Hotbar2.performed += instance.OnHotbar2;
+                @Hotbar2.canceled += instance.OnHotbar2;
+                @Hotbar3.started += instance.OnHotbar3;
+                @Hotbar3.performed += instance.OnHotbar3;
+                @Hotbar3.canceled += instance.OnHotbar3;
+                @Hotbar4.started += instance.OnHotbar4;
+                @Hotbar4.performed += instance.OnHotbar4;
+                @Hotbar4.canceled += instance.OnHotbar4;
             }
         }
     }
@@ -553,25 +643,23 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     {
         void OnClicks(InputAction.CallbackContext context);
     }
-    public interface IInputMovementActions
+    public interface IInputPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
-    }
-    public interface IInputCombatActions
-    {
-        void OnAttack(InputAction.CallbackContext context);
-    }
-    public interface IInputFarmingActions
-    {
-        void OnFarm(InputAction.CallbackContext context);
+        void OnPrimaryAction(InputAction.CallbackContext context);
+        void OnSecondaryAction(InputAction.CallbackContext context);
     }
     public interface IInputMenuActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnMovement(InputAction.CallbackContext context);
     }
     public interface IInputUIActions
     {
         void OnInventory(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnHotbar1(InputAction.CallbackContext context);
+        void OnHotbar2(InputAction.CallbackContext context);
+        void OnHotbar3(InputAction.CallbackContext context);
+        void OnHotbar4(InputAction.CallbackContext context);
     }
 }
