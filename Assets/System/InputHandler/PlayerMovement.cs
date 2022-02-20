@@ -29,8 +29,10 @@ public class PlayerMovement : MonoBehaviour
     {
         // Gets the movement input and applies a constant velocity to the player
         Vector2 inputVector = inputActions.InputPlayer.Movement.ReadValue<Vector2>();
-        player.velocity = new Vector3(inputVector.x, 0, inputVector.y) * speed;
+        // velocity is incredibly buggy and unpredictable. Instead use move position
+        // player.velocity = new Vector3(inputVector.x, 0, inputVector.y) * speed;
 
+        player.MovePosition(player.position + new Vector3(inputVector.x, 0, inputVector.y) * speed);
 
         // Old code, allows for acceleration movement using forces
         /*player.AddForce(new Vector3(inputVector.x, 0, inputVector.y) * speed, ForceMode.Force);*/
