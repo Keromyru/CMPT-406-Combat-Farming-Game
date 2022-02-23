@@ -5,119 +5,78 @@ using UnityEngine.InputSystem;
 //TDK443
 public class CameraController : MonoBehaviour 
 {
+    #region Camera Configs
+        
     [Header("General Options")]
-    [SerializeField] bool canRotate = false;
-    [SerializeField] bool canUseDirectional = false;
-    [SerializeField] bool lockToStates = false;
-
-
-    [Header("Panning Options")]
-    [SerializeField] float movementTime = 1f ;
-    [SerializeField] float panSpeed = 1f ;
-    [Header("Rotation Options")]
-    [SerializeField] bool hasRotationLock = true;
-    [SerializeField] float rotationAmount;
-    [SerializeField] float MaxRotationAngle;
+    [SerializeField] float panSpeed = 1.0f;
     
     [Header("Zoom Options")]
     [SerializeField] float MaxZoom = 200f;
     [SerializeField] float MinZoom = 10f;
+    [SerializeField] float movementTime = 1f ;
+
+    [Header("Screen Shake")]
+    private bool screenShake;
+    private float shakeDuration;
+    [SerializeField] float shakeMagnitude = 0.2f;
+    [SerializeField] float dampingSpeed = 1.0f;
+    private Vector3 initialPosition;
+    private float timer;
+    private float defaultH; 
+    private Coroutine flashRoutine;
+
+    //********************************//
     private Quaternion targetRotation;
     private Vector3 targetPosition;
     private Vector3 targetZoom;
     private GameObject followTarget;
     private Vector3 locationTarget;
-    [Header("Default Bounding Box")]
-    [SerializeField] private int defaultHorzMin; 
-    [SerializeField] private int defaultVertMin, defaultHorzMax, defaultVertMax;
-    private int horzMin, vertMin, horzMax, vertMax;
-      
-    //TODO:
-    //- Add pitch set
-
+    //********************************//
+    private GameObject CameraRig;
+    private Camera Mcamera;
+    //********************************//
     private enum State {
         Target,
         Location,
         Freelook,
     }
     private State state;
- 
- 
-
+    #endregion
     private void Awake() {
+        CameraRig = this.gameObject;
+        Mcamera = CameraRig.GetComponentInChildren<Camera>();
+
         this.state = State.Freelook;
-        transform.LookAt(this.transform.parent.transform.position);
-        targetPosition = this.transform.parent.transform.position;
-        targetRotation = this.transform.parent.transform.rotation;
-        targetZoom = this.transform.localPosition;
-
-        if (horzMax == 0){ horzMax = defaultHorzMax;}    
-        if (horzMin == 0){ horzMin = defaultHorzMin;} 
-        if (vertMax == 0){ vertMax = defaultVertMax;} 
-        if (vertMin == 0){ vertMin = defaultVertMin;} 
+        transform.LookAt(CameraRig.transform.position);
+        targetPosition = CameraRig.transform.position;
+        targetRotation = CameraRig.transform.rotation;
+        targetZoom = Mcamera.transform.localPosition;
+    } 
                
-    }
-
-    private void Update() {
+    private void FixedUpdate() {
             CameraUpdate();
-            
-            if (state == State.Target){ 
+           //Updates the Cameras Target if the State is Set to Target
+            if (state == State.Target){  
                 targetPosition = new Vector3(
                     followTarget.transform.position.x, 
-                    this.transform.parent.transform.position.y, 
+                    CameraRig.transform.position.y, 
                     followTarget.transform.position.z);
-                }
-            
+            } 
+        if (screenShake){Shake();} //Shakes the screen so long as the Coroutine be trippin'
     }
+
     private void CameraUpdate(){
         //Movement Pathing
-        targetPosition.x = Mathf.Clamp(targetPosition.x, horzMin, horzMax);
-        targetPosition.z = Mathf.Clamp(targetPosition.z, vertMin, vertMax);
-        this.transform.parent.transform.position = Vector3.Lerp(this.transform.parent.transform.position,targetPosition, Time.deltaTime * movementTime); //
+       CameraRig.transform.position = Vector3.Lerp(CameraRig.transform.position,targetPosition, Time.deltaTime * movementTime); //
     
-    
-        //Rotation Pathing
-        if(hasRotationLock) {this.rotationLock();}
-        this.transform.parent.transform.rotation = Quaternion.Lerp(this.transform.parent.transform.rotation, targetRotation, Time.deltaTime * movementTime);
-        
         //Actual Camera Movement, mostly used to calculate a "zoom" path
-        this.transform.localPosition = Vector3.Lerp(this.transform.localPosition,targetZoom,Time.deltaTime * movementTime * 5);
+        Mcamera.transform.localPosition = Vector3.Lerp(Mcamera.transform.localPosition,targetZoom,Time.deltaTime * movementTime * 5);
     }
 
-    private void rotationLock(){
-        if (targetRotation.eulerAngles.y > MaxRotationAngle &&  targetRotation.eulerAngles.y < 180){ 
-            targetRotation =  Quaternion.Euler(targetRotation.eulerAngles.x, MaxRotationAngle, targetRotation.eulerAngles.z);
-        }
-        else if (targetRotation.eulerAngles.y < 360 - MaxRotationAngle &&  targetRotation.eulerAngles.y > 180){ 
-            targetRotation =  Quaternion.Euler(targetRotation.eulerAngles.x, 360 - MaxRotationAngle, targetRotation.eulerAngles.z);
-        }
-    }
-    
-    //Directional Input Calls
-    public void InputUp(){
-        if(canUseDirectional && state == State.Freelook){targetPosition += this.transform.parent.transform.forward * panSpeed;}
-    }
-    public void InputDown(){
-        if(canUseDirectional && state == State.Freelook){targetPosition -= this.transform.parent.transform.forward * panSpeed;}
-    }
-    public void InputLeft(){
-        if( canUseDirectional && state == State.Freelook){targetPosition -= this.transform.parent.transform.right * panSpeed;}
-    }
-    public void InputRight(){
-        if(canUseDirectional && state == State.Freelook ){targetPosition += this.transform.parent.transform.right * panSpeed;}
-    }
-
-    //Free Rotate Input Calls
-    public void InputClockwise(){
-        if(canRotate && state == State.Freelook ){ targetRotation *= Quaternion.Euler(Vector3.up * -rotationAmount);}
-    }
-    public void InputCounterClockwise(){
-        if(canRotate && state == State.Freelook){targetRotation *= Quaternion.Euler(Vector3.up * rotationAmount);}
-    }
 
     /////////// GETS ///////////
     public GameObject GetCamera(){
-        return this.gameObject;
+        return Mcamera.gameObject;
     }
 
     //Passes the cameras tranfrom
@@ -125,66 +84,24 @@ public class CameraController : MonoBehaviour
         return this.gameObject.transform;
     }
 
-   public Vector3 GetPosition(){
+    public Vector3 GetPosition(){
         return transform.position;
     }
 
     /////////// SETS ///////////
     // Sets a look at Coordinate
     public void SetLocation(Vector3 newLocation){
-        if (lockToStates){this.state = State.Location;}
-        
+        this.state = State.Location;
         targetPosition = newLocation;
     }
 
-
     public void SetTarget(GameObject newTarget){
-        if (lockToStates){this.state = State.Target;}
+        this.state = State.Target;
         followTarget = newTarget;
     }
 
     public void SetRotation(float newRotation){
-        this.transform.parent.transform.rotation = Quaternion.Euler(new Vector3(0f,newRotation,0f));
-    }
-
-    //SET STATE TO FREE LOOK
-    public void SetFreelook(){
-        this.state = State.Freelook;
-    }
-
-    //SET FREELOOK BOUNDING BOX
-    public void SetBoundingBox(int HorizontalMin, int HorizontalMax, int VerticalMin, int VerticalMax){
-        horzMin = HorizontalMin;
-        horzMax = HorizontalMax;
-        vertMin = VerticalMin;
-        vertMax = VerticalMax;
-    }
-
-    // INTERFACE COMPONENTS
-
-    public void OnClick(InputAction.CallbackContext context){
-
-    }
-    public void OnDoubleClick(InputAction.CallbackContext context){
-
-    }
-    public void OnAltClick(InputAction.CallbackContext context){
-
-    }
-    public void OnDrag(Vector2 delta){
-        if (state == State.Freelook){
-            float distance = ((Vector3.Distance(this.transform.position,  this.transform.parent.transform.position))*0.02f);
-            targetPosition.x += -delta.x * distance;
-            targetPosition.z += -delta.y * distance;
-        }
-    }
-
-    public void OnUnClick(InputAction.CallbackContext context){
-
-    }
-
-     public void OnLongClick(InputAction.CallbackContext context){
-
+        CameraRig.transform.rotation = Quaternion.Euler(new Vector3(0f,newRotation,0f));
     }
 
     public void Zoom(float zoom){
@@ -195,28 +112,40 @@ public class CameraController : MonoBehaviour
         }
         else if (zoom < 0 && MaxZoom > targetZoom.y) { //Zoom Out
             targetZoom += -(toCenter * panSpeed);
-        }
-         
+        }  
+    }
+    
+    private void Shake(){
+            Vector3 shake = Mcamera.transform.localPosition + Random.insideUnitSphere * shakeMagnitude;
+            shake.y = initialPosition.y;
+            transform.localPosition = shake;
     }
 
 
-    public void OnAltDrag(Vector2 deltaCursor)
-    {
-        throw new System.NotImplementedException();
-    }
+     public void ShakeScreen(float shakeTime){
+            shakeDuration = shakeTime * dampingSpeed;
+            if (flashRoutine != null)
+            {
+                // In this case, we should stop it first.
+                // Multiple FlashRoutines the same time would cause bugs.
+                StopCoroutine(flashRoutine);
+            }
 
-    public void OnAltDoubleClick(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
-    }
+             flashRoutine = StartCoroutine(ShakeRoutine());
+     }
 
-    public void OnAltUnClick(InputAction.CallbackContext context)
+    private IEnumerator ShakeRoutine()
     {
-        throw new System.NotImplementedException();
-    }
+        initialPosition = Mcamera.transform.localPosition;
+        screenShake = true;
+        // Pause the execution of this function for "duration" seconds.
+        yield return new WaitForSeconds(shakeDuration);
 
-    public void OnAltLongClick(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
+        // After the pause, swap back to the original material.
+        screenShake = false;
+        Mcamera.transform.localPosition = initialPosition;
+
+        // Set the routine to null, signaling that it's finished.
+        flashRoutine = null;
     }
 }
