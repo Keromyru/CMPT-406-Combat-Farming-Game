@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+// this is exprimental and not fully implemmented
 public class GridClickListener : MonoBehaviour
 {
     [SerializeField]

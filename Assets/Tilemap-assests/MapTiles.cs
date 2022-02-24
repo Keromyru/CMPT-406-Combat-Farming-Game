@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine.Tilemaps;
 using UnityEngine;
 
-public class MapTiles : Tile
-{
+// experimental tiles that can change their sprites HOWEVER 
+// this is unlikely the way we want to go about having plants in the tiles
+// this may end up being discarded entirely
+public class MapTiles : Tile{
 
     // Plantable tiles
     [SerializeField] private Sprite[] plantableTileSprites;
@@ -18,17 +20,5 @@ public class MapTiles : Tile
     public override void RefreshTile(Vector3Int position, ITilemap tilemap)
     {
         base.RefreshTile(position, tilemap);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
