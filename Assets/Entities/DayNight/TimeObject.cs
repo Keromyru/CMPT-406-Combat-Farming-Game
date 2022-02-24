@@ -1,5 +1,7 @@
 using UnityEngine;
 using Variables;
+using System;
+using UnityEditor;
 
 //Is a scriptable object (template to store data of the same kind ex:multiple baseball cards)
 //Using delegates to subscript to diffrent funtions (diffrent ticks)
@@ -22,8 +24,8 @@ namespace Timer
         public int TotalTicks {get; private set;}   //How many hours so far
         public int TicksPerDay {get; private set;}  //How many hours in a day
         public float SecondsPerDay {get; private set;}  
-        public int DayNightSplit {get; private set;}    //How many hours in day and how many hours in night   
-        public int IsNight {get; private set;}
+        public float DayNightSplit {get; private set;}    //How many hours in day and how many hours in night   
+        public bool IsNight {get; private set;}
 
         //Set up the day night cycle in unity
         [SerializeField] private FloatReference secondsPerTick;
