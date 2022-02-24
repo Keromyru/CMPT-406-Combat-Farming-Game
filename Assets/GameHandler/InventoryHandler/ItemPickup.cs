@@ -22,9 +22,12 @@ public class ItemPickup : Interactable
         Debug.Log("Picking up " + item.name);
 
         // stick it into the inventory
-        Inventory.instance.AddItem(item);
+        bool wasPickedUp = Inventory.instance.AddItem(item);
+        
+        if (wasPickedUp) {
+            // goodbye overworld representation
+            Destroy(gameObject);
+        }
 
-        // goodbye overworld representation
-        Destroy(gameObject);
     }
 }
