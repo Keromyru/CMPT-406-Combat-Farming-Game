@@ -26,6 +26,7 @@ public class Item : ScriptableObject
 
     // if we're doing the split combat versus farming inventory
     // I would like to add an int check here, something like
-    // public int available = (0 = all the time, 1 = day time only, 2 = night time only)
+    public bool availableNight = false;
+    public bool availableDay = true;
 
 }
