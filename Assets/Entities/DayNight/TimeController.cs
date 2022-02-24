@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 //Setting and Moving time
@@ -36,8 +38,5 @@ namespace Timer
             _nextTick = Time.time + _secondsPerTick;    //Time in the game (Time.time) and real life time (_secondsPerTick) 
             timeObject.Ticks();    //Let time run (increase tick count)
         }
-
     }
 }
-
-
