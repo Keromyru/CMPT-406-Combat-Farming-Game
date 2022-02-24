@@ -34,7 +34,7 @@ public class SceneHandlerSO : ScriptableObject
             if (scene.sceneName.Contains(Name)){
             //LOAD THIS WITH YOUR OPTIONS
            
-
+            SceneManager.LoadScene(Name, LoadSceneMode.Additive);
             return;
             }
         }
@@ -51,7 +51,7 @@ public class SceneHandlerSO : ScriptableObject
             if (scene.sceneName.Contains(Name)){
             //LOAD THIS WITH YOUR OPTIONS
            
-
+            SceneManager.LoadScene(Name, LoadSceneMode.Additive);
             return;
             }
         }
