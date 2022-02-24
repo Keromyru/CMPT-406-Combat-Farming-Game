@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 993022556309285775}
   - component: {fileID: 253199408923399225}
-  - component: {fileID: 7540312563550425947}
+  - component: {fileID: 1851325150549794961}
   m_Layer: 0
   m_Name: Hexagon Flat-Top Tile Right Blemish
-  m_TagString: Untagged
+  m_TagString: randomObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,9 +69,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingLayerID: 1064856897
+  m_SortingLayer: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5d877bb760f00814f849cac6e5094c11, type: 3}
   m_Color: {r: 0.64705884, g: 0.32156864, b: 0.2392157, a: 1}
   m_FlipX: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &7540312563550425947
+--- !u!61 &1851325150549794961
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,7 +96,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0011687577, y: 0.13766673}
+  m_Offset: {x: -0.006030053, y: 0.10733345}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -107,5 +107,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.64885145, y: 0.6346665}
+  m_Size: {x: 0.5607564, y: 0.53131807}
   m_EdgeRadius: 0

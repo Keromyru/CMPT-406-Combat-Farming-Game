@@ -8,6 +8,11 @@ namespace UnityEditor{
     // lets you create a new brush in the create menu 
     [CreateAssetMenu]
     [CustomGridBrush(false, true, false, "Randomized Prefab Brush")]
+
+    /*
+        This class is intended to be used with single hex sized obstacles. Can easily be expanded to include
+        different prefabs for say adornments on the tilemap or  
+    */
     public class RandomizedPrefabsBrush : GridBrushBase{
         public GameObject[] randomPrefabs;
 
@@ -35,36 +40,23 @@ namespace UnityEditor{
             // First list all the children of the grid
             int childCount = parent.childCount;
 
-            // get the world position of the grid cell that has been clicked
-            Vector3 min = grid.LocalToWorld(grid.CellToLocalInterpolated(position));
-            Vector3 max = grid.LocalToWorld(grid.CellToLocalInterpolated(position + Vector3Int.one));
-            Bounds bounds = new Bounds((max + min), max - min);
-
             //Tranverse the children
             for (int i = 0; i < childCount; i++){
                 Transform child = parent.GetChild(i);
                 string tag = child.gameObject.tag;
-                // check if the current child is within the cell AND if it contains that jump pad
-                if (bounds.Contains(child.position) && (tag == "randomObstacle")){
+                /* 
+                    check if the current child is within the cell AND if it already contains an obstacle
+                    Note that this works with smaller obstacles because each obstacle is only one hex in size
+                    thus they will have the exact same position
+                    For anything more complex that goes over several hexes more complicated math needs to be 
+                    used to know if something is within the bounds of something else.
+                */
+                if (child.position == grid.LocalToWorld(grid.CellToLocalInterpolated(position)) && (tag == "randomObstacle")){
                     // if so return that child
                     return child;
                 }
             }
             return null;
         }
-
-        // [CustomEditor(typeof(RandomizedPrefabsBrush))]
-        // public class RandomizedPrefabsBrushEditor : GridBrushBase{
-        //     // public override GameObject[] validTargets {
-        //     //     get {
-        //     //         return GameObject.FindObjectOfType<Tilemap>().Select(x => x.gameObject)
-        //     //     }
-        //     // }
-
-        //     public override void OnPaintSceneGUI( GridLayout grid, GameObject brushTarget){
-
-        //     }
-        // }
-
     }
 }
