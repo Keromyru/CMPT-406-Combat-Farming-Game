@@ -1,7 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Variables;
-using System;
-using UnityEditor;
 
 //Is a scriptable object (template to store data of the same kind ex:multiple baseball cards)
 //Using delegates to subscript to diffrent funtions (diffrent ticks)
@@ -15,9 +15,9 @@ namespace Timer
 
     public class TimeObject : ScriptableObject
     {
-        public OnTick onTick = ticks => {};
-        public OnDayTick onDayTick = days => {};
-        public OnNightTick onNightTick = days => {};
+        public OnTick onTick = ticks => { };
+        public OnDayTick onDayTick = days => { };
+        public OnNightTick onNightTick = days => { };
 
         public int TicksToday {get; private set;}
         public int DaysElapsed {get; private set;}  //How many days have passed

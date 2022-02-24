@@ -12,7 +12,7 @@ namespace Timer
         private float _secondsPerTick;  //seconds per hour
         private float _nextTick;
 
-        //Setting up the TimeObject and starting at the begining 
+        //Setting up the timeObject and starting at the begining 
         private void Start()
         {
             //Get Start values from the save file?
