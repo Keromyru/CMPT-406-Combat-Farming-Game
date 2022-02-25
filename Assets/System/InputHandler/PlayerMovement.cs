@@ -10,16 +10,14 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     // the player object
-    private Rigidbody player;
+    private Rigidbody2D player;
     // The inputs from the input system
     private InputActions inputActions;
     // The speed of the player
     public float speed;
 
-    private void Awake()
-    {
-        
-        player = GetComponent<Rigidbody>();
+    private void Awake(){
+        player = GetComponent<Rigidbody2D>();
 
         // Enables the player input (allows you to use the player input)
         inputActions = new InputActions();
@@ -33,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
         // velocity is incredibly buggy and unpredictable. Instead use move position
         // player.velocity = new Vector3(inputVector.x, 0, inputVector.y) * speed;
 
-        player.MovePosition(player.position + new Vector3(inputVector.x, 0, inputVector.y) * speed);
+        player.MovePosition(player.position + new Vector2(inputVector.x, inputVector.y) * speed);
 
         // Old code, allows for acceleration movement using forces
         /*player.AddForce(new Vector3(inputVector.x, 0, inputVector.y) * speed, ForceMode.Force);*/
