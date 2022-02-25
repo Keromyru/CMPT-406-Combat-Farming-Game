@@ -29,4 +29,8 @@ public class Item : ScriptableObject
     public bool availableNight = false;
     public bool availableDay = true;
 
+    public virtual void Use() {
+        Debug.Log("Using " + name);
+    }
+
 }

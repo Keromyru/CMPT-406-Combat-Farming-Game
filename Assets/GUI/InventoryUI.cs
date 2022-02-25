@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -7,6 +8,10 @@ public class InventoryUI : MonoBehaviour
     public Transform itemsParent;
 
     InventorySlot[] slots;
+
+    public GameObject inventoryUI;
+
+    [SerializeField] private InputActionReference InventoryActions;
     
     // Start is called before the first frame update
     void Start()
@@ -17,10 +22,20 @@ public class InventoryUI : MonoBehaviour
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        InventoryActions.action.performed += toggleInventory;
+        InventoryActions.action.Enable();
+    }
+
+    private void OnDisable()
+    {
+        InventoryActions.action.performed -= toggleInventory;
+        InventoryActions.action.Disable();
+    }
+
+    private void toggleInventory(InputAction.CallbackContext context) {
+        inventoryUI.SetActive(!inventoryUI.activeSelf);
     }
 
     void UpdateUI() {
