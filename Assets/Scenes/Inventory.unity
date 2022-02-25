@@ -373,7 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9282b5f9196928645a9fcb84485f33ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectItem: {fileID: 2769146980800800754, guid: 46b27ae7c2fb4964b976815880d53270, type: 3}
+  selectItem: {fileID: 1493462639035550562, guid: 46b27ae7c2fb4964b976815880d53270, type: 3}
 --- !u!114 &169498177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1664,6 +1664,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsParent: {fileID: 1495784929}
+  inventoryUI: {fileID: 1495784928}
+  InventoryActions: {fileID: -4255661918333137213, guid: 46b27ae7c2fb4964b976815880d53270, type: 3}
 --- !u!1 &930112362
 GameObject:
   m_ObjectHideFlags: 0
