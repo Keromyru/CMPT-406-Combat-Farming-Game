@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/TilemapScene.unity.meta
+guid: f507fc39bddecd341ae396210e54b339
+========
 guid: ca6dd7435bc16bc479b532da8850448c
+>>>>>>>> develop:Assets/Scenes/InGame.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

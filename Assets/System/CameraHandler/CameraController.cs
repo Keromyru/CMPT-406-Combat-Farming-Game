@@ -59,9 +59,9 @@ public class CameraController : MonoBehaviour
         //Updates the Cameras Target if the State is Set to Target
         if (state == State.Target){  
             targetPosition = new Vector3(
-                followTarget.transform.position.x, 
-                CameraRig.transform.position.y, 
-                followTarget.transform.position.z);
+                followTarget.transform.position.x,  
+                followTarget.transform.position.y,
+                CameraRig.transform.position.z);
             } 
         if (screenShake){Shake();} //Shakes the screen so long as the Coroutine be trippin'
     }
