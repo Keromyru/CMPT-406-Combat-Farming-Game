@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        
         player = GetComponent<Rigidbody>();
 
         // Enables the player input (allows you to use the player input)
