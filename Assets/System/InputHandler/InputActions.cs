@@ -26,41 +26,8 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         {
             ""name"": ""Pointer"",
             ""id"": ""adfcbf82-fe66-4d0f-acf7-ed98afdfe18c"",
-            ""actions"": [
-                {
-                    ""name"": ""Clicks"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""62f3100e-f54f-4ff7-b692-a9b5e4eccaeb"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""01000900-9d2f-400b-8a4c-d00f6e9262ed"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Clicks"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""180adc95-ffa6-4434-a1cc-16fd3f00b304"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Clicks"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
+            ""actions"": [],
+            ""bindings"": []
         },
         {
             ""name"": ""InputPlayer"",
@@ -375,11 +342,27 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
             ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""New control scheme"",
+            ""bindingGroup"": ""New control scheme"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Mouse>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                },
+                {
+                    ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        }
+    ]
 }");
         // Pointer
         m_Pointer = asset.FindActionMap("Pointer", throwIfNotFound: true);
-        m_Pointer_Clicks = m_Pointer.FindAction("Clicks", throwIfNotFound: true);
         // InputPlayer
         m_InputPlayer = asset.FindActionMap("InputPlayer", throwIfNotFound: true);
         m_InputPlayer_Movement = m_InputPlayer.FindAction("Movement", throwIfNotFound: true);
@@ -455,12 +438,10 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     // Pointer
     private readonly InputActionMap m_Pointer;
     private IPointerActions m_PointerActionsCallbackInterface;
-    private readonly InputAction m_Pointer_Clicks;
     public struct PointerActions
     {
         private @InputActions m_Wrapper;
         public PointerActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Clicks => m_Wrapper.m_Pointer_Clicks;
         public InputActionMap Get() { return m_Wrapper.m_Pointer; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -470,16 +451,10 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_PointerActionsCallbackInterface != null)
             {
-                @Clicks.started -= m_Wrapper.m_PointerActionsCallbackInterface.OnClicks;
-                @Clicks.performed -= m_Wrapper.m_PointerActionsCallbackInterface.OnClicks;
-                @Clicks.canceled -= m_Wrapper.m_PointerActionsCallbackInterface.OnClicks;
             }
             m_Wrapper.m_PointerActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Clicks.started += instance.OnClicks;
-                @Clicks.performed += instance.OnClicks;
-                @Clicks.canceled += instance.OnClicks;
             }
         }
     }
@@ -639,9 +614,17 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         }
     }
     public InputUIActions @InputUI => new InputUIActions(this);
+    private int m_NewcontrolschemeSchemeIndex = -1;
+    public InputControlScheme NewcontrolschemeScheme
+    {
+        get
+        {
+            if (m_NewcontrolschemeSchemeIndex == -1) m_NewcontrolschemeSchemeIndex = asset.FindControlSchemeIndex("New control scheme");
+            return asset.controlSchemes[m_NewcontrolschemeSchemeIndex];
+        }
+    }
     public interface IPointerActions
     {
-        void OnClicks(InputAction.CallbackContext context);
     }
     public interface IInputPlayerActions
     {
