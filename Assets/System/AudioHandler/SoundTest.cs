@@ -10,7 +10,7 @@ public class SoundTest : MonoBehaviour
     bool startSound = true;
     void FixedUpdate()
     {
-         if(timer < 3)
+         if(timer < 1)
 
          timer += Time.deltaTime; 
 

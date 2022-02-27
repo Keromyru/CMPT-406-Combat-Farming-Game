@@ -30,7 +30,7 @@ public class MusicControllerSO : ScriptableObject
         //Checks all the AudioClipSO's and adds the one with the correct type to it's list
         foreach (MusicClipSO item in instances){
             //Music List with info
-            Debug.Log("Name: "+item.Name+ "      for: "+ item.musicLocation);
+            //Debug.Log("Name: "+item.Name+ "      for: "+ item.musicLocation);
     
             switch ((int)item.musicLocation)
             {
