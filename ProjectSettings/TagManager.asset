@@ -45,6 +45,9 @@ TagManager:
   - name: Ground
     uniqueID: 3850905877
     locked: 0
+  - name: Plants
+    uniqueID: 3528605241
+    locked: 0
   - name: Obstacles
     uniqueID: 1064856897
     locked: 0
