@@ -6,16 +6,26 @@ public class SoundTest : MonoBehaviour
 {   
 
     [SerializeField] AudioControllerSO myController;
-    void Start()
+    float timer = 0;
+    bool startSound = true;
+    void FixedUpdate()
     {
-        //This is in place of the game trigger
-        gameObject.GetComponent<AudioHandler>().SetPlayList("DayCycle");
-        gameObject.GetComponent<AudioHandler>().PlayNext();
+         if(timer < 3)
 
-        //Play Audio File From Selected Controller
-        myController.Play("Menu Select");
+         timer += Time.deltaTime; 
+
+         else if (startSound) {
+            startSound = false;
+            //This is in place of the game trigger
+            gameObject.GetComponent<AudioHandler>().SetPlayList("DayCycle");
+            gameObject.GetComponent<AudioHandler>().PlayNext();
+
+            //Play Audio File From Selected Controller
+            myController.Play("Menu Select");
+         }
 
     }
+
 
 
 }

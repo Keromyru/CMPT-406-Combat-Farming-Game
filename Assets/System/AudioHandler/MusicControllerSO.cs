@@ -28,7 +28,10 @@ public class MusicControllerSO : ScriptableObject
         }
 
         //Checks all the AudioClipSO's and adds the one with the correct type to it's list
-        foreach (MusicClipSO item in Resources.FindObjectsOfTypeAll<MusicClipSO>()){
+        foreach (MusicClipSO item in instances){
+            //Music List with info
+            Debug.Log("Name: "+item.Name+ "      for: "+ item.musicLocation);
+    
             switch ((int)item.musicLocation)
             {
                 case 0:
@@ -48,6 +51,7 @@ public class MusicControllerSO : ScriptableObject
                 break;
             }
         }
+         Debug.Log(DayCycle.Count);
     }
 
     //Disabled AutoPlay and Starts a music piece of the specified name;
@@ -68,32 +72,37 @@ public class MusicControllerSO : ScriptableObject
 
     public AudioSource PlayNext(AudioSource audioSourceParam) {
         var source = audioSourceParam;
-        MusicClipSO selectedMusic;
+        MusicClipSO selectedMusic;      
         switch (playlist)
             { //Takes the chosen playlist and plays the next song from
                 case 0:
                     selectedMusic = Menus[mIndex];
-                    if (mIndex+1 == Menus.Count){ mIndex = -1;}
+                    if (mIndex+1 == Menus.Count){ mIndex = 0;}
+                    selectedMusic.Play(audioSourceParam);
                 break;
 
                 case 1:
                    selectedMusic = DayCycle[mIndex];
-                   if (mIndex+1 == DayCycle.Count){ mIndex = -1;}
+                   if (mIndex+1 == DayCycle.Count){ mIndex = 0;}
+                   selectedMusic.Play(audioSourceParam);
                 break;
 
                 case 2:
                    selectedMusic = NightCycle[mIndex];
-                   if (mIndex+1 == NightCycle.Count){ mIndex = -1;}
+                   if (mIndex+1 == NightCycle.Count){ mIndex = 0;}
+                   selectedMusic.Play(audioSourceParam);
                 break;
 
                 default:
                     selectedMusic = instances[0];
+                    selectedMusic.Play(audioSourceParam);
                 break;
             }
         //Increment the counter
         mIndex ++;
+
         //Plays the file using it's perameters, and returns the audiosource
-        return selectedMusic.Play(audioSourceParam);      
+        return audioSourceParam;      
     }
 
     public enum location
