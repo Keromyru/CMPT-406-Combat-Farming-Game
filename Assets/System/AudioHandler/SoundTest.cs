@@ -21,7 +21,7 @@ public class SoundTest : MonoBehaviour
             gameObject.GetComponent<AudioHandler>().PlayNext();
 
             //Play Audio File From Selected Controller
-            myController.Play("Menu Select");
+            //myController.Play("Menu Select");
          }
 
     }
