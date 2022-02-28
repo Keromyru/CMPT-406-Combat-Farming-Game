@@ -11,8 +11,11 @@ public class PlayerMovement : MonoBehaviour
 {
     // the player object
     private Rigidbody player;
+
     // The inputs from the input system
-    private InputActions inputActions;
+    private PlayerInput playerInput;
+    public GameObject inputHandler;
+
     // The speed of the player
     public float speed;
 
@@ -20,15 +23,15 @@ public class PlayerMovement : MonoBehaviour
     {
         player = GetComponent<Rigidbody>();
 
-        // Enables the player input (allows you to use the player input)
-        inputActions = new InputActions();
-        inputActions.InputPlayer.Enable();
+        // Allows you to use the player input
+        playerInput = inputHandler.GetComponent<PlayerInput>();
     }
+
 
     private void FixedUpdate()
     {
         // Gets the movement input and applies a constant velocity to the player
-        Vector2 inputVector = inputActions.InputPlayer.Movement.ReadValue<Vector2>();
+        Vector2 inputVector = playerInput.actions["PlayerMovement"].ReadValue<Vector2>();
         // velocity is incredibly buggy and unpredictable. Instead use move position
         // player.velocity = new Vector3(inputVector.x, 0, inputVector.y) * speed;
 

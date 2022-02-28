@@ -242,7 +242,6 @@ GameObject:
   - component: {fileID: 248991893}
   - component: {fileID: 248991892}
   - component: {fileID: 248991891}
-  - component: {fileID: 248991890}
   - component: {fileID: 248991889}
   - component: {fileID: 248991894}
   m_Layer: 0
@@ -278,81 +277,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e39f09330643c574cbc20a853dca0e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputHandler: {fileID: 1179859205}
   speed: 0.2
---- !u!114 &248991890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 248991887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 46b27ae7c2fb4964b976815880d53270, type: 3}
-  m_NotificationBehavior: 3
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 62f3100e-f54f-4ff7-b692-a9b5e4eccaeb
-    m_ActionName: Pointer/Clicks[/Mouse/leftButton,/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 57ea25a1-a92c-408f-9f44-b3705851997a
-    m_ActionName: InputPlayer/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: edc53438-07c0-4b04-89e7-fb8bba08ee7f
-    m_ActionName: InputPlayer/PrimaryAction[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: c19322a2-3116-464d-a06e-a431d186b0c3
-    m_ActionName: InputPlayer/SecondaryAction[/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ee042df1-981b-434a-93c8-1fcc9053b32b
-    m_ActionName: InputMenu/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 9ee95941-c806-498f-bb1a-47da5b64c58a
-    m_ActionName: InputUI/Inventory[/Keyboard/i]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 11b9147e-e220-4339-b6b2-af6d7d66181f
-    m_ActionName: InputUI/Interact[/Keyboard/e]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 1763e85e-8600-4625-ae77-09c0daaf8a33
-    m_ActionName: InputUI/Hotbar1[/Keyboard/1]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 33fb08c7-039d-47ca-9cf7-636664ed1cd3
-    m_ActionName: InputUI/Hotbar2[/Keyboard/2]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: adbfb8a4-c9f7-4821-82b4-0430158de8e2
-    m_ActionName: InputUI/Hotbar3[/Keyboard/3]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 5f88be5f-528a-496a-a7db-72c6af0bc877
-    m_ActionName: InputUI/Hotbar4[/Keyboard/4]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: InputPlayer
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!65 &248991891
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -805,7 +731,115 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 62f3100e-f54f-4ff7-b692-a9b5e4eccaeb
+    m_ActionName: Pointer/Clicks[/Mouse/leftButton,/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 57ea25a1-a92c-408f-9f44-b3705851997a
+    m_ActionName: InputPlayer/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: edc53438-07c0-4b04-89e7-fb8bba08ee7f
+    m_ActionName: InputPlayer/PrimaryAction[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c19322a2-3116-464d-a06e-a431d186b0c3
+    m_ActionName: InputPlayer/SecondaryAction[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5530f6da-1e49-444f-8247-9d0ea27831c6
+    m_ActionName: InputPlayer/Hotbar1[/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 383b42a2-d3ca-4c3b-a44d-fdf5af87f725
+    m_ActionName: InputPlayer/Hotbar2[/Keyboard/2]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 48492372-e18e-40e9-b766-7b889050b8ca
+    m_ActionName: InputPlayer/Hotbar3[/Keyboard/3]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a0dc62df-45a4-4fc9-80d7-1bfa3af11d03
+    m_ActionName: InputPlayer/Hotbar4[/Keyboard/4]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f615dd09-0681-4e33-b293-c1a650d565da
+    m_ActionName: InputPlayer/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a865f876-4ead-4d2a-9e31-4cab7a9336c0
+    m_ActionName: InputPlayer/Inventory[/Keyboard/i]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dfdcce39-8878-4d6c-9c35-3e823b52013c
+    m_ActionName: InputPlayer/Menu[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ee042df1-981b-434a-93c8-1fcc9053b32b
+    m_ActionName: InputMenu/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b7b459d5-819a-4069-bb7f-d770dbe73e59
+    m_ActionName: InputMenu/PrimaryAction[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e8f617a2-2804-431b-8725-f564bb360d69
+    m_ActionName: InputMenu/SecondaryAction[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2aef9bbf-0e66-49f3-8a44-3c0dab413a4f
+    m_ActionName: InputMenu/Menu[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9ee95941-c806-498f-bb1a-47da5b64c58a
+    m_ActionName: InputUI/Inventory[/Keyboard/i]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 11b9147e-e220-4339-b6b2-af6d7d66181f
+    m_ActionName: InputUI/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bdc63cdc-b1c1-4258-b57c-b3b51ce897fb
+    m_ActionName: InputUI/PrimaryAction[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 324c2003-1478-4eaf-8970-7154125b7c93
+    m_ActionName: InputUI/SecondaryAction[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1763e85e-8600-4625-ae77-09c0daaf8a33
+    m_ActionName: InputUI/Hotbar1[/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 33fb08c7-039d-47ca-9cf7-636664ed1cd3
+    m_ActionName: InputUI/Hotbar2[/Keyboard/2]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: adbfb8a4-c9f7-4821-82b4-0430158de8e2
+    m_ActionName: InputUI/Hotbar3[/Keyboard/3]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5f88be5f-528a-496a-a7db-72c6af0bc877
+    m_ActionName: InputUI/Hotbar4[/Keyboard/4]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1b26a227-266e-46e3-a354-e6099a74cc11
+    m_ActionName: InputUI/Menu[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: InputPlayer

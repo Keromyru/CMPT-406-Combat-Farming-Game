@@ -2,55 +2,16 @@
     "name": "InputActions",
     "maps": [
         {
-            "name": "Pointer",
-            "id": "adfcbf82-fe66-4d0f-acf7-ed98afdfe18c",
-            "actions": [
-                {
-                    "name": "Clicks",
-                    "type": "PassThrough",
-                    "id": "62f3100e-f54f-4ff7-b692-a9b5e4eccaeb",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "01000900-9d2f-400b-8a4c-d00f6e9262ed",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Clicks",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "180adc95-ffa6-4434-a1cc-16fd3f00b304",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Clicks",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
             "name": "InputPlayer",
             "id": "f0d28e76-1db7-46f1-a770-d350120f8cd7",
             "actions": [
                 {
-                    "name": "Movement",
+                    "name": "PlayerMovement",
                     "type": "Value",
                     "id": "57ea25a1-a92c-408f-9f44-b3705851997a",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": "Hold(duration=0.01,pressPoint=1.401298E-45)",
+                    "interactions": "",
                     "initialStateCheck": true
                 },
                 {
@@ -117,7 +78,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Inventory",
+                    "name": "OpenInventory",
                     "type": "Button",
                     "id": "a865f876-4ead-4d2a-9e31-4cab7a9336c0",
                     "expectedControlType": "Button",
@@ -126,7 +87,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Menu",
+                    "name": "OpenMenuFromPlayer",
                     "type": "Button",
                     "id": "dfdcce39-8878-4d6c-9c35-3e823b52013c",
                     "expectedControlType": "Button",
@@ -143,7 +104,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "PlayerMovement",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -154,7 +115,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "PlayerMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -165,7 +126,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "PlayerMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -176,7 +137,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "PlayerMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -187,7 +148,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "PlayerMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -264,7 +225,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Inventory",
+                    "action": "OpenInventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -286,7 +247,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Menu",
+                    "action": "OpenMenuFromPlayer",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -297,7 +258,7 @@
             "id": "022769c2-2471-4428-968e-75acdf0f4c76",
             "actions": [
                 {
-                    "name": "Movement",
+                    "name": "MenuMovement",
                     "type": "Value",
                     "id": "ee042df1-981b-434a-93c8-1fcc9053b32b",
                     "expectedControlType": "Vector2",
@@ -306,7 +267,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "PrimaryAction",
+                    "name": "LeftClickMenu",
                     "type": "Button",
                     "id": "b7b459d5-819a-4069-bb7f-d770dbe73e59",
                     "expectedControlType": "Button",
@@ -315,7 +276,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SecondaryAction",
+                    "name": "RightClickMenu",
                     "type": "Button",
                     "id": "e8f617a2-2804-431b-8725-f564bb360d69",
                     "expectedControlType": "Button",
@@ -324,7 +285,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Menu",
+                    "name": "CloseMenu",
                     "type": "Button",
                     "id": "2aef9bbf-0e66-49f3-8a44-3c0dab413a4f",
                     "expectedControlType": "Button",
@@ -341,7 +302,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "MenuMovement",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -352,7 +313,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "MenuMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -363,7 +324,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "MenuMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -374,7 +335,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "MenuMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -385,7 +346,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "MenuMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -396,7 +357,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PrimaryAction",
+                    "action": "LeftClickMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -407,7 +368,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SecondaryAction",
+                    "action": "RightClickMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -418,7 +379,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Menu",
+                    "action": "CloseMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -429,7 +390,7 @@
             "id": "d8e2910e-e4ff-4e8c-9bdc-d3e5805f43f2",
             "actions": [
                 {
-                    "name": "Inventory",
+                    "name": "CloseInventory",
                     "type": "Button",
                     "id": "9ee95941-c806-498f-bb1a-47da5b64c58a",
                     "expectedControlType": "Button",
@@ -438,7 +399,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Interact",
+                    "name": "EButton",
                     "type": "Button",
                     "id": "11b9147e-e220-4339-b6b2-af6d7d66181f",
                     "expectedControlType": "Button",
@@ -447,7 +408,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "PrimaryAction",
+                    "name": "LeftClickUI",
                     "type": "Button",
                     "id": "bdc63cdc-b1c1-4258-b57c-b3b51ce897fb",
                     "expectedControlType": "Button",
@@ -456,7 +417,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SecondaryAction",
+                    "name": "RightClickUI",
                     "type": "Button",
                     "id": "324c2003-1478-4eaf-8970-7154125b7c93",
                     "expectedControlType": "Button",
@@ -465,43 +426,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Hotbar1",
-                    "type": "Button",
-                    "id": "1763e85e-8600-4625-ae77-09c0daaf8a33",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Hotbar2",
-                    "type": "Button",
-                    "id": "33fb08c7-039d-47ca-9cf7-636664ed1cd3",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Hotbar3",
-                    "type": "Button",
-                    "id": "adbfb8a4-c9f7-4821-82b4-0430158de8e2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Hotbar4",
-                    "type": "Button",
-                    "id": "5f88be5f-528a-496a-a7db-72c6af0bc877",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Menu",
+                    "name": "OpenMenuFromUI",
                     "type": "Button",
                     "id": "1b26a227-266e-46e3-a354-e6099a74cc11",
                     "expectedControlType": "Button",
@@ -518,7 +443,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Inventory",
+                    "action": "CloseInventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -529,51 +454,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d0ed6ee8-8170-46a8-99da-739735fc5067",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Hotbar1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8f323a35-0934-430a-8d3a-52ac24a5aea5",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Hotbar2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "83e031d9-d267-4b09-ae28-622c1a3eec43",
-                    "path": "<Keyboard>/3",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Hotbar3",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3bfd3c86-d6da-4993-b7c9-2002af27fa9d",
-                    "path": "<Keyboard>/4",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Hotbar4",
+                    "action": "EButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -584,7 +465,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SecondaryAction",
+                    "action": "RightClickUI",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -595,7 +476,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PrimaryAction",
+                    "action": "LeftClickUI",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -606,7 +487,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Menu",
+                    "action": "OpenMenuFromUI",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
