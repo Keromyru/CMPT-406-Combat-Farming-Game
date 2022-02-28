@@ -34,12 +34,14 @@ public class Inventory : MonoBehaviour
 
     // just a list update
     public bool AddItem(Item item) {
+        // is there space for an item?
         if (items.Count >= max_space) {
             Debug.Log("Inventory is full.");
             return false;
         }
         items.Add(item);
         
+        // send out an alert that inventory changed
         if (onItemChangedCallback != null) {
             onItemChangedCallback.Invoke();
         }
@@ -51,6 +53,7 @@ public class Inventory : MonoBehaviour
     public void RemoveItem(Item item) {
         items.Remove(item);
         
+        // send out an alert that inventory changed
         if (onItemChangedCallback != null) {
             onItemChangedCallback.Invoke();
         }
