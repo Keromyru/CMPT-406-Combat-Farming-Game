@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 // IDEALLY - this whole script gets thrown out and this just gets integrated to the Player Controller
 
@@ -17,21 +18,113 @@ public class ItemGrabTester : MonoBehaviour
     // Figuring out how to actually subscribe and activate an event came from here:
     // https://www.youtube.com/watch?v=zIhtPSX8hqA
 
-    [SerializeField] private InputActionReference selectItem;
+    [SerializeField] private InputActionReference slot1;
+    [SerializeField] private InputActionReference slot2;
+    [SerializeField] private InputActionReference slot3;
+    [SerializeField] private InputActionReference slot4;
+    
+    [SerializeField] private InputActionReference click;
+
+    [SerializeField] private List<Item> hotbarActions;
+    Inventory inventory;
+
+    void Start()
+    {
+        inventory = Inventory.instance;
+
+        hotbarActions = new List<Item>();
+
+        inventory.onItemChangedCallback += fetchHotbarItems;
+    }
+
+    void fetchHotbarItems()
+    {
+        int start_pos;
+
+        if (hotbarActions.Count < 4 && hotbarActions.Count >= 0) {
+
+            //if (hotbarActions.Count == 0) {
+            //    start_pos = 0;
+            //}
+            //else {
+            //    start_pos = hotbarActions.Count - 1;
+            //}
+            start_pos = hotbarActions.Count;
+        }
+        else {
+            start_pos = 4;
+        }
+        
+        for (int i = start_pos; i < 4; i++) {
+            if (inventory.items[i] != null) {
+                hotbarActions.Add(inventory.items[i]);
+                Debug.Log("Added " + hotbarActions[i].name + " to hotbar actions.");
+            }
+            else if (inventory.items.Count == 0) {
+                hotbarActions.Clear();
+            }
+        }
+    }
+
 
     private void OnEnable()
     {
-        selectItem.action.performed += selectingItem;
-        selectItem.action.Enable();
+        slot1.action.performed += use1;
+        slot1.action.Enable();
+
+        slot2.action.performed += use2;
+        slot2.action.Enable();
+
+        slot3.action.performed += use3;
+        slot3.action.Enable();
+
+        slot4.action.performed += use4;
+        slot4.action.Enable();
+
+        click.action.performed += interactWithItem;
+        click.action.Enable();
     }
 
     private void OnDisable()
     {
-        selectItem.action.performed -= selectingItem;
-        selectItem.action.Disable();
+        slot1.action.performed += use1;
+        slot1.action.Disable();
+
+        slot2.action.performed += use2;
+        slot2.action.Disable();
+
+        slot3.action.performed += use3;
+        slot3.action.Disable();
+
+        slot4.action.performed += use4;
+        slot4.action.Disable();
+
+        click.action.performed -= interactWithItem;
+        click.action.Disable();
     }
 
-    private void selectingItem(InputAction.CallbackContext context)
+    private void use1(InputAction.CallbackContext context)
+    {
+        hotbarActions[0].Use();
+    }
+
+    private void use2(InputAction.CallbackContext context)
+    {
+        hotbarActions[1].Use();
+    }
+
+    private void use3(InputAction.CallbackContext context)
+    {
+        hotbarActions[2].Use();
+    }
+
+    private void use4(InputAction.CallbackContext context)
+    {
+        hotbarActions[3].Use();
+    }
+
+
+    private void interactWithItem(InputAction.CallbackContext context)
     {
         Camera maincam = FindObjectOfType<Camera>();
 
