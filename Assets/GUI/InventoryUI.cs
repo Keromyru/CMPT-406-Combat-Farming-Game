@@ -7,7 +7,12 @@ public class InventoryUI : MonoBehaviour
 
     public Transform itemsParent;
 
+    public Transform hotbarParent;
+
     InventorySlot[] slots;
+
+    InventorySlot[] hotbarSlots;
+    public int maxHotbarSlots = 4;
 
     public GameObject inventoryUI;
 
@@ -20,6 +25,7 @@ public class InventoryUI : MonoBehaviour
         inventory.onItemChangedCallback += UpdateUI;
 
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
+        hotbarSlots = hotbarParent.GetComponentsInChildren<InventorySlot>();
     }
 
     private void OnEnable()
@@ -43,9 +49,17 @@ public class InventoryUI : MonoBehaviour
         for (int i = 0; i < slots.Length; i++) {
             if (i < inventory.items.Count) {
                 slots[i].AddItem(inventory.items[i]);
+
+                if (i < maxHotbarSlots) {
+                    hotbarSlots[i].AddItem(inventory.items[i]);
+                }
             }
             else {
                 slots[i].ClearSlot();
+
+                if (i < maxHotbarSlots) {
+                    hotbarSlots[i].ClearSlot();
+                }
             }
         }
     }
