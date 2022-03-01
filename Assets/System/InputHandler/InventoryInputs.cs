@@ -5,7 +5,7 @@ using System.Collections.Generic;
 // IDEALLY - this whole script gets thrown out and this just gets integrated to the Player Controller
 
 // this is currently just being placed on the GameManager with Inventory.cs
-public class ItemGrabTester : MonoBehaviour
+public class InventoryInputs : MonoBehaviour
 {
     // in the actual player controller script, you would then just check if mouse down input
     // collided with an interactable via raycasting...
@@ -41,6 +41,8 @@ public class ItemGrabTester : MonoBehaviour
     {
         int start_pos;
 
+        hotbarActions.Clear();
+
         if (hotbarActions.Count < 4 && hotbarActions.Count >= 0) {
             start_pos = hotbarActions.Count;
         }
@@ -54,9 +56,6 @@ public class ItemGrabTester : MonoBehaviour
             if (inventory.items[i] != null) {
                 hotbarActions.Add(inventory.items[i]);
                 Debug.Log("Added " + hotbarActions[i].name + " to hotbar actions.");
-            }
-            else if (inventory.items.Count == 0) {
-                hotbarActions.Clear();
             }
         }
     }
@@ -100,22 +99,30 @@ public class ItemGrabTester : MonoBehaviour
 
     private void use1(InputAction.CallbackContext context)
     {
-        hotbarActions[0].Use();
+        if (hotbarActions[0] != null) {
+            hotbarActions[0].Use();
+        }
     }
 
     private void use2(InputAction.CallbackContext context)
     {
-        hotbarActions[1].Use();
+        if (hotbarActions[1] != null) {
+            hotbarActions[1].Use();
+        }
     }
 
     private void use3(InputAction.CallbackContext context)
     {
-        hotbarActions[2].Use();
+        if (hotbarActions[2] != null) {
+            hotbarActions[2].Use();
+        }
     }
 
     private void use4(InputAction.CallbackContext context)
     {
-        hotbarActions[3].Use();
+        if (hotbarActions[3] != null) {
+            hotbarActions[3].Use();
+        }
     }
 
 
@@ -127,7 +134,7 @@ public class ItemGrabTester : MonoBehaviour
         Ray ray = maincam.ScreenPointToRay(Mouse.current.position.ReadValue());
         RaycastHit hitItems;
 
-        Debug.Log("Casting ray at: " + ray.origin);
+        //Debug.Log("Casting ray at: " + ray.origin);
 
         // on hit
         if (Physics.Raycast(ray, out hitItems, 100)) {
