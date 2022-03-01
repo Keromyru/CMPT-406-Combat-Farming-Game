@@ -42,20 +42,15 @@ public class ItemGrabTester : MonoBehaviour
         int start_pos;
 
         if (hotbarActions.Count < 4 && hotbarActions.Count >= 0) {
-
-            //if (hotbarActions.Count == 0) {
-            //    start_pos = 0;
-            //}
-            //else {
-            //    start_pos = hotbarActions.Count - 1;
-            //}
             start_pos = hotbarActions.Count;
         }
         else {
             start_pos = 4;
         }
+
+        int stop = Mathf.Min(4, inventory.items.Count);
         
-        for (int i = start_pos; i < 4; i++) {
+        for (int i = start_pos; i < stop; i++) {
             if (inventory.items[i] != null) {
                 hotbarActions.Add(inventory.items[i]);
                 Debug.Log("Added " + hotbarActions[i].name + " to hotbar actions.");
