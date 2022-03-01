@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60a6d806f697c9b43bd7e7da5d07bbf1, type: 3}
-  m_Name: Test Item 3
+  m_Name: Space Flower Seeds
   m_EditorClassIdentifier: 
-  name: Testing Item 3
-  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  name: New Item
+  icon: {fileID: 0}
   isSellable: 0
-  pricePoint: 500
-  isPlantable: 1
+  pricePoint: 0
+  isPlantable: 0
+  availableNight: 0
+  availableDay: 1
