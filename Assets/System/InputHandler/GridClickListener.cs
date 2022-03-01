@@ -9,7 +9,7 @@ public class GridClickListener : MonoBehaviour{
     [SerializeField] private Tilemap worldTilemap;
 
     // Need to ensure the player isn't going to plant in the same tile as an obstacle
-    [SerializeField] private Tilemap obstacleMap;
+    [SerializeField] private Tilemap obstacleTilemap;
 
     public Camera cam;
 
@@ -38,6 +38,17 @@ public class GridClickListener : MonoBehaviour{
             var cellPosition = worldTilemap.WorldToCell(point);
             Vector3 centerPos = worldTilemap.GetCellCenterLocal(cellPosition);
 
+            Transform obstacleTransform = obstacleTilemap.transform;
+            int obstacleCount = obstacleTransform.childCount;
+            for (int i = 0; i < obstacleCount; i++){
+                Transform child = obstacleTransform.GetChild(i);
+                string tag = child.gameObject.tag;
+                if (child.position == obstacleTilemap.LocalToWorld(
+                    worldTilemap.CellToLocalInterpolated(cellPosition))){
+                        Debug.Log("hello "+ child);
+                        return;
+                }
+            }
             // Creates the plant prefabs in the cell chosen by the player
             Instantiate(plantables[0], centerPos, Quaternion.identity);
         }

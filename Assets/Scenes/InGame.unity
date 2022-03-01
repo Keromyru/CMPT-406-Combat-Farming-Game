@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worldTilemap: {fileID: 638177055}
-  obstacleMap: {fileID: 937255845}
+  obstacleTilemap: {fileID: 937255845}
   cam: {fileID: 326382429}
   plantables:
   - {fileID: 8842285566257266402, guid: b9abd3a992926024a860d80a66329e9f, type: 3}
