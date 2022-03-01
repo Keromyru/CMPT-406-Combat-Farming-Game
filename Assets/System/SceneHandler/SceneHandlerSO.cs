@@ -19,8 +19,7 @@ public class SceneHandlerSO : ScriptableObject
 
 ///////////////////////////////////////////////////////////////
 // SCENE LOADED EVENT SUBSCRIPTION
-    void OnEnable() {SceneManager.sceneLoaded += OnSceneLoaded;
-    }
+    void OnEnable() {SceneManager.sceneLoaded += OnSceneLoaded;}
     void OnDisable(){SceneManager.sceneLoaded -= OnSceneLoaded;} 
 ///////////////////////////////////////////////////////////////
 // Scene Loads
@@ -111,10 +110,15 @@ public class SceneHandlerSO : ScriptableObject
 // 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode){
         //Makes sure that system is loaded if it's not already loaded
+        StartupCheck();
+        
+    }  
+
+    private void StartupCheck(){
         if (!ListOfLoadedScenes().Contains("System")){
             SceneManager.LoadScene("System", LoadSceneMode.Additive);
         }
-    }  
+    }
 
 
     //Updates an Active directory of loaded  scenes
