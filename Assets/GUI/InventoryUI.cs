@@ -11,7 +11,7 @@ public class InventoryUI : MonoBehaviour
 
     InventorySlot[] slots;
 
-    InventorySlot[] hotbarSlots;
+    HotbarSlot[] hotbarSlots;
     public int maxHotbarSlots = 4;
 
     public GameObject inventoryUI;
@@ -25,7 +25,7 @@ public class InventoryUI : MonoBehaviour
         inventory.onItemChangedCallback += UpdateUI;
 
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
-        hotbarSlots = hotbarParent.GetComponentsInChildren<InventorySlot>();
+        hotbarSlots = hotbarParent.GetComponentsInChildren<HotbarSlot>();
     }
 
     private void OnEnable()
