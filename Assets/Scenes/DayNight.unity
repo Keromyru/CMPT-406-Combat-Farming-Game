@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: 14d616248e3c14720b09037f3e0d41d5, type: 2}
+  m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -865,6 +865,14 @@ PrefabInstance:
       propertyPath: moon
       value: 
       objectReference: {fileID: 540995929}
+    - target: {fileID: 7204908183047877272, guid: 0692fc40768f0462b8a945a58074a8d5, type: 3}
+      propertyPath: fullDayLength
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7204908183047877272, guid: 0692fc40768f0462b8a945a58074a8d5, type: 3}
+      propertyPath: startTimeOfDay
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 8076508826557807899, guid: 0692fc40768f0462b8a945a58074a8d5, type: 3}
       propertyPath: m_Name
       value: DayNightCycle

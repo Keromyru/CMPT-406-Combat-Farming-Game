@@ -4,16 +4,10 @@ using UnityEngine;
 
 public class DayNightCycle : MonoBehaviour
 {
-    //Make to night
-    //Make to day
-    //Set night hours 
-    //Set day hours
-    //Eclipse
-
-    [Range(0.0f, 1.0f)]
+    [Range(0.0f, 1.0f)] // 0 and 1 is important for the intensity graphs
     public float timeOfDay;
     public float fullDayLength;
-    public float startTimeOfDay = 4.0f;
+    public float startTimeOfDay;
     public Vector3 noon;
     private float timeRate;
     private bool isNight = false;

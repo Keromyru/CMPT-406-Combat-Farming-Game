@@ -43,9 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60dfdf1b7a95440fdb6f4ab8bf876591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeOfDay: 0.2
-  fullDayLength: 12
-  startTimeOfDay: 0.5
+  timeOfDay: 0
+  fullDayLength: 30
+  startTimeOfDay: 0.4
   noon: {x: 90, y: 0, z: 0}
   sun: {fileID: 0}
   sunColor:
