@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 939655386225878869}
   - component: {fileID: 3018572843024416561}
+  - component: {fileID: -6020522461332629115}
+  - component: {fileID: 2536846488072395528}
   m_Layer: 7
   m_Name: BaseAttackFlower
   m_TagString: Untagged
@@ -82,3 +84,35 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-6020522461332629115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8842285566257266402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1cb62c9d6969814bb2dcab6c0c59cfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plantDamage: 0
+  attackRange: 0
+  attackSpeed: 0
+  attackTarget: {fileID: 0}
+--- !u!114 &2536846488072395528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8842285566257266402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 242afcc97bdb5d543ab512f18fbddefd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 50
+  currentHealth: 50
+  seedCost: 0
+  type: 0

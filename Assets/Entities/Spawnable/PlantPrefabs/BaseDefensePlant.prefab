@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8141874169770895243}
   - component: {fileID: 2146032096366302590}
   - component: {fileID: 5844543540230421493}
+  - component: {fileID: 2042387657473736419}
+  - component: {fileID: -8268905370096788825}
   m_Layer: 0
   m_Name: BaseDefensePlant
   m_TagString: Untagged
@@ -109,3 +111,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.12, y: 0.09013368}
   m_EdgeRadius: 0
+--- !u!114 &2042387657473736419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981365425430070054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cca898d53d03e0498b334b2c256bb21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reflectDamage: 0
+--- !u!114 &-8268905370096788825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981365425430070054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 242afcc97bdb5d543ab512f18fbddefd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 300
+  currentHealth: 300
+  seedCost: 0
+  type: 1

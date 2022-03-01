@@ -22,6 +22,12 @@ public class GridClickListener : MonoBehaviour{
     */
     [SerializeField] private GameObject[] plantables;
 
+    [SerializeField] private PlantCollection plantCollection;
+
+    void Start(){
+        plantCollection = new PlantCollection();
+    }
+
     void Update(){
         if (Input.GetButtonDown("Fire1")){
             // Grab the mouse position
@@ -40,17 +46,33 @@ public class GridClickListener : MonoBehaviour{
 
             Transform obstacleTransform = obstacleTilemap.transform;
             int obstacleCount = obstacleTransform.childCount;
-            for (int i = 0; i < obstacleCount; i++){
-                Transform child = obstacleTransform.GetChild(i);
-                string tag = child.gameObject.tag;
-                if (child.position == obstacleTilemap.LocalToWorld(
-                    worldTilemap.CellToLocalInterpolated(cellPosition))){
-                        Debug.Log("hello "+ child);
-                        return;
+            int plantsize =  plantCollection.getSize();
+            int maxIterationCount = obstacleCount > plantsize ? obstacleCount : plantsize;
+            for (int i = 0; i < maxIterationCount; i++){
+                if (i < obstacleCount){
+                    Transform child = obstacleTransform.GetChild(i);
+                    string tag = child.gameObject.tag;
+                    if (child.position == obstacleTilemap.LocalToWorld(
+                        worldTilemap.CellToLocalInterpolated(cellPosition))){
+                            Debug.Log("hello "+ child);
+                            return;
+                        }
                 }
+                if (i < plantsize){
+                    // get coords for new plant
+
+                    //logic to see if a plant is already in that slot
+
+                    // if there is a plant in the collection that is already in the slot, don't plant
+                    Debug.Log("plants!!");
+                }
+           
             }
+
             // Creates the plant prefabs in the cell chosen by the player
-            Instantiate(plantables[0], centerPos, Quaternion.identity);
+            // TODO limit the range? 
+            GameObject plantedPlant = Instantiate(plantables[0], centerPos, Quaternion.identity);
+            plantCollection.addPlant(plantedPlant);
         }
     }
 }
