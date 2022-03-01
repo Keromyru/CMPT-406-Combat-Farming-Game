@@ -1,18 +1,23 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+// Mace
+
 public class HotbarSlot : MonoBehaviour
 {
-    public Image icon;
-    Item item;
+    public Image icon;  // what we want to display in inventory
+    Item item;  // scriptable object that's holding our item info
 
+    // adding item to inventory
+    // takes the scriptable object in as an agrument, grabs all other info from there
     public void AddItem(Item newItem) {
         item = newItem;
 
-        icon.sprite = item.icon;
-        icon.enabled = true;
+        icon.sprite = item.icon;  // update hotbar sprite
+        icon.enabled = true;  // display hotbar sprite
     }
 
+    // nuke all the options to nothing
     public void ClearSlot() {
         item = null;
 
@@ -21,7 +26,7 @@ public class HotbarSlot : MonoBehaviour
         icon.enabled = false;
     }
 
-    // not really needed? need some way to split them up by key
+    // much like the UseItem() call in InventorySlot, this does nothing right now :)
     public void UseItem() {
         if (item != null) {
             item.Use();

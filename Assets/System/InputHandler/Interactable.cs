@@ -1,7 +1,9 @@
 using UnityEngine;
 
-// Allows GameObjects to be classified as Interactable (i.e. player can click on them)
-// Referenced by ItemPickup.cs, but doesn't actually live in the project.
+// Mace
+
+// Allows GameObjects to be classified as Interactable (i.e. player can add them to inventory)
+// Referenced by ItemPickup.cs - DOES NOT actually have to attached to anything though :)
 public class Interactable : MonoBehaviour
 {
     // the first bit of code here is just to draw the interaction radius in scene

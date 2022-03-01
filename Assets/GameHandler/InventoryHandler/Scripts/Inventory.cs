@@ -1,6 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+// Mace
 
 // Attached to the InventoryHandler (GameHandler->ObjectHandler->InventoryHandler)
 public class Inventory : MonoBehaviour
@@ -26,13 +27,16 @@ public class Inventory : MonoBehaviour
     // end adding singleton
     
 
-    // this is the main inventory - literally just a built in list that uses... list operations for management.
+    // this is the main inventory - literally just a built-in list that uses... list operations for management.
     public List<Item> items = new List<Item>();
 
     // max inventory spots
+    // if this is changed, you'll have to physically go into the scene & add inventory slots to match
     public int max_space = 16;
 
+
     // just a list update
+    // boolean return - true on success, false on failure
     public bool AddItem(Item item) {
         // is there space for an item?
         if (items.Count >= max_space) {
