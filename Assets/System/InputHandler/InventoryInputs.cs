@@ -99,28 +99,28 @@ public class InventoryInputs : MonoBehaviour
 
     private void use1(InputAction.CallbackContext context)
     {
-        if (hotbarActions[0] != null) {
+        if (hotbarActions.Count >= 1) {
             hotbarActions[0].Use();
         }
     }
 
     private void use2(InputAction.CallbackContext context)
     {
-        if (hotbarActions[1] != null) {
+        if (hotbarActions.Count >= 2) {
             hotbarActions[1].Use();
         }
     }
 
     private void use3(InputAction.CallbackContext context)
     {
-        if (hotbarActions[2] != null) {
+        if (hotbarActions.Count >= 3) {
             hotbarActions[2].Use();
         }
     }
 
     private void use4(InputAction.CallbackContext context)
     {
-        if (hotbarActions[3] != null) {
+        if (hotbarActions.Count == 4) {
             hotbarActions[3].Use();
         }
     }
