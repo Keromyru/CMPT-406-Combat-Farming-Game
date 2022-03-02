@@ -24,6 +24,7 @@ public class Interactable : MonoBehaviour
     public virtual void Interact() {
         // whatever interaction is shared between methods goes here
         Debug.Log("Interaction triggered with " + transform.name);
+        // Debug is here so you can be sure that the interaction fired :)
 
         // then overwrite in the actual file (i.e. Items.cs) with specific interaction rules
         // will just be "public virtual void Interact() { Base.Interact(); CUSTOM CODE HERE; }"

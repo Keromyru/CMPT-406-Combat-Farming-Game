@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 // Mace
 
+// manages Inventory and Hotbar UI displays
 public class InventoryUI : MonoBehaviour
 {
     Inventory inventory;  // get singleton inventory
@@ -19,7 +20,7 @@ public class InventoryUI : MonoBehaviour
     private PlayerInput playerInput;
     private InputAction openInventory;
     private InputAction closeInventory;
-    private bool unassigned = true;
+    private bool unassigned = true;  // used to see if the InputActions have been properly assigned
     
 
     // Start is called before the first frame update
@@ -50,25 +51,28 @@ public class InventoryUI : MonoBehaviour
 
     // input stuff to toggle inventory visibility. hotbar doesn't toggle.
     private void viewInventory(InputAction.CallbackContext context) {
-        Debug.Log("Opening inventory.");
+        //Debug.Log("Opening inventory.");
         inventoryUI.SetActive(true);
     }
 
     // input stuff to toggle inventory visibility. hotbar doesn't toggle.
     private void hideInventory(InputAction.CallbackContext context) {
         inventoryUI.SetActive(false);
-        Debug.Log("Closing inventory.");
+        //Debug.Log("Closing inventory.");
     }
 
+    // add in the actions for these inputs only AFTER they've been set-up
     void AddSetActions() {
         openInventory.performed += viewInventory;
         closeInventory.performed += hideInventory;
     }
 
+    // stolen from Blake's PlayerInput set-up guide
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         if (GameObject.Find("InputHandler") != null) {
             playerInput = GameObject.Find("InputHandler").GetComponent<PlayerInput>();
 
+            // checks to see if the inputs are unassigned & assigns them now that we have PlayerInput set-up
             if (unassigned) {
                 openInventory = playerInput.actions["InputPlayer/OpenInventory"];
                 closeInventory = playerInput.actions["InputUI/CloseInventory"];
@@ -81,7 +85,7 @@ public class InventoryUI : MonoBehaviour
     // update UI for hotbar & inventory
     void UpdateUI() {
 
-        Debug.Log("Updating Inventory + Hotbar UI.");
+        //Debug.Log("Updating Inventory + Hotbar UI.");
 
         // cycle through all slots, add item if one exists in our inventory
         for (int i = 0; i < slots.Length; i++) {

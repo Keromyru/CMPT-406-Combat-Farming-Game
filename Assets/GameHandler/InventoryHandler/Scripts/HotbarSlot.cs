@@ -30,7 +30,7 @@ public class HotbarSlot : MonoBehaviour
 
     // much like the UseItem() call in InventorySlot, this does nothing right now :)
     public void UseItem() {
-        background.onClick.Invoke();
+        background.Select();
         if (item != null) {
             item.Use();
         }

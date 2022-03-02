@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 // Mace
 
-// okay've seriously rewritten this script like five times, it's a little rough
+// okay I've seriously rewritten this script like five times, it's a little rough
 
 // this is currently attached to the InventoryHandler (prefab)
 public class InventoryInputs : MonoBehaviour
@@ -19,7 +19,7 @@ public class InventoryInputs : MonoBehaviour
     private InputAction slot4;
     private InputAction click;
 
-    // select things in the inventory
+    // select things in the inventory - currently not hooked up but still working?
     //private InputAction clickInInventory;
 
     // to stop the code from reassigning inputs
@@ -62,7 +62,7 @@ public class InventoryInputs : MonoBehaviour
         for (int i = start_pos; i < stop; i++) {
             if (inventory.items[i] != null) {
                 hotbarActions.Add(inventory.items[i]);
-                Debug.Log("Added " + hotbarActions[i].name + " to hotbar actions.");
+                //Debug.Log("Added " + hotbarActions[i].name + " to hotbar actions.");
             }
         }
     }
@@ -92,6 +92,7 @@ public class InventoryInputs : MonoBehaviour
         //clickInInventory.performed -= interactWithInventory;
     }
 
+    // only add these actions once we have a PlayerInput that exists
     void AddSetActions() {
         slot1.performed += use1;
         slot2.performed += use2;
@@ -101,12 +102,14 @@ public class InventoryInputs : MonoBehaviour
         //clickInInventory.performed += interactWithInventory;
     }
 
+    // stolen from Blake, but updated to stop NullReference errors
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (GameObject.Find("InputHandler") != null)
         {
             playerInput = GameObject.Find("InputHandler").GetComponent<PlayerInput>();
 
+            // if the action haven't been assigned yet, load them in from the PlayerInput we just found
             if (unassigned) {
                 // assign all the actions
                 slot1 = playerInput.actions["InputPlayer/Hotbar1"];
@@ -172,7 +175,7 @@ public class InventoryInputs : MonoBehaviour
         if (Physics.Raycast(ray, out hitItems, 100)) {
             Interactable interactable = hitItems.collider.GetComponent<Interactable>();
             if (interactable != null) {
-                Debug.Log("Hit 3D object " + interactable.name);
+                //Debug.Log("Hit 3D object " + interactable.name);
                 interactable.Interact();
             }
         }
@@ -185,14 +188,9 @@ public class InventoryInputs : MonoBehaviour
         {
             Interactable interactobj = hit2D.collider.GetComponent<Interactable>();
             if (interactobj != null) {
-                Debug.Log("Hit 2D object " + interactobj.name);
+                //Debug.Log("Hit 2D object " + interactobj.name);
                 interactobj.Interact();
             }
         }
     }
-
-    //private void interactWithInventory(InputAction.CallbackContext context)
-    //{
-        //Debug.Log("Clicking while in UI.");
-    //}
 }
