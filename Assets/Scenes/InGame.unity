@@ -177,7 +177,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 248991888}
-  - component: {fileID: 248991890}
   - component: {fileID: 248991889}
   - component: {fileID: 248991895}
   - component: {fileID: 248991892}
@@ -218,80 +217,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.15
---- !u!114 &248991890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 248991887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 46b27ae7c2fb4964b976815880d53270, type: 3}
-  m_NotificationBehavior: 3
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 62f3100e-f54f-4ff7-b692-a9b5e4eccaeb
-    m_ActionName: Pointer/Clicks[/Mouse/leftButton,/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 57ea25a1-a92c-408f-9f44-b3705851997a
-    m_ActionName: InputPlayer/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: edc53438-07c0-4b04-89e7-fb8bba08ee7f
-    m_ActionName: InputPlayer/PrimaryAction[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: c19322a2-3116-464d-a06e-a431d186b0c3
-    m_ActionName: InputPlayer/SecondaryAction[/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ee042df1-981b-434a-93c8-1fcc9053b32b
-    m_ActionName: InputMenu/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 9ee95941-c806-498f-bb1a-47da5b64c58a
-    m_ActionName: InputUI/Inventory[/Keyboard/i]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 11b9147e-e220-4339-b6b2-af6d7d66181f
-    m_ActionName: InputUI/Interact[/Keyboard/e]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 1763e85e-8600-4625-ae77-09c0daaf8a33
-    m_ActionName: InputUI/Hotbar1[/Keyboard/1]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 33fb08c7-039d-47ca-9cf7-636664ed1cd3
-    m_ActionName: InputUI/Hotbar2[/Keyboard/2]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: adbfb8a4-c9f7-4821-82b4-0430158de8e2
-    m_ActionName: InputUI/Hotbar3[/Keyboard/3]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 5f88be5f-528a-496a-a7db-72c6af0bc877
-    m_ActionName: InputUI/Hotbar4[/Keyboard/4]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: InputPlayer
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!61 &248991891
 BoxCollider2D:
   m_ObjectHideFlags: 0
