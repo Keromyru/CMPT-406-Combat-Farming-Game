@@ -20,7 +20,7 @@ public class InventoryInputs : MonoBehaviour
     private InputAction click;
 
     // select things in the inventory
-    private InputAction clickInInventory;
+    //private InputAction clickInInventory;
 
     // to stop the code from reassigning inputs
     private bool unassigned = true;
@@ -89,7 +89,7 @@ public class InventoryInputs : MonoBehaviour
 
         click.performed -= interactWithItem;
 
-        clickInInventory.performed -= interactWithInventory;
+        //clickInInventory.performed -= interactWithInventory;
     }
 
     void AddSetActions() {
@@ -98,7 +98,7 @@ public class InventoryInputs : MonoBehaviour
         slot3.performed += use3;
         slot4.performed += use4;
         click.performed += interactWithItem;
-        clickInInventory.performed += interactWithInventory;
+        //clickInInventory.performed += interactWithInventory;
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -114,7 +114,7 @@ public class InventoryInputs : MonoBehaviour
                 slot3 = playerInput.actions["InputPlayer/Hotbar3"];
                 slot4 = playerInput.actions["InputPlayer/Hotbar4"];
                 click = playerInput.actions["InputPlayer/PrimaryAction"];
-                clickInInventory = playerInput.actions["InputUI/LeftClickUI"];
+                //clickInInventory = playerInput.actions["InputUI/LeftClickUI"];
                 unassigned = false;
                 AddSetActions();
             }
@@ -191,8 +191,8 @@ public class InventoryInputs : MonoBehaviour
         }
     }
 
-    private void interactWithInventory(InputAction.CallbackContext context)
-    {
-        Debug.Log("Clicking while in UI.");
-    }
+    //private void interactWithInventory(InputAction.CallbackContext context)
+    //{
+        //Debug.Log("Clicking while in UI.");
+    //}
 }
