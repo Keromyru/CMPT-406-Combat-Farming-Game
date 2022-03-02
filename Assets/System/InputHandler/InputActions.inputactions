@@ -2,28 +2,22 @@
     "name": "InputActions",
     "maps": [
         {
-            "name": "Pointer",
-            "id": "adfcbf82-fe66-4d0f-acf7-ed98afdfe18c",
-            "actions": [],
-            "bindings": []
-        },
-        {
             "name": "InputPlayer",
-            "id": "f0d28e76-1db7-46f1-a770-d350120f8cd7",
+            "id": "d5fd7595-0b76-4923-80cb-406b9ca500cb",
             "actions": [
                 {
-                    "name": "Movement",
+                    "name": "PlayerMovement",
                     "type": "Value",
-                    "id": "57ea25a1-a92c-408f-9f44-b3705851997a",
+                    "id": "6f624a1d-5bd2-4f1a-a0c7-9a9cccd53d9b",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": "Hold(duration=0.01,pressPoint=1.401298E-45)",
+                    "interactions": "",
                     "initialStateCheck": true
                 },
                 {
                     "name": "PrimaryAction",
                     "type": "Button",
-                    "id": "edc53438-07c0-4b04-89e7-fb8bba08ee7f",
+                    "id": "bad79abc-5342-4693-9f33-2591b4c7894b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -32,7 +26,70 @@
                 {
                     "name": "SecondaryAction",
                     "type": "Button",
-                    "id": "c19322a2-3116-464d-a06e-a431d186b0c3",
+                    "id": "62ec00aa-f388-45f8-92dc-fdb26e8fb1e6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Hotbar1",
+                    "type": "Button",
+                    "id": "1f2cecdf-abcc-4e90-937e-de8bd6e66dba",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Hotbar2",
+                    "type": "Button",
+                    "id": "1166b27b-3b16-4543-b7cd-045b04520c94",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Hotbar3",
+                    "type": "Button",
+                    "id": "27c621a8-ec46-4fc8-9963-762db3ff65e0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Hotbar4",
+                    "type": "Button",
+                    "id": "92960273-a674-459f-8821-f55898f68be2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "0babd016-35da-4a01-9966-65bce4b8118e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "OpenInventory",
+                    "type": "Button",
+                    "id": "4c6f0692-1943-42ba-beec-4c1bab2e27cb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "OpenMenuFromPlayer",
+                    "type": "Button",
+                    "id": "62d7e6c2-d86c-486f-b7c3-674fb543f746",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -42,62 +99,62 @@
             "bindings": [
                 {
                     "name": "WASD",
-                    "id": "574bb8d2-662e-4545-927c-0f0632454e72",
+                    "id": "fe263e4e-87ec-42c4-b965-2016b3a5fa99",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "PlayerMovement",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "up",
-                    "id": "284c067b-51f3-4eb2-9394-137c9514f7d4",
+                    "id": "b109ba85-8f3a-484c-bf5e-58ab8cba1b2b",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "PlayerMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "down",
-                    "id": "50686cfb-cea3-44ff-a913-10e0ee7f9c69",
+                    "id": "a30b25a9-88ce-4cd9-b124-022eb0c77df1",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "PlayerMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "left",
-                    "id": "9738d968-e1cf-4367-bf84-f75507489c27",
+                    "id": "a029734f-e133-426c-a153-25872016a49e",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "PlayerMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "right",
-                    "id": "2f09b242-3dad-46fd-a90d-8016b889de71",
+                    "id": "8aa783bc-265c-4e88-951e-cab1f5ac57c7",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "PlayerMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "",
-                    "id": "acc51609-3974-4db8-b058-fb50fa418a0d",
+                    "id": "451efecd-03d1-41b2-b052-9fa1db24ffbf",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
@@ -108,7 +165,7 @@
                 },
                 {
                     "name": "",
-                    "id": "1a1757bc-d9d5-4087-87bf-31b88669d0f0",
+                    "id": "3afe1f90-11f6-4ae7-b936-d794f88eaf5f",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
@@ -116,166 +173,10 @@
                     "action": "SecondaryAction",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "InputMenu",
-            "id": "022769c2-2471-4428-968e-75acdf0f4c76",
-            "actions": [
-                {
-                    "name": "Movement",
-                    "type": "Value",
-                    "id": "ee042df1-981b-434a-93c8-1fcc9053b32b",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "WASD",
-                    "id": "e5a2cec0-a515-4b6d-ab7d-df066f50cb54",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "556f0b73-a8ac-4745-8883-ae96d3983a0c",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "5ded7b64-c9df-47c1-8a05-c3243f5f941a",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "6c2fa45d-6582-4abf-bfd3-92528670e636",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "f429ab6b-2dcc-459e-b246-0007f85b721f",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                }
-            ]
-        },
-        {
-            "name": "InputUI",
-            "id": "d8e2910e-e4ff-4e8c-9bdc-d3e5805f43f2",
-            "actions": [
-                {
-                    "name": "Inventory",
-                    "type": "Button",
-                    "id": "9ee95941-c806-498f-bb1a-47da5b64c58a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Interact",
-                    "type": "Button",
-                    "id": "11b9147e-e220-4339-b6b2-af6d7d66181f",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Hotbar1",
-                    "type": "Button",
-                    "id": "1763e85e-8600-4625-ae77-09c0daaf8a33",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Hotbar2",
-                    "type": "Button",
-                    "id": "33fb08c7-039d-47ca-9cf7-636664ed1cd3",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Hotbar3",
-                    "type": "Button",
-                    "id": "adbfb8a4-c9f7-4821-82b4-0430158de8e2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Hotbar4",
-                    "type": "Button",
-                    "id": "5f88be5f-528a-496a-a7db-72c6af0bc877",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "e3af9b0a-1132-4b86-a9aa-f5a409dcd158",
-                    "path": "<Keyboard>/i",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Inventory",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "264d7e7c-0fa8-48c6-a8a1-3b2a6ad8ec27",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d0ed6ee8-8170-46a8-99da-739735fc5067",
+                    "id": "44817782-3cd3-401c-9040-e4eedcd4b0b4",
                     "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
@@ -286,7 +187,7 @@
                 },
                 {
                     "name": "",
-                    "id": "8f323a35-0934-430a-8d3a-52ac24a5aea5",
+                    "id": "65107e62-7d56-4e3f-a5ef-7c9ff414c5e9",
                     "path": "<Keyboard>/2",
                     "interactions": "",
                     "processors": "",
@@ -297,7 +198,7 @@
                 },
                 {
                     "name": "",
-                    "id": "83e031d9-d267-4b09-ae28-622c1a3eec43",
+                    "id": "165674a8-ce7f-4f26-a533-1355aa99757a",
                     "path": "<Keyboard>/3",
                     "interactions": "",
                     "processors": "",
@@ -308,12 +209,285 @@
                 },
                 {
                     "name": "",
-                    "id": "3bfd3c86-d6da-4993-b7c9-2002af27fa9d",
+                    "id": "acbacfcc-2d51-4a6a-a1fd-997967f5dcbb",
                     "path": "<Keyboard>/4",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Hotbar4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b850b15a-b558-4244-be17-ea8e4986b22d",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e772f3c4-03d9-477e-96b3-a4943d948b21",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eb5e26fc-f3ad-4d6f-9d57-c6155429b74c",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenMenuFromPlayer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "InputMenu",
+            "id": "c34761d0-b08d-4dfe-b002-3cded206a8d8",
+            "actions": [
+                {
+                    "name": "MenuMovement",
+                    "type": "Value",
+                    "id": "b4fda01e-e7d2-42d2-ba43-436b416d2b6e",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "LeftClickMenu",
+                    "type": "Button",
+                    "id": "73ae2149-34b9-48ae-ab56-84c3d8a5c0e9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightClickMenu",
+                    "type": "Button",
+                    "id": "b2c266b3-f8f4-41aa-a4c0-0f15c56ce0a1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CloseMenu",
+                    "type": "Button",
+                    "id": "51c0929e-515a-4d1d-bee1-49dc309e0c26",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "WASD",
+                    "id": "2c2806ef-c13a-48a8-b382-0703caf12f5c",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MenuMovement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "daaeef36-48ab-4730-81c0-0c5761121291",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MenuMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "ebbfd62d-42fd-46b9-8694-3f7e248f96ca",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MenuMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "f84cab05-8cb6-44e0-a806-7caf9f53732f",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MenuMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "698282f0-bf4b-419b-a9c1-220e8d840a7a",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MenuMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "932a9d5f-6a95-4193-8fcb-a31852d4b65d",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftClickMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "41a176dd-9ff3-49df-8e99-8cf68019a757",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightClickMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f0964c15-6fbe-4c20-beb9-e74b8773ddd7",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CloseMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "InputUI",
+            "id": "be9c115e-d043-4dfc-94e5-c8f5a9f52b22",
+            "actions": [
+                {
+                    "name": "CloseInventory",
+                    "type": "Button",
+                    "id": "f867775f-1151-4c38-9328-9eba2602576a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "EButton",
+                    "type": "Button",
+                    "id": "a3f78e5e-e2e6-4669-b836-b28dbbbdae6f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LeftClickUI",
+                    "type": "Button",
+                    "id": "91b546f3-f2ee-49b7-84ee-14ff44db6727",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightClickUI",
+                    "type": "Button",
+                    "id": "f34db38a-1eb4-4b8c-a15d-0a2203f8989f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "OpenMenuFromUI",
+                    "type": "Button",
+                    "id": "0e59e03d-896a-49f3-9c3e-2af28ca7ced4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7e73680f-d4ba-433a-9ad6-bda3d679f861",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CloseInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bc24cc96-543a-40ad-9d6a-17a4b334f787",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "648ed43f-374a-48f2-ab8b-42f1ea11f3ae",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightClickUI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5d31561b-a1f6-48fa-a581-2094ff4f9ad3",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftClickUI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7075fbba-ceb1-48d2-bfa3-280d8983e84a",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenMenuFromUI",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

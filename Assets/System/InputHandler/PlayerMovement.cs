@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 // Written by Blake Williams
 
@@ -12,22 +13,37 @@ public class PlayerMovement : MonoBehaviour
     // the player object
     private Rigidbody2D player;
     // The inputs from the input system
-    private InputActions inputActions;
+    private PlayerInput playerInput;
     // The speed of the player
     public float speed;
 
     private void Awake(){
         player = GetComponent<Rigidbody2D>();
+    }
 
-        // Enables the player input (allows you to use the player input)
-        inputActions = new InputActions();
-        inputActions.InputPlayer.Enable();
+    // Next three functions are to get the Player Input from the other scene
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (GameObject.Find("InputHandler") != null)
+        {
+            playerInput = GameObject.Find("InputHandler").GetComponent<PlayerInput>();
+        }
     }
 
     private void FixedUpdate()
     {
         // Gets the movement input and applies a constant velocity to the player
-        Vector2 inputVector = inputActions.InputPlayer.Movement.ReadValue<Vector2>();
+        Vector2 inputVector = playerInput.actions["PlayerMovement"].ReadValue<Vector2>();
         // velocity is incredibly buggy and unpredictable. Instead use move position
         // player.velocity = new Vector3(inputVector.x, 0, inputVector.y) * speed;
 
