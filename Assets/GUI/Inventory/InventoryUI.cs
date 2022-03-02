@@ -1,26 +1,27 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 // Mace
 
 public class InventoryUI : MonoBehaviour
 {
     Inventory inventory;  // get singleton inventory
-
     public Transform itemsParent;  // the parent of all InventorySlots
-
     public Transform hotbarParent;  // the parent of all HotbarSlots
-
     InventorySlot[] slots;  // array of Inventory slots
-
     HotbarSlot[] hotbarSlots;  // array of Hotbar slots
     public int maxHotbarSlots = 4;  // maximum number of hotbar slots
 
     public GameObject inventoryUI;  // reference to the actual GameObject
 
-    // again, all my input stuff probably has to be updated. but this one is easy.
-    [SerializeField] private InputActionReference InventoryActions;
+    // input handling
+    private PlayerInput playerInput;
+    private InputAction openInventory;
+    private InputAction closeInventory;
+    private bool unassigned = true;
     
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,20 +37,45 @@ public class InventoryUI : MonoBehaviour
     // input stuff to toggle inventory visibility. hotbar doesn't toggle.
     private void OnEnable()
     {
-        InventoryActions.action.performed += toggleInventory;
-        InventoryActions.action.Enable();
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     // input stuff to toggle inventory visibility. hotbar doesn't toggle.
     private void OnDisable()
     {
-        InventoryActions.action.performed -= toggleInventory;
-        InventoryActions.action.Disable();
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        openInventory.performed -= viewInventory;
+        closeInventory.performed -= hideInventory;
     }
 
     // input stuff to toggle inventory visibility. hotbar doesn't toggle.
-    private void toggleInventory(InputAction.CallbackContext context) {
-        inventoryUI.SetActive(!inventoryUI.activeSelf);
+    private void viewInventory(InputAction.CallbackContext context) {
+        Debug.Log("Opening inventory.");
+        inventoryUI.SetActive(true);
+    }
+
+    // input stuff to toggle inventory visibility. hotbar doesn't toggle.
+    private void hideInventory(InputAction.CallbackContext context) {
+        inventoryUI.SetActive(false);
+        Debug.Log("Closing inventory.");
+    }
+
+    void AddSetActions() {
+        openInventory.performed += viewInventory;
+        closeInventory.performed += hideInventory;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        if (GameObject.Find("InputHandler") != null) {
+            playerInput = GameObject.Find("InputHandler").GetComponent<PlayerInput>();
+
+            if (unassigned) {
+                openInventory = playerInput.actions["InputPlayer/OpenInventory"];
+                closeInventory = playerInput.actions["InputUI/CloseInventory"];
+                unassigned = false;
+                AddSetActions();
+            }
+        }
     }
 
     // update UI for hotbar & inventory

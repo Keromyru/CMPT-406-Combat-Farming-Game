@@ -1,26 +1,36 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 // Mace
 
-// IDEALLY - this whole script gets reworked to work better with the InputActions, but it is functional as is
+// okay've seriously rewritten this script like five times, it's a little rough
 
 // this is currently attached to the InventoryHandler (prefab)
 public class InventoryInputs : MonoBehaviour
 {
-    // had issues with using InputActionMaps and just grabbed everything individually
-    [SerializeField] private InputActionReference slot1;
-    [SerializeField] private InputActionReference slot2;
-    [SerializeField] private InputActionReference slot3;
-    [SerializeField] private InputActionReference slot4;
-    
-    // this is currently player primary (i.e. left click)
-    [SerializeField] private InputActionReference click;
+    // adding input
+    private PlayerInput playerInput;
 
-    // tracking what items are in the health bar
+    // out of inventory actions
+    private InputAction slot1;
+    private InputAction slot2;
+    private InputAction slot3;
+    private InputAction slot4;
+    private InputAction click;
+
+    // select things in the inventory
+    private InputAction clickInInventory;
+
+    // to stop the code from reassigning inputs
+    private bool unassigned = true;
+
+
+    // tracking what items are in the hot bar
     [SerializeField] private List<Item> hotbarActions;
     // singleton inventory
     Inventory inventory;
+
 
     void Start()
     {
@@ -30,8 +40,9 @@ public class InventoryInputs : MonoBehaviour
         inventory.onItemChangedCallback += fetchHotbarItems;
     }
 
+
     // build list of hotbar items
-    // wrote this on very little sleep. could be improved, but once again, it's functional
+    // will need to changed to work with button selection (like to show what you've selected) in hotbar, but it's functional
     void fetchHotbarItems()
     {
         int start_pos;  // position to start building at
@@ -60,39 +71,54 @@ public class InventoryInputs : MonoBehaviour
     // set-up action references for all actions
     private void OnEnable()
     {
-        slot1.action.performed += use1;
-        slot1.action.Enable();
-
-        slot2.action.performed += use2;
-        slot2.action.Enable();
-
-        slot3.action.performed += use3;
-        slot3.action.Enable();
-
-        slot4.action.performed += use4;
-        slot4.action.Enable();
-
-        click.action.performed += interactWithItem;
-        click.action.Enable();
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     // disable action references for all actions
     private void OnDisable()
     {
-        slot1.action.performed += use1;
-        slot1.action.Disable();
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        
+        slot1.performed -= use1;
 
-        slot2.action.performed += use2;
-        slot2.action.Disable();
+        slot2.performed -= use2;
 
-        slot3.action.performed += use3;
-        slot3.action.Disable();
+        slot3.performed -= use3;
 
-        slot4.action.performed += use4;
-        slot4.action.Disable();
+        slot4.performed -= use4;
 
-        click.action.performed -= interactWithItem;
-        click.action.Disable();
+        click.performed -= interactWithItem;
+
+        clickInInventory.performed -= interactWithInventory;
+    }
+
+    void AddSetActions() {
+        slot1.performed += use1;
+        slot2.performed += use2;
+        slot3.performed += use3;
+        slot4.performed += use4;
+        click.performed += interactWithItem;
+        clickInInventory.performed += interactWithInventory;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (GameObject.Find("InputHandler") != null)
+        {
+            playerInput = GameObject.Find("InputHandler").GetComponent<PlayerInput>();
+
+            if (unassigned) {
+                // assign all the actions
+                slot1 = playerInput.actions["InputPlayer/Hotbar1"];
+                slot2 = playerInput.actions["InputPlayer/Hotbar2"];
+                slot3 = playerInput.actions["InputPlayer/Hotbar3"];
+                slot4 = playerInput.actions["InputPlayer/Hotbar4"];
+                click = playerInput.actions["InputPlayer/PrimaryAction"];
+                clickInInventory = playerInput.actions["InputUI/LeftClickUI"];
+                unassigned = false;
+                AddSetActions();
+            }
+        }
     }
 
     // use item 1
@@ -130,8 +156,8 @@ public class InventoryInputs : MonoBehaviour
 
     // I've... definitely patched together a check here but it should be more streamlined for the actual build
     // raycasts using mouse's current position on screen to find item marked as "Interactable"
-    // to be interactable, items literally have to have the "Interactable.cs" script attached to them
-    // Interactable.cs can be found in the InputHandler Folder under System
+    // to be interactable, items literally have to have the "ItemPickup.cs" script attached to them
+    // this script can be found in GameHandler/InventoryHandler/Scripts
     private void interactWithItem(InputAction.CallbackContext context)
     {
         Camera maincam = FindObjectOfType<Camera>();  // grab cam
@@ -163,5 +189,10 @@ public class InventoryInputs : MonoBehaviour
                 interactobj.Interact();
             }
         }
+    }
+
+    private void interactWithInventory(InputAction.CallbackContext context)
+    {
+        Debug.Log("Clicking while in UI.");
     }
 }
