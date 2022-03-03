@@ -1,0 +1,16 @@
+# Blender MTL File: 'Water-Refill-Station2.blend'
+# Material Count: 1
+
+newmtl Water_Refil
+Ns 225.000000
+Ka 0.950000 0.950000 0.950000
+Kd 0.800000 0.800000 0.800000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump D:\\University of Saskatchewan\\Year 7\\CMPT 406\\Substance Painter Exports\\Water Refill\\Textures\\WaterRefillStation_Norm.png
+map_Kd D:\\University of Saskatchewan\\Year 7\\CMPT 406\\Substance Painter Exports\\Water Refill\\Textures\\WaterRefillStation_Diff.png
+map_Ns D:\\University of Saskatchewan\\Year 7\\CMPT 406\\Substance Painter Exports\\Water Refill\\Textures\\WaterRefillStation_Roughness.png
+refl D:\\University of Saskatchewan\\Year 7\\CMPT 406\\Substance Painter Exports\\Water Refill\\Textures\\WaterRefillStation_Metallic.png
