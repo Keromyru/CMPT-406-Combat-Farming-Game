@@ -21,14 +21,23 @@ public class GridClickListener : MonoBehaviour{
         this will have lots of interactions with several component; like inventory, day night, enemies, etc.
     */
     [SerializeField] private GameObject[] plantables;
-
+    int selectedPlantable;
     [SerializeField] private PlantCollection plantCollection;
 
     void Start(){
-        plantCollection = new PlantCollection();
+        // plantCollection = new PlantCollection();
+        selectedPlantable = 0;
     }
 
     void Update(){
+        if (Input.GetKeyDown(KeyCode.T)){
+            if (selectedPlantable < plantables.Length){
+                selectedPlantable += 1;
+            } else {
+                selectedPlantable = 0;
+            }
+        }
+
         if (Input.GetButtonDown("Fire1")){
             // Grab the mouse position
             Vector3 mousePos = Input.mousePosition;
@@ -46,8 +55,8 @@ public class GridClickListener : MonoBehaviour{
 
             Transform obstacleTransform = obstacleTilemap.transform;
             int obstacleCount = obstacleTransform.childCount;
-<<<<<<< Updated upstream
-            int plantsize =  plantCollection.getSize();
+            // int plantsize =  plantCollection.getSize();
+            int plantsize = 0;
             int maxIterationCount = obstacleCount > plantsize ? obstacleCount : plantsize;
             for (int i = 0; i < maxIterationCount; i++){
                 if (i < obstacleCount){
@@ -59,32 +68,21 @@ public class GridClickListener : MonoBehaviour{
                             return;
                         }
                 }
-                if (i < plantsize){
-                    // get coords for new plant
+                // if (i < plantsize){
+                //     // get coords for new plant
 
-                    //logic to see if a plant is already in that slot
+                //     //logic to see if a plant is already in that slot
 
-                    // if there is a plant in the collection that is already in the slot, don't plant
-                    Debug.Log("plants!!");
-                }
+                //     // if there is a plant in the collection that is already in the slot, don't plant
+                //     Debug.Log("plants!!");
+                // }
            
             }
 
-=======
-            for (int i = 0; i < obstacleCount; i++){
-                Transform child = obstacleTransform.GetChild(i);
-                string tag = child.gameObject.tag;
-                if (child.position == obstacleTilemap.LocalToWorld(
-                    worldTilemap.CellToLocalInterpolated(cellPosition))){
-                        Debug.Log("hello "+ child);
-                        return;
-                }
-            }
->>>>>>> Stashed changes
             // Creates the plant prefabs in the cell chosen by the player
             // TODO limit the range? 
-            GameObject plantedPlant = Instantiate(plantables[0], centerPos, Quaternion.identity);
-            plantCollection.addPlant(plantedPlant);
+            GameObject plantedPlant = Instantiate(plantables[selectedPlantable], centerPos, Quaternion.identity);
+            // plantCollection.addPlant(plantedPlant);
         }
     }
 }
