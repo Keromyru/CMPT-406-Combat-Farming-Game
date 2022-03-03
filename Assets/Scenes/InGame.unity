@@ -186,6 +186,10 @@ MonoBehaviour:
   cam: {fileID: 326382429}
   plantables:
   - {fileID: 8842285566257266402, guid: b9abd3a992926024a860d80a66329e9f, type: 3}
+  - {fileID: 1981365425430070054, guid: 50728c3ec5c4c114296d3ceadf50418f, type: 3}
+  - {fileID: 141475795817283762, guid: 2948ec60824e25746b12981ad2278650, type: 3}
+  - {fileID: 3753753686229404105, guid: 73a87ec195d651f46b1bf43bd359bed1, type: 3}
+  plantCollection: {fileID: 0}
 --- !u!1 &248991887
 GameObject:
   m_ObjectHideFlags: 0

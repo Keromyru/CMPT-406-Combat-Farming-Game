@@ -82,6 +82,7 @@ public class GridClickListener : MonoBehaviour{
             // Creates the plant prefabs in the cell chosen by the player
             // TODO limit the range? 
             GameObject plantedPlant = Instantiate(plantables[selectedPlantable], centerPos, Quaternion.identity);
+            // plantedPlant.GetComponent<Transform>().position.y += .1;
             // plantCollection.addPlant(plantedPlant);
         }
     }
