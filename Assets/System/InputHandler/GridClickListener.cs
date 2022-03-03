@@ -46,6 +46,7 @@ public class GridClickListener : MonoBehaviour{
 
             Transform obstacleTransform = obstacleTilemap.transform;
             int obstacleCount = obstacleTransform.childCount;
+<<<<<<< Updated upstream
             int plantsize =  plantCollection.getSize();
             int maxIterationCount = obstacleCount > plantsize ? obstacleCount : plantsize;
             for (int i = 0; i < maxIterationCount; i++){
@@ -69,6 +70,17 @@ public class GridClickListener : MonoBehaviour{
            
             }
 
+=======
+            for (int i = 0; i < obstacleCount; i++){
+                Transform child = obstacleTransform.GetChild(i);
+                string tag = child.gameObject.tag;
+                if (child.position == obstacleTilemap.LocalToWorld(
+                    worldTilemap.CellToLocalInterpolated(cellPosition))){
+                        Debug.Log("hello "+ child);
+                        return;
+                }
+            }
+>>>>>>> Stashed changes
             // Creates the plant prefabs in the cell chosen by the player
             // TODO limit the range? 
             GameObject plantedPlant = Instantiate(plantables[0], centerPos, Quaternion.identity);
