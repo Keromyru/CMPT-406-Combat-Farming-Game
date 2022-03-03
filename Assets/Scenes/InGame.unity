@@ -340,7 +340,7 @@ MonoBehaviour:
   bulletDamage: 0
   fireRate: 1
   bulletForce: 8
-  firePointDistance: 1
+  firePointDistance: -1
   deadZone: 0.2
 --- !u!61 &248991891
 BoxCollider2D:

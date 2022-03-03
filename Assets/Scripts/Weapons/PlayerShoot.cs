@@ -26,7 +26,7 @@ public class PlayerShoot : MonoBehaviour
 
     [SerializeField] float bulletForce;
 
-    [SerializeField] float firePointDistance = 1f;
+    [SerializeField] float firePointDistance;
     [SerializeField] float deadZone = 0.2f;
     private Vector3 MouseDirection;
 
@@ -57,11 +57,15 @@ public class PlayerShoot : MonoBehaviour
         // Commented out this if statement might possibly be used for later
 /*        if (gameObject.GetComponent<IPlayerInterface>().isPaused() == false)   
         { }*/
-        /// AIM SECTION
-        Vector3 MousePosition = mainCamera.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(100,100,0));
-        MousePosition += new Vector3(0, 20, 35);
+
+        // Finds where the mouse is
+        Vector3 mousePos = Mouse.current.position.ReadValue();
+        mousePos.z = -1000;
+        Vector3 MousePosition = mainCamera.GetComponent<Camera>().ScreenToWorldPoint(mousePos);
+        MousePosition.y += 527f;
         MousePosition.z = 0f;
         float MouseDistance = Vector3.Distance(MousePosition, gameObject.transform.position);
+
         //Aims the "turret"
         if (MouseDistance > deadZone)
         { //Just makes a deadzone so the cursor doesn't freak out
@@ -109,7 +113,9 @@ public class PlayerShoot : MonoBehaviour
         Rigidbody2D rb  = bullet.GetComponent<Rigidbody2D>();
         /*bullet.GetComponent<RefBullet>().bulletDamage = bulletDamage;*/
 
-        rb.AddForce(bullet.transform.up*bulletForce, ForceMode2D.Impulse);
+        rb.AddForce(new Vector3(-MouseDirection.x, -MouseDirection.y, 0) * bulletForce, ForceMode2D.Impulse);
+        // Another way to make bullet move
+        /*rb.velocity = new Vector3(-MouseDirection.x, -MouseDirection.y, 0) * bulletForce;*/
     }
 
     // Changes the bullet firerate based on the integer given
