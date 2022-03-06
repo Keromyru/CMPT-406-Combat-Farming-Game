@@ -12,7 +12,7 @@ public class InventoryUI : MonoBehaviour
     public Transform hotbarParent;  // the parent of all HotbarSlots
     InventorySlot[] slots;  // array of Inventory slots
     HotbarSlot[] hotbarSlots;  // array of Hotbar slots
-    public int maxHotbarSlots = 4;  // maximum number of hotbar slots
+    private int maxHotbarSlots;  // maximum number of hotbar slots
 
     public GameObject inventoryUI;  // reference to the actual GameObject
 
@@ -29,6 +29,9 @@ public class InventoryUI : MonoBehaviour
         // grab singleton & subscribe to changes in items
         inventory = Inventory.instance;
         inventory.onItemChangedCallback += UpdateUI;
+
+        // get max hotbar spots
+        maxHotbarSlots = inventory.max_hotbar_space;
 
         // fill arrays with all the slots on scene
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();

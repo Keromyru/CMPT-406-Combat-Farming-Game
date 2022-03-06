@@ -27,41 +27,46 @@ public class InventoryInputs : MonoBehaviour
 
 
     // tracking what items are in the hot bar
-    [SerializeField] private List<Item> hotbarActions;
+    [SerializeField] private List<HotbarSlot> hotbarActions;
     // singleton inventory
     Inventory inventory;
+    // max hotbar length
+    int max_length;
+    // hotbar parent
+    [SerializeField] private Transform hotbarParent;
+    // get all the slots
+    private HotbarSlot[] possible_locations; 
 
 
     void Start()
     {
         // set inventory to existing instance, make list for hotbar actions, subscribe to item changes
         inventory = Inventory.instance;
-        hotbarActions = new List<Item>();
+        possible_locations = hotbarParent.GetComponentsInChildren<HotbarSlot>();
         inventory.onItemChangedCallback += fetchHotbarItems;
+        max_length = inventory.max_hotbar_space;
+        // get all the possible hotbar slots
+        for (int i = 0; i < max_length; i++) {
+            hotbarActions.Add(possible_locations[i]);
+        }
     }
 
 
     // build list of hotbar items
-    // will need to changed to work with button selection (like to show what you've selected) in hotbar, but it's functional
     void fetchHotbarItems()
     {
-        int start_pos;  // position to start building at
+        int start_pos = 0;  // position to start building at
 
-        hotbarActions.Clear();  // destroy the old list. we're updating.
-
-        if (hotbarActions.Count < 4 && hotbarActions.Count >= 0) {
-            start_pos = hotbarActions.Count;  // in the middle of the hotbar
-        }
-        else {
-            start_pos = 4;  // hotbar is filled
+        for (int i = 0; i < max_length; i++) {
+            hotbarActions[i].ClearSlot();  // destroy the old list. we're updating.
         }
 
-        int stop = Mathf.Min(4, inventory.items.Count);  // stop at max health bar or max items in inventory
+        int stop = Mathf.Min(max_length, inventory.items.Count);  // stop at max hotbar or max items in inventory
         
         // add item
         for (int i = start_pos; i < stop; i++) {
             if (inventory.items[i] != null) {
-                hotbarActions.Add(inventory.items[i]);
+                hotbarActions[i].AddItem(inventory.items[i]);
                 //Debug.Log("Added " + hotbarActions[i].name + " to hotbar actions.");
             }
         }
@@ -128,7 +133,7 @@ public class InventoryInputs : MonoBehaviour
     private void use1(InputAction.CallbackContext context)
     {
         if (hotbarActions.Count >= 1) {
-            hotbarActions[0].Use();
+            hotbarActions[0].UseItem();
         }
     }
 
@@ -136,7 +141,7 @@ public class InventoryInputs : MonoBehaviour
     private void use2(InputAction.CallbackContext context)
     {
         if (hotbarActions.Count >= 2) {
-            hotbarActions[1].Use();
+            hotbarActions[1].UseItem();
         }
     }
 
@@ -144,7 +149,7 @@ public class InventoryInputs : MonoBehaviour
     private void use3(InputAction.CallbackContext context)
     {
         if (hotbarActions.Count >= 3) {
-            hotbarActions[2].Use();
+            hotbarActions[2].UseItem();
         }
     }
 
@@ -152,7 +157,7 @@ public class InventoryInputs : MonoBehaviour
     private void use4(InputAction.CallbackContext context)
     {
         if (hotbarActions.Count == 4) {
-            hotbarActions[3].Use();
+            hotbarActions[3].UseItem();
         }
     }
 

@@ -34,6 +34,9 @@ public class Inventory : MonoBehaviour
     // if this is changed, you'll have to physically go into the scene & add inventory slots to match
     public int max_space = 16;
 
+    // same deal here for the hotbar
+    public int max_hotbar_space = 4;
+
 
     // just a list update
     // boolean return - true on success, false on failure
