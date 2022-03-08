@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efa746fd2c03b7949b957e9b82be9c21, type: 3}
-  m_Name: OnHit Explode
+  m_Script: {fileID: 11500000, guid: 1cb14824492cae04888cbe70feeff636, type: 3}
+  m_Name: OnHit Normal
   m_EditorClassIdentifier: 
-  Damage: 0
-  Range: 0

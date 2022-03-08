@@ -24,11 +24,21 @@ public interface IPlantControl
 
     void setType(int type);
     int getType();
+    void setAttackRange(float newRange);
+    float getAttackRange();
+
+    void setAttackDamage(float newDamage);
+    float getAttackDamage();
+
+    void setAttackRate(float newRate);
+    float getAttackRate();
 
     public void setOnHit(PlantOnHitSO newOnHit);
-    public void setOnDeath();
+    public void setOnDeath(PlantOnDeathSO newOneDeath);
     public void setOnAttack(PlantOnAttackSO newOnAttack);
     //Triggers
     void newDay();
+
+    void newNight();
 
 }

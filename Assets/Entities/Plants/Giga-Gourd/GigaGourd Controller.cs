@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IPlantOnDeath 
+public class GigaGourdController : PlantController
 {
-    public void onDeath(GameObject thisObject);
+
 }

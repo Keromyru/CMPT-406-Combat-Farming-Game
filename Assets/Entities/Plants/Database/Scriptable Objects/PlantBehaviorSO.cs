@@ -7,14 +7,17 @@ public class PlantBehaviorSO : ScriptableObject
 {
     [Header("Plant Stats")]
     [SerializeField] string plantName;
+    [SerializeField] string toolTip;
     [SerializeField] float plantHealth;
     [SerializeField] float plantEnergy;
-    [SerializeField] float plantDamageReduction;
     [SerializeField] bool harvestable;
+
+
     [Header("Plant Attack")]
     [SerializeField] bool canAttack;
     [SerializeField] float attackRate;
     [SerializeField] float attackRange;
+    [SerializeField] float attackDamage;
     [SerializeField] type plantType;
     [Header("Plant Growth")]
 
@@ -27,6 +30,7 @@ public class PlantBehaviorSO : ScriptableObject
     [Header("Plant Behaviors")]
     [SerializeField] PlantOnHitSO onHit;
     [SerializeField] PlantOnAttackSO onAttack;
+    [SerializeField] PlantOnDeathSO onDeath;
 
 
 
@@ -51,6 +55,10 @@ public class PlantBehaviorSO : ScriptableObject
         plantControl.setMaxHealth(plantHealth);
         plantControl.setGrowAge(0); //It's a baby!
         plantControl.setLocation(location);
+        plantControl.setType((int)plantType);
+        plantControl.setAttackDamage(attackDamage);
+        plantControl.setAttackRange(attackRange);
+        plantControl.setAttackRate(attackRate);
 
         plantControl.setOnHit(onHit);
         if (canAttack) { plantControl.setOnAttack(onAttack);}
@@ -59,9 +67,19 @@ public class PlantBehaviorSO : ScriptableObject
         return plant;
     }
 
-    public GameObject spawnPlant(string name, Vector2 location, float health, float energy){
+    public GameObject spawnPlant(string name, Vector2 location, float health, float energy, int age){
         GameObject plant = spawnPlant(name,location);
+        //Grab the interface of the newly created plant
+        IPlantControl plantControl = plant.GetComponent<IPlantControl>();
+        plantControl.setGrowAge(age);
+        plantControl.setHealth(health);
+        plantControl.setEnergy(energy);
+
 
         return plant;
     }
+
+    //GETS 'n SETS
+    public string getName(){return plantName;}
+    public string getTooltip(){return toolTip;}
 }
