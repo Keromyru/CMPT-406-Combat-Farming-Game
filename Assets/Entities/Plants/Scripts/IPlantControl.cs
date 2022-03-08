@@ -33,12 +33,26 @@ public interface IPlantControl
     void setAttackRate(float newRate);
     float getAttackRate();
 
-    public void setOnHit(PlantOnHitSO newOnHit);
-    public void setOnDeath(PlantOnDeathSO newOneDeath);
-    public void setOnAttack(PlantOnAttackSO newOnAttack);
+
+    
+    void setHarvestable(bool newHarvastable);
+    bool getHarvestable();
+    // [SerializeField] bool canDieOfOldAge;
+    // [SerializeField] int matureAge;
+    // [SerializeField] int harvestCycle;
+    // [SerializeField] int deathAge;
+
+    void setOnHit(PlantOnHitSO newOnHit);
+    void setOnDeath(PlantOnDeathSO newOneDeath);
+    void setOnAttack(PlantOnAttackSO newOnAttack);
+
+    
+
     //Triggers
     void newDay();
 
     void newNight();
+
+
 
 }

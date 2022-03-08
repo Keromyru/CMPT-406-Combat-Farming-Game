@@ -20,9 +20,16 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     [SerializeField] float attackRate; //This is an interval
     [SerializeField] float attackRange;
     [SerializeField] float attackDamage;
+
+    
+    [SerializeField] bool harvestable;
+    [SerializeField] bool canDieOfOldAge;
+    [SerializeField] int matureAge;
+    [SerializeField] int harvestCycle;
+    [SerializeField] int deathAge;
+
+
     private bool dayTime = true;
-
-
     private Vector2 location; //Location is just where it lives, this is stored for easy Save Retrieval
     private type plantType; 
     // Behaviors
@@ -209,6 +216,9 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     public float getAttackRate(){ return attackRate;}
     public void setType(int newType){ plantType = (type)Enum.ToObject(typeof(type), newType); }
     public int getType(){ return (int)plantType; }
+
+    public void setHarvestable(bool newHarvastable){ harvestable = newHarvastable;}
+    public bool getHarvestable(){ return harvestable;}
     #endregion Sets and Gets
 
 }

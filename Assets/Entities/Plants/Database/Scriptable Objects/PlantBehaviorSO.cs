@@ -10,18 +10,31 @@ public class PlantBehaviorSO : ScriptableObject
     [SerializeField] string toolTip;
     [SerializeField] float plantHealth;
     [SerializeField] float plantEnergy;
-    [SerializeField] bool harvestable;
-
-
+    [SerializeField] type plantType;
+    
+    
     [Header("Plant Attack")]
     [SerializeField] bool canAttack;
     [SerializeField] float attackRate;
     [SerializeField] float attackRange;
     [SerializeField] float attackDamage;
-    [SerializeField] type plantType;
+   
+    
+    
+    
     [Header("Plant Growth")]
+    [SerializeField] bool harvestable;
+    [SerializeField] bool canDieOfOldAge;
+    [SerializeField] int matureAge;
+    [SerializeField] int harvestCycle;
+    [SerializeField] int deathAge;
+    [SerializeField] int seedDropMin;
+    [SerializeField] int seedDropMax;
+    [SerializeField] int harvestValue;
 
-    [Space]
+
+
+    [SerializeField] GameObject harvestPrefab;
     [SerializeField] GameObject plantPrefab;
     
    
@@ -31,6 +44,7 @@ public class PlantBehaviorSO : ScriptableObject
     [SerializeField] PlantOnHitSO onHit;
     [SerializeField] PlantOnAttackSO onAttack;
     [SerializeField] PlantOnDeathSO onDeath;
+    [SerializeField] PlantOnHarvestSO onHarvest;
 
 
 
