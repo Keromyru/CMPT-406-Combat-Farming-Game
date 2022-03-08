@@ -1,0 +1,340 @@
+# Blender MTL File: 'SpaceBase6.blend'
+# Material Count: 26
+
+newmtl Addition
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\Addition_Norm.png
+map_Kd Textures\\Addition_Diff.png
+map_Ns Textures\\Addition_Roughness.png
+
+newmtl Antenna
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\Antenna_Norm.png
+map_Kd Textures\\Antenna_Diff.png
+map_Ns Textures\\Antenna_Roughness.png
+
+newmtl Back_Panel
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\BackPanel_Norm.png
+map_Kd Textures\\BackPanel_Diff.png
+map_Ns Textures\\BackPanel_Roughness.png
+
+newmtl Building
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\Building_Norm.png
+map_Kd Textures\\Building_Diff.png
+map_Ns Textures\\Building_Roughness.png
+
+newmtl Dome
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\Dome_Norm.png
+map_Kd Textures\\Dome_Diff.png
+map_Ns Textures\\Dome_Roughness.png
+
+newmtl Entrance_Cover
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\EntranceCover_Norm.png
+map_Kd Textures\\EntranceCover_Diff.png
+map_Ns Textures\\EntranceCover_Roughness.png
+
+newmtl Entrance_Door
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\EntranceDoor_Norm.png
+map_Kd Textures\\EntranceDoor_Diff.png
+map_Ns Textures\\EntranceDoor_Roughness.png
+
+newmtl Fence.001
+Ns 110.250015
+Ka 0.100000 0.100000 0.100000
+Kd 0.800000 0.800000 0.800000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump Textures\\Fence_Norm.png
+map_Kd Textures\\Fence_Diff.png
+map_Ns Textures\\Fence_Roughness.png
+
+newmtl Fence_Corner.001
+Ns 225.000000
+Ka 0.100000 0.100000 0.100000
+Kd 0.800000 0.800000 0.800000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump Textures\\FenceCorner_Norm.png
+map_Kd Textures\\FenceCorner_Diff.png
+map_Ns Textures\\FenceCorner_Roughness.png
+
+newmtl Generator
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\Generator_Norm.png
+map_Kd Textures\\Generator_Diff.png
+map_Ns Textures\\Generator_Roughness.png
+
+newmtl Lights
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\Lights_Norm.png
+map_Kd Textures\\Lights_Diff.png
+map_Ke Textures\\Lights_Emissive.png
+
+newmtl Main_Building
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\MainBuilding_Norm.png
+map_Kd Textures\\MainBuilding_Diff.png
+map_Ns Textures\\MainBuilding_Roughness.png
+
+newmtl Pipe
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.100000 0.100000 0.100000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\Pipe_Norm.png
+map_Kd Textures\\Pipe_Diff.png
+map_Ns Textures\\Pipe_Roughness.png
+
+newmtl Pipe_Cover
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\PipeCover_Norm.png
+map_Kd Textures\\PipeCover_Diff.png
+map_Ns Textures\\PipeCover_Roughness.png
+
+newmtl Pipe_Exit
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\PipeExit_Norm.png
+map_Kd Textures\\PipeExit_Diff.png
+map_Ns Textures\\PipeExit_Roughness.png
+
+newmtl Pipe_Holder
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\PipeHolder_Norm.png
+map_Kd Textures\\PipeHolder_Diff.png
+map_Ns Textures\\PipeHolder_Roughness.png
+
+newmtl Pipes
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\Pipes_Norm.png
+map_Kd Textures\\Pipes_Diff.png
+map_Ns Textures\\Pipes_Roughness.png
+
+newmtl Radio_Tower
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\RadioTower_Norm.png
+map_Kd Textures\\RadioTower_Diff.png
+map_Ns Textures\\RadioTower_Roughness.png
+
+newmtl Roof_Door
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\RoofDoor_Norm.png
+map_Kd Textures\\RoofDoor_Diff.png
+map_Ns Textures\\RoofDoor_Roughness.png
+
+newmtl Roof_Exit
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\RoofExit_Norm.png
+map_Kd Textures\\RoofExit_Diff.png
+map_Ns Textures\\RoofExit_Roughness.png
+
+newmtl Roof_Tiles
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\RoofTiles_Norm.png
+map_Kd Textures\\RoofTiles_Diff.png
+map_Ns Textures\\RoofTiles_Roughness.png
+
+newmtl Solar_Panel
+Ns 728.999998
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.800000 0.800000 0.800000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\SolarPanel_Norm.png
+map_Kd Textures\\SolarPanel_Diff.png
+map_Ns Textures\\SolarPanel_Roughness.png
+
+newmtl Solar_Panel_Frame
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\SolarPanelFrame_Norm.png
+map_Kd Textures\\SolarPanelFrame_Diff.png
+map_Ns Textures\\SolarPanelFrame_Roughness.png
+
+newmtl Sphere_Tunnel
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\SphereTunnel_Norm.png
+map_Kd Textures\\SphereTunnel_Diff.png
+map_Ns Textures\\SphereTunnel_Roughness.png
+
+newmtl Wall
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\Wall_Norm.png
+map_Kd Textures\\Wall_Diff.png
+map_Ns Textures\\Wall_Roughness.png
+
+newmtl Window
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.800000 0.800000 0.800000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\Window_Norm.png
+map_Kd Textures\\Window_Diff.png
+map_Ns Textures\\Window_Roughness.png
