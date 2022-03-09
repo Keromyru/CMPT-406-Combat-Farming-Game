@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 407b2b38ec354b340a66453a87b174fc, type: 3}
-  m_Name: NPCAudioController
+  m_Script: {fileID: 11500000, guid: 1cb14824492cae04888cbe70feeff636, type: 3}
+  m_Name: OnHit Normal
   m_EditorClassIdentifier: 
-  type: 1
-  instances:
-  - {fileID: 11400000, guid: 09fa11a68ba4e6943b1e69a9fe3304cb, type: 2}
-  - {fileID: 11400000, guid: f1c9e3ea83d2c6f4e906fdb86681b94a, type: 2}
