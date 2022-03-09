@@ -26,6 +26,7 @@ public interface IPlantControl
     void setOnHarvest(PlantOnHarvestSO newOnHarvest);
     void setAudioController( AudioControllerSO newAudioController);
     void setMyPlantData(PlantBehaviorSO newPlantData);
+    void setMyPlantSpawner(PlantDatabaseSO newPlantSpawner);
 
     
 

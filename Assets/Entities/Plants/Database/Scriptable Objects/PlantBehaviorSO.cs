@@ -23,9 +23,9 @@ public class PlantBehaviorSO : ScriptableObject
     
     
     [Header("Plant Growth")]
-    public bool harvestable;
-    public bool canDieOfOldAge;
     public int matureAge;
+    public string decendant; //DATABASE NAME OF IT'S NEXT STAGE
+    public bool harvestable;
     public int harvestCycle;
     public int deathAge;
     public int seedDropMin;
@@ -37,6 +37,7 @@ public class PlantBehaviorSO : ScriptableObject
     public string soundAttack;
     public string soundHarvested;
     public string soundHurt;
+    public string soundGrowth; //This is for when a plant is changing phases
     
 
 
@@ -45,6 +46,7 @@ public class PlantBehaviorSO : ScriptableObject
     public GameObject plantPrefab;
 
     public AudioControllerSO audioController;
+    public PlantDatabaseSO myPlantSpawner;
     
    
 
@@ -75,6 +77,7 @@ public class PlantBehaviorSO : ScriptableObject
         //Set Data Sets
         plantControl.setMyPlantData(this);
         plantControl.setAudioController(audioController);
+        plantControl.setMyPlantSpawner(myPlantSpawner);
         //Set Behaviors
         plantControl.setOnAttack(onAttack);
         plantControl.setOnHit(onHit);
@@ -88,7 +91,9 @@ public class PlantBehaviorSO : ScriptableObject
 
         return plant;
     }
+    
 
+    //This one is for the load system to put things back as is.
     public GameObject spawnPlant(string name, Vector2 location, float health, float energy, int age){
         GameObject plant = spawnPlant(name,location);
         //Grab the interface of the newly created plant
@@ -101,6 +106,18 @@ public class PlantBehaviorSO : ScriptableObject
 
         return plant;
     }
+
+    //This one is for the next growphase. Passing on Damage and Energy loss
+    public GameObject spawnNextPlant(string name, Vector2 location, float healthLoss, float energyLoss){
+        GameObject plant = spawnPlant(name,location);
+        //Grab the interface of the newly created plant
+        IPlantControl plantControl = plant.GetComponent<IPlantControl>();
+        plantControl.setHealth(plantMaxHealth - healthLoss);
+        plantControl.setEnergy(plantMaxEnergy - energyLoss);
+
+        return plant;
+    }
+
 
     //GETS 'n SETS
     public string getName(){return plantName;}

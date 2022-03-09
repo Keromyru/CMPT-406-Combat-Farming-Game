@@ -18,7 +18,8 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     private bool dayTime = false;  
 
 
-    private PlantBehaviorSO myPlantData;
+    private PlantBehaviorSO myPlantData; //References the plants Entry in the Database
+    private PlantDatabaseSO myPlantSpawner; //References the spawner to it can call it's decendants
     // Behaviors
     private PlantOnHitSO onHitBehavior;
     private PlantOnAttackSO onAttackBehavior;
@@ -107,6 +108,14 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         else { return false;}
     }
 
+    //Replaces The Current Plant With Its next phase.
+    //Going to be checked on the "Newday" trigger
+    private void nextGrowthPhase(){
+        if (myPlantData.soundGrowth != null) {audioController.Play(myPlantData.soundGrowth);} //Play soundGrowth if the file has been declared
+        myPlantSpawner.spawnNextPlant(myPlantData.decendant, location, (myPlantData.plantMaxHealth - health), (myPlantData.plantMaxEnergy - energy));
+        Destroy(this.gameObject);
+    }
+
 
 
 
@@ -119,6 +128,10 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         growAge++; 
         dayTime = true;
         targets.Clear(); //Clear Attack List
+
+        if(myPlantData.decendant != null && myPlantData.matureAge != 0){
+            nextGrowthPhase();
+        }
 
 
     }
@@ -205,8 +218,9 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     public void setOnHarvest(PlantOnHarvestSO newOnHarvest){ onHarvestBehavior = newOnHarvest; }
     public void setAudioController( AudioControllerSO newAudioController) { audioController = newAudioController;}
     public float getRemaining() { return myPlantData.plantMaxEnergy - energy; }
+   
     public void setMyPlantData(PlantBehaviorSO newPlantData) {myPlantData = newPlantData; }
-
+    public void setMyPlantSpawner(PlantDatabaseSO newPlantSpawner) {myPlantSpawner = newPlantSpawner; }
     public void setLocation(Vector2 newLocation){ location = newLocation; }
     public Vector2 getLocation(){ return location; }
 
