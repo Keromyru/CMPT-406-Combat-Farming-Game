@@ -12,15 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d4d25e19bdedd47a8343930d0f97a6, type: 3}
   m_Name: HiveFlower_Behavior
   m_EditorClassIdentifier: 
-  plantName: 
-  plantHealth: 0
-  plantEnergy: 0
-  harvestable: 0
+  plantName: Hive-Flower
+  toolTip: 
+  plantHealth: 256
+  plantEnergy: 100
+  plantType: 0
   canAttack: 0
   attackRate: 0
   attackRange: 0
-  plantType: 0
+  attackDamage: 0
+  harvestable: 0
+  canDieOfOldAge: 0
+  matureAge: 0
+  harvestCycle: 0
+  deathAge: 0
+  seedDropMin: 0
+  seedDropMax: 0
+  harvestValue: 0
+  harvestPrefab: {fileID: 0}
   plantPrefab: {fileID: 0}
   onHit: {fileID: 0}
   onAttack: {fileID: 0}
   onDeath: {fileID: 0}
+  onHarvest: {fileID: 0}

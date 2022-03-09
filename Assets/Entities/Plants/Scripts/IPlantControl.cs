@@ -11,46 +11,24 @@ public interface IPlantControl
     //Sets and Gets
     void setHealth(float health);
     float getHealth();
-    void setMaxHealth(float health);
-    float getMaxHealth();
     void setEnergy(float energy);
     float getEnergy();
-    void setMaxEnergy(float energy);
-    float getMaxEnergy();
     void setLocation(Vector2 location);
     Vector2 getLocation();
     void setGrowAge(int age);
     int getGrowAge();
+   
 
-    void setType(int type);
-    int getType();
-    void setAttackRange(float newRange);
-    float getAttackRange();
-
-    void setAttackDamage(float newDamage);
-    float getAttackDamage();
-
-    void setAttackRate(float newRate);
-    float getAttackRate();
-
-
-    
-    void setHarvestable(bool newHarvastable);
-    bool getHarvestable();
-    // [SerializeField] bool canDieOfOldAge;
-    // [SerializeField] int matureAge;
-    // [SerializeField] int harvestCycle;
-    // [SerializeField] int deathAge;
 
     void setOnHit(PlantOnHitSO newOnHit);
     void setOnDeath(PlantOnDeathSO newOneDeath);
     void setOnAttack(PlantOnAttackSO newOnAttack);
+    void setMyPlantData(PlantBehaviorSO newPlantData);
 
     
 
     //Triggers
     void newDay();
-
     void newNight();
 
 

@@ -11,27 +11,14 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     #region Declarations
     //Interface exists in Assets/Entities/Plants/Scripts/IPlantControl.cs
     [Header("Do not set any values here")]
-    [SerializeField]private float health;
-    [SerializeField]private float maxHealth;
+    [SerializeField]private float health = 100;
     [SerializeField]private float energy;
-    [SerializeField]private float maxEnergy;
     [SerializeField] private int growAge;
-    [SerializeField] bool canAttack;
-    [SerializeField] float attackRate; //This is an interval
-    [SerializeField] float attackRange;
-    [SerializeField] float attackDamage;
-
-    
-    [SerializeField] bool harvestable;
-    [SerializeField] bool canDieOfOldAge;
-    [SerializeField] int matureAge;
-    [SerializeField] int harvestCycle;
-    [SerializeField] int deathAge;
+    [SerializeField]private Vector2 location; //Location is just where it lives, this is stored for easy Save Retrieval
+    private bool dayTime = false;  
 
 
-    private bool dayTime = true;
-    private Vector2 location; //Location is just where it lives, this is stored for easy Save Retrieval
-    private type plantType; 
+    private PlantBehaviorSO myPlantData;
     // Behaviors
     private PlantOnHitSO onHitBehavior;
     private PlantOnAttackSO OnAttackBehavior;
@@ -51,11 +38,13 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         //Death Check
         if (health <= 0){ onDeath();}
 
+
         //Target Check  is not day, is not waiting, is able to attack, has a target, and the target is available
-        if (canAttack && !dayTime && !isWaiting &&  targets.Count > 0 && CheckTarget()){
+        if (!dayTime && myPlantData.canAttack && !isWaiting && targets.Count > 0 && CheckTarget()){
+            Debug.Log("attacking");
             onAttack(); //Does the Attack Action
             AttackTimer(); //starts the timer coroutine
-        }
+        } 
         
 
         
@@ -64,24 +53,27 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     //Plant Targeting 
     //Basically when things enter it's zone it'll add it to a tracking list, and if it leaves it'll remove it.
     private void OnTriggerEnter2D(Collider2D entity) {
-        if (entity.tag == "Enemy" && attackTarget == null && canAttack) {
+        if (entity.tag == "Enemy" && myPlantData.canAttack) {
             targets.Add(entity.gameObject);
         }
+        
+        
     }
     private void OnTriggerExit2D(Collider2D entity) {
-        if (entity.tag == "Enemy" && attackTarget == null){
-            targets.Remove(entity.gameObject);
+        if (entity.tag == "Enemy"  && myPlantData.canAttack){
+            targets.Remove(entity.gameObject); //Remove That Object From Its Attack List
+            if (targets.Count == 0) { attackTarget = null;} //Clears the target if there are not more options
         }
+        
     }
 
     private bool CheckTarget(){ //If the target doesn't exist, or it's out of range, or it's daytime;
-
-        if( (attackTarget == null || Vector3.Distance(attackTarget.transform.position, location) > attackRange) && !dayTime ){
+        if( (attackTarget == null || Vector3.Distance(attackTarget.transform.position, location) > myPlantData.attackRange)){
             attackTarget = null;
             return SetTarget();
         }
-        else
-        return false;
+        else{ 
+            return true; }
     }
     private bool SetTarget(){
         float tDist = 1000; //Starts with an absurd distance
@@ -138,7 +130,8 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     }
 
     public void onAttack(){
-        OnAttackBehavior.OnAttack(attackDamage,attackTarget,this.gameObject);
+        
+        OnAttackBehavior.OnAttack(myPlantData.attackDamage,attackTarget,this.gameObject);
     }
 
     
@@ -163,7 +156,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         //toggles on the screen shake function
         isWaiting = true;
         // Pause the execution of this function for "duration" seconds.
-        yield return new WaitForSeconds(attackRate);
+        yield return new WaitForSeconds(myPlantData.attackRate);
         // After the pause, swap back to the original material.
         isWaiting = false;
         // Set the routine to null, signaling that it's finished.
@@ -188,6 +181,8 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     public void setOnDeath(PlantOnDeathSO newOnDeath){ OnDeathBehavior = newOnDeath; }
     public void setOnAttack(PlantOnAttackSO newOnAttack){ OnAttackBehavior = newOnAttack; }
 
+    public void setMyPlantData(PlantBehaviorSO newPlantData) {myPlantData = newPlantData; }
+
     public void setLocation(Vector2 newLocation){ location = newLocation; }
     public Vector2 getLocation(){ return location; }
 
@@ -197,28 +192,9 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     public void setHealth(float newHealth){ health = newHealth;}
     public float getHealth(){return health;}
 
-    public void setMaxHealth(float newHealth){ maxHealth = newHealth;}
-    public float getMaxHealth(){return maxHealth;}
-
     public void setEnergy(float newEnergy){ energy = newEnergy;}
     public float getEnergy(){ return energy;}
 
-    public void setMaxEnergy(float newEnergy){ maxEnergy = newEnergy;}
-    public float getMaxEnergy(){ return maxEnergy;}
-
-    public void setAttackRange(float newRange){ attackRange = newRange;}
-    public float getAttackRange(){ return attackRange;}
-
-    public void setAttackDamage(float newDamage){ attackDamage = newDamage;}
-    public float getAttackDamage(){ return attackDamage;}
-
-    public void setAttackRate(float newRate){ attackRate = newRate;}
-    public float getAttackRate(){ return attackRate;}
-    public void setType(int newType){ plantType = (type)Enum.ToObject(typeof(type), newType); }
-    public int getType(){ return (int)plantType; }
-
-    public void setHarvestable(bool newHarvastable){ harvestable = newHarvastable;}
-    public bool getHarvestable(){ return harvestable;}
     #endregion Sets and Gets
 
 }

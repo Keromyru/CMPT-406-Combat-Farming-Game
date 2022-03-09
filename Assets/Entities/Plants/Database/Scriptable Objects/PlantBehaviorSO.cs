@@ -6,36 +6,36 @@ using System;
 public class PlantBehaviorSO : ScriptableObject
 {
     [Header("Plant Stats")]
-    [SerializeField] string plantName;
-    [SerializeField] string toolTip;
-    [SerializeField] float plantHealth;
-    [SerializeField] float plantEnergy;
-    [SerializeField] type plantType;
+    public string plantName;
+    public string toolTip;
+    public float plantMaxHealth;
+    public float plantMaxEnergy;
+    public type plantType;
     
     
     [Header("Plant Attack")]
-    [SerializeField] bool canAttack;
-    [SerializeField] float attackRate;
-    [SerializeField] float attackRange;
-    [SerializeField] float attackDamage;
+    public bool canAttack;
+    public float attackRate;
+    public float attackRange;
+    public float attackDamage;
    
     
     
     
     [Header("Plant Growth")]
-    [SerializeField] bool harvestable;
-    [SerializeField] bool canDieOfOldAge;
-    [SerializeField] int matureAge;
-    [SerializeField] int harvestCycle;
-    [SerializeField] int deathAge;
-    [SerializeField] int seedDropMin;
-    [SerializeField] int seedDropMax;
-    [SerializeField] int harvestValue;
+    public bool harvestable;
+    public bool canDieOfOldAge;
+    public int matureAge;
+    public int harvestCycle;
+    public int deathAge;
+    public int seedDropMin;
+    public int seedDropMax;
+    public int harvestValue;
 
 
-
-    [SerializeField] GameObject harvestPrefab;
-    [SerializeField] GameObject plantPrefab;
+    
+    public GameObject harvestPrefab;
+    public GameObject plantPrefab;
     
    
 
@@ -60,23 +60,19 @@ public class PlantBehaviorSO : ScriptableObject
     public GameObject spawnPlant(string name, Vector2 location){
         //Create Plant from the prefab selected at Designated Coordinate 
         GameObject plant  =  Instantiate(this.plantPrefab, location, Quaternion.identity);
+        plant.transform.SetParent(GameObject.Find("ActiveInWorld").transform);
         //Grab the interface of the newly created plant
         IPlantControl plantControl = plant.GetComponent<IPlantControl>();
-
-
+        plantControl.setMyPlantData(this);
+        plantControl.setOnAttack(onAttack);
+        plantControl.setOnHit(onHit);
+        plantControl.setOnDeath(onDeath);
+       // plantControl.setOnHarvest(onHarvest);
         //Set Stats According To Database
-        plantControl.setMaxEnergy(plantEnergy);
-        plantControl.setMaxHealth(plantHealth);
+        plantControl.setEnergy(plantMaxEnergy);
+        plantControl.setHealth(plantMaxHealth);
         plantControl.setGrowAge(0); //It's a baby!
         plantControl.setLocation(location);
-        plantControl.setType((int)plantType);
-        plantControl.setAttackDamage(attackDamage);
-        plantControl.setAttackRange(attackRange);
-        plantControl.setAttackRate(attackRate);
-
-        plantControl.setOnHit(onHit);
-        if (canAttack) { plantControl.setOnAttack(onAttack);}
-
 
         return plant;
     }
@@ -85,6 +81,7 @@ public class PlantBehaviorSO : ScriptableObject
         GameObject plant = spawnPlant(name,location);
         //Grab the interface of the newly created plant
         IPlantControl plantControl = plant.GetComponent<IPlantControl>();
+        
         plantControl.setGrowAge(age);
         plantControl.setHealth(health);
         plantControl.setEnergy(energy);

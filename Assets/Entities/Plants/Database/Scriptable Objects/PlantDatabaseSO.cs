@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+
 [CreateAssetMenu(fileName = "PlantDatabase", menuName = "Plant Data/Plant Database")]
 
 public class PlantDatabaseSO : ScriptableObject
 {
-    [Header("This List Updates Itself Dynamicall"), SerializeField] List<PlantBehaviorSO> plantList;
+    [Header("This List Updates Itself Dynamicaly"), SerializeField] List<PlantBehaviorSO> plantList;
     private void OnEnable() {
         //plantList = new List<PlantBehaviorSO>(); //Just in case it needs to be reset on startup
         //Searches for all the PlantBehaviorSO then checks them one by one
@@ -16,8 +18,7 @@ public class PlantDatabaseSO : ScriptableObject
     }
 
     public GameObject spawnPlant(string name, Vector2 location){
-        PlantBehaviorSO plant = plantList.Find(x => x.getName().Contains(name));
-        
+        PlantBehaviorSO plant = plantList.Find(x => x.plantName.Contains(name));
         return plant.spawnPlant(name, location);
     }
 

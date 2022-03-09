@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dd4480ae05e5174c8acb8ed0e3079c2, type: 3}
   m_Name: PlantDatabase
   m_EditorClassIdentifier: 
-  test: {fileID: 11400000, guid: c57bf534093e8594e85ab1a8051b4544, type: 2}
+  plantList:
+  - {fileID: 11400000, guid: 0e8eeb399c3f59541ace11f44ca17f82, type: 2}
+  - {fileID: 11400000, guid: 1d00f60138d740e46a00c01a007fcd48, type: 2}
+  - {fileID: 11400000, guid: c57bf534093e8594e85ab1a8051b4544, type: 2}
