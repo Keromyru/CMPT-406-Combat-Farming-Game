@@ -32,10 +32,19 @@ public class PlantBehaviorSO : ScriptableObject
     public int seedDropMax;
     public int harvestValue;
 
+    [Header("Audio Files")]
+    public string soundDeath;
+    public string soundAttack;
+    public string soundHarvested;
+    public string soundHurt;
+    
+
 
     
     public GameObject harvestPrefab;
     public GameObject plantPrefab;
+
+    public AudioControllerSO audioController;
     
    
 
@@ -63,11 +72,14 @@ public class PlantBehaviorSO : ScriptableObject
         plant.transform.SetParent(GameObject.Find("ActiveInWorld").transform);
         //Grab the interface of the newly created plant
         IPlantControl plantControl = plant.GetComponent<IPlantControl>();
+        //Set Data Sets
         plantControl.setMyPlantData(this);
+        plantControl.setAudioController(audioController);
+        //Set Behaviors
         plantControl.setOnAttack(onAttack);
         plantControl.setOnHit(onHit);
         plantControl.setOnDeath(onDeath);
-       // plantControl.setOnHarvest(onHarvest);
+        plantControl.setOnHarvest(onHarvest);
         //Set Stats According To Database
         plantControl.setEnergy(plantMaxEnergy);
         plantControl.setHealth(plantMaxHealth);

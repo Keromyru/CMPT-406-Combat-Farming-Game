@@ -21,8 +21,11 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     private PlantBehaviorSO myPlantData;
     // Behaviors
     private PlantOnHitSO onHitBehavior;
-    private PlantOnAttackSO OnAttackBehavior;
-    private PlantOnDeathSO OnDeathBehavior;
+    private PlantOnAttackSO onAttackBehavior;
+    private PlantOnDeathSO onDeathBehavior;
+    private PlantOnHarvestSO onHarvestBehavior;
+
+    private AudioControllerSO audioController;
 
     // Attack Data  
     private Coroutine attackRoutine; 
@@ -34,6 +37,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     #endregion
     ////////////////////////////////////////////////
     // PLANT LOGICS
+
     private void FixedUpdate() {
         //Death Check
         if (health <= 0){ onDeath();}
@@ -41,7 +45,6 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
 
         //Target Check  is not day, is not waiting, is able to attack, has a target, and the target is available
         if (!dayTime && myPlantData.canAttack && !isWaiting && targets.Count > 0 && CheckTarget()){
-            Debug.Log("attacking");
             onAttack(); //Does the Attack Action
             AttackTimer(); //starts the timer coroutine
         } 
@@ -122,18 +125,28 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         //This can accomedate for any kind of damage negation that may be needed.
         //This also passes this game object so that the script may do whatever it needs with it, or it's position
         health -= onHitBehavior.onHit(damage, source, this.gameObject); //Trigger onhit behaviors
+        if (myPlantData.soundHurt != null) {audioController.Play(myPlantData.soundHurt);}
+        
     }
 
     public void onDeath(){
         //Triggers the attached Deal Trigger
-        OnDeathBehavior.onDeath(this.gameObject);
+        if (myPlantData.soundDeath != null) {audioController.Play(myPlantData.soundDeath);}
+        onDeathBehavior.onDeath(this.gameObject);
     }
 
     public void onAttack(){
-        
-        OnAttackBehavior.OnAttack(myPlantData.attackDamage,attackTarget,this.gameObject);
+        onAttackBehavior.OnAttack(myPlantData.attackDamage,attackTarget,this.gameObject);
+        //Attack Sound
+        if (myPlantData.soundAttack != null) { audioController.Play(myPlantData.soundAttack); }
+
+           
     }
 
+    public void onHarvest(){
+        if (myPlantData.soundHarvested != null) {audioController.Play(myPlantData.soundHarvested);}
+        onHarvestBehavior.OnHarvest(this.gameObject);
+    }
     
 
 
@@ -178,8 +191,10 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     ////////////////////////////////////////////////
     //SETS 'n GETS
     public void setOnHit(PlantOnHitSO newOnHit){onHitBehavior = newOnHit; }
-    public void setOnDeath(PlantOnDeathSO newOnDeath){ OnDeathBehavior = newOnDeath; }
-    public void setOnAttack(PlantOnAttackSO newOnAttack){ OnAttackBehavior = newOnAttack; }
+    public void setOnDeath(PlantOnDeathSO newOnDeath){ onDeathBehavior = newOnDeath; }
+    public void setOnAttack(PlantOnAttackSO newOnAttack){ onAttackBehavior = newOnAttack; }
+    public void setOnHarvest(PlantOnHarvestSO newOnHarvest){ onHarvestBehavior = newOnHarvest; }
+    public void setAudioController( AudioControllerSO newAudioController) { audioController = newAudioController;}
 
     public void setMyPlantData(PlantBehaviorSO newPlantData) {myPlantData = newPlantData; }
 

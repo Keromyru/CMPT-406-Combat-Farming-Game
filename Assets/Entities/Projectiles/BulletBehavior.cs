@@ -7,10 +7,14 @@ using UnityEngine;
 // You can check the Assets/Entities/Plants/Database/Scriptable Objects/RangedPlantOnAttackSO.cs for a reference on how to access it.
 public class BulletBehavior : MonoBehaviour
 {
-    public float bulletDamage;
+    [Range(0,10)]
     private float lifeTime = 2.0f; //How long it lasts before it expires
+    [Header("Audio - Optional")]
     public GameObject impactEffect; //An Effect that triggers when the projectile hits
-    public AudioClipSO shotSound; //Audio Played on impact
+    public AudioClipSO impactSound; //Audio Played on impact
+    public AudioClipSO shotSound; //Audio Played on shot
+    [Header("Do not set these")]
+    public float bulletDamage;
     public GameObject source; 
 
     private void Start() 
@@ -23,7 +27,9 @@ public class BulletBehavior : MonoBehaviour
         if (impactEffect != null) {
             GameObject effect = Instantiate(impactEffect, transform.position, transform.rotation); // For When the bullet impacts
             Destroy(effect, .25f); //To remove effect after a certain time
-        }
+        } 
+        //Play Impact Sound
+        if (impactSound != null) { impactSound.Play();}
         Destroy(gameObject);   //then remove this object
 
 

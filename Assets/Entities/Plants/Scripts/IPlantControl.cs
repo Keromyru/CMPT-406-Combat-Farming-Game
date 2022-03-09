@@ -23,6 +23,8 @@ public interface IPlantControl
     void setOnHit(PlantOnHitSO newOnHit);
     void setOnDeath(PlantOnDeathSO newOneDeath);
     void setOnAttack(PlantOnAttackSO newOnAttack);
+    void setOnHarvest(PlantOnHarvestSO newOnHarvest);
+    void setAudioController( AudioControllerSO newAudioController);
     void setMyPlantData(PlantBehaviorSO newPlantData);
 
     

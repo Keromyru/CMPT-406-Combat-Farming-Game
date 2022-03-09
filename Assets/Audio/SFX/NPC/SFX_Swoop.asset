@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15d0972044409cc44bf954d8d06944fe, type: 3}
-  m_Name: OnAttack Ranged
+  m_Script: {fileID: 11500000, guid: 8b2666010b669f249b78a662f94f355e, type: 3}
+  m_Name: SFX_Swoop
   m_EditorClassIdentifier: 
-  range: 5
-  damage: 5
-  projectileSpeed: 4
-  projectilePrefab: {fileID: 6859866009509100607, guid: 9860ba4c442d4b94a955edfa88b20815, type: 3}
-  firePointLength: 1
-  offset: {x: 0, y: 0}
+  Name: AttackSwoop
+  clips:
+  - {fileID: 8300000, guid: 7a74debb67c6f374d8fdf7324908c1fa, type: 3}
+  type: 1
+  volume: 1
+  pitch: 1
+  source: {fileID: 0}
