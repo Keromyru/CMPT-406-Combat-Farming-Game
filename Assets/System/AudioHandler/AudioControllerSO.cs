@@ -9,7 +9,7 @@ public class AudioControllerSO : ScriptableObject
     public List<AudioClipSO> instances;
     
     private void OnEnable() {
-        instances = new List<AudioClipSO>(); 
+        //instances = new List<AudioClipSO>(); 
         //Checks all the AudioClipSO's and adds the one with the correct type to it's list
         foreach (AudioClipSO item in Resources.FindObjectsOfTypeAll<AudioClipSO>())
         {

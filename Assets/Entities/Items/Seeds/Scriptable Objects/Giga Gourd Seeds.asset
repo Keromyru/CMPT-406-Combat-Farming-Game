@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Giga Gourd Seeds
   m_EditorClassIdentifier: 
   name: Giga Gourd Seeds
-  icon: {fileID: 21300000, guid: 1c270760633ba4039ba5514c46b007fb, type: 3}
+  icon: {fileID: 21300000, guid: fdd8a942d85624644bb94b7f6ea5d906, type: 3}
   isSellable: 1
   pricePoint: 300
   isPlantable: 1

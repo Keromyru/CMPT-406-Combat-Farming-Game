@@ -51,7 +51,6 @@ public class MusicControllerSO : ScriptableObject
                 break;
             }
         }
-         Debug.Log(DayCycle.Count);
     }
 
     //Disabled AutoPlay and Starts a music piece of the specified name;
@@ -76,21 +75,21 @@ public class MusicControllerSO : ScriptableObject
         switch (playlist)
             { //Takes the chosen playlist and plays the next song from
                 case 0:
-                    selectedMusic = Menus[mIndex];
                     if (mIndex+1 == Menus.Count){ mIndex = 0;}
+                    selectedMusic = Menus[mIndex];
                     selectedMusic.Play(audioSourceParam);
                 break;
 
                 case 1:
-                   selectedMusic = DayCycle[mIndex];
-                   if (mIndex+1 == DayCycle.Count){ mIndex = 0;}
-                   selectedMusic.Play(audioSourceParam);
+                    if (mIndex+1 == DayCycle.Count){ mIndex = 0;}
+                    selectedMusic = DayCycle[mIndex];
+                    selectedMusic.Play(audioSourceParam);
                 break;
 
                 case 2:
-                   selectedMusic = NightCycle[mIndex];
-                   if (mIndex+1 == NightCycle.Count){ mIndex = 0;}
-                   selectedMusic.Play(audioSourceParam);
+                    if (mIndex+1 == NightCycle.Count){ mIndex = 0;}
+                    selectedMusic = NightCycle[mIndex];
+                    selectedMusic.Play(audioSourceParam);
                 break;
 
                 default:
