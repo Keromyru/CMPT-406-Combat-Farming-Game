@@ -17,6 +17,11 @@ public class InventoryInputs : MonoBehaviour
     private InputAction slot2;
     private InputAction slot3;
     private InputAction slot4;
+    private InputAction slot5;
+    private InputAction slot6;
+    private InputAction slot7;
+    private InputAction slot8;
+
     private InputAction click;
 
     // select things in the inventory - currently not hooked up but still working?
@@ -31,7 +36,7 @@ public class InventoryInputs : MonoBehaviour
     // singleton inventory
     Inventory inventory;
     // max hotbar length
-    int max_length;
+    private int max_length;
     // hotbar parent
     [SerializeField] private Transform hotbarParent;
     // get all the slots
@@ -91,6 +96,14 @@ public class InventoryInputs : MonoBehaviour
         slot3.performed -= use3;
 
         slot4.performed -= use4;
+        
+        slot5.performed -= use5;
+
+        slot6.performed -= use6;
+
+        slot7.performed -= use7;
+
+        slot8.performed -= use8;
 
         click.performed -= interactWithItem;
 
@@ -103,6 +116,10 @@ public class InventoryInputs : MonoBehaviour
         slot2.performed += use2;
         slot3.performed += use3;
         slot4.performed += use4;
+        slot5.performed += use5;
+        slot6.performed += use6;
+        slot7.performed += use7;
+        slot8.performed += use8;
         click.performed += interactWithItem;
         //clickInInventory.performed += interactWithInventory;
     }
@@ -121,6 +138,10 @@ public class InventoryInputs : MonoBehaviour
                 slot2 = playerInput.actions["InputPlayer/Hotbar2"];
                 slot3 = playerInput.actions["InputPlayer/Hotbar3"];
                 slot4 = playerInput.actions["InputPlayer/Hotbar4"];
+                slot5 = playerInput.actions["InputPlayer/Hotbar5"];
+                slot6 = playerInput.actions["InputPlayer/Hotbar6"];
+                slot7 = playerInput.actions["InputPlayer/Hotbar7"];
+                slot8 = playerInput.actions["InputPlayer/Hotbar8"];
                 click = playerInput.actions["InputPlayer/PrimaryAction"];
                 //clickInInventory = playerInput.actions["InputUI/LeftClickUI"];
                 unassigned = false;
@@ -156,8 +177,40 @@ public class InventoryInputs : MonoBehaviour
     // use item 4
     private void use4(InputAction.CallbackContext context)
     {
-        if (hotbarActions.Count == 4) {
+        if (hotbarActions.Count >= 4) {
             hotbarActions[3].UseItem();
+        }
+    }
+    
+    // use item 5
+    private void use5(InputAction.CallbackContext context)
+    {
+        if (hotbarActions.Count >= 5) {
+            hotbarActions[4].UseItem();
+        }
+    }
+
+    // use item 6
+    private void use6(InputAction.CallbackContext context)
+    {
+        if (hotbarActions.Count >= 6) {
+            hotbarActions[5].UseItem();
+        }
+    }
+
+    // use item 7
+    private void use7(InputAction.CallbackContext context)
+    {
+        if (hotbarActions.Count >= 7) {
+            hotbarActions[6].UseItem();
+        }
+    }    
+    
+    // use item 8
+    private void use8(InputAction.CallbackContext context)
+    {
+        if (hotbarActions.Count == 8) {
+            hotbarActions[7].UseItem();
         }
     }
 

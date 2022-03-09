@@ -8,7 +8,7 @@ public class HotbarSlot : MonoBehaviour
     public Image icon;  // what we want to display in inventory
     Item item;  // scriptable object that's holding our item info
 
-    public Button background; // the background button of our slot
+    public Toggle background; // the background toggle of our slot
 
     // adding item to inventory
     // takes the scriptable object in as an agrument, grabs all other info from there
@@ -30,7 +30,7 @@ public class HotbarSlot : MonoBehaviour
 
     // much like the UseItem() call in InventorySlot, this does nothing right now :)
     public void UseItem() {
-        background.Select();
+        background.isOn = true;
         if (item != null) {
             item.Use();
         }

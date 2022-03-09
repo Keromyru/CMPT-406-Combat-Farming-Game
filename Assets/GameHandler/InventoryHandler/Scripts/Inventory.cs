@@ -35,7 +35,7 @@ public class Inventory : MonoBehaviour
     public int max_space = 16;
 
     // same deal here for the hotbar
-    public int max_hotbar_space = 4;
+    public int max_hotbar_space = 8;
 
 
     // just a list update
