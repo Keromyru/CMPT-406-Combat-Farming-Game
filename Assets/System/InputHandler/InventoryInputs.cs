@@ -22,7 +22,7 @@ public class InventoryInputs : MonoBehaviour
     private InputAction slot7;
     private InputAction slot8;
 
-    private InputAction click;
+    private InputAction interact;
 
     // select things in the inventory - currently not hooked up but still working?
     //private InputAction clickInInventory;
@@ -42,6 +42,10 @@ public class InventoryInputs : MonoBehaviour
     // get all the slots
     private HotbarSlot[] possible_locations; 
 
+    [SerializeField] private Transform player;
+
+    public float interactionRadius = 0.5f;
+
 
     void Start()
     {
@@ -50,6 +54,7 @@ public class InventoryInputs : MonoBehaviour
         possible_locations = hotbarParent.GetComponentsInChildren<HotbarSlot>();
         inventory.onItemChangedCallback += fetchHotbarItems;
         max_length = inventory.max_hotbar_space;
+
         // get all the possible hotbar slots
         for (int i = 0; i < max_length; i++) {
             hotbarActions.Add(possible_locations[i]);
@@ -105,7 +110,7 @@ public class InventoryInputs : MonoBehaviour
 
         slot8.performed -= use8;
 
-        click.performed -= interactWithItem;
+        interact.performed -= interactWithItem;
 
         //clickInInventory.performed -= interactWithInventory;
     }
@@ -120,7 +125,7 @@ public class InventoryInputs : MonoBehaviour
         slot6.performed += use6;
         slot7.performed += use7;
         slot8.performed += use8;
-        click.performed += interactWithItem;
+        interact.performed += interactWithItem;
         //clickInInventory.performed += interactWithInventory;
     }
 
@@ -142,7 +147,7 @@ public class InventoryInputs : MonoBehaviour
                 slot6 = playerInput.actions["InputPlayer/Hotbar6"];
                 slot7 = playerInput.actions["InputPlayer/Hotbar7"];
                 slot8 = playerInput.actions["InputPlayer/Hotbar8"];
-                click = playerInput.actions["InputPlayer/PrimaryAction"];
+                interact = playerInput.actions["InputPlayer/Interact"];
                 //clickInInventory = playerInput.actions["InputUI/LeftClickUI"];
                 unassigned = false;
                 AddSetActions();
@@ -215,12 +220,30 @@ public class InventoryInputs : MonoBehaviour
     }
 
 
-    // I've... definitely patched together a check here but it should be more streamlined for the actual build
-    // raycasts using mouse's current position on screen to find item marked as "Interactable"
+    // uses the postion of the EXO-Man sprite to cast a circle around and pick up items marked "Interactable"
     // to be interactable, items literally have to have the "ItemPickup.cs" script attached to them
     // this script can be found in GameHandler/InventoryHandler/Scripts
     private void interactWithItem(InputAction.CallbackContext context)
     {
+        // use position to cast a circle
+        Collider2D[] hitObjects = Physics2D.OverlapCircleAll(player.position, interactionRadius);
+        
+        // cycle through hit objects and check if they were Interactable
+        for (int i = 0; i < hitObjects.Length; i++) {
+            Interactable interacting = hitObjects[i].GetComponent<Interactable>();
+            if (interacting != null) {
+                interacting.Interact();  // interact
+            }
+        }
+
+        
+        /* 
+
+        Old Raycast & Check Code, in case somebody wants to reference it
+
+        // I've... definitely patched together a check here but it should be more streamlined for the actual build
+        // raycasts using mouse's current position on screen to find item marked as "Interactable"
+
         Camera maincam = FindObjectOfType<Camera>();  // grab cam
 
         // get the mouse's current position values and cast a ray from there - 3D
@@ -250,5 +273,7 @@ public class InventoryInputs : MonoBehaviour
                 interactobj.Interact();
             }
         }
+
+        */
     }
 }
