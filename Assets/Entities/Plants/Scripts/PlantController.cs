@@ -112,7 +112,12 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     //Going to be checked on the "Newday" trigger
     private void nextGrowthPhase(){
         if (myPlantData.soundGrowth != null) {audioController.Play(myPlantData.soundGrowth);} //Play soundGrowth if the file has been declared
-        myPlantSpawner.spawnNextPlant(myPlantData.decendant, location, (myPlantData.plantMaxHealth - health), (myPlantData.plantMaxEnergy - energy));
+        //Spawns the next plant in line
+        myPlantData.nextPhase.spawnNextPlant(
+            myPlantData.nextPhase.name,
+            this.location,
+            myPlantData.plantMaxHealth - health,
+            myPlantData.plantMaxEnergy - energy);
         Destroy(this.gameObject);
     }
 
@@ -129,7 +134,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         dayTime = true;
         targets.Clear(); //Clear Attack List
 
-        if(myPlantData.decendant != null && myPlantData.matureAge != 0){
+        if(myPlantData.nextPhase != null && myPlantData.matureAge != 0){
             nextGrowthPhase();
         }
 

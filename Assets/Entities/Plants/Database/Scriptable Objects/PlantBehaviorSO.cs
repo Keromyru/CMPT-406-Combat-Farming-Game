@@ -24,7 +24,6 @@ public class PlantBehaviorSO : ScriptableObject
     
     [Header("Plant Growth")]
     public int matureAge;
-    public string decendant; //DATABASE NAME OF IT'S NEXT STAGE
     public bool harvestable;
     public int harvestCycle;
     public int deathAge;
@@ -44,10 +43,8 @@ public class PlantBehaviorSO : ScriptableObject
     
     public GameObject harvestPrefab;
     public GameObject plantPrefab;
-
+    public PlantBehaviorSO nextPhase;
     public AudioControllerSO audioController;
-    public PlantDatabaseSO myPlantSpawner;
-    
    
 
     
@@ -77,7 +74,7 @@ public class PlantBehaviorSO : ScriptableObject
         //Set Data Sets
         plantControl.setMyPlantData(this);
         plantControl.setAudioController(audioController);
-        plantControl.setMyPlantSpawner(myPlantSpawner);
+     
         //Set Behaviors
         plantControl.setOnAttack(onAttack);
         plantControl.setOnHit(onHit);
