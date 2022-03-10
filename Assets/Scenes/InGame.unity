@@ -17222,11 +17222,15 @@ PrefabInstance:
     - target: {fileID: 7955687849613416831, guid: 058e282eff714274aa9827bcc51fe515, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 852708167}
+      objectReference: {fileID: 248991888}
     - target: {fileID: 7955687849613416831, guid: 058e282eff714274aa9827bcc51fe515, type: 3}
       propertyPath: hotbarParent
       value: 
       objectReference: {fileID: 1006120663}
+    - target: {fileID: 7955687849613416831, guid: 058e282eff714274aa9827bcc51fe515, type: 3}
+      propertyPath: interactionRadius
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 058e282eff714274aa9827bcc51fe515, type: 3}
 --- !u!1 &1619643364
