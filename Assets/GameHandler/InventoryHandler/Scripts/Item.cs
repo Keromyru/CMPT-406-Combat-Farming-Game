@@ -36,4 +36,14 @@ public class Item : ScriptableObject
         Debug.Log("Using " + name);
     }
 
+    // buy method for shop
+    public virtual void Buy() {
+        Debug.Log("Buying " + name);
+    }
+
+    // sell method for shop
+    public virtual void Sell() {
+        Debug.Log("Selling " + name);
+    }
+
 }

@@ -37,6 +37,9 @@ public class Inventory : MonoBehaviour
     // same deal here for the hotbar
     public int max_hotbar_space = 8;
 
+    // is it day or night time?
+    private bool day = true;
+
 
     // just a list update
     // boolean return - true on success, false on failure
@@ -46,7 +49,10 @@ public class Inventory : MonoBehaviour
             Debug.Log("Inventory is full.");
             return false;
         }
+
         items.Add(item);
+
+        SortInventory();
         
         // send out an alert that inventory changed
         if (onItemChangedCallback != null) {
@@ -59,10 +65,46 @@ public class Inventory : MonoBehaviour
     // just another list update
     public void RemoveItem(Item item) {
         items.Remove(item);
+
+        SortInventory();
         
         // send out an alert that inventory changed
         if (onItemChangedCallback != null) {
             onItemChangedCallback.Invoke();
+        }
+    }
+
+
+    private void SortInventory() {
+
+        List<Item> allDayItems = new List<Item>();
+        List<Item> allNightItems = new List<Item>();
+        List<Item> allUtil = new List<Item>();
+
+        for (int i = 0; i < items.Count; i++) {
+            if (items[i].availableDay && items[i].availableNight) {
+                allUtil.Add(items[i]);
+            }
+            else if (items[i].availableDay) {
+                allDayItems.Add(items[i]);
+            }
+            else if (items[i].availableNight) {
+                allNightItems.Add(items[i]);
+            }
+        }
+
+        items.Clear();
+
+        items.AddRange(allUtil);
+
+        if (day) {
+            items.AddRange(allDayItems);
+            items.AddRange(allNightItems);
+        }
+        else
+        {
+            items.AddRange(allNightItems);
+            items.AddRange(allDayItems);
         }
     }
 }
