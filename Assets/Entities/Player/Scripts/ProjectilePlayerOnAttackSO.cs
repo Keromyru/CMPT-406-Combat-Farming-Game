@@ -8,7 +8,7 @@ public class ProjectilePlayerOnAttackSO : PlayerOnAttackSO
       //Gets Normalized direction of the target
       Vector3 sLocation = thisObject.transform.position;
       Vector3 tLocation = new Vector3(targetLocation.x,targetLocation.y,0);
-      Vector3 targetDirection =  (sLocation - tLocation).normalized;
+      Vector3 targetDirection =  (tLocation - sLocation).normalized;
       
       // a Normalized Vector * the distance from the focal point desired + from the source of the 
       Vector3 trackedLocation = (targetDirection * firePointLength)  + sLocation;
