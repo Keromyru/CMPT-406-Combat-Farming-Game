@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
 {
-    private float health;
+    private float health = 100;
     [SerializeField] PlayerBevahviorSO myPlayerData;
     private PlayerOnAttackSO onAttackBehavior;
     private PlayerOnHitSO onHitBehavior;
