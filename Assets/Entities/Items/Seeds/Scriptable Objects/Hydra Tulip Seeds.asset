@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hydra Tulip Seeds
   m_EditorClassIdentifier: 
   name: Hydra Tulip Seeds
-  icon: {fileID: 21300000, guid: e4442a07b960b472c9c95f0440d44fab, type: 3}
+  icon: {fileID: 21300000, guid: 75dba8dd4c40d461fa93360f72f09ac0, type: 3}
   isSellable: 1
   pricePoint: 500
   isPlantable: 1
