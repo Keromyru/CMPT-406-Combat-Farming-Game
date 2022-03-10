@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
 {
     private float health;
-
     [SerializeField] PlayerBevahviorSO myPlayerData;
     private PlayerOnAttackSO onAttackBehavior;
     private PlayerOnHitSO onHitBehavior;
@@ -18,10 +17,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     private Rigidbody2D playerRB;     
     // Attack Data  
     private Coroutine attackRoutine; 
-    private bool isWaiting; //Is in a state of waiting before it can attack again
-
-
-    
+    private bool isWaiting; //Is in a state of waiting before it can attack again 
    
     void Start(){GameCamera.SetTarget(this.gameObject);}//Sets the player as the camera focus
 
@@ -32,17 +28,14 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     onAttackBehavior = myPlayerData.onAttackBehavior; //Set onAttackBehavior
     onHitBehavior = myPlayerData.onHitBehavior; //Set onHitBehavior
     onDeathBehavior = myPlayerData.onDeathBehavior; //Set onDeathBehavior
-    audioController = myPlayerData.audioController; //Set audioController
-    
-        
+    audioController = myPlayerData.audioController; //Set audioController   
     }
 
     private void Update() {
         //Checks if the mouse click is down, and if the reset timer isn't set
         //The behavior of this will be shots so long as  the left-click is held
         if ((playerInput.actions["PrimaryAction"].ReadValue<float>() > 0) && !isWaiting){ onAttack(); }
-        Time.timeScale = 1; //GLITCH, SOMETHING IS PAUSING THE GAME TIMESCALE????
-        
+        Time.timeScale = 1; //GLITCH, SOMETHING IS PAUSING THE GAME TIMESCALE????   
     }
 
     private void FixedUpdate() {
@@ -53,9 +46,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
 
         //Death Check
         if(health <= 0){ onDeath();}
-
     }
-
 
     //Pointer Location Extracted from Blakes Code
     private Vector2 pointerLocation(){
@@ -68,12 +59,17 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         return MousePosition;
     }
 
-    public void resetHealth(){
+    public void resetHealth(){ //Reset health
         if (myPlayerData.soundHeal != null) {audioController.Play(myPlayerData.soundHeal);} //Play myPlayerData.soundHeal if the file has been declared
         health = myPlayerData.maxHealth;
     }
-
     
+    public void heal(float healValue){ //Restore health by value
+        if (myPlayerData.soundHeal != null) {audioController.Play(myPlayerData.soundHeal);} //Play myPlayerData.soundHeal if the file has been declared
+        health += healValue;
+        if (health > myPlayerData.maxHealth){ health = myPlayerData.maxHealth;}
+    }
+
     void OnEnable() {SceneManager.sceneLoaded += OnSceneLoaded;} //Subscribe to on Scene Loaded Event
 
     void OnDisable() {SceneManager.sceneLoaded -= OnSceneLoaded;} //unsubscribe to on Scene Loaded Event
@@ -95,10 +91,8 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     resetHealth();
     }
    
-
     public void newNight(){
     
-
     }
 
     public void onDeath(){
@@ -114,20 +108,14 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
                 pointerLocation(),
                 this.gameObject
             );
-
             AttackTimer();//START TIMER
         }
-
-
-           
     }
 
-
-
     ////////////////////////////////////////////////
-    // Attack Interval Corutine
+    // Attack Interval Coroutine
 
-    //starts attack Timer
+    //Starts attack Timer
      public void AttackTimer(){
         if (attackRoutine != null)
         {
@@ -150,5 +138,13 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         attackRoutine = null;
     }
     ////////////////////////////////////////////////
-
+    #region Sets and Gets
+    ////////////////////////////////////////////////
+    //SETS 'n GETS
+    public void setHealth(float newHealth){ health = newHealth;}
+    public float getHealth(){return health;}
+    public float getMaxHealth(){return myPlayerData.maxHealth;}
+    public Vector2 getLocation(){return this.gameObject.transform.position;}
+    public void setLocation(Vector2 newLocation){ playerRB.position = newLocation;}
+    #endregion Sets and Gets
 }

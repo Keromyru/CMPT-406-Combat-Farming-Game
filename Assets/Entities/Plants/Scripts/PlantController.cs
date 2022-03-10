@@ -239,5 +239,4 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     public float getEnergy(){ return energy;}
 
     #endregion Sets and Gets
-
 }
