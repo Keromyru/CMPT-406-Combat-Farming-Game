@@ -17,8 +17,8 @@ public interface IPlantControl
     Vector2 getLocation();
     void setGrowAge(int age);
     int getGrowAge();
-   
-
+    float getRemaining(); //Get Remaining Water Level
+    bool waterPlant(float quantity); //Water Plant Action
 
     void setOnHit(PlantOnHitSO newOnHit);
     void setOnDeath(PlantOnDeathSO newOneDeath);

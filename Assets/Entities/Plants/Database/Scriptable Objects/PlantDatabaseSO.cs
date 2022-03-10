@@ -19,14 +19,16 @@ public class PlantDatabaseSO : ScriptableObject
 
     public GameObject spawnPlant(string name, Vector2 location){
         PlantBehaviorSO plant = plantList.Find(x => x.plantName.Contains(name));
+        
         return plant.spawnPlant(name, location);
     }
-
+    //This one is for the load system to put things back as is.
     public GameObject spawnPlant(string name, Vector2 location, float health, float energy, int age){
         GameObject plant = spawnPlant(name,location,health, energy, age);
 
         return plant;
     }
+
 
     public string getTooltip(string name){ return plantList.Find(x => x.getName().Contains(name)).getTooltip();}
 
