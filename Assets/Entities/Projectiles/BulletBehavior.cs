@@ -22,23 +22,24 @@ public class BulletBehavior : MonoBehaviour
         if (shotSound != null)  {shotSound.Play();} // Audio Initiate
     }
 
-    private void OnCollisionEnter2D(Collision2D other) 
-    {
-        if (impactEffect != null) {
-            GameObject effect = Instantiate(impactEffect, transform.position, transform.rotation); // For When the bullet impacts
-            Destroy(effect, .25f); //To remove effect after a certain time
-        } 
-        //Play Impact Sound
-        if (impactSound != null) { impactSound.Play();}
-        Destroy(gameObject);   //then remove this object
+    private void OnTriggerEnter2D(Collider2D entity) {
+        if (entity.tag == "Enemy"){
+            if (impactEffect != null) {
+                GameObject effect = Instantiate(impactEffect, transform.position, transform.rotation); // For When the bullet impacts
+                Destroy(effect, .25f); //To remove effect after a certain time
+            } 
+            //Play Impact Sound
+            if (impactSound != null) { impactSound.Play();}
+            Destroy(gameObject);   //then remove this object
 
 
-        ITakeDamage targetDamage = other.collider.GetComponent<ITakeDamage>(); //Accessing The Interface
-        if (targetDamage != null){ //If the target has the interface and therefore is damagable
-           
-            //TODO Add something that does something like "If plant or player, only damage enemy and vice versa"
-            // Not all tags are in the game yet
-            targetDamage.onHit(bulletDamage, source);
+            ITakeDamage targetDamage = entity.GetComponent<ITakeDamage>(); //Accessing The Interface
+            if (targetDamage != null){ //If the target has the interface and therefore is damagable
+            
+                //TODO Add something that does something like "If plant or player, only damage enemy and vice versa"
+                // Not all tags are in the game yet
+                targetDamage.onHit(bulletDamage, source);
+            }
         }
     }
 

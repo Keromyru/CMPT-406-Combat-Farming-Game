@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd7fe0649b1a4242a59f8761ac14025, type: 3}
+  m_Name: Player Behavior
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  moveRate: 2
+  onAttackBehavior: {fileID: 11400000, guid: 0e3d800f93603924399d03f0f2c260d3, type: 2}
+  onHitBehavior: {fileID: 11400000, guid: 711c65c5a171ea54289533b72ff2c3b9, type: 2}
