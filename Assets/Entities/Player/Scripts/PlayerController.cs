@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     [SerializeField] PlayerBevahviorSO myPlayerData;
     private PlayerOnAttackSO onAttackBehavior;
     private PlayerOnHitSO onHitBehavior;
+    private PlayerOnDeathSO onDeathBehavior;
+    private AudioControllerSO audioController;
     private GameObject myCamera;
     private PlayerInput playerInput;  // The inputs from the InputSystem
     private Rigidbody2D playerRB;     
@@ -29,6 +31,8 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     playerRB = this.GetComponent<Rigidbody2D>(); //Set Rigid Body Shortcut for Blakes Code
     onAttackBehavior = myPlayerData.onAttackBehavior; //Set onAttackBehavior
     onHitBehavior = myPlayerData.onHitBehavior; //Set onHitBehavior
+    onDeathBehavior = myPlayerData.onDeathBehavior; //Set onDeathBehavior
+    audioController = myPlayerData.audioController; //Set audioController
     
         
     }
@@ -47,7 +51,9 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         Vector2 inputVector = playerInput.actions["PlayerMovement"].ReadValue<Vector2>();
         playerRB.MovePosition(playerRB.position + new Vector2(inputVector.x, inputVector.y) * myPlayerData.moveRate);
 
-        
+        //Death Check
+        if(health <= 0){ onDeath();}
+
     }
 
 
@@ -63,6 +69,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     }
 
     public void resetHealth(){
+        if (myPlayerData.soundHeal != null) {audioController.Play(myPlayerData.soundHeal);} //Play myPlayerData.soundHeal if the file has been declared
         health = myPlayerData.maxHealth;
     }
 
@@ -78,7 +85,10 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     //TRIGGERS
     public void onHit(float damage, GameObject source)
     {    //if it's a baddy, take the damage
-         if (source.tag == "Enemy"){ health -= onHitBehavior.onHit(damage,source, this.gameObject);}
+        if (source.tag == "Enemy"){ 
+            health -= onHitBehavior.onHit(damage,source, this.gameObject);
+            if (myPlayerData.soundHurt != null) {audioController.Play(myPlayerData.soundHurt);} //Play soundHurt if the file has been declared
+        }
     }
 
     public void newDay(){ //On a new day
@@ -92,8 +102,8 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     }
 
     public void onDeath(){
-       
-
+        if (myPlayerData.soundDeath != null) {audioController.Play(myPlayerData.soundDeath);} //Play soundDeath if the file has been declared
+        onDeathBehavior.onDeath(this.gameObject);
     }
     
     //Should not be triggered 
