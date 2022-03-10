@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     private PlayerOnHitSO onHitBehavior;
     private GameObject myCamera;
     private PlayerInput playerInput;  // The inputs from the InputSystem
-
+    private Rigidbody2D playerRB;     
     // Attack Data  
     private Coroutine attackRoutine; 
     private bool isWaiting; //Is in a state of waiting before it can attack again
@@ -21,24 +21,36 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
 
     
    
-
-
+    void Start(){GameCamera.SetTarget(this.gameObject);}//Sets the player as the camera focus
 
     //PLAYER LOGIC
-    private void Awake() {
-    myCamera = GameObject.Find("Main Camera");
-    onAttackBehavior = myPlayerData.onAttackBehavior; //Set from Controller
-    onHitBehavior = myPlayerData.onHitBehavior;// 
+    private void Awake() { 
+    myCamera = GameObject.Find("Main Camera"); //Find and set camera
+    playerRB = this.GetComponent<Rigidbody2D>(); //Set Rigid Body Shortcut for Blakes Code
+    onAttackBehavior = myPlayerData.onAttackBehavior; //Set onAttackBehavior
+    onHitBehavior = myPlayerData.onHitBehavior; //Set onHitBehavior
     
         
     }
 
     private void Update() {
-
+        //Checks if the mouse click is down, and if the reset timer isn't set
+        //The behavior of this will be shots so long as  the left-click is held
         if ((playerInput.actions["PrimaryAction"].ReadValue<float>() > 0) && !isWaiting){ onAttack(); }
-        Time.timeScale = 1;
+        Time.timeScale = 1; //GLITCH, SOMETHING IS PAUSING THE GAME TIMESCALE????
         
     }
+
+    private void FixedUpdate() {
+        // Written by Blake Williams
+        // Gets the movement input and applies a constant velocity to the player
+        Vector2 inputVector = playerInput.actions["PlayerMovement"].ReadValue<Vector2>();
+        playerRB.MovePosition(playerRB.position + new Vector2(inputVector.x, inputVector.y) * myPlayerData.moveRate);
+
+        
+    }
+
+
     //Pointer Location Extracted from Blakes Code
     private Vector2 pointerLocation(){
         Vector3 mousePos = Mouse.current.position.ReadValue();
@@ -54,12 +66,12 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         health = myPlayerData.maxHealth;
     }
 
-    //SETS PLAYERINPUT FROM SYSTEM  with null catch
-    void OnEnable() {SceneManager.sceneLoaded += OnSceneLoaded;}
+    
+    void OnEnable() {SceneManager.sceneLoaded += OnSceneLoaded;} //Subscribe to on Scene Loaded Event
 
-    void OnDisable() {SceneManager.sceneLoaded -= OnSceneLoaded;}
+    void OnDisable() {SceneManager.sceneLoaded -= OnSceneLoaded;} //unsubscribe to on Scene Loaded Event
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode) { //If not null, add player input to "playerInput"
         if (GameObject.Find("InputHandler") != null) { playerInput = GameObject.Find("InputHandler").GetComponent<PlayerInput>();}
         }
 
