@@ -52,7 +52,7 @@ public class Inventory : MonoBehaviour
 
         items.Add(item);
 
-        SortInventory();
+        SortInventory();  // sort before we send a ping to update inventory
         
         // send out an alert that inventory changed
         if (onItemChangedCallback != null) {
@@ -66,7 +66,7 @@ public class Inventory : MonoBehaviour
     public void RemoveItem(Item item) {
         items.Remove(item);
 
-        SortInventory();
+        SortInventory();  // sort before we send a ping to update inventory
         
         // send out an alert that inventory changed
         if (onItemChangedCallback != null) {
@@ -75,12 +75,14 @@ public class Inventory : MonoBehaviour
     }
 
 
+    // sort the inventory
     private void SortInventory() {
-
+        // separate all the time items from night & day only items.
         List<Item> allDayItems = new List<Item>();
         List<Item> allNightItems = new List<Item>();
         List<Item> allUtil = new List<Item>();
 
+        // sort through what we have, assign accordingly
         for (int i = 0; i < items.Count; i++) {
             if (items[i].availableDay && items[i].availableNight) {
                 allUtil.Add(items[i]);
@@ -93,6 +95,7 @@ public class Inventory : MonoBehaviour
             }
         }
 
+        // clear messy list and replace with updated list (Util -> Current Time of Day -> Unusable Items)
         items.Clear();
 
         items.AddRange(allUtil);
