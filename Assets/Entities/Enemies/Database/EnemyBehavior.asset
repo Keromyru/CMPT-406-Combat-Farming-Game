@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4036f4bcb47c2244fa83b74e5d3aefa2, type: 3}
+  m_Name: EnemyBehavior
+  m_EditorClassIdentifier: 
+  enemyName: A Horror
+  enemyMaxHealth: 100
+  attackRate: 1
+  attackRange: 5
+  attackDamage: 10
+  priorityList:
+  - {fileID: 11400000, guid: 5ac0ed6529ca8544b9b32869783c2efb, type: 2}
+  - {fileID: 11400000, guid: ce3854738b608f341b5423ab3a7f32fe, type: 2}
+  - {fileID: 11400000, guid: 974df331d333430479d7fd00e96aaab4, type: 2}
+  SoundOnHit: 
+  SoundOnAttack: 
+  SoundOnDeath: 
+  SoundAggression: 
+  enemyPrefab: {fileID: 0}
+  audioController: {fileID: 0}

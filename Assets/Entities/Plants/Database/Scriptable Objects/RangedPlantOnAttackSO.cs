@@ -7,8 +7,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "OnAttack Ranged", menuName = "Plant Data/Plant Action/OnAttack Ranged Attack")]
 public class RangedPlantOnAttackSO : PlantOnAttackSO
 {   
-   [SerializeField] float range;
-   [SerializeField] float damage;
    [SerializeField] float projectileSpeed;
    [SerializeField] GameObject projectilePrefab;
    [SerializeField] float firePointLength;
