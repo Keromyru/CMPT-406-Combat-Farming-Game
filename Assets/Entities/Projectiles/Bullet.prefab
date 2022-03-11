@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactEffect: {fileID: 0}
-  impactSound: {fileID: 0}
-  shotSound: {fileID: 0}
+  impactSound: {fileID: 11400000, guid: 7b60947a0e5144aa9802d81d371c5c9d, type: 2}
+  shotSound: {fileID: 11400000, guid: 3cb05b89f56304c78b978ad0aef70192, type: 2}
   bulletDamage: 0
   source: {fileID: 0}
