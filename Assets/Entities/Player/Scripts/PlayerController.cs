@@ -18,7 +18,8 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     // Attack Data  
     private Coroutine attackRoutine; 
     private bool isWaiting; //Is in a state of waiting before it can attack again 
-   
+    
+
     void Start(){GameCamera.SetTarget(this.gameObject);}//Sets the player as the camera focus
 
     //PLAYER LOGIC
@@ -47,7 +48,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         //Death Check
         if(health <= 0){ onDeath();}
     }
-
+    /*
     //Pointer Location Extracted from Blakes Code
     private Vector2 pointerLocation(){
         Vector3 mousePos = Mouse.current.position.ReadValue();
@@ -58,6 +59,36 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
    
         return MousePosition;
     }
+    */
+
+    //Pointer Location from mask layered raycast
+    private Vector2 pointerLocation(){
+        Vector3 PointerPosition = Vector3.zero;
+
+        // Bit shift the index of the layer (16) to get a bit mask
+        int layerMask = 1 << 16;
+        // This would cast rays only against colliders in layer 16.
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+        // Does the ray intersect any objects on the raycast layer
+        if (Physics.Raycast (ray, out hit, Mathf.Infinity,layerMask)) {
+            PointerPosition = hit.point; //Vector2
+        }
+        else { 
+            //Pointer Location Extracted from Blakes Code 
+            //This is defaulted too if the raycast doesnt' work for whatever reason
+            Vector3 mousePos = Mouse.current.position.ReadValue();
+            mousePos.z = -1000;
+            PointerPosition = myCamera.GetComponent<Camera>().ScreenToWorldPoint(mousePos);
+            PointerPosition.y += 523f;
+            PointerPosition.z = 0f;
+        }
+
+   
+        return PointerPosition;
+    }
+
+
 
     public void resetHealth(){ //Reset health
         if (myPlayerData.soundHeal != null) {audioController.Play(myPlayerData.soundHeal);} //Play myPlayerData.soundHeal if the file has been declared
