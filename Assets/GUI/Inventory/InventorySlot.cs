@@ -22,8 +22,8 @@ public class InventorySlot : MonoBehaviour
         icon.sprite = item.icon;  // update inventory sprite
         icon.enabled = true;  // display the inventory sprite
 
-        amountText.enabled = true;
-        amountText.text = amount.ToString();
+        amountText.text = amount.ToString();  // update to current item stack
+        amountText.enabled = true;  // display item stack
 
         removeButton.interactable = true;  // we can now click the delete button
     }

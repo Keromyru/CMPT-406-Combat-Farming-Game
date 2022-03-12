@@ -32,6 +32,9 @@ public class HotbarSlot : MonoBehaviour
         icon.sprite = null;
 
         icon.enabled = false;
+
+        amountText.text = "0";
+        amountText.enabled = false;
     }
 
     // much like the UseItem() call in InventorySlot, this does nothing right now :)
