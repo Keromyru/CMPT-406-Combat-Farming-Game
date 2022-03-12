@@ -10,11 +10,11 @@ public class DayNightCycle : MonoBehaviour
     public TextMeshProUGUI dayDisplay;  //Display day
     private Volume ppv;  //Post processing volume
 
-    public float tick;  //Increasing the tick, increases second rate
-    private float seconds;
-    private int mins;
-    private int hours;
-    private int days = 1;
+    public float tick;  //Increasing the tick, increases second rate, Infinity is the fastest possible input
+    public float seconds;
+    public int mins;
+    public int hours;
+    public int days = 1;
 
     public bool activateLights;  //Check if lights are on
     public GameObject[] lights;  //All the lights turn on when dark
