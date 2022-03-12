@@ -18,7 +18,8 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     private bool dayTime = false;  
 
 
-    private PlantBehaviorSO myPlantData;
+    private PlantBehaviorSO myPlantData; //References the plants Entry in the Database
+    private PlantDatabaseSO myPlantSpawner; //References the spawner to it can call it's decendants
     // Behaviors
     private PlantOnHitSO onHitBehavior;
     private PlantOnAttackSO onAttackBehavior;
@@ -53,7 +54,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         
     }
 
-    //Plant Targeting 
+    //Plant Actions
     //Basically when things enter it's zone it'll add it to a tracking list, and if it leaves it'll remove it.
     private void OnTriggerEnter2D(Collider2D entity) {
         if (entity.tag == "Enemy" && myPlantData.canAttack) {
@@ -97,6 +98,28 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         }
     }
 
+    public bool waterPlant(float amount){
+        energy += amount;
+        //Catch to prevent overfilling
+        if (energy > myPlantData.plantMaxEnergy) { energy = myPlantData.plantMaxEnergy;}
+
+        //Returns true if plant energy is now ful
+        if (energy >= myPlantData.plantMaxEnergy){return true;}
+        else { return false;}
+    }
+
+    //Replaces The Current Plant With Its next phase.
+    //Going to be checked on the "Newday" trigger
+    private void nextGrowthPhase(){
+        if (myPlantData.soundGrowth != null) {audioController.Play(myPlantData.soundGrowth);} //Play soundGrowth if the file has been declared
+        //Spawns the next plant in line
+        myPlantData.nextPhase.spawnNextPlant(
+            myPlantData.nextPhase.name,
+            this.location,
+            myPlantData.plantMaxHealth - health,
+            myPlantData.plantMaxEnergy - energy);
+        Destroy(this.gameObject);
+    }
 
 
 
@@ -110,6 +133,10 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         growAge++; 
         dayTime = true;
         targets.Clear(); //Clear Attack List
+
+        if(myPlantData.nextPhase != null && myPlantData.matureAge != 0){
+            nextGrowthPhase();
+        }
 
 
     }
@@ -195,9 +222,10 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     public void setOnAttack(PlantOnAttackSO newOnAttack){ onAttackBehavior = newOnAttack; }
     public void setOnHarvest(PlantOnHarvestSO newOnHarvest){ onHarvestBehavior = newOnHarvest; }
     public void setAudioController( AudioControllerSO newAudioController) { audioController = newAudioController;}
-
+    public float getRemaining() { return myPlantData.plantMaxEnergy - energy; }
+   
     public void setMyPlantData(PlantBehaviorSO newPlantData) {myPlantData = newPlantData; }
-
+    public void setMyPlantSpawner(PlantDatabaseSO newPlantSpawner) {myPlantSpawner = newPlantSpawner; }
     public void setLocation(Vector2 newLocation){ location = newLocation; }
     public Vector2 getLocation(){ return location; }
 
@@ -211,5 +239,4 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     public float getEnergy(){ return energy;}
 
     #endregion Sets and Gets
-
 }
