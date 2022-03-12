@@ -716,7 +716,7 @@ GameObject:
   - component: {fileID: 5506083891924568728}
   - component: {fileID: 4290164876608194417}
   m_Layer: 0
-  m_Name: prefab_TwoLeggedSplitMouth
+  m_Name: prefab_Split Strider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
