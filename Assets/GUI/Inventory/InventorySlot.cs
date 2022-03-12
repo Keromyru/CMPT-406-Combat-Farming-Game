@@ -11,13 +11,19 @@ public class InventorySlot : MonoBehaviour
 
     public Button removeButton;  // literally a button on the slot
 
+    public Text amountText;  // text to hold the amount in stack
+    public int amount; // amount of item in inventory
+
     // adding item to inventory
     // takes the scriptable object in as an agrument, grabs all other info from there
-    public void AddItem(Item newItem) {
+    public void AddItem(Item newItem, int amount) {
         item = newItem;
 
         icon.sprite = item.icon;  // update inventory sprite
         icon.enabled = true;  // display the inventory sprite
+
+        amountText.enabled = true;
+        amountText.text = amount.ToString();
 
         removeButton.interactable = true;  // we can now click the delete button
     }
@@ -29,6 +35,9 @@ public class InventorySlot : MonoBehaviour
         icon.sprite = null;
 
         icon.enabled = false;
+
+        amountText.text = "0";
+        amountText.enabled = false;
 
         removeButton.interactable = false;  // no more remove button
     }
@@ -43,5 +52,15 @@ public class InventorySlot : MonoBehaviour
         if (item != null) {
             item.Use();
         }
+    }
+
+    // if we can't use the slot at present (i.e. wrong time of day)
+    public void MarkUnusable() {
+        Debug.Log("Marking current slot unusable");
+    }
+
+    // if we can use this slot
+    public void MarkUsable() {
+        Debug.Log("Can now use this slot.");
     }
 }

@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using System.Linq;
 // Mace
 
 // okay I've seriously rewritten this script like five times, it's a little rough
@@ -75,8 +76,11 @@ public class InventoryInputs : MonoBehaviour
         
         // add item
         for (int i = start_pos; i < stop; i++) {
-            if (inventory.items[i] != null) {
-                hotbarActions[i].AddItem(inventory.items[i]);
+
+            KeyValuePair<Item, int> current_item = inventory.items.ElementAt(i);
+
+            if (current_item.Key != null) {
+                hotbarActions[i].AddItem(current_item.Key, current_item.Value);
                 //Debug.Log("Added " + hotbarActions[i].name + " to hotbar actions.");
             }
         }

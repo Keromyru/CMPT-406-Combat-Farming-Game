@@ -28,7 +28,7 @@ public class Inventory : MonoBehaviour
     
 
     // this is the main inventory - literally just a built-in list that uses... list operations for management.
-    public List<Item> items = new List<Item>();
+    public Dictionary<Item, int> items = new Dictionary<Item, int>();
 
     // max inventory spots
     // if this is changed, you'll have to physically go into the scene & add inventory slots to match
@@ -40,6 +40,9 @@ public class Inventory : MonoBehaviour
     // is it day or night time?
     private bool day = true;
 
+    // what is the maximum number of items that can stack?
+    public int max_stack = 99;
+
 
     // just a list update
     // boolean return - true on success, false on failure
@@ -50,7 +53,18 @@ public class Inventory : MonoBehaviour
             return false;
         }
 
-        items.Add(item);
+        if (items.ContainsKey(item)) {
+            // if there's too many items to stack
+            if (items[item] >= 99) {
+                Debug.Log("Cannot hold anymore items of this type.");
+                return false;
+            }
+            
+            items[item] = items[item] + 1;
+        }
+        else {
+            items.Add(item, 1);
+        }
 
         SortInventory();  // sort before we send a ping to update inventory
         
@@ -64,7 +78,13 @@ public class Inventory : MonoBehaviour
 
     // just another list update
     public void RemoveItem(Item item) {
-        items.Remove(item);
+
+        if (items[item] == 1) {
+            items.Remove(item);
+        } 
+        else {
+            items[item] = items[item] - 1;
+        }
 
         SortInventory();  // sort before we send a ping to update inventory
         
@@ -78,36 +98,47 @@ public class Inventory : MonoBehaviour
     // sort the inventory
     private void SortInventory() {
         // separate all the time items from night & day only items.
-        List<Item> allDayItems = new List<Item>();
-        List<Item> allNightItems = new List<Item>();
-        List<Item> allUtil = new List<Item>();
+        Dictionary<Item, int> allDayItems = new Dictionary<Item, int>();
+        Dictionary<Item, int> allNightItems = new Dictionary<Item, int>();
+        Dictionary<Item, int> allUtil = new Dictionary<Item, int>();
 
         // sort through what we have, assign accordingly
-        for (int i = 0; i < items.Count; i++) {
-            if (items[i].availableDay && items[i].availableNight) {
-                allUtil.Add(items[i]);
+        foreach (KeyValuePair<Item, int> item in items) {
+            if (item.Key.availableDay && item.Key.availableNight) {
+                allUtil.Add(item.Key, item.Value);
             }
-            else if (items[i].availableDay) {
-                allDayItems.Add(items[i]);
+            else if (item.Key.availableDay) {
+                allDayItems.Add(item.Key, item.Value);
             }
-            else if (items[i].availableNight) {
-                allNightItems.Add(items[i]);
+            else if (item.Key.availableNight) {
+                allNightItems.Add(item.Key, item.Value);
             }
         }
 
-        // clear messy list and replace with updated list (Util -> Current Time of Day -> Unusable Items)
+        // clear messy inventory and replace with updated order (Util -> Current Time of Day -> Unusable Items)
         items.Clear();
 
-        items.AddRange(allUtil);
+        foreach (KeyValuePair<Item, int> util in allUtil) {
+            items.Add(util.Key, util.Value);
+        }
 
         if (day) {
-            items.AddRange(allDayItems);
-            items.AddRange(allNightItems);
+            foreach (KeyValuePair<Item, int> daytime in allDayItems) {
+                items.Add(daytime.Key, daytime.Value);
+            }
+
+            foreach (KeyValuePair<Item, int> nighttime in allNightItems) {
+                items.Add(nighttime.Key, nighttime.Value);
+            }
         }
-        else
-        {
-            items.AddRange(allNightItems);
-            items.AddRange(allDayItems);
+        else {
+            foreach (KeyValuePair<Item, int> nighttime in allNightItems) {
+                items.Add(nighttime.Key, nighttime.Value);
+            }
+            
+            foreach (KeyValuePair<Item, int> daytime in allDayItems) {
+                items.Add(daytime.Key, daytime.Value);
+            }
         }
     }
 }

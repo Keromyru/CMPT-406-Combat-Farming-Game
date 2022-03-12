@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using System.Linq;
 
 // Mace
 
@@ -92,13 +94,19 @@ public class InventoryUI : MonoBehaviour
 
         // cycle through all slots, add item if one exists in our inventory
         for (int i = 0; i < slots.Length; i++) {
+
+            KeyValuePair<Item, int> current_item;
+
             if (i < inventory.items.Count) {
-                slots[i].AddItem(inventory.items[i]);
+                current_item = inventory.items.ElementAt(i);
+
+                slots[i].AddItem(current_item.Key, current_item.Value);
 
                 // add it to our hotbar too if there's room
                 if (i < maxHotbarSlots) {
-                    hotbarSlots[i].AddItem(inventory.items[i]);
+                    hotbarSlots[i].AddItem(current_item.Key, current_item.Value);
                 }
+
             }
             // if there isn't room, wipe the slot back to empty state
             else {

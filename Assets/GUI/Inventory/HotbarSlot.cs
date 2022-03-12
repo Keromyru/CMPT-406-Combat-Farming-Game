@@ -10,13 +10,19 @@ public class HotbarSlot : MonoBehaviour
 
     public Toggle background; // the background toggle of our slot
 
+    public Text amountText;  // text to hold the amount in stack
+    public int amount; // amount of item in inventory
+
     // adding item to inventory
     // takes the scriptable object in as an agrument, grabs all other info from there
-    public void AddItem(Item newItem) {
+    public void AddItem(Item newItem, int amount) {
         item = newItem;
 
         icon.sprite = item.icon;  // update hotbar sprite
         icon.enabled = true;  // display hotbar sprite
+
+        amountText.text = amount.ToString();  // update to current item stack
+        amountText.enabled = true;  // display item stack
     }
 
     // nuke all the options to nothing
