@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0392a02027c6ad343a7ab87894ab8423, type: 3}
-  m_Name: Hydra Tulip Seed
+  m_Name: Space_Potato_Seed
   m_EditorClassIdentifier: 
-  name: Hydra Tulip Seed
-  icon: {fileID: 21300000, guid: 75dba8dd4c40d461fa93360f72f09ac0, type: 3}
+  name: Space Potato Seed
+  icon: {fileID: 21300000, guid: 809ae5c89f0bc4fa4b61b632f941c517, type: 3}
   isSellable: 1
-  price: 500
+  price: 100
   available: 0
+  description: These seeds will grow into a Space Potato.
   isPlantable: 1

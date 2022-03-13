@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 // Mace
 
 // Manages the UI for the Inventory Slots
-public class InventorySlot : MonoBehaviour
+// need the IPointerEnterHandler & IPointerExitHandler to get mouse events on the UI
+public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public Image icon;  // what we want to display in inventory
     Item item;  // scriptable object that's holding our item info
@@ -15,6 +17,10 @@ public class InventorySlot : MonoBehaviour
     public int amount; // amount of item in inventory
 
     public Button useButton; // button to use item
+
+    public Tooltip slotTooltipInfo;  // tooltip info for current item
+    public GameObject slotTooltip;  // the actual gameobject for the tooltip
+
 
     // adding item to inventory
     // takes the scriptable object in as an agrument, grabs all other info from there
@@ -29,6 +35,8 @@ public class InventorySlot : MonoBehaviour
 
         removeButton.interactable = true;  // we can now click the delete button
         useButton.interactable = true;  // can now use the item as well
+
+        slotTooltipInfo.UpdateTooltip(newItem);  // update tooltip information
     }
 
     // nuke all the options to nothing
@@ -44,6 +52,9 @@ public class InventorySlot : MonoBehaviour
 
         removeButton.interactable = false;  // no more remove button
         useButton.interactable = false;  // no more use button
+
+        slotTooltipInfo.ClearTooltip();  // disable tooltip for item
+        slotTooltip.SetActive(false);
     }
 
     // when remove button is clicked, delete the item it's attached to
@@ -84,5 +95,21 @@ public class InventorySlot : MonoBehaviour
         useButton.interactable = true;
 
         //Debug.Log("Can now use this slot.");
+    }
+
+    // this is the new version of OnMouseEnter(), or hovering the item slot
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        // only pop the tooltip up if there's actually info to display
+        if (icon.sprite != null) {
+            slotTooltip.SetActive(true);
+        }
+    }
+
+    // this is the new version of OnMouseExit(), or stop hovering item slot
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        // no more tooltip
+        slotTooltip.SetActive(false);
     }
 }

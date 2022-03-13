@@ -25,6 +25,9 @@ public class Item : ScriptableObject
     // for split inventory, what timeslots is the item available for?
     public timeslot available;
 
+    // item description for tooltips
+    public string description;
+
     // default use function that can be shared amongst all Items (including Item sub-types)
     // works just like Interact() in Interactable.cs does, just be sure to include
     // "public virtual void Use() { Base.Use(); AND THEN ANY CODE YOU WANT; }"

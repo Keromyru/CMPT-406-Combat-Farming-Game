@@ -350,6 +350,7 @@ MonoBehaviour:
   background: {fileID: 2318424175997271932}
   amountText: {fileID: 2185527871662999724}
   amount: 0
+  canBeUsed: 0
 --- !u!1 &7266188291515925416
 GameObject:
   m_ObjectHideFlags: 0
