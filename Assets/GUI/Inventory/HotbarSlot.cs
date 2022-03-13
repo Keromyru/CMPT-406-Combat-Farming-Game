@@ -13,6 +13,8 @@ public class HotbarSlot : MonoBehaviour
     public Text amountText;  // text to hold the amount in stack
     public int amount; // amount of item in inventory
 
+    public bool canBeUsed = false;
+
     // adding item to inventory
     // takes the scriptable object in as an agrument, grabs all other info from there
     public void AddItem(Item newItem, int amount) {
@@ -39,6 +41,11 @@ public class HotbarSlot : MonoBehaviour
 
     // much like the UseItem() call in InventorySlot, this does nothing right now :)
     public void UseItem() {
+        if (!canBeUsed) {
+            Debug.Log("Cannot use item right now.");
+            return;
+        }
+
         background.isOn = true;
         if (item != null) {
             item.Use();
@@ -52,7 +59,9 @@ public class HotbarSlot : MonoBehaviour
         faded.a = 0.5f;
         icon.color = faded;
 
-        //Debug.Log("Marking current slot unusable");
+        canBeUsed = false;
+
+        //Debug.Log("Marking current INV slot unusable");
     }
 
     // if we can use this slot
@@ -62,6 +71,8 @@ public class HotbarSlot : MonoBehaviour
         full.a = 1.0f;
         icon.color = full;
 
-        //Debug.Log("Can now use this slot.");
+        canBeUsed = true;
+
+        //Debug.Log("Can now use this INV slot.");
     }
 }

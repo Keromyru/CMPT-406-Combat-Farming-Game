@@ -42,9 +42,9 @@ public class InventoryInputs : MonoBehaviour
     [SerializeField] private Transform hotbarParent;
     // get all the slots
     private HotbarSlot[] possible_locations; 
-
+    // find player location
     [SerializeField] private Transform player;
-
+    // how big is the interaction area around the player?
     public float interactionRadius = 0.5f;
 
 
@@ -162,7 +162,7 @@ public class InventoryInputs : MonoBehaviour
     // use item 1
     private void use1(InputAction.CallbackContext context)
     {
-        if (hotbarActions.Count >= 1) {
+        if ((hotbarActions.Count >= 1) && (hotbarActions[0].canBeUsed)) {
             hotbarActions[0].UseItem();
         }
     }
@@ -170,7 +170,7 @@ public class InventoryInputs : MonoBehaviour
     // use item 2
     private void use2(InputAction.CallbackContext context)
     {
-        if (hotbarActions.Count >= 2) {
+        if ((hotbarActions.Count >= 2) && (hotbarActions[1].canBeUsed)) {
             hotbarActions[1].UseItem();
         }
     }
@@ -178,7 +178,7 @@ public class InventoryInputs : MonoBehaviour
     // use item 3
     private void use3(InputAction.CallbackContext context)
     {
-        if (hotbarActions.Count >= 3) {
+        if ((hotbarActions.Count >= 3) && (hotbarActions[2].canBeUsed)) {
             hotbarActions[2].UseItem();
         }
     }
@@ -186,7 +186,7 @@ public class InventoryInputs : MonoBehaviour
     // use item 4
     private void use4(InputAction.CallbackContext context)
     {
-        if (hotbarActions.Count >= 4) {
+        if ((hotbarActions.Count >= 4) && (hotbarActions[3].canBeUsed)) {
             hotbarActions[3].UseItem();
         }
     }
@@ -194,7 +194,7 @@ public class InventoryInputs : MonoBehaviour
     // use item 5
     private void use5(InputAction.CallbackContext context)
     {
-        if (hotbarActions.Count >= 5) {
+        if ((hotbarActions.Count >= 5) && (hotbarActions[4].canBeUsed)) {
             hotbarActions[4].UseItem();
         }
     }
@@ -202,7 +202,7 @@ public class InventoryInputs : MonoBehaviour
     // use item 6
     private void use6(InputAction.CallbackContext context)
     {
-        if (hotbarActions.Count >= 6) {
+        if ((hotbarActions.Count >= 6) && (hotbarActions[5].canBeUsed)) {
             hotbarActions[5].UseItem();
         }
     }
@@ -210,7 +210,7 @@ public class InventoryInputs : MonoBehaviour
     // use item 7
     private void use7(InputAction.CallbackContext context)
     {
-        if (hotbarActions.Count >= 7) {
+        if ((hotbarActions.Count >= 7) && (hotbarActions[6].canBeUsed)) {
             hotbarActions[6].UseItem();
         }
     }    
@@ -218,7 +218,7 @@ public class InventoryInputs : MonoBehaviour
     // use item 8
     private void use8(InputAction.CallbackContext context)
     {
-        if (hotbarActions.Count == 8) {
+        if ((hotbarActions.Count == 8) && (hotbarActions[7].canBeUsed)) {
             hotbarActions[7].UseItem();
         }
     }
