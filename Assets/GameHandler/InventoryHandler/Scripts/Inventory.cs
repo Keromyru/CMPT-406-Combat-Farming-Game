@@ -25,7 +25,6 @@ public class Inventory : MonoBehaviour
         instance = this;
     }
     // end adding singleton
-    
 
     // this is the main inventory - literally just a built-in list that uses... list operations for management.
     public Dictionary<Item, int> items = new Dictionary<Item, int>();
@@ -104,13 +103,13 @@ public class Inventory : MonoBehaviour
 
         // sort through what we have, assign accordingly
         foreach (KeyValuePair<Item, int> item in items) {
-            if (item.Key.availableDay && item.Key.availableNight) {
+            if ((int)item.Key.available == 2) {
                 allUtil.Add(item.Key, item.Value);
             }
-            else if (item.Key.availableDay) {
+            else if ((int)item.Key.available == 0) {
                 allDayItems.Add(item.Key, item.Value);
             }
-            else if (item.Key.availableNight) {
+            else if ((int)item.Key.available == 1) {
                 allNightItems.Add(item.Key, item.Value);
             }
         }

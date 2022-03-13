@@ -9,13 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60a6d806f697c9b43bd7e7da5d07bbf1, type: 3}
-  m_Name: Hydra Tulip Seeds
+  m_Script: {fileID: 11500000, guid: 0392a02027c6ad343a7ab87894ab8423, type: 3}
+  m_Name: Hydra Tulip Seed
   m_EditorClassIdentifier: 
-  name: Hydra Tulip Seeds
-  icon: {fileID: 21300000, guid: 75dba8dd4c40d461fa93360f72f09ac0, type: 3}
-  isSellable: 1
-  pricePoint: 500
+  name: New Item
+  icon: {fileID: 0}
+  isSellable: 0
+  pricePoint: 0
+  available: 0
   isPlantable: 1
-  availableNight: 0
-  availableDay: 1

@@ -4,7 +4,7 @@ using UnityEngine;
 // makes a new tab appear in the actual right click menu in Unity specifically for creating new Inventory Items
 // selecting it just generates an empty item that you can customize :)
 // if we want this option out of the menu, you can just comment the following line
-[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
+[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Generic Item")]
 // I've been putting created items in Entities -> Items -> SubFolder
 // i.e. all the Plant Seeds are Entities -> Items -> Seeds
 
@@ -20,14 +20,10 @@ public class Item : ScriptableObject
     public bool isSellable = false;
 
     // price point for selling
-    public int pricePoint = 0;
-
-    // is this a seed or plantable object?
-    public bool isPlantable = false;
+    public int price = 0;
 
     // for split inventory, what timeslots is the item available for?
-    public bool availableNight = false;
-    public bool availableDay = true;
+    public timeslot available;
 
     // default use function that can be shared amongst all Items (including Item sub-types)
     // works just like Interact() in Interactable.cs does, just be sure to include
@@ -46,4 +42,12 @@ public class Item : ScriptableObject
         Debug.Log("Selling " + name);
     }
 
+    // for if we've doing something that takes the item right out of the inventory
+    public void RemoveFromInventory() {
+        Inventory.instance.RemoveItem(this);
+    }
+
 }
+
+// possible timeslot options that times could be available for
+public enum timeslot { Day, Night, Always }
