@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0392a02027c6ad343a7ab87894ab8423, type: 3}
   m_Name: Giga Gourd Seed
   m_EditorClassIdentifier: 
-  name: Giga Gourd Seeds
+  name: Giga Gourd Seed
   icon: {fileID: 21300000, guid: fdd8a942d85624644bb94b7f6ea5d906, type: 3}
   isSellable: 1
-  pricePoint: 300
+  price: 0
   available: 0
+  isPlantable: 1
