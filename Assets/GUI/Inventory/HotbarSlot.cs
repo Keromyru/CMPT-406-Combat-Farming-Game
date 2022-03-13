@@ -1,9 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 // Mace
 
-public class HotbarSlot : MonoBehaviour
+// Manages the UI for the Hotbar Slots
+// need the IPointerEnterHandler & IPointerExitHandler to get mouse events on the UI
+public class HotbarSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public Image icon;  // what we want to display in inventory
     Item item;  // scriptable object that's holding our item info
@@ -13,7 +16,11 @@ public class HotbarSlot : MonoBehaviour
     public Text amountText;  // text to hold the amount in stack
     public int amount; // amount of item in inventory
 
-    public bool canBeUsed = false;
+    public bool canBeUsed = false;  // can the slot itself be used right now?
+
+    public Tooltip slotTooltipInfo;  // tooltip info for current item
+    public GameObject slotTooltip;  // the actual gameobject for the tooltip
+
 
     // adding item to inventory
     // takes the scriptable object in as an agrument, grabs all other info from there
@@ -25,6 +32,8 @@ public class HotbarSlot : MonoBehaviour
 
         amountText.text = amount.ToString();  // update to current item stack
         amountText.enabled = true;  // display item stack
+
+        slotTooltipInfo.UpdateTooltip(newItem);  // update tooltip information
     }
 
     // nuke all the options to nothing
@@ -37,6 +46,9 @@ public class HotbarSlot : MonoBehaviour
 
         amountText.text = "0";
         amountText.enabled = false;
+
+        slotTooltipInfo.ClearTooltip();  // disable tooltip for item
+        slotTooltip.SetActive(false);
     }
 
     // much like the UseItem() call in InventorySlot, this does nothing right now :)
@@ -61,7 +73,7 @@ public class HotbarSlot : MonoBehaviour
 
         canBeUsed = false;
 
-        //Debug.Log("Marking current INV slot unusable");
+        //Debug.Log("Marking current hotbar slot unusable");
     }
 
     // if we can use this slot
@@ -73,6 +85,22 @@ public class HotbarSlot : MonoBehaviour
 
         canBeUsed = true;
 
-        //Debug.Log("Can now use this INV slot.");
+        //Debug.Log("Can now use this hotbar slot.");
+    }
+
+    // this is the new version of OnMouseEnter(), or hovering the item slot
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        // only pop the tooltip up if there's actually info to display
+        if (icon.sprite != null) {
+            slotTooltip.SetActive(true);
+        }
+    }
+
+    // this is the new version of OnMouseExit(), or stop hovering item slot
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        // no more tooltip
+        slotTooltip.SetActive(false);
     }
 }

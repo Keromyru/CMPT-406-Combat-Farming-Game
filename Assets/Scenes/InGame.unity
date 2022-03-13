@@ -16873,6 +16873,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InventoryHandler
       objectReference: {fileID: 0}
+    - target: {fileID: 7955687849613416830, guid: 058e282eff714274aa9827bcc51fe515, type: 3}
+      propertyPath: max_stack
+      value: 99
+      objectReference: {fileID: 0}
     - target: {fileID: 7955687849613416831, guid: 058e282eff714274aa9827bcc51fe515, type: 3}
       propertyPath: player
       value: 

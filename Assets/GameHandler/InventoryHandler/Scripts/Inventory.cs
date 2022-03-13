@@ -56,7 +56,7 @@ public class Inventory : MonoBehaviour
         if (items.ContainsKey(item)) {
 
             // if there's too many items to stack
-            if (items[item] >= 99) {
+            if (items[item] >= max_stack) {
                 Debug.Log("Cannot hold anymore items of this type.");
                 return false;
             }
