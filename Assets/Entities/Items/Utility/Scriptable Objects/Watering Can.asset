@@ -16,6 +16,4 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 1acfb76eb3ff6f84b8621ce3932486a2, type: 3}
   isSellable: 0
   pricePoint: 0
-  isPlantable: 0
-  availableNight: 1
-  availableDay: 1
+  available: 2
