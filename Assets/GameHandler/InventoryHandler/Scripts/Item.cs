@@ -49,5 +49,5 @@ public class Item : ScriptableObject
 
 }
 
-// possible timeslot options that times could be available for
+// possible timeslot options that items could be available for
 public enum timeslot { Day, Night, Always }

@@ -23,6 +23,8 @@ public class InventoryUI : MonoBehaviour
     private InputAction openInventory;
     private InputAction closeInventory;
     private bool unassigned = true;  // used to see if the InputActions have been properly assigned
+
+    public bool isDay = true;  // is it day or night time? to be updated
     
 
     // Start is called before the first frame update
@@ -105,6 +107,29 @@ public class InventoryUI : MonoBehaviour
                 // add it to our hotbar too if there's room
                 if (i < maxHotbarSlots) {
                     hotbarSlots[i].AddItem(current_item.Key, current_item.Value);
+                }
+
+                // if it's day time, mark night only items as unusable
+                if (isDay) {
+                    if ((int)current_item.Key.available == 1) {
+                        slots[i].MarkUnusable();
+                        hotbarSlots[i].MarkUnusable();
+                    }
+                    else {
+                        slots[i].MarkUsable();
+                        hotbarSlots[i].MarkUsable();
+                    }
+                }
+                // else if it's night, mark day only items as unusable
+                else {
+                    if ((int)current_item.Key.available == 0) {
+                        slots[i].MarkUnusable();
+                        hotbarSlots[i].MarkUnusable();
+                    }
+                    else {
+                        slots[i].MarkUsable();
+                        hotbarSlots[i].MarkUsable();
+                    }
                 }
 
             }

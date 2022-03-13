@@ -52,7 +52,9 @@ public class Inventory : MonoBehaviour
             return false;
         }
 
+        // if the item is already in inventory, just add to total
         if (items.ContainsKey(item)) {
+
             // if there's too many items to stack
             if (items[item] >= 99) {
                 Debug.Log("Cannot hold anymore items of this type.");
@@ -61,6 +63,7 @@ public class Inventory : MonoBehaviour
             
             items[item] = items[item] + 1;
         }
+        // otherwise add item to inventory. we'll always start with only 1
         else {
             items.Add(item, 1);
         }
@@ -78,9 +81,11 @@ public class Inventory : MonoBehaviour
     // just another list update
     public void RemoveItem(Item item) {
 
+        // if there's only one copy of item in inventory, nuke it
         if (items[item] == 1) {
             items.Remove(item);
         } 
+        // otherwise just lower the total count
         else {
             items[item] = items[item] - 1;
         }
@@ -102,6 +107,8 @@ public class Inventory : MonoBehaviour
         Dictionary<Item, int> allUtil = new Dictionary<Item, int>();
 
         // sort through what we have, assign accordingly
+        // available is the enum { Day, Night, Always } 
+        // where Day = 0, Night = 1, and Always = 2
         foreach (KeyValuePair<Item, int> item in items) {
             if ((int)item.Key.available == 2) {
                 allUtil.Add(item.Key, item.Value);
@@ -117,24 +124,25 @@ public class Inventory : MonoBehaviour
         // clear messy inventory and replace with updated order (Util -> Current Time of Day -> Unusable Items)
         items.Clear();
 
+        // utility items always come first
         foreach (KeyValuePair<Item, int> util in allUtil) {
             items.Add(util.Key, util.Value);
         }
 
+        // day then night items
         if (day) {
             foreach (KeyValuePair<Item, int> daytime in allDayItems) {
                 items.Add(daytime.Key, daytime.Value);
             }
-
             foreach (KeyValuePair<Item, int> nighttime in allNightItems) {
                 items.Add(nighttime.Key, nighttime.Value);
             }
         }
+        // OR night then day items
         else {
             foreach (KeyValuePair<Item, int> nighttime in allNightItems) {
                 items.Add(nighttime.Key, nighttime.Value);
             }
-            
             foreach (KeyValuePair<Item, int> daytime in allDayItems) {
                 items.Add(daytime.Key, daytime.Value);
             }

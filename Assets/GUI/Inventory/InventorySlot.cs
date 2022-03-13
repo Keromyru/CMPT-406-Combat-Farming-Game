@@ -14,6 +14,8 @@ public class InventorySlot : MonoBehaviour
     public Text amountText;  // text to hold the amount in stack
     public int amount; // amount of item in inventory
 
+    public Button useButton; // button to use item
+
     // adding item to inventory
     // takes the scriptable object in as an agrument, grabs all other info from there
     public void AddItem(Item newItem, int amount) {
@@ -26,6 +28,7 @@ public class InventorySlot : MonoBehaviour
         amountText.enabled = true;  // display item stack
 
         removeButton.interactable = true;  // we can now click the delete button
+        useButton.interactable = true;  // can now use the item as well
     }
 
     // nuke all the options to nothing
@@ -40,6 +43,7 @@ public class InventorySlot : MonoBehaviour
         amountText.enabled = false;
 
         removeButton.interactable = false;  // no more remove button
+        useButton.interactable = false;  // no more use button
     }
 
     // when remove button is clicked, delete the item it's attached to
@@ -56,11 +60,29 @@ public class InventorySlot : MonoBehaviour
 
     // if we can't use the slot at present (i.e. wrong time of day)
     public void MarkUnusable() {
-        Debug.Log("Marking current slot unusable");
+        // dim the sprite
+        Color faded = icon.color;
+        faded.a = 0.5f;
+        icon.color = faded;
+
+        // remove interactions
+        removeButton.interactable = false;
+        useButton.interactable = false;
+
+        //Debug.Log("Marking current slot unusable");
     }
 
     // if we can use this slot
     public void MarkUsable() {
-        Debug.Log("Can now use this slot.");
+        // brighten the sprite
+        Color full = icon.color;
+        full.a = 1.0f;
+        icon.color = full;
+
+        // make clickeys clickable again
+        removeButton.interactable = true;
+        useButton.interactable = true;
+
+        //Debug.Log("Can now use this slot.");
     }
 }

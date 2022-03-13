@@ -44,4 +44,24 @@ public class HotbarSlot : MonoBehaviour
             item.Use();
         }
     }
+
+    // if we can't use the slot at present (i.e. wrong time of day)
+    public void MarkUnusable() {
+        // dim the sprite
+        Color faded = icon.color;
+        faded.a = 0.5f;
+        icon.color = faded;
+
+        //Debug.Log("Marking current slot unusable");
+    }
+
+    // if we can use this slot
+    public void MarkUsable() {
+        // brighten the sprite
+        Color full = icon.color;
+        full.a = 1.0f;
+        icon.color = full;
+
+        //Debug.Log("Can now use this slot.");
+    }
 }

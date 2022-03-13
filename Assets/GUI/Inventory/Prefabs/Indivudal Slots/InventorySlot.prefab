@@ -149,6 +149,7 @@ MonoBehaviour:
   removeButton: {fileID: 7109773323930722634}
   amountText: {fileID: 5399500134213399387}
   amount: 0
+  useButton: {fileID: 7109773324790019526}
 --- !u!1 &7109773323853993939
 GameObject:
   m_ObjectHideFlags: 0
