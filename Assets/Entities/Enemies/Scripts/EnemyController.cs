@@ -91,12 +91,18 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
     #region Sets and Gets
     ////////////////////////////////////////////////
     //SETS 'n GETS
-
     public void setHealth(float newhealth) { enemyHealth = newhealth;}
-
     public float getHealth() {return enemyHealth;}
-
+    public void setOnAttack( EnemyOnAttackSO newOnAttackBehavior) { onAttackBehavior = newOnAttackBehavior;}
+    public void setOnHit( EnemyOnHitSO newOnHitBehavior) { onHitBehavior = newOnHitBehavior;}
+    public void setOnDeath( EnemyOnDeathSO newOnDeathBehavior) { onDeathBehavior = newOnDeathBehavior;}
     public void setAudioController(AudioControllerSO newAudioController){ audioController = newAudioController;}
+
+    public void setMyPlantData(PlantBehaviorSO newPlantData)
+    {
+        throw new System.NotImplementedException();
+    }
+
     #endregion
     ////////////////////////////////////////////////
 }

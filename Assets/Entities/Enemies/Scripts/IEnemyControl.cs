@@ -6,14 +6,10 @@ public interface IEnemyControl
 {
     void setHealth(float health);
     float getHealth();
-
-
-
-
-    // void setMyPlantData(PlantBehaviorSO newPlantData);
-    // void setOnHit(PlantOnHitSO newOnHit);
-    // void setOnDeath(PlantOnDeathSO newOneDeath);
-    // void setOnAttack(PlantOnAttackSO newOnAttack);
+    void setMyPlantData(PlantBehaviorSO newPlantData);
+    void setOnHit(EnemyOnHitSO newOnHit);
+    void setOnDeath(EnemyOnDeathSO newOneDeath);
+    void setOnAttack(EnemyOnAttackSO newOnAttack);
     void setAudioController( AudioControllerSO newAudioController);
     
 }

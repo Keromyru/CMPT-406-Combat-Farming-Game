@@ -7,6 +7,9 @@ public class EnemyBehaviorSO : ScriptableObject
     [Header("Enemy Stats")]
     public string enemyName;
     public float enemyMaxHealth;
+
+    public int numberOfDropsOnDeath;
+    public int cashPerDrop;
     
     
     [Header("Enemy Attack")]
