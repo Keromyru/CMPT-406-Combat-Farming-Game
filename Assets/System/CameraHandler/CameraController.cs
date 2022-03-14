@@ -128,7 +128,7 @@ public class CameraController : MonoBehaviour
         //Shake = Cameras local position + a random vector3 between 0-1 * a magnitude to indicate how much
         Vector3 shake = Mcamera.transform.localPosition + Random.insideUnitSphere * shakeMagnitude;
         //Removed the Y value to keep the camera from drifting too much
-        shake.y = initialPosition.y;
+        shake.z = initialPosition.z;
         //Sets the current location with out any interpolation makeing the effect slightly jarring
         Mcamera.transform.localPosition = shake;
     }

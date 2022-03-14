@@ -5,7 +5,7 @@ public static class GameCamera
      GameObject.Find("Camera Rig").GetComponent<CameraController>().SetLocation(location);
     }
     public static GameObject GetCamera(){
-     return GameObject.Find("Camera Rig");
+     return GameObject.Find("Camera Rig").GetComponent<CameraController>().GetCamera();
     }
 
     public static void Zoom(float zoom){
