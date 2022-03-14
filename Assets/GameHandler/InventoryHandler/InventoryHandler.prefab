@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items: []
   max_space: 16
+  max_hotbar_space: 8
 --- !u!114 &7955687849613416831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,9 +59,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9282b5f9196928645a9fcb84485f33ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slot1: {fileID: 1335678251937390495, guid: 46b27ae7c2fb4964b976815880d53270, type: 3}
-  slot2: {fileID: 3169183576432571451, guid: 46b27ae7c2fb4964b976815880d53270, type: 3}
-  slot3: {fileID: -3592317304427495913, guid: 46b27ae7c2fb4964b976815880d53270, type: 3}
-  slot4: {fileID: -1419196159114249868, guid: 46b27ae7c2fb4964b976815880d53270, type: 3}
-  click: {fileID: 1493462639035550562, guid: 46b27ae7c2fb4964b976815880d53270, type: 3}
   hotbarActions: []
+  hotbarParent: {fileID: 3786629694251192564, guid: 743037274d89ba34abe1d2978cd4c529, type: 3}
