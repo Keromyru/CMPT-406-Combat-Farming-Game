@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60a6d806f697c9b43bd7e7da5d07bbf1, type: 3}
-  m_Name: Watering Can
+  m_Script: {fileID: 11500000, guid: 8b2666010b669f249b78a662f94f355e, type: 3}
+  m_Name: SFX_RayGunShoot
   m_EditorClassIdentifier: 
-  name: Watering Can
-  icon: {fileID: 21300000, guid: 1acfb76eb3ff6f84b8621ce3932486a2, type: 3}
-  isSellable: 0
-  pricePoint: 0
-  isPlantable: 0
-  availableNight: 1
-  availableDay: 1
+  Name: RayGun Shoot
+  clips:
+  - {fileID: 8300000, guid: ae8a0d04ab2424a46b4cb98d02cbc712, type: 3}
+  type: 3
+  volume: 1
+  pitch: 1
+  source: {fileID: 0}

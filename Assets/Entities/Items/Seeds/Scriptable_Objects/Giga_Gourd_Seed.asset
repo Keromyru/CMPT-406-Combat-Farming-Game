@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60a6d806f697c9b43bd7e7da5d07bbf1, type: 3}
-  m_Name: Space Flower Seeds
+  m_Script: {fileID: 11500000, guid: 0392a02027c6ad343a7ab87894ab8423, type: 3}
+  m_Name: Giga_Gourd_Seed
   m_EditorClassIdentifier: 
-  name: Space Flower Seeds
-  icon: {fileID: 21300000, guid: 07a6252939b424f9196e505fed9f6bf8, type: 3}
+  name: Giga Gourd Seed
+  icon: {fileID: 21300000, guid: fdd8a942d85624644bb94b7f6ea5d906, type: 3}
   isSellable: 1
-  pricePoint: 200
+  price: 300
+  available: 0
+  description: These seeds will grow into a Giga Gourd.
   isPlantable: 1
-  availableNight: 0
-  availableDay: 1
