@@ -6,7 +6,7 @@ public interface IEnemyControl
 {
     void setHealth(float health);
     float getHealth();
-    void setMyPlantData(PlantBehaviorSO newPlantData);
+    void setMyEnemyData(EnemyBehaviorSO newEnemyData);
     void setOnHit(EnemyOnHitSO newOnHit);
     void setOnDeath(EnemyOnDeathSO newOneDeath);
     void setOnAttack(EnemyOnAttackSO newOnAttack);

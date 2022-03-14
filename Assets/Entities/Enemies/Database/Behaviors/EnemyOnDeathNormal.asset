@@ -9,14 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4036f4bcb47c2244fa83b74e5d3aefa2, type: 3}
-  m_Name: EnemyDatabase 1
+  m_Script: {fileID: 11500000, guid: f703e9bac56604b43801e3390cdbb761, type: 3}
+  m_Name: EnemyOnDeathNormal
   m_EditorClassIdentifier: 
-  enemyName: 
-  enemyMaxHealth: 0
-  attackRate: 0
-  attackRange: 0
-  attackDamage: 0
-  priorityList: []
-  enemyPrefab: {fileID: 0}
-  audioController: {fileID: 0}

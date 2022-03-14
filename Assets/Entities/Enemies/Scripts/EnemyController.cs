@@ -16,11 +16,13 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
     private EnemyOnDeathSO onDeathBehavior;
     // Controllers
     private AudioControllerSO audioController;
-    private EnemyBehaviorSO myEnemyData;
+    public EnemyBehaviorSO myEnemyData;
 
     // Attack Data  
     private Coroutine attackRoutine; 
     private bool isWaiting; //Is in a state of waiting before it can attack again
+
+    private GameObject attackTarget; // <--- STILL NEEDS TARGET LOGIC
     //
 
     ////////////////////////////////////////////////
@@ -31,12 +33,17 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
         if (enemyHealth <= 0){ onDeath();}
 
 
-        //Target Check  is not day, is not waiting, is able to attack, has a target, and the target is available
-  /*      if (!isWaiting){
+        //This is the when it decides to attack... So whatever we need to determin if its target is applicable
+        //There is no logic in this script to determin a target or to decide when to attack
+        //  onAttackBehavior.attackRange is how you get it's attacking range
+        // this is set up to attack when a target 
+        if (!isWaiting  && //the attack timer has gone off
+            attackTarget != null && //Does exist
+            Vector2.Distance(this.transform.position, attackTarget.transform.position) < onAttackBehavior.attackRange){ //is within range
             onAttack(); //Does the Attack Action
             AttackTimer(); //starts the timer coroutine
         } 
-  */      
+        
     }
     ////////////////////////////////////////////////
     //Triggers
@@ -44,20 +51,24 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
 
     //Onhit is referenced by ITakeDamage interface
     public void onHit(float damage, GameObject source){
-        //The Method Existing on the SO will trigger as well as pass final damage to the plant itself.
+        //The Method Existing on the SO will trigger as well as pass final damage to the enemy itself.
         //This can accomedate for any kind of damage negation that may be needed.
         //This also passes this game object so that the script may do whatever it needs with it, or it's position
+        if (myEnemyData.SoundOnHit != null) {audioController.Play(myEnemyData.SoundOnHit);} //Play SoundOnHit if the file has been declared
         enemyHealth -= onHitBehavior.onHit(damage, source, this.gameObject); //Trigger onhit behaviors
     }
 
     public void onDeath(){
         //Triggers the attached Deal Trigger
+        if (myEnemyData.SoundOnDeath != null) {audioController.Play(myEnemyData.SoundOnDeath);} //Play SoundOnDeath if the file has been declared
         onDeathBehavior.onDeath(this.gameObject);
     }
 
     public void onAttack(){
-      //  onAttackBehavior.OnAttack(onAttackBehavior.attackDamage,attackTarget,this.gameObject);
-           
+      if (myEnemyData.SoundOnAttack != null) {audioController.Play(myEnemyData.SoundOnAttack);} //Play SoundOnAttack if the file has been declared  
+    //   onAttackBehavior.OnAttack(onAttackBehavior.attackDamage,
+    //   attackTarget,// <<<<<<<<<<<<<<<----------------------------------This is where on object that is to be attacked is chosen;
+    //   this.gameObject);      
     }
     
 
@@ -98,10 +109,7 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
     public void setOnDeath( EnemyOnDeathSO newOnDeathBehavior) { onDeathBehavior = newOnDeathBehavior;}
     public void setAudioController(AudioControllerSO newAudioController){ audioController = newAudioController;}
 
-    public void setMyPlantData(PlantBehaviorSO newPlantData)
-    {
-        throw new System.NotImplementedException();
-    }
+    public void setMyEnemyData(EnemyBehaviorSO newMyEnemyData) { myEnemyData = newMyEnemyData;}
 
     #endregion
     ////////////////////////////////////////////////

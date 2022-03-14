@@ -16,7 +16,7 @@ public class EnemyDatabaseSO : ScriptableObject
         }
     }
 
-    public GameObject spawnPlant(string name, Vector2 location){
+    public GameObject spawnEnemy(string name, Vector2 location){
         EnemyBehaviorSO enemy = enemyList.Find(x => x.enemyName.Contains(name));
         return enemy.spawnEnemy(name, location);;
     }

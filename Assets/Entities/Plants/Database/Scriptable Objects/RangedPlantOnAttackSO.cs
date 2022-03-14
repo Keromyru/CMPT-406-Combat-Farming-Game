@@ -36,7 +36,6 @@ public class RangedPlantOnAttackSO : PlantOnAttackSO
 
       Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>(); //gets the force component
       rb.AddForce(projectile.transform.up*projectileSpeed, ForceMode2D.Impulse); //Applies an impulse force in an up direction
-
    }
 
 }

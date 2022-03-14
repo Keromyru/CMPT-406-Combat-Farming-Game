@@ -33,7 +33,6 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     // Attack Data  
     private Coroutine attackRoutine; 
     private bool isWaiting; //Is in a state of waiting before it can attack again
-
     private GameObject  attackTarget;
     public List<GameObject> targets;
 
@@ -67,7 +66,6 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
             targets.Remove(entity.gameObject); //Remove That Object From Its Attack List
             if (targets.Count == 0) { attackTarget = null;} //Clears the target if there are not more options
         }
-        
     }
 
     private bool CheckTarget(){ //If the target doesn't exist, or it's out of range, or it's daytime;

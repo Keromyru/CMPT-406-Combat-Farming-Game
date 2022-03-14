@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4036f4bcb47c2244fa83b74e5d3aefa2, type: 3}
-  m_Name: EnemyBehavior
+  m_Name: Basic_EnemyBehavior
   m_EditorClassIdentifier: 
   enemyName: A Horror
-  enemyMaxHealth: 100
+  enemyMaxHealth: 30
+  numberOfDropsOnDeath: 1
+  cashPerDrop: 100
   attackRate: 1
   attackRange: 5
   attackDamage: 10
@@ -25,5 +27,8 @@ MonoBehaviour:
   SoundOnAttack: 
   SoundOnDeath: 
   SoundAggression: 
-  enemyPrefab: {fileID: 0}
-  audioController: {fileID: 0}
+  onAttackBehavior: {fileID: 11400000, guid: 4a1935208412a034784c540d19326110, type: 2}
+  onHitBehavior: {fileID: 11400000, guid: 326dcce30e9055545b48ea8fe69798ca, type: 2}
+  onDeathBehavior: {fileID: 11400000, guid: fa26b73d0eb5dae4489765e52f06354d, type: 2}
+  enemyPrefab: {fileID: 3922440575466242747, guid: c6e30949d04a4eb44b20da11215f5003, type: 3}
+  audioController: {fileID: 11400000, guid: 61664c2b36929b7409adee2b27202783, type: 2}
