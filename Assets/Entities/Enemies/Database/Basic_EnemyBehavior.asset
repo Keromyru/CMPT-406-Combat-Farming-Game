@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4036f4bcb47c2244fa83b74e5d3aefa2, type: 3}
   m_Name: Basic_EnemyBehavior
   m_EditorClassIdentifier: 
-  enemyName: A Horror
+  enemyName: Basic_enemy
   enemyMaxHealth: 30
   numberOfDropsOnDeath: 1
   cashPerDrop: 100
