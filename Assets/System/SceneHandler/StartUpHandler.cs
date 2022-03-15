@@ -11,10 +11,8 @@ public class StartUpHandler : MonoBehaviour
     float timer;
     void Start()
     {
-        StartupCheck();
-        GameSceneHandler.LoadMainMenu();
-        SceneManager.UnloadSceneAsync("startPoint");
-
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        SceneManager.LoadScene("System", LoadSceneMode.Additive);
     }
 
     private void FixedUpdate() {
