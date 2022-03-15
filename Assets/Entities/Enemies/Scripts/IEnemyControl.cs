@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IEnemyControl : MonoBehaviour
+public interface IEnemyControl 
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    void setHealth(float health);
+    float getHealth();
+    void setMyEnemyData(EnemyBehaviorSO newEnemyData);
+    void setOnHit(EnemyOnHitSO newOnHit);
+    void setOnDeath(EnemyOnDeathSO newOneDeath);
+    void setOnAttack(EnemyOnAttackSO newOnAttack);
+    void setAudioController( AudioControllerSO newAudioController);
+    
 }

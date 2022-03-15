@@ -10,12 +10,18 @@ public class DayNightCycle : MonoBehaviour
     public TextMeshProUGUI dayDisplay;  //Display day
     private Volume ppv;  //Post processing volume
 
+    [Header("Tick")]
     public float tick;  //Increasing the tick, increases second rate, Infinity is the fastest possible input
+    public float oldTick;  //Keep track of original tick
+    public float eclipseRate;  //What to times the tick by for the Eclipse
+
+    [Header("Start Time")]
     public float seconds;
-    public int mins;
+    public int minutes;
     public int hours;
     public int days = 1;
 
+    [Header("Lights")]
     public bool activateLights;  //Check if lights are on
     public GameObject[] lights;  //All the lights turn on when dark
     //public SpriteRenderer[] lanternWithLights;  //lantern sprites (use if you want something to apear only at night or during the day)
@@ -50,11 +56,11 @@ public class DayNightCycle : MonoBehaviour
         if(seconds >= 60)  //60sec = 1min
         {                                                                                   
             seconds = 0;
-            mins += 1;
+            minutes += 1;
         }
-        if(mins >= 60)  //60min = 1 hour
+        if(minutes >= 60)  //60min = 1 hour
         {
-            mins = 0;
+            minutes = 0;
             hours += 1;
         }
         if(hours >= 24)  //24hr = 1 day
@@ -70,7 +76,7 @@ public class DayNightCycle : MonoBehaviour
         //ppv.weight = 0;
         if(hours >= 21 && hours < 22)  //Dusk at 21:00 (9:00pm) - untill 22:00 (10:00pm)
         {
-            ppv.weight = (float)mins / 60;  //Since dusk is 1hr, we just divide the min by 60 which will slowly increase from 0 - 1
+            ppv.weight = (float)minutes / 60;  //Since dusk is 1hr, we just divide the min by 60 which will slowly increase from 0 - 1
 
             /*
             for(int i = 0; i < lanternWithLights.Length; i++)  
@@ -81,7 +87,7 @@ public class DayNightCycle : MonoBehaviour
 
             if(activateLights == false)  //If lights havent been turned on
             {
-                if(mins > 45)  //Wait untill pretty dark
+                if(minutes > 45)  //Wait untill pretty dark
                 {
                     for(int i = 0; i < lights.Length; i++)
                     {
@@ -94,7 +100,7 @@ public class DayNightCycle : MonoBehaviour
 
         if(hours >= 6 && hours < 7)  //Dawn at 6:00 (6:00am) - until 7:00 (7:00am)
         {
-            ppv.weight = 1 - (float)mins / 60;  //We minus 1 because we want it to go from 1 - 0
+            ppv.weight = 1 - (float)minutes / 60;  //We minus 1 because we want it to go from 1 - 0
             /*
             for(int i = 0; i < lanternWithLights.Length; i++)
             {
@@ -103,7 +109,7 @@ public class DayNightCycle : MonoBehaviour
             */
             if(activateLights == true)  //If lights are on
             {
-                if(mins > 45)  //Wait untill pretty bright
+                if(minutes > 45)  //Wait untill pretty bright
                 {
                     for(int i = 0; i < lights.Length; i++)
                     {
@@ -117,7 +123,23 @@ public class DayNightCycle : MonoBehaviour
 
     public void DisplayTime()  //Shows time and day in Unity Inspector
     {
-        timeDisplay.text = string.Format("{0:00}:{1:00}", hours, mins);  //The formatting ensures that there will always be 0's in empty spaces
+        timeDisplay.text = string.Format("{0:00}:{1:00}", hours, minutes);  //The formatting ensures that there will always be 0's in empty spaces
         dayDisplay.text = "Day: " + days;  //Display day counter
+    }
+
+    public void EndDay()  //Ending the day to progress to night time
+    {
+
+    }
+
+    public void StartEclipse()  //Starts the Eclipses that causes days to be shortened drastically.
+    {
+        oldTick = tick;
+        tick = tick * eclipseRate;
+    }
+
+    public void EndEclipse()  //Sets the time speed back to normal.
+    {
+        tick = oldTick;
     }
 }

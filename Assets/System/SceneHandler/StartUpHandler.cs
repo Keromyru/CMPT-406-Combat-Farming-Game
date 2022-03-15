@@ -8,9 +8,22 @@ using System;
 public class StartUpHandler : MonoBehaviour
 {
     private Scene[] loadedScenes;
+    float timer;
     void Start()
     {
         StartupCheck();
+        GameSceneHandler.LoadMainMenu();
+        SceneManager.UnloadSceneAsync("startPoint");
+
+    }
+
+    private void FixedUpdate() {
+        
+        
+
+
+
+        
     }
 
     private void StartupCheck(){
