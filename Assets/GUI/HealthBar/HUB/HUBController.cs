@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class NewBehaviourScript : MonoBehaviour {
+public class HUBController : MonoBehaviour {
 	
 	/* Simple Health Bar Script By Wilson */
 	
 	// The fill bar to display remainder of health
-	public GameObject fillBar;
+	public Image fillBar;
 	
 	public float maxHealth; // The max health of the HUB
 	private float currHealth; // Current health
@@ -17,6 +18,7 @@ public class NewBehaviourScript : MonoBehaviour {
 		
 		// Set the starting health to max
 		currHealth = maxHealth;
+		fillBar.fillAmount = maxHealth / maxHealth; // Normalize value between 0.0 - 1.0
 		
 	}
     
@@ -28,6 +30,7 @@ public class NewBehaviourScript : MonoBehaviour {
 		
 		// Set the current health
 		currHealth = health;
+		fillBar.fillAmount = health / maxHealth; // Normalize
 		
 	}
 	
