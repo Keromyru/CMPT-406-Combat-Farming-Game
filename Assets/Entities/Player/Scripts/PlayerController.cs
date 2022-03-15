@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
 {
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     private GameObject myCamera;
     private PlayerInput playerInput;  // The inputs from the InputSystem
     private Rigidbody2D playerRB;     
+    UnityEvent event_PlayerHealthChange = new UnityEvent();
     // Attack Data  
     private Coroutine attackRoutine; 
     private bool isWaiting; //Is in a state of waiting before it can attack again 
@@ -45,8 +47,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         Vector2 inputVector = playerInput.actions["PlayerMovement"].ReadValue<Vector2>();
         playerRB.MovePosition(playerRB.position + new Vector2(inputVector.x, inputVector.y) * myPlayerData.moveRate);
 
-        //Death Check
-        if(health <= 0){ onDeath();}
+        
     }
     /*
     //Pointer Location Extracted from Blakes Code
@@ -93,12 +94,14 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     public void resetHealth(){ //Reset health
         if (myPlayerData.soundHeal != null) {audioController.Play(myPlayerData.soundHeal);} //Play myPlayerData.soundHeal if the file has been declared
         health = myPlayerData.maxHealth;
+        event_PlayerHealthChange.Invoke();
     }
     
     public void heal(float healValue){ //Restore health by value
         if (myPlayerData.soundHeal != null) {audioController.Play(myPlayerData.soundHeal);} //Play myPlayerData.soundHeal if the file has been declared
         health += healValue;
         if (health > myPlayerData.maxHealth){ health = myPlayerData.maxHealth;}
+        event_PlayerHealthChange.Invoke();
     }
 
     void OnEnable() {SceneManager.sceneLoaded += OnSceneLoaded;} //Subscribe to on Scene Loaded Event
@@ -116,6 +119,9 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
             health -= onHitBehavior.onHit(damage,source, this.gameObject);
             if (myPlayerData.soundHurt != null) {audioController.Play(myPlayerData.soundHurt);} //Play soundHurt if the file has been declared
         }
+        event_PlayerHealthChange.Invoke();
+        //Death Check
+        if(health <= 0){ onDeath();}
     }
 
     public void newDay(){ //On a new day
