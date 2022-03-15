@@ -127,9 +127,26 @@ public class DayNightCycle : MonoBehaviour
         dayDisplay.text = "Day: " + days;  //Display day counter
     }
 
+    public void StartDay()  //Starting the day
+    {
+        /*
+        seconds = 0;
+        minutes = 0;
+        hours = 7;
+        if(hours > 24)
+        {
+            days = days + 1;
+        }
+        */
+    }
+
     public void EndDay()  //Ending the day to progress to night time
     {
-
+        /*
+        seconds = 0;
+        minutes = 0;
+        hours = 10;
+        */
     }
 
     public void StartEclipse()  //Starts the Eclipses that causes days to be shortened drastically.
