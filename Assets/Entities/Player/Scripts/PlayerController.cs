@@ -20,7 +20,11 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     // Attack Data  
     private Coroutine attackRoutine; 
     private bool isWaiting; //Is in a state of waiting before it can attack again 
-    
+    // Dash Data  
+    private Coroutine dashRoutine;
+    private bool isDashWaiting; //Is in a state of waiting before it can dash again
+    private float dashSpeed;
+
 
     void Start(){GameCamera.SetTarget(this.gameObject);}//Sets the player as the camera focus
 
@@ -31,7 +35,8 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     onAttackBehavior = myPlayerData.onAttackBehavior; //Set onAttackBehavior
     onHitBehavior = myPlayerData.onHitBehavior; //Set onHitBehavior
     onDeathBehavior = myPlayerData.onDeathBehavior; //Set onDeathBehavior
-    audioController = myPlayerData.audioController; //Set audioController   
+    audioController = myPlayerData.audioController; //Set audioController
+    dashSpeed = 15f;
     }
 
     private void Update() {
@@ -46,6 +51,8 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         // Gets the movement input and applies a constant velocity to the player
         Vector2 inputVector = playerInput.actions["PlayerMovement"].ReadValue<Vector2>();
         playerRB.MovePosition(playerRB.position + new Vector2(inputVector.x, inputVector.y) * myPlayerData.moveRate);
+
+        if ((playerInput.actions["Dash"].ReadValue<float>() > 0) && !isDashWaiting) { onDash(inputVector.x, inputVector.y); }
 
         
     }
@@ -173,6 +180,44 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         isWaiting = false;
         // Set the routine to null, signaling that it's finished.
         attackRoutine = null;
+    }
+
+    //Should not be triggered 
+    public void onDash(float x, float y)
+    {
+        if (!isDashWaiting)
+        {
+            playerRB.MovePosition(playerRB.position + new Vector2(x, y) * myPlayerData.moveRate * dashSpeed);
+            DashTimer();//START TIMER
+        }
+    }
+
+    ////////////////////////////////////////////////
+    // Dash Interval Coroutine
+
+    //Starts dash Timer
+    public void DashTimer()
+    {
+        if (dashRoutine != null)
+        {
+            // In this case, we should stop it first.
+            // Multiple DashRoutine at the same time would cause bugs.
+            StopCoroutine(dashRoutine);
+        }
+        // Start the Coroutine, and store the reference for it.
+        dashRoutine = StartCoroutine(DashRoutine());
+    }
+
+    private IEnumerator DashRoutine()
+    {
+        //toggles on the screen shake function
+        isDashWaiting = true;
+        // Pause the execution of this function for "duration" seconds.
+        yield return new WaitForSeconds(2f);
+        // After the pause, swap back to the original material.
+        isDashWaiting = false;
+        // Set the routine to null, signaling that it's finished.
+        dashRoutine = null;
     }
     ////////////////////////////////////////////////
     #region Sets and Gets

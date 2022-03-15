@@ -152,6 +152,15 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""947f9b0e-13ec-47be-a265-01fc1c9378bd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -350,6 +359,17 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Hotbar8"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3889a632-b9e9-410d-89b9-f7f0c9a23faa"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -631,6 +651,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         m_InputPlayer_Interact = m_InputPlayer.FindAction("Interact", throwIfNotFound: true);
         m_InputPlayer_OpenInventory = m_InputPlayer.FindAction("OpenInventory", throwIfNotFound: true);
         m_InputPlayer_OpenMenuFromPlayer = m_InputPlayer.FindAction("OpenMenuFromPlayer", throwIfNotFound: true);
+        m_InputPlayer_Dash = m_InputPlayer.FindAction("Dash", throwIfNotFound: true);
         // InputMenu
         m_InputMenu = asset.FindActionMap("InputMenu", throwIfNotFound: true);
         m_InputMenu_MenuMovement = m_InputMenu.FindAction("MenuMovement", throwIfNotFound: true);
@@ -717,6 +738,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_InputPlayer_Interact;
     private readonly InputAction m_InputPlayer_OpenInventory;
     private readonly InputAction m_InputPlayer_OpenMenuFromPlayer;
+    private readonly InputAction m_InputPlayer_Dash;
     public struct InputPlayerActions
     {
         private @InputActions m_Wrapper;
@@ -735,6 +757,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_InputPlayer_Interact;
         public InputAction @OpenInventory => m_Wrapper.m_InputPlayer_OpenInventory;
         public InputAction @OpenMenuFromPlayer => m_Wrapper.m_InputPlayer_OpenMenuFromPlayer;
+        public InputAction @Dash => m_Wrapper.m_InputPlayer_Dash;
         public InputActionMap Get() { return m_Wrapper.m_InputPlayer; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -786,6 +809,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @OpenMenuFromPlayer.started -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnOpenMenuFromPlayer;
                 @OpenMenuFromPlayer.performed -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnOpenMenuFromPlayer;
                 @OpenMenuFromPlayer.canceled -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnOpenMenuFromPlayer;
+                @Dash.started -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnDash;
+                @Dash.performed -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnDash;
+                @Dash.canceled -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnDash;
             }
             m_Wrapper.m_InputPlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -832,6 +858,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @OpenMenuFromPlayer.started += instance.OnOpenMenuFromPlayer;
                 @OpenMenuFromPlayer.performed += instance.OnOpenMenuFromPlayer;
                 @OpenMenuFromPlayer.canceled += instance.OnOpenMenuFromPlayer;
+                @Dash.started += instance.OnDash;
+                @Dash.performed += instance.OnDash;
+                @Dash.canceled += instance.OnDash;
             }
         }
     }
@@ -983,6 +1012,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnOpenInventory(InputAction.CallbackContext context);
         void OnOpenMenuFromPlayer(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
     public interface IInputMenuActions
     {
