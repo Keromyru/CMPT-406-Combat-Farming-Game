@@ -10,12 +10,14 @@ public class healthbar_Script_PlantController : MonoBehaviour {
 	// The fill bar to display remainder of health
 	public Image fillBar;
 	
-	public float maxHealth; // The max health of the HUB
+	private float maxHealth; // The max health of the HUB
 	private float currHealth; // Current health
+	PlantController myPlant; 
 	
 	/* Initialize the values for the health bar */
 	void Start() {
-		
+		myPlant = this.gameObject.GetComponent<PlantController>(); //Set Plant Data
+		maxHealth = myPlant.getMaxHealth(); //Set Max Health
 		// Set the starting health to max
 		currHealth = maxHealth;
 		fillBar.fillAmount = maxHealth / maxHealth; // Normalize value between 0.0 - 1.0
@@ -42,6 +44,10 @@ public class healthbar_Script_PlantController : MonoBehaviour {
 		
 		return currHealth;
 		
+	}
+
+	public void updateHB(){
+		setHealth((int)myPlant.getHealth());
 	}
 	
 }

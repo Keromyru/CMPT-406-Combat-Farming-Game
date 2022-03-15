@@ -19,7 +19,8 @@ public interface IPlantControl
     int getGrowAge();
     float getRemaining(); //Get Remaining Water Level
     bool waterPlant(float quantity); //Water Plant Action
-
+    float getMaxHealth();
+    float getMaxEnergy();
     void setOnHit(PlantOnHitSO newOnHit);
     void setOnDeath(PlantOnDeathSO newOneDeath);
     void setOnAttack(PlantOnAttackSO newOnAttack);
