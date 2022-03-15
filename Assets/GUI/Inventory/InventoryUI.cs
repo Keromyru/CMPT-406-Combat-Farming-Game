@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using System.Linq;
 
 // Mace
 
@@ -12,7 +14,7 @@ public class InventoryUI : MonoBehaviour
     public Transform hotbarParent;  // the parent of all HotbarSlots
     InventorySlot[] slots;  // array of Inventory slots
     HotbarSlot[] hotbarSlots;  // array of Hotbar slots
-    public int maxHotbarSlots = 4;  // maximum number of hotbar slots
+    private int maxHotbarSlots;  // maximum number of hotbar slots
 
     public GameObject inventoryUI;  // reference to the actual GameObject
 
@@ -21,6 +23,8 @@ public class InventoryUI : MonoBehaviour
     private InputAction openInventory;
     private InputAction closeInventory;
     private bool unassigned = true;  // used to see if the InputActions have been properly assigned
+
+    public bool isDay = true;  // is it day or night time? to be updated
     
 
     // Start is called before the first frame update
@@ -29,6 +33,9 @@ public class InventoryUI : MonoBehaviour
         // grab singleton & subscribe to changes in items
         inventory = Inventory.instance;
         inventory.onItemChangedCallback += UpdateUI;
+
+        // get max hotbar spots
+        maxHotbarSlots = inventory.max_hotbar_space;
 
         // fill arrays with all the slots on scene
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
@@ -89,13 +96,42 @@ public class InventoryUI : MonoBehaviour
 
         // cycle through all slots, add item if one exists in our inventory
         for (int i = 0; i < slots.Length; i++) {
+
+            KeyValuePair<Item, int> current_item;
+
             if (i < inventory.items.Count) {
-                slots[i].AddItem(inventory.items[i]);
+                current_item = inventory.items.ElementAt(i);
+
+                slots[i].AddItem(current_item.Key, current_item.Value);
 
                 // add it to our hotbar too if there's room
                 if (i < maxHotbarSlots) {
-                    hotbarSlots[i].AddItem(inventory.items[i]);
+                    hotbarSlots[i].AddItem(current_item.Key, current_item.Value);
                 }
+
+                // if it's day time, mark night only items as unusable
+                if (isDay) {
+                    if ((int)current_item.Key.available == 1) {
+                        slots[i].MarkUnusable();
+                        hotbarSlots[i].MarkUnusable();
+                    }
+                    else {
+                        slots[i].MarkUsable();
+                        hotbarSlots[i].MarkUsable();
+                    }
+                }
+                // else if it's night, mark day only items as unusable
+                else {
+                    if ((int)current_item.Key.available == 0) {
+                        slots[i].MarkUnusable();
+                        hotbarSlots[i].MarkUnusable();
+                    }
+                    else {
+                        slots[i].MarkUsable();
+                        hotbarSlots[i].MarkUsable();
+                    }
+                }
+
             }
             // if there isn't room, wipe the slot back to empty state
             else {

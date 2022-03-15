@@ -191,6 +191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 558774347}
   - component: {fileID: 558774348}
+  - component: {fileID: 558774349}
   m_Layer: 0
   m_Name: SessionHandler
   m_TagString: Untagged
@@ -225,6 +226,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plants: {fileID: 11400000, guid: 8f9f3916502b6104cb92815e003404a6, type: 2}
+--- !u!114 &558774349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558774346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d9b831117cf65843bb687eef1909b6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baddies: {fileID: 11400000, guid: 8afe92503b2738d408b63877c8805055, type: 2}
 --- !u!1 &1179859205
 GameObject:
   m_ObjectHideFlags: 0

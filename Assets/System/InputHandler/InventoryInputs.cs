@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using System.Linq;
 // Mace
 
 // okay I've seriously rewritten this script like five times, it's a little rough
@@ -17,7 +18,12 @@ public class InventoryInputs : MonoBehaviour
     private InputAction slot2;
     private InputAction slot3;
     private InputAction slot4;
-    private InputAction click;
+    private InputAction slot5;
+    private InputAction slot6;
+    private InputAction slot7;
+    private InputAction slot8;
+
+    private InputAction interact;
 
     // select things in the inventory - currently not hooked up but still working?
     //private InputAction clickInInventory;
@@ -27,41 +33,54 @@ public class InventoryInputs : MonoBehaviour
 
 
     // tracking what items are in the hot bar
-    [SerializeField] private List<Item> hotbarActions;
+    [SerializeField] private List<HotbarSlot> hotbarActions;
     // singleton inventory
     Inventory inventory;
+    // max hotbar length
+    private int max_length;
+    // hotbar parent
+    [SerializeField] private Transform hotbarParent;
+    // get all the slots
+    private HotbarSlot[] possible_locations; 
+    // find player location
+    [SerializeField] private Transform player;
+    // how big is the interaction area around the player?
+    public float interactionRadius = 0.5f;
 
 
     void Start()
     {
         // set inventory to existing instance, make list for hotbar actions, subscribe to item changes
         inventory = Inventory.instance;
-        hotbarActions = new List<Item>();
+        possible_locations = hotbarParent.GetComponentsInChildren<HotbarSlot>();
         inventory.onItemChangedCallback += fetchHotbarItems;
+        max_length = inventory.max_hotbar_space;
+
+        // get all the possible hotbar slots
+        for (int i = 0; i < max_length; i++) {
+            hotbarActions.Add(possible_locations[i]);
+        }
     }
 
 
     // build list of hotbar items
-    // will need to changed to work with button selection (like to show what you've selected) in hotbar, but it's functional
     void fetchHotbarItems()
     {
-        int start_pos;  // position to start building at
+        int start_pos = 0;  // position to start building at
 
-        hotbarActions.Clear();  // destroy the old list. we're updating.
-
-        if (hotbarActions.Count < 4 && hotbarActions.Count >= 0) {
-            start_pos = hotbarActions.Count;  // in the middle of the hotbar
-        }
-        else {
-            start_pos = 4;  // hotbar is filled
+        for (int i = 0; i < max_length; i++) {
+            hotbarActions[i].ClearSlot();  // destroy the old list. we're updating.
         }
 
-        int stop = Mathf.Min(4, inventory.items.Count);  // stop at max health bar or max items in inventory
+        int stop = Mathf.Min(max_length, inventory.items.Count);  // stop at max hotbar or max items in inventory
         
         // add item
         for (int i = start_pos; i < stop; i++) {
-            if (inventory.items[i] != null) {
-                hotbarActions.Add(inventory.items[i]);
+
+            KeyValuePair<Item, int> current_item = inventory.items.ElementAt(i);
+
+            if (current_item.Key != null) {
+                hotbarActions[i].AddItem(current_item.Key, current_item.Value);
                 //Debug.Log("Added " + hotbarActions[i].name + " to hotbar actions.");
             }
         }
@@ -86,8 +105,16 @@ public class InventoryInputs : MonoBehaviour
         slot3.performed -= use3;
 
         slot4.performed -= use4;
+        
+        slot5.performed -= use5;
 
-        click.performed -= interactWithItem;
+        slot6.performed -= use6;
+
+        slot7.performed -= use7;
+
+        slot8.performed -= use8;
+
+        interact.performed -= interactWithItem;
 
         //clickInInventory.performed -= interactWithInventory;
     }
@@ -98,7 +125,11 @@ public class InventoryInputs : MonoBehaviour
         slot2.performed += use2;
         slot3.performed += use3;
         slot4.performed += use4;
-        click.performed += interactWithItem;
+        slot5.performed += use5;
+        slot6.performed += use6;
+        slot7.performed += use7;
+        slot8.performed += use8;
+        interact.performed += interactWithItem;
         //clickInInventory.performed += interactWithInventory;
     }
 
@@ -116,7 +147,11 @@ public class InventoryInputs : MonoBehaviour
                 slot2 = playerInput.actions["InputPlayer/Hotbar2"];
                 slot3 = playerInput.actions["InputPlayer/Hotbar3"];
                 slot4 = playerInput.actions["InputPlayer/Hotbar4"];
-                click = playerInput.actions["InputPlayer/PrimaryAction"];
+                slot5 = playerInput.actions["InputPlayer/Hotbar5"];
+                slot6 = playerInput.actions["InputPlayer/Hotbar6"];
+                slot7 = playerInput.actions["InputPlayer/Hotbar7"];
+                slot8 = playerInput.actions["InputPlayer/Hotbar8"];
+                interact = playerInput.actions["InputPlayer/Interact"];
                 //clickInInventory = playerInput.actions["InputUI/LeftClickUI"];
                 unassigned = false;
                 AddSetActions();
@@ -127,42 +162,92 @@ public class InventoryInputs : MonoBehaviour
     // use item 1
     private void use1(InputAction.CallbackContext context)
     {
-        if (hotbarActions.Count >= 1) {
-            hotbarActions[0].Use();
+        if ((hotbarActions.Count >= 1) && (hotbarActions[0].canBeUsed)) {
+            hotbarActions[0].UseItem();
         }
     }
 
     // use item 2
     private void use2(InputAction.CallbackContext context)
     {
-        if (hotbarActions.Count >= 2) {
-            hotbarActions[1].Use();
+        if ((hotbarActions.Count >= 2) && (hotbarActions[1].canBeUsed)) {
+            hotbarActions[1].UseItem();
         }
     }
 
     // use item 3
     private void use3(InputAction.CallbackContext context)
     {
-        if (hotbarActions.Count >= 3) {
-            hotbarActions[2].Use();
+        if ((hotbarActions.Count >= 3) && (hotbarActions[2].canBeUsed)) {
+            hotbarActions[2].UseItem();
         }
     }
 
     // use item 4
     private void use4(InputAction.CallbackContext context)
     {
-        if (hotbarActions.Count == 4) {
-            hotbarActions[3].Use();
+        if ((hotbarActions.Count >= 4) && (hotbarActions[3].canBeUsed)) {
+            hotbarActions[3].UseItem();
+        }
+    }
+    
+    // use item 5
+    private void use5(InputAction.CallbackContext context)
+    {
+        if ((hotbarActions.Count >= 5) && (hotbarActions[4].canBeUsed)) {
+            hotbarActions[4].UseItem();
+        }
+    }
+
+    // use item 6
+    private void use6(InputAction.CallbackContext context)
+    {
+        if ((hotbarActions.Count >= 6) && (hotbarActions[5].canBeUsed)) {
+            hotbarActions[5].UseItem();
+        }
+    }
+
+    // use item 7
+    private void use7(InputAction.CallbackContext context)
+    {
+        if ((hotbarActions.Count >= 7) && (hotbarActions[6].canBeUsed)) {
+            hotbarActions[6].UseItem();
+        }
+    }    
+    
+    // use item 8
+    private void use8(InputAction.CallbackContext context)
+    {
+        if ((hotbarActions.Count == 8) && (hotbarActions[7].canBeUsed)) {
+            hotbarActions[7].UseItem();
         }
     }
 
 
-    // I've... definitely patched together a check here but it should be more streamlined for the actual build
-    // raycasts using mouse's current position on screen to find item marked as "Interactable"
+    // uses the postion of the EXO-Man sprite to cast a circle around and pick up items marked "Interactable"
     // to be interactable, items literally have to have the "ItemPickup.cs" script attached to them
     // this script can be found in GameHandler/InventoryHandler/Scripts
     private void interactWithItem(InputAction.CallbackContext context)
     {
+        // use position to cast a circle
+        Collider2D[] hitObjects = Physics2D.OverlapCircleAll(player.position, interactionRadius);
+        
+        // cycle through hit objects and check if they were Interactable
+        for (int i = 0; i < hitObjects.Length; i++) {
+            Interactable interacting = hitObjects[i].GetComponent<Interactable>();
+            if (interacting != null) {
+                interacting.Interact();  // interact
+            }
+        }
+
+        
+        /* 
+
+        Old Raycast & Check Code, in case somebody wants to reference it
+
+        // I've... definitely patched together a check here but it should be more streamlined for the actual build
+        // raycasts using mouse's current position on screen to find item marked as "Interactable"
+
         Camera maincam = FindObjectOfType<Camera>();  // grab cam
 
         // get the mouse's current position values and cast a ray from there - 3D
@@ -192,5 +277,7 @@ public class InventoryInputs : MonoBehaviour
                 interactobj.Interact();
             }
         }
+
+        */
     }
 }

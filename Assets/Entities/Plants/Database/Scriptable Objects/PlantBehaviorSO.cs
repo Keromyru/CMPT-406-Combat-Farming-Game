@@ -15,11 +15,7 @@ public class PlantBehaviorSO : ScriptableObject
     
     [Header("Plant Attack")]
     public bool canAttack;
-    public float attackRate;
-    public float attackRange;
-    public float attackDamage;
    
-    
     
     
     [Header("Plant Growth")]
