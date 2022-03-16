@@ -1,0 +1,1548 @@
+fileFormatVersion: 2
+guid: fac2262b5ae19984bb6409a1d8f13cc7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 554321862665060080
+    second: WateringCanPour_0
+  - first:
+      213: 5821227000042470995
+    second: WateringCanPour_1
+  - first:
+      213: 4944930804067194238
+    second: WateringCanPour_2
+  - first:
+      213: -6443678465031468161
+    second: WateringCanPour_3
+  - first:
+      213: 7867180249847552152
+    second: WateringCanPour_4
+  - first:
+      213: 3229274037728414239
+    second: WateringCanPour_5
+  - first:
+      213: 2195730592636126354
+    second: WateringCanPour_6
+  - first:
+      213: -2620976691078117820
+    second: WateringCanPour_7
+  - first:
+      213: -4484210888480110776
+    second: WateringCanPour_8
+  - first:
+      213: 6865787444336714864
+    second: WateringCanPour_9
+  - first:
+      213: -2866370204991010995
+    second: WateringCanPour_10
+  - first:
+      213: -6562970052498379258
+    second: WateringCanPour_11
+  - first:
+      213: -4393319781326566581
+    second: WateringCanPour_12
+  - first:
+      213: -5212349873956608567
+    second: WateringCanPour_13
+  - first:
+      213: -8350215597936352178
+    second: WateringCanPour_14
+  - first:
+      213: -6341298134261958778
+    second: WateringCanPour_15
+  - first:
+      213: -4622407004225858559
+    second: WateringCanPour_16
+  - first:
+      213: -2371145147359715638
+    second: WateringCanPour_17
+  - first:
+      213: -237364762657109937
+    second: WateringCanPour_18
+  - first:
+      213: -6434776758061110774
+    second: WateringCanPour_19
+  - first:
+      213: 804303787071676198
+    second: WateringCanPour_20
+  - first:
+      213: 6828681628680787780
+    second: WateringCanPour_21
+  - first:
+      213: -7229762918004616244
+    second: WateringCanPour_22
+  - first:
+      213: 5883569567880100866
+    second: WateringCanPour_23
+  - first:
+      213: 5207739509477537203
+    second: WateringCanPour_24
+  - first:
+      213: -3267827393155519517
+    second: WateringCanPour_25
+  - first:
+      213: -1751240901649804899
+    second: WateringCanPour_26
+  - first:
+      213: -8169316905181985086
+    second: WateringCanPour_27
+  - first:
+      213: 9175932129037115128
+    second: WateringCanPour_28
+  - first:
+      213: 6348388185819749646
+    second: WateringCanPour_29
+  - first:
+      213: -8983093959452711596
+    second: WateringCanPour_30
+  - first:
+      213: -1404826824494317885
+    second: WateringCanPour_31
+  - first:
+      213: 2579681499145746860
+    second: WateringCanPour_32
+  - first:
+      213: 2637957728227766259
+    second: WateringCanPour_33
+  - first:
+      213: -1016730702735081023
+    second: WateringCanPour_34
+  - first:
+      213: 8964199607065166518
+    second: WateringCanPour_35
+  - first:
+      213: 2178226402680922025
+    second: WateringCanPour_36
+  - first:
+      213: 7236919756511921040
+    second: WateringCanPour_37
+  - first:
+      213: 7514734088918471299
+    second: WateringCanPour_38
+  - first:
+      213: -6075334688369099522
+    second: WateringCanPour_39
+  - first:
+      213: -4971844072025543339
+    second: WateringCanPour_40
+  - first:
+      213: -7493089762487971192
+    second: WateringCanPour_41
+  - first:
+      213: -386828349892725136
+    second: WateringCanPour_42
+  - first:
+      213: -7489022651352093043
+    second: WateringCanPour_43
+  - first:
+      213: -1828301053066357869
+    second: WateringCanPour_44
+  - first:
+      213: -8610166130118882067
+    second: WateringCanPour_45
+  - first:
+      213: -5120602574414458201
+    second: WateringCanPour_46
+  - first:
+      213: 5437308592207674129
+    second: WateringCanPour_47
+  - first:
+      213: -3473850920483663626
+    second: WateringCanPour_48
+  - first:
+      213: 5835643496292243615
+    second: WateringCanPour_49
+  - first:
+      213: -3234545645716083849
+    second: WateringCanPour_50
+  - first:
+      213: -5573353663670759128
+    second: WateringCanPour_51
+  - first:
+      213: 878519739132035401
+    second: WateringCanPour_52
+  - first:
+      213: 1575970497525755308
+    second: WateringCanPour_53
+  - first:
+      213: 3921609740595434729
+    second: WateringCanPour_54
+  - first:
+      213: -6533477362285537015
+    second: WateringCanPour_55
+  - first:
+      213: -5599002929230624898
+    second: WateringCanPour_56
+  - first:
+      213: -463343761568491837
+    second: WateringCanPour_57
+  - first:
+      213: 571639758972053230
+    second: WateringCanPour_58
+  - first:
+      213: -230859142862233197
+    second: WateringCanPour_59
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: WateringCanPour_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 928
+        width: 166
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fe32631cc851b700800000000000000
+      internalID: 554321862665060080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_1
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 929
+        width: 165
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35eb1764d1729c050800000000000000
+      internalID: 5821227000042470995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_2
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 927
+        width: 166
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e75df4fed5cef9440800000000000000
+      internalID: 4944930804067194238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_3
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 928
+        width: 165
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7b07fc73947396a0800000000000000
+      internalID: -6443678465031468161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_4
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 927
+        width: 165
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 898d12051c6dd2d60800000000000000
+      internalID: 7867180249847552152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_5
+      rect:
+        serializedVersion: 2
+        x: 1038
+        y: 926
+        width: 166
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1a813db0afa0dc20800000000000000
+      internalID: 3229274037728414239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_6
+      rect:
+        serializedVersion: 2
+        x: 1245
+        y: 927
+        width: 165
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 294c88c275dc87e10800000000000000
+      internalID: 2195730592636126354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_7
+      rect:
+        serializedVersion: 2
+        x: 1451
+        y: 928
+        width: 162
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 446c5b3069b60abd0800000000000000
+      internalID: -2620976691078117820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_8
+      rect:
+        serializedVersion: 2
+        x: 1656
+        y: 925
+        width: 165
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 847443e84f1e4c1c0800000000000000
+      internalID: -4484210888480110776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_9
+      rect:
+        serializedVersion: 2
+        x: 1862
+        y: 924
+        width: 164
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 074e60bdd4d284f50800000000000000
+      internalID: 6865787444336714864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_10
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 743
+        width: 165
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d474fb83c7b9838d0800000000000000
+      internalID: -2866370204991010995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_11
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 741
+        width: 166
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60eae456285abe4a0800000000000000
+      internalID: -6562970052498379258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_12
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 741
+        width: 164
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4b45598feac703c0800000000000000
+      internalID: -4393319781326566581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_13
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 740
+        width: 163
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c5a3c5e7630aa7b0800000000000000
+      internalID: -5212349873956608567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_14
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 741
+        width: 162
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e44e31fa7231e1c80800000000000000
+      internalID: -8350215597936352178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_15
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 740
+        width: 162
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 687f77cc1fe2ff7a0800000000000000
+      internalID: -6341298134261958778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_16
+      rect:
+        serializedVersion: 2
+        x: 1258
+        y: 741
+        width: 160
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10417d9f159e9dfb0800000000000000
+      internalID: -4622407004225858559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_17
+      rect:
+        serializedVersion: 2
+        x: 1464
+        y: 740
+        width: 159
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ace9bb42d00081fd0800000000000000
+      internalID: -2371145147359715638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_18
+      rect:
+        serializedVersion: 2
+        x: 1669
+        y: 739
+        width: 159
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f48c0a78106b4bcf0800000000000000
+      internalID: -237364762657109937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_19
+      rect:
+        serializedVersion: 2
+        x: 1876
+        y: 740
+        width: 158
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0ae3d6a1a413b6a0800000000000000
+      internalID: -6434776758061110774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_20
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 558
+        width: 159
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62f98ef6806792b00800000000000000
+      internalID: 804303787071676198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_21
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 558
+        width: 158
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44711c9e2c954ce50800000000000000
+      internalID: 6828681628680787780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_22
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 558
+        width: 157
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc31b065ee8baab90800000000000000
+      internalID: -7229762918004616244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_23
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 559
+        width: 156
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20cbac87953a6a150800000000000000
+      internalID: 5883569567880100866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_24
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 560
+        width: 154
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b5fc29fd7b954840800000000000000
+      internalID: 5207739509477537203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_25
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 560
+        width: 154
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ebaca3bc4856a2d0800000000000000
+      internalID: -3267827393155519517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_26
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 559
+        width: 155
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d91570dada752b7e0800000000000000
+      internalID: -1751240901649804899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_27
+      rect:
+        serializedVersion: 2
+        x: 1474
+        y: 560
+        width: 154
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c6c801ce81c0ae80800000000000000
+      internalID: -8169316905181985086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_28
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 559
+        width: 154
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fed95ab7a5775f70800000000000000
+      internalID: 9175932129037115128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_29
+      rect:
+        serializedVersion: 2
+        x: 1885
+        y: 561
+        width: 152
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0d92187b610a1850800000000000000
+      internalID: 6348388185819749646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_30
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 380
+        width: 153
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4552dda63a3a55380800000000000000
+      internalID: -8983093959452711596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_31
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 379
+        width: 154
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ce731b327d018ce0800000000000000
+      internalID: -1404826824494317885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_32
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 383
+        width: 152
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca9ba3ed7aedcc320800000000000000
+      internalID: 2579681499145746860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_33
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 380
+        width: 153
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ff238bc398eb9420800000000000000
+      internalID: 2637957728227766259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_34
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 381
+        width: 153
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c10e3f00d8d3e1f0800000000000000
+      internalID: -1016730702735081023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_35
+      rect:
+        serializedVersion: 2
+        x: 1066
+        y: 379
+        width: 153
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b2c0da5c0c376c70800000000000000
+      internalID: 8964199607065166518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_36
+      rect:
+        serializedVersion: 2
+        x: 1270
+        y: 379
+        width: 154
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9af5c2c5f5d9a3e10800000000000000
+      internalID: 2178226402680922025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_37
+      rect:
+        serializedVersion: 2
+        x: 1475
+        y: 379
+        width: 154
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09346eafc24be6460800000000000000
+      internalID: 7236919756511921040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_38
+      rect:
+        serializedVersion: 2
+        x: 1678
+        y: 380
+        width: 154
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 382118fc6d2b94860800000000000000
+      internalID: 7514734088918471299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_39
+      rect:
+        serializedVersion: 2
+        x: 1883
+        y: 381
+        width: 153
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efcb6281a4310bba0800000000000000
+      internalID: -6075334688369099522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_40
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 199
+        width: 156
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55d29409826700bb0800000000000000
+      internalID: -4971844072025543339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_41
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 199
+        width: 157
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 882d9c4af82330890800000000000000
+      internalID: -7493089762487971192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_42
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 199
+        width: 158
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 076f79f4aa5b1aaf0800000000000000
+      internalID: -386828349892725136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_43
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 199
+        width: 159
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8eed4fb395a11890800000000000000
+      internalID: -7489022651352093043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_44
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 200
+        width: 159
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 393d18501e190a6e0800000000000000
+      internalID: -1828301053066357869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_45
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 199
+        width: 160
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dec0a25f58b828880800000000000000
+      internalID: -8610166130118882067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_46
+      rect:
+        serializedVersion: 2
+        x: 1257
+        y: 198
+        width: 162
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a25314b617ffe8b0800000000000000
+      internalID: -5120602574414458201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_47
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 201
+        width: 161
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11bb7b44b53357b40800000000000000
+      internalID: 5437308592207674129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_48
+      rect:
+        serializedVersion: 2
+        x: 1663
+        y: 201
+        width: 162
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f058e93ef66acfc0800000000000000
+      internalID: -3473850920483663626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_49
+      rect:
+        serializedVersion: 2
+        x: 1867
+        y: 202
+        width: 162
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f98515067de5cf050800000000000000
+      internalID: 5835643496292243615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_50
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 22
+        width: 165
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77b6e416fd59c13d0800000000000000
+      internalID: -3234545645716083849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_51
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 22
+        width: 166
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 821584d2f5877a2b0800000000000000
+      internalID: -5573353663670759128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_52
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 23
+        width: 165
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94142235c01213c00800000000000000
+      internalID: 878519739132035401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_53
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 24
+        width: 166
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cada48151d8fed510800000000000000
+      internalID: 1575970497525755308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_54
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 27
+        width: 164
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e417ef084b5c6630800000000000000
+      internalID: 3921609740595434729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_55
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 26
+        width: 166
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9091ae074fc6455a0800000000000000
+      internalID: -6533477362285537015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_56
+      rect:
+        serializedVersion: 2
+        x: 1243
+        y: 25
+        width: 167
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7746da20885c42b0800000000000000
+      internalID: -5599002929230624898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_57
+      rect:
+        serializedVersion: 2
+        x: 1448
+        y: 28
+        width: 166
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c611d2cd4fd199f0800000000000000
+      internalID: -463343761568491837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_58
+      rect:
+        serializedVersion: 2
+        x: 1651
+        y: 26
+        width: 168
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee6e405055fdee700800000000000000
+      internalID: 571639758972053230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WateringCanPour_59
+      rect:
+        serializedVersion: 2
+        x: 1857
+        y: 29
+        width: 165
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 391ab8c25d2dbccf0800000000000000
+      internalID: -230859142862233197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

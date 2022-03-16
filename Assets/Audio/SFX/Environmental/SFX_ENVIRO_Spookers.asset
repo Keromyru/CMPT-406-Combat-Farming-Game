@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b2666010b669f249b78a662f94f355e, type: 3}
+  m_Name: SFX_ENVIRO_Spookers
+  m_EditorClassIdentifier: 
+  Name: Spooky Sounds
+  clips:
+  - {fileID: 8300000, guid: a02883e59c1c43749bfabe852f3ea37b, type: 3}
+  - {fileID: 8300000, guid: 73464df4b197c9a48bdc4583e332bcd2, type: 3}
+  - {fileID: 8300000, guid: 8fd75de2eeb98c84a98aff5d8a12e521, type: 3}
+  - {fileID: 8300000, guid: 932143d57a60a58448c1ce83e84c4789, type: 3}
+  type: 2
+  volume: 1
+  pitch: 1
+  source: {fileID: 0}
