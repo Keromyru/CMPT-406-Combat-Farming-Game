@@ -7,8 +7,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "OnAttack Ranged", menuName = "Plant Data/Plant Action/OnAttack Ranged Attack")]
 public class RangedPlantOnAttackSO : PlantOnAttackSO
 {   
-   [SerializeField] float range;
-   [SerializeField] float damage;
    [SerializeField] float projectileSpeed;
    [SerializeField] GameObject projectilePrefab;
    [SerializeField] float firePointLength;
@@ -38,7 +36,6 @@ public class RangedPlantOnAttackSO : PlantOnAttackSO
 
       Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>(); //gets the force component
       rb.AddForce(projectile.transform.up*projectileSpeed, ForceMode2D.Impulse); //Applies an impulse force in an up direction
-
    }
 
 }

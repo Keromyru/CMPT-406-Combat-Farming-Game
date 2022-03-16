@@ -11,7 +11,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     #region Declarations
     //Interface exists in Assets/Entities/Plants/Scripts/IPlantControl.cs
     [Header("Do not set any values here")]
-    [SerializeField]private float health = 100;
+    [SerializeField]private float health = 1;
     [SerializeField]private float energy;
     [SerializeField] private int growAge;
     [SerializeField]private Vector2 location; //Location is just where it lives, this is stored for easy Save Retrieval
@@ -20,18 +20,19 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
 
     private PlantBehaviorSO myPlantData; //References the plants Entry in the Database
     private PlantDatabaseSO myPlantSpawner; //References the spawner to it can call it's decendants
+    private AudioControllerSO audioController;
+
     // Behaviors
     private PlantOnHitSO onHitBehavior;
     private PlantOnAttackSO onAttackBehavior;
     private PlantOnDeathSO onDeathBehavior;
     private PlantOnHarvestSO onHarvestBehavior;
 
-    private AudioControllerSO audioController;
+    
 
     // Attack Data  
     private Coroutine attackRoutine; 
     private bool isWaiting; //Is in a state of waiting before it can attack again
-
     private GameObject  attackTarget;
     public List<GameObject> targets;
 
@@ -49,9 +50,6 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
             onAttack(); //Does the Attack Action
             AttackTimer(); //starts the timer coroutine
         } 
-        
-
-        
     }
 
     //Plant Actions
@@ -68,11 +66,10 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
             targets.Remove(entity.gameObject); //Remove That Object From Its Attack List
             if (targets.Count == 0) { attackTarget = null;} //Clears the target if there are not more options
         }
-        
     }
 
     private bool CheckTarget(){ //If the target doesn't exist, or it's out of range, or it's daytime;
-        if( (attackTarget == null || Vector3.Distance(attackTarget.transform.position, location) > myPlantData.attackRange)){
+        if( (attackTarget == null || Vector3.Distance(attackTarget.transform.position, location) > onAttackBehavior.attackRange)){
             attackTarget = null;
             return SetTarget();
         }
@@ -163,7 +160,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     }
 
     public void onAttack(){
-        onAttackBehavior.OnAttack(myPlantData.attackDamage,attackTarget,this.gameObject);
+        onAttackBehavior.OnAttack(onAttackBehavior.attackDamage,attackTarget,this.gameObject);
         //Attack Sound
         if (myPlantData.soundAttack != null) { audioController.Play(myPlantData.soundAttack); }
 
@@ -196,7 +193,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         //toggles on the screen shake function
         isWaiting = true;
         // Pause the execution of this function for "duration" seconds.
-        yield return new WaitForSeconds(myPlantData.attackRate);
+        yield return new WaitForSeconds(onAttackBehavior.attackRate);
         // After the pause, swap back to the original material.
         isWaiting = false;
         // Set the routine to null, signaling that it's finished.
