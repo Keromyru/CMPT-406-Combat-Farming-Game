@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3922440575466242726}
   - component: {fileID: 3922440575466242727}
   - component: {fileID: 3922440575466242724}
+  - component: {fileID: -8457926634213205473}
   - component: {fileID: 3922440575466242725}
   - component: {fileID: 4844471077253324233}
   - component: {fileID: 6678657523666664863}
@@ -103,7 +104,7 @@ MonoBehaviour:
   SensorShared: 1
   Sensor: {fileID: 11400000, guid: 17ae8395354cddc419113c83a5f66413, type: 2}
   objectiveLabels:
-  - Intrest
+  - Interest
   context:
     minObjectives: 00
     normObjectives: 01
@@ -150,6 +151,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Order: 0
+  Label: 
+  initialized: 1
+  tabState:
+    tab0: 0
+    tab1: 0
+    tab2: 0
+    tab3: 0
+    tab4: 0
+  advancedInspector: 0
+  FilteredEnvironments: []
+  GameObjects: []
+  velocityGizmo:
+    Enabled: 0
+    Color: {r: 0.5, g: 0.5, b: 1, a: 1}
+    DirectionScale: 1
+    PointSize: 0.2
+  steeringFoldout: 1
+  Target: {fileID: 0}
+  TargetPosition: {x: 0, y: 0, z: 0}
+  Follow:
+    TargetObjective: 0
+    MagnitudeMultiplier: 1
+    SensitivityOffset: 0
+    ValueWriting: 0
+    LayerBlending: 0
+    LayerNormalization: 0
+    ValueMapping: 2
+    UseSignificance: 1
+    UseSensorProjection: 1
+    VectorProjection: 0
+    PresetVelocity: 0
+    Prediction: 0
+    PredictionMagnitude: 0
+  targetTag: Structure
+--- !u!114 &-8457926634213205473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3922440575466242747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 331742073, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Order: 1
   Label: 
   initialized: 1
   tabState:
