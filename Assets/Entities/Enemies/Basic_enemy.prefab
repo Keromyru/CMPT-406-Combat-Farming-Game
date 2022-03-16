@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 4844471077253324233}
   - component: {fileID: 6678657523666664863}
   - component: {fileID: 1643086809095187395}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Basic_enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -114,10 +114,10 @@ MonoBehaviour:
       - 0
   selfObject: {fileID: 0}
   indicatorGizmo:
-    Enabled: 0
-    Wireframe: 0
-    ShowReceptors: 0
-    ShowConstraints: 0
+    Enabled: 1
+    Wireframe: 1
+    ShowReceptors: 1
+    ShowConstraints: 1
     DrawDoubleSided: 1
     ResolutionThreshold: 32
     CustomScale: 1
@@ -173,7 +173,7 @@ MonoBehaviour:
   Follow:
     TargetObjective: 0
     MagnitudeMultiplier: 1
-    SensitivityOffset: 0
+    SensitivityOffset: 5
     ValueWriting: 0
     LayerBlending: 0
     LayerNormalization: 0
@@ -271,7 +271,7 @@ MonoBehaviour:
   advancedInspector: 0
   Stabilization:
     TargetObjective: 0
-    AngleMapping: 2
+    AngleMapping: 0
     MaxIncrease: 0.2
     MaxAngle: 45
 --- !u!114 &6678657523666664863
@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e63ac908d47d18e42bb5337072669d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myEnemyData: {fileID: 0}
+  myEnemyData: {fileID: 11400000, guid: 0f6d8f6125af14b4ba4a45657d52b7ac, type: 2}
 --- !u!1 &3922440575517733447
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,7 +322,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3922440575517733446}
   - component: {fileID: 3922440575517733441}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sprite_Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +382,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1074037391
   m_SortingLayer: 3
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: abb4555f66103ae408dd72383cd6614d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
