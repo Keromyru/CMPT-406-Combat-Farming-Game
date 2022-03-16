@@ -12,6 +12,7 @@ public class GridClickListener : MonoBehaviour
     public Camera cam;
     private Vector2 mousePosition;
 
+    public PlantDatabaseSO plantDatabase;
     void Start(){
         
     }
@@ -20,6 +21,7 @@ public class GridClickListener : MonoBehaviour
         if (Input.GetButtonDown("Fire1")){
             mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
             Vector3Int cellPosition = gridHoldingTilemaps.WorldToCell(mousePosition);
+            plantDatabase.spawnPlant("Hydra", new Vector2(cellPosition.x, cellPosition.y));
         }
     }
 }
