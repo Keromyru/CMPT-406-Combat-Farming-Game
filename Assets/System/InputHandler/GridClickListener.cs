@@ -15,8 +15,9 @@ public class GridClickListener : MonoBehaviour
     private Vector2 mousePosition;
 
     public PlantDatabaseSO plantDatabase;
+    private List<Vector3> plantLocationCollection;
     void Start(){
-        
+        plantLocationCollection = new List<Vector3>();
     }
 
     void Update(){
@@ -34,9 +35,20 @@ public class GridClickListener : MonoBehaviour
             // find the cell point
             var cellPosition = tilemap.WorldToCell(point);
             Vector3 centerPos = tilemap.GetCellCenterLocal(cellPosition);
-
-            // Creates the plant prefabs in the cell chosen by the player
+            
+            int length = plantLocationCollection.Count;
+            for (int i = 0; i < length; i++ ){
+                if (centerPos == plantLocationCollection[i]){
+                    Debug.Log("we collided");
+                    Debug.Log(centerPos);
+                    Debug.Log(plantLocationCollection[i]);
+                    return;
+                }
+            }
+            // assuming there hasn't been a match
             GameObject plant = plantDatabase.spawnPlant("Hydra", new Vector2(centerPos.x, centerPos.y + (float) .18));
+            plantLocationCollection.Add(centerPos);
+        
         }
     }
 }
