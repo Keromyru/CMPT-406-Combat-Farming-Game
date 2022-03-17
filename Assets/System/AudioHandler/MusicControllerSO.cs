@@ -98,7 +98,7 @@ public class MusicControllerSO : ScriptableObject
                 break;
             }
         //Increment the counter
-        mIndex ++;
+        // mIndex ++;
 
         //Plays the file using it's perameters, and returns the audiosource
         return audioSourceParam;      
