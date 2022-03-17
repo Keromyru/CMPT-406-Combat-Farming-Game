@@ -21,6 +21,9 @@ public interface IPlantControl
 
     bool waterPlant(float quantity); //Water Plant Action
 
+    float getMaxHealth();
+    float getMaxEnergy();
+
     bool onHarvest();
 
     void setOnHit(PlantOnHitSO newOnHit);
