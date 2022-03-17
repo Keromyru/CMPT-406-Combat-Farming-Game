@@ -34,6 +34,7 @@ MonoBehaviour:
   plantPrefab: {fileID: 2933940020876381200, guid: 5b46f0171c86f134f8ec763090ef7a69, type: 3}
   nextPhase: {fileID: 0}
   audioController: {fileID: 11400000, guid: 61664c2b36929b7409adee2b27202783, type: 2}
+  TileOffset: {x: 0, y: 0.3}
   onHit: {fileID: 11400000, guid: c22c187a6ef38ae439dabd299ead49ae, type: 2}
   onAttack: {fileID: 11400000, guid: d97243c8f1669e84b84de4d3a9f1ae6d, type: 2}
   onDeath: {fileID: 11400000, guid: 169f5d4cc04e2c4448ac8618714d612f, type: 2}

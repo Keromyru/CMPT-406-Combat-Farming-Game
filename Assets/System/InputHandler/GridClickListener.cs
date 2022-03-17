@@ -40,21 +40,11 @@ public class GridClickListener : MonoBehaviour
             int length = plantLocationCollection.Count;
             for (int i = 0; i < length; i++ ){
                 if (centerPos == plantLocationCollection[i]){
-                    Debug.Log("we collided");
-                    Debug.Log(centerPos);
-                    Debug.Log(plantLocationCollection[i]);
+                    // Debug.Log("we collided");
                     return;
                 }
             }
-            // assuming there hasn't been a match
-            // save for offset
-            // GameObject plant = plantDatabase.spawnPlant("Hydra", new Vector2(centerPos.x, centerPos.y + (float) .18));
-            // save for offset
-            // GameObject plant = plantDatabase.spawnPlant("GigaGourd", new Vector2(centerPos.x, centerPos.y + (float) .18));
-            // save for offset
-            // GameObject plant = plantDatabase.spawnPlant("Eggroot", new Vector2(centerPos.x - (float) .05, centerPos.y + (float) .05));
-            // save for offset
-            // GameObject plant = plantDatabase.spawnPlant("HiveFlower", new Vector2(centerPos.x, centerPos.y + (float) .30));
+            GameObject plant = plantDatabase.spawnPlant("HiveFlower", centerPos);
             plantLocationCollection.Add(centerPos);
         
         }
