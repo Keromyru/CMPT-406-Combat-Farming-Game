@@ -87,6 +87,7 @@ public class script_DayNightTracker : MonoBehaviour {
 	
     // Update is called once per frame
     void Update() {
+	
         
     }
 	

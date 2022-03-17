@@ -6,6 +6,8 @@ using UnityEngine.Rendering;  //Used to access the volume component
 
 public class DayNightCycle : MonoBehaviour
 {
+    public script_DayNightTracker clockTracker;
+
     public TextMeshProUGUI timeDisplay;  //Display time
     public TextMeshProUGUI dayDisplay;  //Display day
     private Volume ppv;  //Post processing volume
@@ -16,9 +18,9 @@ public class DayNightCycle : MonoBehaviour
     public float eclipseRate;  //What to times the tick by for the Eclipse
 
     [Header("Start Time")]
-    public float seconds;
-    public int minutes;
-    public int hours;
+    public float seconds = 0;
+    public int minutes = 0;
+    public int hours = 0;
     public int days = 1;
 
     [Header("Lights")]
@@ -62,6 +64,10 @@ public class DayNightCycle : MonoBehaviour
         {
             minutes = 0;
             hours += 1;
+        }
+        if(hours == 12)  //AM to PM
+        {
+            //clockTracker.swapDayNight(); 
         }
         if(hours >= 24)  //24hr = 1 day
         {
@@ -125,6 +131,9 @@ public class DayNightCycle : MonoBehaviour
     {
         timeDisplay.text = string.Format("{0:00}:{1:00}", hours, minutes);  //The formatting ensures that there will always be 0's in empty spaces
         dayDisplay.text = "Day: " + days;  //Display day counter
+
+        //clockTracker.setTime(21, 48);
+        //clockTracker.setTime(hours, minutes);
     }
 
     public void EndDay()  //Ending the day to progress to night time
