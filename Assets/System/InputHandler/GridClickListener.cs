@@ -47,7 +47,14 @@ public class GridClickListener : MonoBehaviour
                 }
             }
             // assuming there hasn't been a match
-            GameObject plant = plantDatabase.spawnPlant("Hydra", new Vector2(centerPos.x, centerPos.y + (float) .18));
+            // save for offset
+            // GameObject plant = plantDatabase.spawnPlant("Hydra", new Vector2(centerPos.x, centerPos.y + (float) .18));
+            // save for offset
+            // GameObject plant = plantDatabase.spawnPlant("GigaGourd", new Vector2(centerPos.x, centerPos.y + (float) .18));
+            // save for offset
+            // GameObject plant = plantDatabase.spawnPlant("Eggroot", new Vector2(centerPos.x - (float) .05, centerPos.y + (float) .05));
+            // save for offset
+            // GameObject plant = plantDatabase.spawnPlant("HiveFlower", new Vector2(centerPos.x, centerPos.y + (float) .30));
             plantLocationCollection.Add(centerPos);
         
         }
