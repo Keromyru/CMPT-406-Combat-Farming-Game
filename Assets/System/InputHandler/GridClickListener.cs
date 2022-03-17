@@ -37,16 +37,25 @@ public class GridClickListener : MonoBehaviour
             var cellPosition = tilemap.WorldToCell(point);
             Vector3 centerPos = tilemap.GetCellCenterLocal(cellPosition);
             
-            int length = plantLocationCollection.Count;
-            for (int i = 0; i < length; i++ ){
-                if (centerPos == plantLocationCollection[i]){
-                    // Debug.Log("we collided");
+            int plantLocationCollectionLength = plantLocationCollection.Count;
+            int obstacleLength = gridHoldingTilemaps.transform.childCount;
+            Debug.Log(obstacleLength);
+            for (int i = 0; i < obstacleLength; i++ ){
+                if (i < plantLocationCollectionLength && centerPos == plantLocationCollection[i]){
+                    Debug.Log("we collided");
+                    return;
+                }
+                Vector3 vectorpos = (gridHoldingTilemaps.LocalToWorld(
+                    gridHoldingTilemaps.CellToLocalInterpolated(cellPosition)));
+                Vector3 alteredPos = vectorpos - new Vector3( (float) .03, (float) .11, 0);
+
+                if (alteredPos == gridHoldingTilemaps.transform.GetChild(i).position){
+                    Debug.Log("we hit an obstacle");
                     return;
                 }
             }
             GameObject plant = plantDatabase.spawnPlant("HiveFlower", centerPos);
             plantLocationCollection.Add(centerPos);
-        
-        }
+        }     
     }
 }
