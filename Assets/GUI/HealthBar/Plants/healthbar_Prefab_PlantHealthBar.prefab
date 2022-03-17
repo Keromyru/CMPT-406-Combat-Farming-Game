@@ -109,7 +109,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7972031425957119634}
-  - component: {fileID: 5572405767904995785}
+  - component: {fileID: 596798478640814373}
   m_Layer: 0
   m_Name: healthbar_Prefab_PlantHealthBar
   m_TagString: Untagged
@@ -132,7 +132,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5572405767904995785
+--- !u!114 &596798478640814373
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,7 +145,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fillBar: {fileID: 426958222978982312}
-  maxHealth: 0
 --- !u!1 &7097546107491699113
 GameObject:
   m_ObjectHideFlags: 0
