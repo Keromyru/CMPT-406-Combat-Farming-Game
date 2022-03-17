@@ -29,7 +29,7 @@ public class script_DayNightTracker : MonoBehaviour {
 		digit3.sprite = spriteFonts.GetSprite( "0" );
 		digit4.sprite = spriteFonts.GetSprite( "0" );
 		
-		amPm.sprite = spriteFonts.GetSprite( "am" );
+		//amPm.sprite = spriteFonts.GetSprite( "am" );
 		dayIcon.SetActive( true );
 		nightIcon.SetActive( false );
 		
@@ -49,13 +49,13 @@ public class script_DayNightTracker : MonoBehaviour {
 			// then swap around
 			dayIcon.SetActive( false );
 			nightIcon.SetActive( true );
-			amPm.sprite = spriteFonts.GetSprite( "pm" );
+			//amPm.sprite = spriteFonts.GetSprite( "pm" );
 			
 		} else {
 			
 			dayIcon.SetActive( true );
 			nightIcon.SetActive( false );
-			amPm.sprite = spriteFonts.GetSprite( "am" );
+			//amPm.sprite = spriteFonts.GetSprite( "am" );
 			
 		}
 			
