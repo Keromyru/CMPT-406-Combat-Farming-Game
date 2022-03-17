@@ -45,7 +45,7 @@ public class GridClickListener : MonoBehaviour
             int plantLocationCollectionLength = plantLocationCollection.Count;
             int obstacleLength = gridHoldingTilemaps.transform.childCount;
             Debug.Log(obstacleLength);
-            for (int i = 0; i < obstacleLength; i++ ){
+            for (int i = 0; i < plantLocationCollectionLength; i++ ){
                 if (i < plantLocationCollectionLength && centerPos == plantLocationCollection[i]){
                     Debug.Log("we collided");
                     return;
