@@ -14,8 +14,9 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     [SerializeField]private float health = 1;
     [SerializeField]private float energy;
     [SerializeField] private int growAge;
-    [SerializeField]private Vector2 location; //Location is just where it lives, this is stored for easy Save Retrieval
+    [SerializeField]private Vector3 location; //Location is just where it lives, this is stored for easy Save Retrieval
     private bool dayTime = false;  
+    private bool isReady = false;
 
 
     private PlantBehaviorSO myPlantData; //References the plants Entry in the Database
@@ -123,8 +124,6 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     }
 
 
-
-
     ////////////////////////////////////////////////
     //Triggers
     ////////////////////////////////////////////////
@@ -137,6 +136,9 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         myHealthBar.updateHB();
         if(myPlantData.nextPhase != null && myPlantData.matureAge != 0){
             nextGrowthPhase();
+        }
+        if (myPlantData.harvestable && growAge >= myPlantData.harvestCycle){
+            isReady = true;
         }
 
 
@@ -154,8 +156,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         //This also passes this game object so that the script may do whatever it needs with it, or it's position
         health -= onHitBehavior.onHit(damage, source, this.gameObject); //Trigger onhit behaviors
         if (myPlantData.soundHurt != null) {audioController.Play(myPlantData.soundHurt);}
-        myHealthBar.updateHB();
-        
+
     }
 
     public void onDeath(){
@@ -168,17 +169,21 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         onAttackBehavior.OnAttack(onAttackBehavior.attackDamage,attackTarget,this.gameObject);
         //Attack Sound
         if (myPlantData.soundAttack != null) { audioController.Play(myPlantData.soundAttack); }
-
-           
     }
 
-    public void onHarvest(){
-        if (myPlantData.soundHarvested != null) {audioController.Play(myPlantData.soundHarvested);}
-        onHarvestBehavior.OnHarvest(this.gameObject);
+    public bool onHarvest(){
+        if(myPlantData.harvestable && isReady){
+            if (myPlantData.soundHarvested != null) {audioController.Play(myPlantData.soundHarvested);}
+            onHarvestBehavior.OnHarvest(this.gameObject);
+            growAge = 0;
+            isReady = false;
+            return true;
+        }
+        else {
+            return false;
+        }
     }
     
-
-
     ////////////////////////////////////////////////
     // Attack Interval Corutine
 
@@ -228,8 +233,8 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
    
     public void setMyPlantData(PlantBehaviorSO newPlantData) {myPlantData = newPlantData; }
     public void setMyPlantSpawner(PlantDatabaseSO newPlantSpawner) {myPlantSpawner = newPlantSpawner; }
-    public void setLocation(Vector2 newLocation){ location = newLocation; }
-    public Vector2 getLocation(){ return location; }
+    public void setLocation(Vector3 newLocation){ location = newLocation; }
+    public Vector3 getLocation(){ return location; }
 
     public void setGrowAge(int newGrowAge){ growAge = newGrowAge; }
     public int getGrowAge(){ return growAge; }
