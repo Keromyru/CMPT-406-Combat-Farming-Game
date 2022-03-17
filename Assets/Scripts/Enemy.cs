@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour
     }
     
     void EnemyDeath(){
+    Currency.addMoney(200);
     Destroy(gameObject);
     }
 }

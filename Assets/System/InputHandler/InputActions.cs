@@ -91,6 +91,42 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Hotbar5"",
+                    ""type"": ""Button"",
+                    ""id"": ""5a5c0a0e-623d-4483-ba4c-de25a3055e63"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Hotbar6"",
+                    ""type"": ""Button"",
+                    ""id"": ""532192ef-f7e0-40f7-9e9a-f934525e85b2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Hotbar7"",
+                    ""type"": ""Button"",
+                    ""id"": ""b0c3daa2-b3ca-4f5e-a0ec-93207762f6a1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Hotbar8"",
+                    ""type"": ""Button"",
+                    ""id"": ""8581424b-b376-4e45-b8ac-7c7efdaf6e46"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""0babd016-35da-4a01-9966-65bce4b8118e"",
@@ -270,6 +306,50 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""OpenMenuFromPlayer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ed21fa3b-920a-4930-9b21-a7b013f1bb65"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hotbar5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""16f7ab0c-d32d-4338-9431-2098b39b7d77"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hotbar6"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5f30219f-eb41-49e8-8ba8-1da4fa14fe72"",
+                    ""path"": ""<Keyboard>/7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hotbar7"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""648ebd19-679d-4852-9cfe-4d226892d14e"",
+                    ""path"": ""<Keyboard>/8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hotbar8"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -544,6 +624,10 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         m_InputPlayer_Hotbar2 = m_InputPlayer.FindAction("Hotbar2", throwIfNotFound: true);
         m_InputPlayer_Hotbar3 = m_InputPlayer.FindAction("Hotbar3", throwIfNotFound: true);
         m_InputPlayer_Hotbar4 = m_InputPlayer.FindAction("Hotbar4", throwIfNotFound: true);
+        m_InputPlayer_Hotbar5 = m_InputPlayer.FindAction("Hotbar5", throwIfNotFound: true);
+        m_InputPlayer_Hotbar6 = m_InputPlayer.FindAction("Hotbar6", throwIfNotFound: true);
+        m_InputPlayer_Hotbar7 = m_InputPlayer.FindAction("Hotbar7", throwIfNotFound: true);
+        m_InputPlayer_Hotbar8 = m_InputPlayer.FindAction("Hotbar8", throwIfNotFound: true);
         m_InputPlayer_Interact = m_InputPlayer.FindAction("Interact", throwIfNotFound: true);
         m_InputPlayer_OpenInventory = m_InputPlayer.FindAction("OpenInventory", throwIfNotFound: true);
         m_InputPlayer_OpenMenuFromPlayer = m_InputPlayer.FindAction("OpenMenuFromPlayer", throwIfNotFound: true);
@@ -626,6 +710,10 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_InputPlayer_Hotbar2;
     private readonly InputAction m_InputPlayer_Hotbar3;
     private readonly InputAction m_InputPlayer_Hotbar4;
+    private readonly InputAction m_InputPlayer_Hotbar5;
+    private readonly InputAction m_InputPlayer_Hotbar6;
+    private readonly InputAction m_InputPlayer_Hotbar7;
+    private readonly InputAction m_InputPlayer_Hotbar8;
     private readonly InputAction m_InputPlayer_Interact;
     private readonly InputAction m_InputPlayer_OpenInventory;
     private readonly InputAction m_InputPlayer_OpenMenuFromPlayer;
@@ -640,6 +728,10 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         public InputAction @Hotbar2 => m_Wrapper.m_InputPlayer_Hotbar2;
         public InputAction @Hotbar3 => m_Wrapper.m_InputPlayer_Hotbar3;
         public InputAction @Hotbar4 => m_Wrapper.m_InputPlayer_Hotbar4;
+        public InputAction @Hotbar5 => m_Wrapper.m_InputPlayer_Hotbar5;
+        public InputAction @Hotbar6 => m_Wrapper.m_InputPlayer_Hotbar6;
+        public InputAction @Hotbar7 => m_Wrapper.m_InputPlayer_Hotbar7;
+        public InputAction @Hotbar8 => m_Wrapper.m_InputPlayer_Hotbar8;
         public InputAction @Interact => m_Wrapper.m_InputPlayer_Interact;
         public InputAction @OpenInventory => m_Wrapper.m_InputPlayer_OpenInventory;
         public InputAction @OpenMenuFromPlayer => m_Wrapper.m_InputPlayer_OpenMenuFromPlayer;
@@ -673,6 +765,18 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Hotbar4.started -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnHotbar4;
                 @Hotbar4.performed -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnHotbar4;
                 @Hotbar4.canceled -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnHotbar4;
+                @Hotbar5.started -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnHotbar5;
+                @Hotbar5.performed -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnHotbar5;
+                @Hotbar5.canceled -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnHotbar5;
+                @Hotbar6.started -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnHotbar6;
+                @Hotbar6.performed -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnHotbar6;
+                @Hotbar6.canceled -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnHotbar6;
+                @Hotbar7.started -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnHotbar7;
+                @Hotbar7.performed -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnHotbar7;
+                @Hotbar7.canceled -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnHotbar7;
+                @Hotbar8.started -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnHotbar8;
+                @Hotbar8.performed -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnHotbar8;
+                @Hotbar8.canceled -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnHotbar8;
                 @Interact.started -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_InputPlayerActionsCallbackInterface.OnInteract;
@@ -707,6 +811,18 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Hotbar4.started += instance.OnHotbar4;
                 @Hotbar4.performed += instance.OnHotbar4;
                 @Hotbar4.canceled += instance.OnHotbar4;
+                @Hotbar5.started += instance.OnHotbar5;
+                @Hotbar5.performed += instance.OnHotbar5;
+                @Hotbar5.canceled += instance.OnHotbar5;
+                @Hotbar6.started += instance.OnHotbar6;
+                @Hotbar6.performed += instance.OnHotbar6;
+                @Hotbar6.canceled += instance.OnHotbar6;
+                @Hotbar7.started += instance.OnHotbar7;
+                @Hotbar7.performed += instance.OnHotbar7;
+                @Hotbar7.canceled += instance.OnHotbar7;
+                @Hotbar8.started += instance.OnHotbar8;
+                @Hotbar8.performed += instance.OnHotbar8;
+                @Hotbar8.canceled += instance.OnHotbar8;
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
@@ -860,6 +976,10 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         void OnHotbar2(InputAction.CallbackContext context);
         void OnHotbar3(InputAction.CallbackContext context);
         void OnHotbar4(InputAction.CallbackContext context);
+        void OnHotbar5(InputAction.CallbackContext context);
+        void OnHotbar6(InputAction.CallbackContext context);
+        void OnHotbar7(InputAction.CallbackContext context);
+        void OnHotbar8(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnOpenInventory(InputAction.CallbackContext context);
         void OnOpenMenuFromPlayer(InputAction.CallbackContext context);
