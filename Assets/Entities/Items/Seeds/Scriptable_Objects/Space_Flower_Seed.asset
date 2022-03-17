@@ -19,3 +19,4 @@ MonoBehaviour:
   available: 0
   description: These seeds will grow into a Space Flower.
   isPlantable: 1
+  spawnName: HiveFlower
