@@ -14,7 +14,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     [SerializeField]private float health = 1;
     [SerializeField]private float energy;
     [SerializeField] private int growAge;
-    [SerializeField]private Vector2 location; //Location is just where it lives, this is stored for easy Save Retrieval
+    [SerializeField]private Vector3 location; //Location is just where it lives, this is stored for easy Save Retrieval
     private bool dayTime = false;  
     private bool isReady = false;
 
@@ -228,8 +228,8 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
    
     public void setMyPlantData(PlantBehaviorSO newPlantData) {myPlantData = newPlantData; }
     public void setMyPlantSpawner(PlantDatabaseSO newPlantSpawner) {myPlantSpawner = newPlantSpawner; }
-    public void setLocation(Vector2 newLocation){ location = newLocation; }
-    public Vector2 getLocation(){ return location; }
+    public void setLocation(Vector3 newLocation){ location = newLocation; }
+    public Vector3 getLocation(){ return location; }
 
     public void setGrowAge(int newGrowAge){ growAge = newGrowAge; }
     public int getGrowAge(){ return growAge; }

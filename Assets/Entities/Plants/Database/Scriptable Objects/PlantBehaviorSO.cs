@@ -35,15 +35,15 @@ public class PlantBehaviorSO : ScriptableObject
     public string soundGrowth; //This is for when a plant is changing phases
     
 
-
+    [Header("PreFabs")]
     
     public GameObject harvestPrefab;
     public GameObject plantPrefab;
     public PlantBehaviorSO nextPhase;
     public AudioControllerSO audioController;
-   
+    [Header("On Tile Offset")]
+    public Vector2 TileOffset;
 
-    
     [Header("Plant Behaviors")]
     [SerializeField] PlantOnHitSO onHit;
     [SerializeField] PlantOnAttackSO onAttack;
@@ -61,9 +61,12 @@ public class PlantBehaviorSO : ScriptableObject
         utility
     }
 
-    public GameObject spawnPlant(string name, Vector2 location){
+    public GameObject spawnPlant(string name, Vector3 tileLocation){
         //Create Plant from the prefab selected at Designated Coordinate 
-        GameObject plant  =  Instantiate(this.plantPrefab, location, Quaternion.identity);
+        GameObject plant  =  Instantiate(
+            this.plantPrefab, 
+            tileLocation + new Vector3(TileOffset.x, TileOffset.y, 0f),
+            Quaternion.identity);
         plant.transform.SetParent(GameObject.Find("ActiveInWorld").transform);
         //Grab the interface of the newly created plant
         IPlantControl plantControl = plant.GetComponent<IPlantControl>();
@@ -80,15 +83,15 @@ public class PlantBehaviorSO : ScriptableObject
         plantControl.setEnergy(plantMaxEnergy);
         plantControl.setHealth(plantMaxHealth);
         plantControl.setGrowAge(0); //It's a baby!
-        plantControl.setLocation(location);
+        plantControl.setLocation(tileLocation);
 
         return plant;
     }
     
 
     //This one is for the load system to put things back as is.
-    public GameObject spawnPlant(string name, Vector2 location, float health, float energy, int age){
-        GameObject plant = spawnPlant(name,location);
+    public GameObject spawnPlant(string name, Vector3 tileLocation, float health, float energy, int age){
+        GameObject plant = spawnPlant(name,tileLocation);
         //Grab the interface of the newly created plant
         IPlantControl plantControl = plant.GetComponent<IPlantControl>();
         
@@ -101,8 +104,8 @@ public class PlantBehaviorSO : ScriptableObject
     }
 
     //This one is for the next growphase. Passing on Damage and Energy loss
-    public GameObject spawnNextPlant(string name, Vector2 location, float healthLoss, float energyLoss){
-        GameObject plant = spawnPlant(name,location);
+    public GameObject spawnNextPlant(string name, Vector3 tileLocation, float healthLoss, float energyLoss){
+        GameObject plant = spawnPlant(name,tileLocation);
         //Grab the interface of the newly created plant
         IPlantControl plantControl = plant.GetComponent<IPlantControl>();
         plantControl.setHealth(plantMaxHealth - healthLoss);
