@@ -9,6 +9,7 @@ public class GridClickListener : MonoBehaviour
     [SerializeField] private GridLayout gridHoldingTilemaps; 
 
     [SerializeField] private Tilemap tilemap;
+    [SerializeField] private Tilemap obstacleTilemap;
     
 
     public Camera cam;
