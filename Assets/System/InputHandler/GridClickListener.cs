@@ -45,16 +45,18 @@ public class GridClickListener : MonoBehaviour
                     Debug.Log("we collided");
                     return;
                 }
-                Vector3 vectorpos = (gridHoldingTilemaps.LocalToWorld(
-                    gridHoldingTilemaps.CellToLocalInterpolated(cellPosition)));
-                Vector3 alteredPos = vectorpos - new Vector3( (float) .03, (float) .11, 0);
-
-                if (alteredPos == gridHoldingTilemaps.transform.GetChild(i).position){
-                    Debug.Log("we hit an obstacle");
-                    return;
-                }
+                // Vector3 vectorpos = (obstacleTilemap.WorldToCell(
+                //     obstacleTilemap.GetCellCenterLocal(cellPosition)));
+                // Vector3 alteredPos = vectorpos - new Vector3( (float) .03, (float) .11, 0);
+                // Debug.Log(alteredPos);
+                // Debug.Log(gridHoldingTilemaps.transform.GetChild(i).position);
+                // if (alteredPos == gridHoldingTilemaps.transform.GetChild(i).position){
+                //     Debug.Log("we hit an obstacle");
+                //     return;
+                // }
             }
-            GameObject plant = plantDatabase.spawnPlant("HiveFlower", centerPos);
+            GameObject plant = plantDatabase.spawnPlant("Eggroot", centerPos);
+            Debug.Log(tilemap.GetColor(cellPosition));
             plantLocationCollection.Add(centerPos);
         }     
     }
