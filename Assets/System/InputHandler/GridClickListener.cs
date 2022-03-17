@@ -62,13 +62,14 @@ public class GridClickListener : MonoBehaviour
             }
             GameObject planted = plantDatabase.spawnPlant(seedToPlant.getSpawnName(), centerPos);
             seedToPlant.remove();
-            Debug.Log(tilemap.GetColor(cellPosition));
             plantLocationCollection.Add(centerPos);
 
             if (Inventory.instance.getItemAmount(seedToPlant) <= 0){
                 seedToPlant = null;
-                
             }
+
+            healthbar_Script_PlantController healthbar = planted.GetComponentInChildren<healthbar_Script_PlantController>();
+            healthbar.setColor(tilemap.GetColor(cellPosition));
         }     
     }
 

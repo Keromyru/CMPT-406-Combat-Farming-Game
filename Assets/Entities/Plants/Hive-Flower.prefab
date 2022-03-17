@@ -108,6 +108,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6233012162056371134}
     m_Modifications:
+    - target: {fileID: 596798478640814373, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 1359099667469968301}
     - target: {fileID: 1646422260702074186, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
       propertyPath: m_Name
       value: healthbar_Prefab_PlantHealthBar
@@ -171,3 +175,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7972031425957119634, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
   m_PrefabInstance: {fileID: 5289462541508929828}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1359099667469968301 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6610035045681449609, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
+  m_PrefabInstance: {fileID: 5289462541508929828}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

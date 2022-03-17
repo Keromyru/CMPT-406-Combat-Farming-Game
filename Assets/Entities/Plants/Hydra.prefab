@@ -149,6 +149,10 @@ PrefabInstance:
       propertyPath: m_FillAmount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 596798478640814373, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 8318452230188647566}
     - target: {fileID: 1646422260702074186, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
       propertyPath: m_Name
       value: healthbar_Prefab_PlantHealthBar
@@ -212,6 +216,17 @@ Transform:
 --- !u!114 &3253366797102133167 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 426958222978982312, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
+  m_PrefabInstance: {fileID: 2939333096271154695}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8318452230188647566 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6610035045681449609, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
   m_PrefabInstance: {fileID: 2939333096271154695}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
