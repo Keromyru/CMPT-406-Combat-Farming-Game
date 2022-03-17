@@ -11,6 +11,8 @@ public class EnemyOnDeathSeedDropperSO : EnemyOnDeathSO
             seeds[Random.Range(0,seeds.Length -1)],
             thisObject.transform.position,
             Quaternion.identity);
+
+        Destroy(thisObject);
     }
 
 }
