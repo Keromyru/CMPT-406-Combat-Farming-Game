@@ -17,12 +17,17 @@ public class GridClickListener : MonoBehaviour
 
     public PlantDatabaseSO plantDatabase;
     private List<Vector3> plantLocationCollection;
+
+    [SerializeField] private GameObject hotbar;
+    private Seed seedToPlant;
     void Start(){
         plantLocationCollection = new List<Vector3>();
+        seedToPlant = null;
     }
 
     void Update(){
-        if (Input.GetButtonDown("Fire1")){
+        if (Input.GetButtonDown("Fire1") && seedToPlant != null){
+            Inventory.instance.getItemAmount(seedToPlant);
             // Grab the mouse position
             Vector3 mousePos = Input.mousePosition;
             // create the ray for casting
@@ -55,9 +60,19 @@ public class GridClickListener : MonoBehaviour
                 //     return;
                 // }
             }
-            GameObject plant = plantDatabase.spawnPlant("Eggroot", centerPos);
+            GameObject planted = plantDatabase.spawnPlant(seedToPlant.getSpawnName(), centerPos);
+            seedToPlant.remove();
             Debug.Log(tilemap.GetColor(cellPosition));
             plantLocationCollection.Add(centerPos);
+
+            if (Inventory.instance.getItemAmount(seedToPlant) <= 0){
+                seedToPlant = null;
+                
+            }
         }     
+    }
+
+    public void setItemToPlant(Seed seed){
+       seedToPlant = seed;
     }
 }
