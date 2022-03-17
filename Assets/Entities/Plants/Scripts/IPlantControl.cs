@@ -13,12 +13,18 @@ public interface IPlantControl
     float getHealth();
     void setEnergy(float energy);
     float getEnergy();
-    void setLocation(Vector2 location);
-    Vector2 getLocation();
+    void setLocation(Vector3 location);
+    Vector3 getLocation();
     void setGrowAge(int age);
     int getGrowAge();
     float getRemaining(); //Get Remaining Water Level
+
     bool waterPlant(float quantity); //Water Plant Action
+
+    float getMaxHealth();
+    float getMaxEnergy();
+
+    bool onHarvest();
 
     void setOnHit(PlantOnHitSO newOnHit);
     void setOnDeath(PlantOnDeathSO newOneDeath);

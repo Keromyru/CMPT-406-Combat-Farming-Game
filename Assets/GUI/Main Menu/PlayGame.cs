@@ -6,10 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayGame : MonoBehaviour
 {
-
     public void StartGame () {
-        
-        SceneManager.LoadScene("InGame");
-
+        SceneManager.LoadScene("InGame", LoadSceneMode.Single);
+        SceneManager.LoadScene("System", LoadSceneMode.Additive);
     }
 }
