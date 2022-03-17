@@ -3,31 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.U2D;
-
+using TMPro;
 
 public class script_DayNightTracker : MonoBehaviour {
 	
 	/* Simple day night tracker display script by Wilson */
 
 	// This is for each digit to show on the tracker
-	public Image digit1, digit2, digit3, digit4;
+	public TextMeshProUGUI digit;
 	
 	// The icon for am or pm and day to night
-	public Image amPm, day, night;
+	public Image day, night;
 	
 	// The day night icons
 	public GameObject dayIcon, nightIcon;
 	
-	// This is the spriteAtlas to access for changes
-	public SpriteAtlas spriteFonts;
-	
 	void Start() {
 		
-		// Starting day will be 00:00 and am
-		digit1.sprite = spriteFonts.GetSprite( "0" );
-		digit2.sprite = spriteFonts.GetSprite( "0" );
-		digit3.sprite = spriteFonts.GetSprite( "0" );
-		digit4.sprite = spriteFonts.GetSprite( "0" );
+		// Setup alignment of text
+		digit.alignment = TextAlignmentOptions.Center;
+		digit.fontSize = 520;
+		
+		// Starting day will be 00:00
+		digit.text = "00:00";
 		
 		//amPm.sprite = spriteFonts.GetSprite( "am" );
 		dayIcon.SetActive( true );
@@ -40,21 +38,21 @@ public class script_DayNightTracker : MonoBehaviour {
 		Input: None
 		Return: None
 	*/
-	public void swapDayNight() {
+	public void swapDayNight( bool isDay ) {
 		
 		// Check what is currently set and adjust according
 		// If day
-		if ( dayIcon.activeSelf ) {
+		if ( isDay ) {
 			
 			// then swap around
-			dayIcon.SetActive( false );
-			nightIcon.SetActive( true );
+			dayIcon.SetActive( true );
+			nightIcon.SetActive( false );
 			//amPm.sprite = spriteFonts.GetSprite( "pm" );
 			
 		} else {
 			
-			dayIcon.SetActive( true );
-			nightIcon.SetActive( false );
+			dayIcon.SetActive( false );
+			nightIcon.SetActive( true );
 			//amPm.sprite = spriteFonts.GetSprite( "am" );
 			
 		}
@@ -70,18 +68,7 @@ public class script_DayNightTracker : MonoBehaviour {
 	*/
 	public void setTime( int currentHour, int currentMinutes ) {
 		
-		// Take values and split them
-		int hour1 = currentHour / 10;	// X0:00
-		int hour2 = currentHour % 10;	// 0X:00
-		
-		int min1 = currentMinutes / 10;	// 00:X0
-		int min2 = currentMinutes % 10;	// 00:0X
-		
-		// Set the images
-		digit1.sprite = spriteFonts.GetSprite( hour1.ToString() );
-		digit2.sprite = spriteFonts.GetSprite( hour2.ToString() );
-		digit3.sprite = spriteFonts.GetSprite( min1.ToString() );
-		digit4.sprite = spriteFonts.GetSprite( min2.ToString() );
+		digit.text = string.Format( "{0:00}:{1:00}", currentHour, currentMinutes );
 	
 	}
 	
@@ -90,7 +77,5 @@ public class script_DayNightTracker : MonoBehaviour {
 	
         
     }
-	
-	
 	
 }

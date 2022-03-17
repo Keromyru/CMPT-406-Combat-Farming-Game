@@ -419,6 +419,17 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 55446294011547748, guid: dcdb52bf9c9e6374dac85c3f58a05c41, type: 3}
   m_PrefabInstance: {fileID: 326382428}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &327564365 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8347660403030006287, guid: b248ed2b6ccb7894498711a70744be2d, type: 3}
+  m_PrefabInstance: {fileID: 1486989848}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60302039804ebed46a4fd31b0fea30ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &388687216
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -431,6 +442,14 @@ PrefabInstance:
       value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 3313482596635371456, guid: 66a0f42bdd7624cf08c6ffaf53f7193c, type: 3}
+      propertyPath: dayEnd
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3313482596635371456, guid: 66a0f42bdd7624cf08c6ffaf53f7193c, type: 3}
+      propertyPath: dayStart
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3313482596635371456, guid: 66a0f42bdd7624cf08c6ffaf53f7193c, type: 3}
       propertyPath: dayDisplay
       value: 
       objectReference: {fileID: 1229301116604500513}
@@ -438,6 +457,10 @@ PrefabInstance:
       propertyPath: timeDisplay
       value: 
       objectReference: {fileID: 1229301116355834538}
+    - target: {fileID: 3313482596635371456, guid: 66a0f42bdd7624cf08c6ffaf53f7193c, type: 3}
+      propertyPath: clockTracker
+      value: 
+      objectReference: {fileID: 327564365}
     - target: {fileID: 3313482596635371456, guid: 66a0f42bdd7624cf08c6ffaf53f7193c, type: 3}
       propertyPath: lights.Array.size
       value: 2

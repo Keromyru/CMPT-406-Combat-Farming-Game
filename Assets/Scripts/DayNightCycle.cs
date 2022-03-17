@@ -22,6 +22,10 @@ public class DayNightCycle : MonoBehaviour
     public int minutes = 0;
     public int hours = 0;
     public int days = 1;
+	
+	[Header("Day-Night Switch Time")]
+	public int dayStart = 0; // When the day light starts
+	public int dayEnd = 0; // When the day light ends
 
     [Header("Lights")]
     public bool activateLights;  //Check if lights are on
@@ -65,10 +69,14 @@ public class DayNightCycle : MonoBehaviour
             minutes = 0;
             hours += 1;
         }
-        if(hours == 12)  //AM to PM
+        if( hours >= dayStart && hours < dayEnd )  // Change when day ends and when day starts
         {
-            //clockTracker.swapDayNight(); 
+            clockTracker.swapDayNight( true );  // Tell tracker it is day
         }
+		if( hours < dayStart || hours >= dayEnd )
+		{
+			clockTracker.swapDayNight( false ); // Tell tracker it is night
+		}
         if(hours >= 24)  //24hr = 1 day
         {
             hours = 0;
@@ -133,7 +141,7 @@ public class DayNightCycle : MonoBehaviour
         dayDisplay.text = "Day: " + days;  //Display day counter
 
         //clockTracker.setTime(21, 48);
-        //clockTracker.setTime(hours, minutes);
+        clockTracker.setTime(hours, minutes);
     }
 
     public void EndDay()  //Ending the day to progress to night time
