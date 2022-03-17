@@ -21,10 +21,10 @@ public class EnemySpawnTest : MonoBehaviour
 
     IEnumerator spawnEnemiesContinously(){
         while(true){
-            baddies.spawnEnemy("Basic_enemy", new Vector2(-12.18753f,1.358912f));
-            baddies.spawnEnemy("Basic_enemy", new Vector2(-9,-8));
-            baddies.spawnEnemy("Basic_enemy", new Vector2(-9,8));
-            yield return new WaitForSeconds(2f);
+            baddies.spawnEnemy("Basic_enemy", new Vector2(-17,3));
+            baddies.spawnEnemy("Basic_enemy", new Vector2(-15,-9));
+            baddies.spawnEnemy("Basic_enemy", new Vector2(-12,8));
+            yield return new WaitForSeconds(3f);
         }
        
     }
