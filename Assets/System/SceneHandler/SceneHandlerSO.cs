@@ -27,7 +27,7 @@ public class SceneHandlerSO : ScriptableObject
 /*
 * Scenarios
 */
-    private void LoadScenario(string Name){
+    public void LoadScenario(string Name){
         foreach (ScenarioSO scene in scenarios)
         {
             if (scene.sceneName.Contains(Name)){
@@ -43,7 +43,7 @@ public class SceneHandlerSO : ScriptableObject
 /*
 * MENUS
 */
-    private void LoadMenu(string Name)
+    public void LoadMenu(string Name)
     {
         foreach (MenuSO scene in menus)
         {
@@ -61,7 +61,7 @@ public class SceneHandlerSO : ScriptableObject
 /*
 * GUI
 */
-    private void LoadGUI(string Name)
+    public void LoadGUI(string Name)
     {
         foreach (GuiSO scene in guis)
         {
@@ -79,7 +79,7 @@ public class SceneHandlerSO : ScriptableObject
     }
 ///////////////////////////////////////////////////////////////
 
-    private void UnloadMenus(){
+    public void UnloadMenus(){
         foreach (MenuSO scene in menus){
             SceneManager.UnloadSceneAsync(scene.sceneName);
         }
@@ -122,7 +122,7 @@ public class SceneHandlerSO : ScriptableObject
 
 
     //Updates an Active directory of loaded  scenes
-    private void GetLoadedScenes(){
+    public void GetLoadedScenes(){
         int countLoaded = SceneManager.sceneCount;
         loadedScenes = new Scene[countLoaded];
  
@@ -132,7 +132,7 @@ public class SceneHandlerSO : ScriptableObject
         }
     }
     //Creates a list of scene names of active scenes
-    private List<String> ListOfLoadedScenes(){
+    public List<String> ListOfLoadedScenes(){
         GetLoadedScenes();
         List<String> sceneNames = new List<String>();
         foreach (var Scene in loadedScenes)
