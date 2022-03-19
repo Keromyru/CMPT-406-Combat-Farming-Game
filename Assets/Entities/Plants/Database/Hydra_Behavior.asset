@@ -18,12 +18,8 @@ MonoBehaviour:
   plantMaxEnergy: 100
   plantType: 0
   canAttack: 1
-  attackRate: 2
-  attackRange: 4
-  attackDamage: 10
-  harvestable: 1
-  canDieOfOldAge: 1
   matureAge: 1
+  harvestable: 1
   harvestCycle: 2
   deathAge: 10
   seedDropMin: 0
@@ -33,9 +29,12 @@ MonoBehaviour:
   soundAttack: AttackSwoop
   soundHarvested: 
   soundHurt: 
+  soundGrowth: 
   harvestPrefab: {fileID: 0}
   plantPrefab: {fileID: 3435683626492516636, guid: fbce66f114478b3439300f1a144f0ac4, type: 3}
+  nextPhase: {fileID: 0}
   audioController: {fileID: 11400000, guid: 61664c2b36929b7409adee2b27202783, type: 2}
+  TileOffset: {x: 0, y: 0.18}
   onHit: {fileID: 11400000, guid: 7f60d8ec71e4b974c88665cf9346352e, type: 2}
   onAttack: {fileID: 11400000, guid: 6dd71a8c8baae8f4ab65c121af5c38a7, type: 2}
   onDeath: {fileID: 11400000, guid: 169f5d4cc04e2c4448ac8618714d612f, type: 2}

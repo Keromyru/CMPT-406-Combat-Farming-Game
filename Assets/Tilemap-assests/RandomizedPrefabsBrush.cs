@@ -32,21 +32,25 @@ namespace UnityEditor{
             // or later adjust with offsets for things larger than one hex
             Vector3Int cellPosition = new Vector3Int(position.x, position.y, position.z);
             
+            // check that the altered position is correct
+            Vector3 vectorpos = (gridLayout.LocalToWorld(gridLayout.CellToLocalInterpolated(cellPosition)));
+            Vector3 alteredPos = vectorpos - new Vector3( (float) .03, (float) .11, 0);
+
             // checks if there is a obstacle in the cell already
-            if (GetObjectInCell(gridLayout, brushTarget.transform, new Vector3Int(position.x, position.y, position.z)) != null){
+            if (GetObjectInCell(gridLayout, brushTarget.transform, alteredPos) != null){
                 return;
             }
 
             // randomly choose one of the obstacles (or prefabs) to paint into the scene
             GameObject chosenPrefab = Instantiate(randomPrefabs[Random.Range(0, randomPrefabs.Length)]);
             chosenPrefab.transform.SetParent(brushTarget.transform);
-            chosenPrefab.transform.position = gridLayout.LocalToWorld(gridLayout.CellToLocalInterpolated(cellPosition));         
+            chosenPrefab.transform.position = alteredPos;      
 
             // base.Paint(gridLayout, brushTarget, position);
         }
 
         //Checks if there is an prefab with the tag obstacle in the cell already
-        private static Transform GetObjectInCell(GridLayout grid, Transform parent, Vector3Int position){
+        private static Transform GetObjectInCell(GridLayout grid, Transform parent, Vector3 offsetLocation){
             // First list all the children of the grid
             int childCount = parent.childCount;
 
@@ -61,7 +65,7 @@ namespace UnityEditor{
                     For anything more complex that goes over several hexes more complicated math needs to be 
                     used to know if something is within the bounds of something else.
                 */
-                if (child.position == grid.LocalToWorld(grid.CellToLocalInterpolated(position)) && (tag == "randomObstacle")){
+                if (child.position == offsetLocation && (tag == "randomObstacle")){
                     // if so return that child
                     return child;
                 }
