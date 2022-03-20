@@ -8,7 +8,11 @@ public class HubController : MonoBehaviour, ITakeDamage
     
     private float hubHealth = 1;
     [SerializeField] float hubMaxHealth;
-    UnityEvent event_HubAttacked = new UnityEvent();
+    public delegate void onHubAttacked(int hubHealth);
+    
+    #pragma warning disable CS0067 // The event is never used
+    public static event onHubAttacked HubAttacked;
+    #pragma warning restore CS0067
 
     GameObject onDeathEffect;
     AudioClipSO onHitSound;
@@ -18,7 +22,6 @@ public class HubController : MonoBehaviour, ITakeDamage
         if(source.tag == "Enemy"){ }
         hubHealth -= damage;
         if (onHitSound != null) { onHitSound.Play();} //Play onDeathSound
-        event_HubAttacked.Invoke(); //
         if( hubHealth < 0){ onDeath();} //Check Death State
     }
 
@@ -26,6 +29,10 @@ public class HubController : MonoBehaviour, ITakeDamage
         if (onDeathEffect != null){ Instantiate(onDeathEffect, this.transform.position, this.transform.rotation); }
         if (onDeathSound != null) { onDeathSound.Play();} //Play onDeathSound
         Debug.Log("You have lost the game my dude");
+    }
+
+    private void OnDisable() {
+        
     }
 
 }
