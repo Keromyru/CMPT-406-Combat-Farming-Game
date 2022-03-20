@@ -13,6 +13,7 @@ public class EnemyOnDeathSeedDropperSO : EnemyOnDeathSO
             thisObject.transform.position,
             Quaternion.identity);
         }
+        Destroy(thisObject);
     }
 
 }
