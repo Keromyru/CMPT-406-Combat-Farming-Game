@@ -134,6 +134,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33067c5875e8d4e419d46c3de53f872f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ableToImpact:
+  - Structure
+  - Player
+  - Enemy
+  ableToDamage:
+  - Enemy
   impactEffect: {fileID: 0}
   impactSound: {fileID: 11400000, guid: f1c9e3ea83d2c6f4e906fdb86681b94a, type: 2}
   shotSound: {fileID: 0}

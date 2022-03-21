@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class healthbar_Script_PlantController : MonoBehaviour {
+public class healthbar_Script_PlantController : FadeOutEffect {
 	
     /* Simple plant healthbar script by Wilson */
 	
@@ -19,6 +19,7 @@ public class healthbar_Script_PlantController : MonoBehaviour {
 		myPlant = this.gameObject.transform.parent.GetComponent<PlantController>(); //Set Plant Data
 		maxHealth = myPlant.getMaxHealth(); //Set Max Health
 		setHealth(maxHealth);
+		fadeCheck();
 	}
     
 	/* Set current health of the HUB
@@ -36,13 +37,25 @@ public class healthbar_Script_PlantController : MonoBehaviour {
 		Return: currHealth - The current amount of health
 	*/
 	public float getHealth() {
-		
 		return currHealth;
-		
 	}
 
+	/*  Retrieves and Sets the plants current health
+		Input: None
+		Return: nothing
+	*/
 	public void updateHB(){
 		setHealth(myPlant.getHealth());
+		fadeCheck();
+	}
+
+	/*  Sets the fade status based on need
+		Input: None
+		Return: nothing
+	*/
+	private void fadeCheck(){
+		if(currHealth == maxHealth){ FadeOut();}
+		else { FadeIn();}
 	}
 	
 }
