@@ -36,10 +36,19 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     private bool isWaiting; //Is in a state of waiting before it can attack again
     private GameObject  attackTarget;
     public List<GameObject> targets;
+    private healthbar_Script_PlantController myHealthBar;
 
     #endregion
     ////////////////////////////////////////////////
     // PLANT LOGICS
+
+    //Sets the Healthbar controller
+    private void Start() { 
+        if(this.gameObject.GetComponentInChildren<healthbar_Script_PlantController>() != null){
+            myHealthBar = this.gameObject.GetComponentInChildren<healthbar_Script_PlantController>();
+        }
+      
+        }
 
     private void FixedUpdate() {
         //Death Check
@@ -129,14 +138,13 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         growAge++; 
         dayTime = true;
         targets.Clear(); //Clear Attack List
-
         if(myPlantData.nextPhase != null && myPlantData.matureAge != 0){
             nextGrowthPhase();
         }
         if (myPlantData.harvestable && growAge >= myPlantData.harvestCycle){
             isReady = true;
         }
-
+        if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar
 
     }
 
@@ -152,6 +160,8 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         //This also passes this game object so that the script may do whatever it needs with it, or it's position
         health -= onHitBehavior.onHit(damage, source, this.gameObject); //Trigger onhit behaviors
         if (myPlantData.soundHurt != null) {audioController.Play(myPlantData.soundHurt);}
+        if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar
+
     }
 
     public void onDeath(){
@@ -236,7 +246,8 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
 
     public void setHealth(float newHealth){ health = newHealth;}
     public float getHealth(){return health;}
-
+    public float getMaxHealth(){return myPlantData.plantMaxHealth;}
+    public float getMaxEnergy(){return myPlantData.plantMaxEnergy;}
     public void setEnergy(float newEnergy){ energy = newEnergy;}
     public float getEnergy(){ return energy;}
 
