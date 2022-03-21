@@ -37,6 +37,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     private GameObject  attackTarget;
     public List<GameObject> targets;
     private healthbar_Script_PlantController myHealthBar;
+    private AudioSource mySource;
 
     #endregion
     ////////////////////////////////////////////////
@@ -47,6 +48,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
             if(this.gameObject.GetComponentInChildren<healthbar_Script_PlantController>() != null){
                 myHealthBar = this.gameObject.GetComponentInChildren<healthbar_Script_PlantController>();
             }
+            mySource = this.gameObject.GetComponent<AudioSource>();
         }
 
     private void FixedUpdate() {
@@ -113,7 +115,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     //Replaces The Current Plant With Its next phase.
     //Going to be checked on the "Newday" trigger
     private void nextGrowthPhase(){
-        if (myPlantData.soundGrowth != null) {audioController.Play(myPlantData.soundGrowth);} //Play soundGrowth if the file has been declared
+        if (myPlantData.soundGrowth != null) {audioController.Play(myPlantData.soundGrowth, mySource);} //Play soundGrowth if the file has been declared
         //Spawns the next plant in line
         myPlantData.nextPhase.spawnNextPlant(
             myPlantData.nextPhase.name,
@@ -154,7 +156,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         //This can accomedate for any kind of damage negation that may be needed.
         //This also passes this game object so that the script may do whatever it needs with it, or it's position
         health -= onHitBehavior.onHit(damage, source, this.gameObject); //Trigger onhit behaviors
-        if (myPlantData.soundHurt != null) {audioController.Play(myPlantData.soundHurt);}
+        if (myPlantData.soundHurt != null) {audioController.Play(myPlantData.soundHurt, mySource);}
         if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar  
         if (health <= 0){ onDeath();} //Death Check
 
@@ -162,19 +164,19 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
 
     public void onDeath(){
         //Triggers the attached Deal Trigger
-        if (myPlantData.soundDeath != null) {audioController.Play(myPlantData.soundDeath);}
+        if (myPlantData.soundDeath != null) {audioController.Play(myPlantData.soundDeath, mySource);}
         onDeathBehavior.onDeath(this.gameObject);
     }
 
     public void onAttack(){
         onAttackBehavior.OnAttack(onAttackBehavior.attackDamage,attackTarget,this.gameObject);
         //Attack Sound
-        if (myPlantData.soundAttack != null) { audioController.Play(myPlantData.soundAttack);}
+        if (myPlantData.soundAttack != null) { audioController.Play(myPlantData.soundAttack, mySource);}
     }
 
     public bool onHarvest(){
         if(myPlantData.harvestable && isReady){
-            if (myPlantData.soundHarvested != null) {audioController.Play(myPlantData.soundHarvested);}
+            if (myPlantData.soundHarvested != null) {audioController.Play(myPlantData.soundHarvested, mySource);}
             onHarvestBehavior.OnHarvest(this.gameObject);
             growAge = 0;
             isReady = false;

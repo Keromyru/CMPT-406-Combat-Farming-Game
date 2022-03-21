@@ -1,105 +1,68 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using System;
 [CreateAssetMenu(fileName = "MusicController", menuName = "Sound Data/Music Controller")]
 public class MusicControllerSO : ScriptableObject
 {
-        public List<MusicClipSO> instances;
-
-        private List<MusicClipSO>Menus;
-        private List<MusicClipSO>DayCycle;
-        private List<MusicClipSO>NightCycle;
+        public MusicClipSO[] instances;
+        private MusicClipSO[] Menus;
+        private MusicClipSO[] DayCycle;
+        private MusicClipSO[]NightCycle;
         private int mIndex; //Index Pointer
-        private int playlist = 0;
-
-        
+         
+        private MusicClipSO[] playlist;
 
     private void OnEnable() {
-        //Clears All The Arrays
-        Menus = new List<MusicClipSO>(); 
-        DayCycle = new List<MusicClipSO>(); 
-        NightCycle = new List<MusicClipSO>(); 
-        instances = new List<MusicClipSO>(); 
-
-
         //Searches and populates with every instance of MusicClipSO kickin' around
-        foreach (MusicClipSO item in Resources.FindObjectsOfTypeAll<MusicClipSO>()){
-            if(!instances.Contains(item)){instances.Add(item);}
-        }
-
-        //Checks all the AudioClipSO's and adds the one with the correct type to it's list
-        foreach (MusicClipSO item in instances){
-            //Music List with info
-            //Debug.Log("Name: "+item.Name+ "      for: "+ item.musicLocation);
-    
-            switch ((int)item.musicLocation)
-            {
-                case 0:
-                    Menus.Add(item);
-                break;
-
-                case 1:
-                    DayCycle.Add(item);
-                break;
-
-                case 2:
-                    NightCycle.Add(item);
-                break;
-
-                default:
-                
-                break;
-            }
-        }
+        instances = instances.Union(Resources.FindObjectsOfTypeAll<MusicClipSO>()).OrderBy(m => m.priority).ToArray();
+        
+        Menus = instances.Where(m => m.musicLocation == 0 ).ToArray();
+        DayCycle = instances.Where(m => (int)m.musicLocation == 1 ).ToArray();
+        NightCycle = instances.Where(m => (int)m.musicLocation == 2 ).ToArray();
+        //Array.ForEach(instances, m => Debug.Log(m.Name)); //Lists The Entire Music Library
     }
 
     //Disabled AutoPlay and Starts a music piece of the specified name;
     public AudioSource PlaySong(string name, AudioSource audioSourceParam = null) {
         var source = audioSourceParam;
         //Looks for the element that shares it's name with the input
-        MusicClipSO AD = instances.Find(x => x.Name.Contains(name));
+        
+        MusicClipSO AD = instances.First(m => m.Name.Contains(name));
         //Plays the file using it's perameters, and returns the audiosource
         return AD.Play(audioSourceParam);      
     }
 
     //preps and sets what list to play
-    public void SetPlayList(int locationName) {
-        mIndex = 0; 
-        playlist = locationName;
+    public AudioSource StartPlayList(int locationName, AudioSource audioSourceParam = null) {
+        mIndex = 0;
+        switch (locationName){
+            case 0: 
+                playlist = Menus;
+            break;
+
+            case 1:
+                playlist = DayCycle;
+            break;
+
+            case 2:
+                playlist = NightCycle;
+            break;
+
+            default:
+                playlist = instances;
+            break;
+        }
+        playlist[mIndex].Play(audioSourceParam);
+        return audioSourceParam;     
     }
 
 
     public AudioSource PlayNext(AudioSource audioSourceParam) {
-        var source = audioSourceParam;
-        MusicClipSO selectedMusic;      
-        switch (playlist)
-            { //Takes the chosen playlist and plays the next song from
-                case 0:
-                    if (mIndex+1 == Menus.Count){ mIndex = 0;}
-                    selectedMusic = Menus[mIndex];
-                    selectedMusic.Play(audioSourceParam);
-                break;
-
-                case 1:
-                    if (mIndex+1 == DayCycle.Count){ mIndex = 0;}
-                    selectedMusic = DayCycle[mIndex];
-                    selectedMusic.Play(audioSourceParam);
-                break;
-
-                case 2:
-                    if (mIndex+1 == NightCycle.Count){ mIndex = 0;}
-                    selectedMusic = NightCycle[mIndex];
-                    selectedMusic.Play(audioSourceParam);
-                break;
-
-                default:
-                    selectedMusic = instances[0];
-                    selectedMusic.Play(audioSourceParam);
-                break;
-            }
-        //Increment the counter
         mIndex ++;
-
+        if(mIndex == playlist.Length){mIndex = 0;}     
+        playlist[mIndex].Play(audioSourceParam);
         //Plays the file using it's perameters, and returns the audiosource
         return audioSourceParam;      
     }
@@ -111,6 +74,4 @@ public class MusicControllerSO : ScriptableObject
         NightCycle,
         Other,
     }
-
-
 }

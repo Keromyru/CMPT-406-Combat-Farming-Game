@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cef4f254244d595459a0d045af17ebe1, type: 3}
-  m_Name: Music_Night_1
+  m_Name: Music_Menu_Boring
   m_EditorClassIdentifier: 
-  Name: Night_1
+  Name: Boring Menu
   clips:
-  - {fileID: 8300000, guid: 8d692fd52b2b24d27b2b688ae9b0a869, type: 3}
+  - {fileID: 8300000, guid: db80239ce88334c36b302fe86dce7079, type: 3}
   type: 4
   volume: 1
   pitch: 1
   source: {fileID: 0}
-  musicLocation: 2
+  musicLocation: 0
+  priority: 2
