@@ -8,6 +8,9 @@ public class Seed : Item
     // seed are always plantable
     public bool isPlantable = true;
 
+    // name to match the spawning string
+    public string spawnName;
+
     // you can use all the variables found in Item.cs here too
     // i.e. name, available (timeslots), price, icon, etc.
 
