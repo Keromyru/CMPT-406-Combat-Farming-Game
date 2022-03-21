@@ -51,10 +51,6 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         }
 
     private void FixedUpdate() {
-        //Death Check
-        if (health <= 0){ onDeath();}
-
-
         //Target Check  is not day, is not waiting, is able to attack, has a target, and the target is available
         if (!dayTime && myPlantData.canAttack && !isWaiting && targets.Count > 0 && CheckTarget()){
             onAttack(); //Does the Attack Action
@@ -106,12 +102,12 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     }
 
     public bool waterPlant(float amount){
-        energy += amount;
+        health += amount;
         //Catch to prevent overfilling
-        if (energy > myPlantData.plantMaxEnergy) { energy = myPlantData.plantMaxEnergy;}
+        if (energy > myPlantData.plantMaxHealth) { health = myPlantData.plantMaxHealth;}
 
         //Returns true if plant energy is now ful
-        if (energy >= myPlantData.plantMaxEnergy){return true;}
+        if (health >= myPlantData.plantMaxHealth){return true;}
         else { return false;}
     }
 
@@ -160,7 +156,8 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         //This also passes this game object so that the script may do whatever it needs with it, or it's position
         health -= onHitBehavior.onHit(damage, source, this.gameObject); //Trigger onhit behaviors
         if (myPlantData.soundHurt != null) {audioController.Play(myPlantData.soundHurt);}
-        if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar
+        if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar  
+        if (health <= 0){ onDeath();} //Death Check
 
     }
 
