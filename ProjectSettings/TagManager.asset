@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Structure
+  - randomObstacle
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - Midground
   - Foreground
   - Player
-  - 
-  - 
+  - Interest
+  - Wall
   - 
   - 
   - 
