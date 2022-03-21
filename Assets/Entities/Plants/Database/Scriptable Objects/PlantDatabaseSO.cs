@@ -18,7 +18,6 @@ public class PlantDatabaseSO : ScriptableObject
     public GameObject spawnPlant(string name, Vector2 location){
         if (SpawnInEffect != null) {Instantiate(SpawnInEffect, location, Quaternion.identity);}
         PlantBehaviorSO plant = plantList.First(x => x.plantName.Contains(name));
-        
         return plant.spawnPlant(name, location);
     }
     //This one is for the load system to put things back as is.
@@ -28,8 +27,7 @@ public class PlantDatabaseSO : ScriptableObject
         return plant;
     }
 
-
     public string getTooltip(string name){ return plantList.First(x => x.getName().Contains(name)).getTooltip();}
-
 }
+
 

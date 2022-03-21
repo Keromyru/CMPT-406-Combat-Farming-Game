@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 //TDK443
 //This is a base class that other controllers for each plant should inharit
 // it should hold the base stats they all should impliment, and if all goes well their actions should be controllable by modular SO action objects **Shrugs** 
@@ -65,9 +66,8 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         if (entity.tag == "Enemy" && myPlantData.canAttack) {
             targets.Add(entity.gameObject);
         }
-        
-        
     }
+
     private void OnTriggerExit2D(Collider2D entity) {
         if (entity.tag == "Enemy"  && myPlantData.canAttack){
             targets.Remove(entity.gameObject); //Remove That Object From Its Attack List
@@ -76,30 +76,23 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     }
 
     private bool CheckTarget(){ //If the target doesn't exist, or it's out of range, or it's daytime;
-        if( (attackTarget == null || Vector3.Distance(attackTarget.transform.position, location) > onAttackBehavior.attackRange)){
+        if( (attackTarget == null || distance(attackTarget) > onAttackBehavior.attackRange)){
             attackTarget = null;
             return SetTarget();
-        }
-        else{ 
-            return true; }
+        } else{ return true; }
     }
     private bool SetTarget(){
-        float tDist = 1000; //Starts with an absurd distance
-        GameObject potentialTarget = null; //Sets a place holder
-        foreach (GameObject baddy in targets){ //checks all it's targets for a new option
-            float distance = (Vector3.Distance(baddy.transform.position, gameObject.transform.position));
-            if (distance < tDist){ //If this distance is better than any other 
-                tDist = distance;
-                potentialTarget = baddy; // Sets the potential target
-            } 
-        }
-        attackTarget = potentialTarget;
-        if (potentialTarget == null){ // Sets the returns if there's no good targets
-            return false;
-        }
-        else {
+        if (targets.Count() > 0){
+            targets = targets.OrderBy(t => distance(t)).ToList();
+            attackTarget = targets[0];
             return true;
         }
+        attackTarget = null;
+        return false;
+    }
+
+    private float distance(GameObject baddy){
+        return Vector3.Distance(baddy.transform.position, gameObject.transform.position);
     }
 
     public bool waterPlant(float amount){
@@ -147,7 +140,6 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
 
     public void newNight(){
         dayTime = false;
-
     }
 
     //Onhit is referenced by ITakeDamage interface
@@ -159,7 +151,6 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         if (myPlantData.soundHurt != null) {audioController.Play(myPlantData.soundHurt, mySource);}
         if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar  
         if (health <= 0){ onDeath();} //Death Check
-
     }
 
     public void onDeath(){
@@ -251,3 +242,4 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
 
     #endregion Sets and Gets
 }
+
