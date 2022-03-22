@@ -18,13 +18,17 @@ public class EnemyAI : MonoBehaviour
         myRB = this.GetComponent<Rigidbody2D>(); 
         enemyMoveSpeed = myController.myEnemyData.enemyMoveSpeed;
 
-
+       
     
     }
 
     private void FixedUpdate() {
+        //TODO: MAKE A THING THAT MAKES IT SO YOUR LIL DUDE DOESN"T WALK ALL UP IN IT'S LIL FRIENDS
+        
         //This Makes the Baddy Run Up To The Target
         myRB.MovePosition(Vector3.Lerp(this.transform.position, myTarget.transform.position , Time.deltaTime * enemyMoveSpeed * 0.25f));
+
+        
     }
     private void OnTriggerEnter2D(Collider2D entity) {
         if (entity.tag == "Plant" ||
