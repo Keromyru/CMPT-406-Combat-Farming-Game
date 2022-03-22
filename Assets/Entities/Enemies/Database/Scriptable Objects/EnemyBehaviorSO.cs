@@ -10,6 +10,7 @@ public class EnemyBehaviorSO : ScriptableObject
 
   public int numberOfDropsOnDeath;
   public int cashPerDrop;
+  public float enemyMoveSpeed;
 
 
   [Header("Enemy Attack")]
