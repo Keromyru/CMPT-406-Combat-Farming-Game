@@ -8,6 +8,7 @@ TagManager:
   - Structure
   - Plant
   - Effect
+  - AudioClip
   layers:
   - Default
   - TransparentFX

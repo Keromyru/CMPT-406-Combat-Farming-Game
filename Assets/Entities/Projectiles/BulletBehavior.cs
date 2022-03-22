@@ -21,11 +21,12 @@ public class BulletBehavior : MonoBehaviour
     [Header("Do not set these")]
     public float bulletDamage;
     public GameObject source; 
+    private AudioSource myAudioSource;
 
 
     private void Start() 
     {
-        if (shotSound != null)  {shotSound.Play();} // Audio Initiate
+        if (shotSound != null)  {shotSound.Play(myAudioSource);} // Audio Initiate
     }
 
     private void OnTriggerEnter2D(Collider2D entity) {
@@ -35,7 +36,7 @@ public class BulletBehavior : MonoBehaviour
                 Destroy(effect, .25f); //To remove effect after a certain time
             } 
             //Play Impact Sound
-            if (impactSound != null) { impactSound.Play();}
+            if (impactSound != null) { impactSound.Play(myAudioSource);}
             
             
             if (ableToDamage.Contains(entity.tag)){
