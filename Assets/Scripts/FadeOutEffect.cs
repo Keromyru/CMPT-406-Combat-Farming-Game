@@ -14,6 +14,7 @@ public class FadeOutEffect : MonoBehaviour {
     [Header("Fade Effect Options"),Space]
     [SerializeField] bool enableFadeEffect = true;
     [SerializeField] int fadeSpeed;
+    private bool faded = false;
    
     private FadeObject[] myFadeObjects;
     
@@ -23,13 +24,20 @@ public class FadeOutEffect : MonoBehaviour {
         myFadeObjects = this.gameObject.GetComponentsInChildren<Image>().Select(image => new FadeObject(image)).ToArray();
     }
     public void FadeOut(){ 
+        faded = true;
         if(enableFadeEffect){StartCoroutine(FadeOutRoutine(fadeSpeed)); }
         }
     public void FadeIn(){
+        faded = false;
         if(enableFadeEffect){StartCoroutine(FadeInRoutine(fadeSpeed)); }
     }
    
-    public void MakeTransparent(){ Array.ForEach(myFadeObjects, s => s.setAlpha(0f));}
+    public void MakeTransparent(){ 
+        faded = true;
+        Array.ForEach(myFadeObjects, s => s.setAlpha(0f));
+        }
+
+    public bool IsFaded(){ return faded; }
 
 
     // Peram: Requires Objects in the myFadeObjects 

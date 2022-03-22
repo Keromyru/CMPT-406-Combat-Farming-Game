@@ -13,21 +13,20 @@ public class EnemyAI : MonoBehaviour
 
     private void Start() {
         myController = this.GetComponent<EnemyController>(); //Quick Access to the controller
-        theHub = GameObject.Find("HUB");
+        theHub = GameObject.Find("Player");
         myTarget = theHub;
         myRB = this.GetComponent<Rigidbody2D>(); 
         enemyMoveSpeed = myController.myEnemyData.enemyMoveSpeed;
-
-       
-    
     }
 
     private void FixedUpdate() {
         //TODO: MAKE A THING THAT MAKES IT SO YOUR LIL DUDE DOESN"T WALK ALL UP IN IT'S LIL FRIENDS
-        
+        //Debug.Log(this.gameObject.name+" is attacking " + myTarget.name + " and it's "+ Distance() + " units away");
         //This Makes the Baddy Run Up To The Target
-        myRB.MovePosition(Vector3.Lerp(this.transform.position, myTarget.transform.position , Time.deltaTime * enemyMoveSpeed * 0.25f));
-
+        if (Distance() > myController.myEnemyData.attackRange - 0.2f){
+            Vector3 targetWithOffset = ((myTarget.transform.position - this.transform.position).normalized + myTarget.transform.position);
+            myRB.MovePosition(Vector3.Lerp(this.transform.position, targetWithOffset , Time.deltaTime * enemyMoveSpeed * 0.25f));
+        }
         
     }
     private void OnTriggerEnter2D(Collider2D entity) {
@@ -36,7 +35,6 @@ public class EnemyAI : MonoBehaviour
             entity.tag == "Structure") {
             targetList.Add(entity.gameObject); //Adds That Object From Its Attack List
             CheckTarget();
-
         }
 
         
@@ -46,11 +44,8 @@ public class EnemyAI : MonoBehaviour
         if (entity.tag == "Plant" ||
             entity.tag == "Player" ||
             entity.tag == "Structure") {
-
             targetList.Remove(entity.gameObject); //Remove That Object From Its Attack List
             CheckTarget();
-
-
             if (targetList.Count == 0) { myTarget = theHub;} //Clears the target if there are not more options
         }
     }
