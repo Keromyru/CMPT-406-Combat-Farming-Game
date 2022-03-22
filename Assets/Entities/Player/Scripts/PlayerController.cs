@@ -119,6 +119,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
             health -= onHitBehavior.onHit(damage,source, this.gameObject);
             if (myPlayerData.soundHurt != null) {audioController.Play(myPlayerData.soundHurt);} //Play soundHurt if the file has been declared
         }
+        GetComponent<FlashEffect>().flash();
         event_PlayerHealthChange.Invoke();
         //Death Check
         if(health <= 0){ onDeath();}

@@ -44,10 +44,9 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
 
     //Sets the Healthbar controller
     private void Start() { 
-        if(this.gameObject.GetComponentInChildren<healthbar_Script_PlantController>() != null){
-            myHealthBar = this.gameObject.GetComponentInChildren<healthbar_Script_PlantController>();
-        }
-      
+            if(this.gameObject.GetComponentInChildren<healthbar_Script_PlantController>() != null){
+                myHealthBar = this.gameObject.GetComponentInChildren<healthbar_Script_PlantController>();
+            }
         }
 
     private void FixedUpdate() {
@@ -173,7 +172,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     public void onAttack(){
         onAttackBehavior.OnAttack(onAttackBehavior.attackDamage,attackTarget,this.gameObject);
         //Attack Sound
-        if (myPlantData.soundAttack != null) { audioController.Play(myPlantData.soundAttack); }
+        if (myPlantData.soundAttack != null) { audioController.Play(myPlantData.soundAttack);}
     }
 
     public bool onHarvest(){
