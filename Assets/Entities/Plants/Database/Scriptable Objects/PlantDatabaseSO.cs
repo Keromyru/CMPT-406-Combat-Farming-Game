@@ -7,6 +7,7 @@ using System.Linq;
 
 public class PlantDatabaseSO : ScriptableObject
 {
+    [SerializeField] GameObject SpawnInEffect; 
     [Header("This List Updates Itself Dynamicaly"), SerializeField] List<PlantBehaviorSO> plantList;
     private void OnEnable() {
         //plantList = new List<PlantBehaviorSO>(); //Just in case it needs to be reset on startup
@@ -18,6 +19,7 @@ public class PlantDatabaseSO : ScriptableObject
     }
 
     public GameObject spawnPlant(string name, Vector2 location){
+        if (SpawnInEffect != null) {Instantiate(SpawnInEffect, location, Quaternion.identity);}
         PlantBehaviorSO plant = plantList.Find(x => x.plantName.Contains(name));
         
         return plant.spawnPlant(name, location);
