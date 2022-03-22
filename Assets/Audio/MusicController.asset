@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: MusicController
   m_EditorClassIdentifier: 
   instances:
+  - {fileID: 11400000, guid: 20012bbd4f461411cbf4d8015d443c35, type: 2}
+  - {fileID: 11400000, guid: d4c1cf3740aed46f28d51f5155dbdac8, type: 2}
   - {fileID: 11400000, guid: 50358a8b08f758b42859be2cfb858216, type: 2}
+  - {fileID: 11400000, guid: 71cd890d9624eba4d864b1e6d26f0052, type: 2}
+  - {fileID: 11400000, guid: d62054d477932914ea6c94427cf99631, type: 2}
