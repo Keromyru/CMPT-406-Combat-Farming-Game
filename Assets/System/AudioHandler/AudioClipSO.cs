@@ -23,19 +23,19 @@ public class AudioClipSO : ScriptableObject
 
     public AudioSource Play(AudioSource audioSourceParam = null)
     {
-        if (clips.Length == 0)
-            {
+       
+        var source = audioSourceParam;
+        bool deleteMe = true;
+        if (audioSourceParam != null) {deleteMe = false;}
+        if (clips.Length == 0) {
                 Debug.LogWarning("Missing sound clips for "+ name);
                 return null;
             }
-
-        var source = audioSourceParam;
         //If there is no source file passed for this audio file, it'll just make a new one
         if (source == null){
             var _obj = new GameObject("Audio Clip", typeof(AudioSource));
             source = _obj.GetComponent<AudioSource>();
         }
-
         //Sets the config values so the new source
         source.clip = GetAudioClip();
         source.volume = volume;
@@ -44,7 +44,7 @@ public class AudioClipSO : ScriptableObject
         source.Play();
 
         //Destroys object when file is done playing
-        Destroy(source.gameObject, source.clip.length/source.pitch);
+        if(deleteMe) {Destroy(source.gameObject, source.clip.length/source.pitch);}
 
         //Returning source in case there needs to be further tweaking or stopped early
         return source; 

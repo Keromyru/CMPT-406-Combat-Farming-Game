@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef4f254244d595459a0d045af17ebe1, type: 3}
   m_Name: Music_Daytime_1
   m_EditorClassIdentifier: 
-  Name: 
-  clips: []
-  type: 0
-  volume: 1
+  Name: Day_1
+  clips:
+  - {fileID: 8300000, guid: a098b18a7bbbd44b79d1c39143bfec0d, type: 3}
+  type: 4
+  volume: 0.5
   pitch: 1
   source: {fileID: 0}
-  musicLocation: 0
+  musicLocation: 1

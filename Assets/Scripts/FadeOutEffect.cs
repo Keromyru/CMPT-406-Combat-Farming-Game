@@ -16,7 +16,12 @@ public class FadeOutEffect : MonoBehaviour {
     [SerializeField] int fadeSpeed;
    
     private FadeObject[] myFadeObjects;
-
+    
+    private void OnEnable() {
+        //Creates a listing of every image on this the parent object
+        //and saves it as images
+        myFadeObjects = this.gameObject.GetComponentsInChildren<Image>().Select(image => new FadeObject(image)).ToArray();
+    }
     public void FadeOut(){ 
         if(enableFadeEffect){StartCoroutine(FadeOutRoutine(fadeSpeed)); }
         }
@@ -24,13 +29,9 @@ public class FadeOutEffect : MonoBehaviour {
         if(enableFadeEffect){StartCoroutine(FadeInRoutine(fadeSpeed)); }
     }
    
-    private void OnEnable() {
-        //Creates a listing of every image on this the parent object
-        //and saves it as images
+    public void MakeTransparent(){ Array.ForEach(myFadeObjects, s => s.setAlpha(0f));}
 
-        myFadeObjects = this.gameObject.GetComponentsInChildren<Image>().Select(image => new FadeObject(image)).ToArray();
 
-    }
     // Peram: Requires Objects in the myFadeObjects 
     //Fades the Images on the game object out.
     private IEnumerator FadeOutRoutine( int fadeSpeed = 2) { 

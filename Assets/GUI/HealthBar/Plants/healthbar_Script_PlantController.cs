@@ -19,7 +19,7 @@ public class healthbar_Script_PlantController : FadeOutEffect {
 		myPlant = this.gameObject.transform.parent.GetComponent<PlantController>(); //Set Plant Data
 		maxHealth = myPlant.getMaxHealth(); //Set Max Health
 		setHealth(maxHealth);
-		fadeCheck();
+		MakeTransparent();
 	}
     
 	/* Set current health of the HUB
