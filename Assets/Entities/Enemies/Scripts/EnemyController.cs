@@ -7,7 +7,7 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
     //Stats
     [Header("Enemy Stats")]
     private float enemyHealth = 1;
-    private float enemyMoveSpeed;
+    public float enemyMoveSpeed;
 
 
     // Behaviors

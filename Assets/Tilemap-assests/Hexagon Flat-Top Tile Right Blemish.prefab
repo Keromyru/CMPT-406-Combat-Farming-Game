@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 993022556309285775}
   - component: {fileID: 253199408923399225}
   - component: {fileID: 1851325150549794961}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hexagon Flat-Top Tile Right Blemish
   m_TagString: randomObstacle
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6506984469463014592}
   - component: {fileID: 1458544328140836741}
   - component: {fileID: -8501244288878617450}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hexagon Flat-Top Tile Rock
   m_TagString: randomObstacle
   m_Icon: {fileID: 0}
