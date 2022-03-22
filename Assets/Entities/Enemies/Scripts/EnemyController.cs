@@ -54,13 +54,14 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
         //The Method Existing on the SO will trigger as well as pass final damage to the enemy itself.
         //This can accomedate for any kind of damage negation that may be needed.
         //This also passes this game object so that the script may do whatever it needs with it, or it's position
-        if (myEnemyData.SoundOnHit != null) {audioController.Play(myEnemyData.SoundOnHit);} //Play SoundOnHit if the file has been declared
+        if (myEnemyData.SoundOnHit != null && myEnemyData.SoundOnHit.Length < 1) {audioController.Play(myEnemyData.SoundOnHit);}
         enemyHealth -= onHitBehavior.onHit(damage, source, this.gameObject); //Trigger onhit behaviors
     }
 
     public void onDeath(){
         //Triggers the attached Deal Trigger
-        if (myEnemyData.SoundOnDeath != null) {audioController.Play(myEnemyData.SoundOnDeath);} //Play SoundOnDeath if the file has been declared
+        //if (myEnemyData.SoundOnDeath != null) {audioController.Play(myEnemyData.SoundOnDeath);} //Play SoundOnDeath if the file has been declared
+         if (myEnemyData.SoundOnDeath != null && myEnemyData.SoundOnDeath.Length < 1) {audioController.Play(myEnemyData.SoundOnDeath);}
         onDeathBehavior.onDeath(this.gameObject);
     }
 
