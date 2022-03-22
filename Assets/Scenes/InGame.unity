@@ -80834,12 +80834,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5052676946929357238, guid: 869173b86c74e2248811c0cf44dd2cd3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052676946929357238, guid: 869173b86c74e2248811c0cf44dd2cd3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.026068864
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5052676946929357238, guid: 869173b86c74e2248811c0cf44dd2cd3, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.026068864
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5052676946929357238, guid: 869173b86c74e2248811c0cf44dd2cd3, type: 3}
       propertyPath: m_LocalPosition.x
