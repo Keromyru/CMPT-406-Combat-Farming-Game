@@ -12,6 +12,8 @@ public class PolarithMovement : MonoBehaviour
 	private Transform target; 
 	private EnemyController controller; // it has the movement speed in it. 
 
+    private AIMSeek seek;
+
 
 
 	private AIMContext aimContext;
@@ -22,6 +24,7 @@ public class PolarithMovement : MonoBehaviour
     {
         this.aimContext = this.GetComponent<AIMContext>();
         this.controller = this.GetComponent<EnemyController>();
+        Debug.Log(aimContext.DecidedDirection);
         
     }
     

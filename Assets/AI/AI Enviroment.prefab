@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4291543128567592303}
+  - component: {fileID: 6460450449668676193}
   m_Layer: 0
   m_Name: Danger
   m_TagString: Untagged
@@ -30,6 +31,29 @@ Transform:
   m_Father: {fileID: 8040523787504910489}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6460450449668676193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223989218108768224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 226514780, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: Obstacles
+  Static: 1
+  Layers:
+  - Obstacles
+  GameObjects: []
+  tabState:
+    tab0: 0
+    tab1: 0
+    tab2: 0
+    tab3: 0
+    tab4: 0
 --- !u!1 &2097559756275029902
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 226514780, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Label: 
+  Label: Interests
   Static: 0
   Layers:
   - Structure
@@ -130,8 +154,10 @@ MonoBehaviour:
   m_Script: {fileID: 1274429404, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Environments: []
-  SpatialPartition: 0
+  Environments:
+  - {fileID: 6460450449668676193}
+  - {fileID: 8824662679486322388}
+  SpatialPartition: 1
   RegularGrid:
     CellCountX: 16
     CellCountY: 16

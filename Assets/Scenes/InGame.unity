@@ -113089,7 +113089,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3231876348994428816, guid: 5016fa31bb858be49be0c7ee908ead9e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5016fa31bb858be49be0c7ee908ead9e, type: 3}
 --- !u!1001 &8993236102121181098
 PrefabInstance:
@@ -113098,6 +113099,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1223989218108768224, guid: eed5feffa081d5648bf0c98c1c9e6d1f, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097559756275029902, guid: eed5feffa081d5648bf0c98c1c9e6d1f, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 7124398389169622518, guid: eed5feffa081d5648bf0c98c1c9e6d1f, type: 3}
       propertyPath: m_Name
       value: AI Enviroment

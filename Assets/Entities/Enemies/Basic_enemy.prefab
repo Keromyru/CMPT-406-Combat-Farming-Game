@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1643086809095187395}
   - component: {fileID: 6151414529711931367}
   - component: {fileID: 4244434580225805829}
+  - component: {fileID: 6018658158039315716}
   - component: {fileID: -8663973536630515173}
   - component: {fileID: 233432928019666824}
   - component: {fileID: -3840607825964769613}
@@ -100,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e63ac908d47d18e42bb5337072669d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyMoveSpeed: 0
   myEnemyData: {fileID: 0}
 --- !u!114 &6151414529711931367
 MonoBehaviour:
@@ -118,8 +120,8 @@ MonoBehaviour:
   SensorShared: 1
   Sensor: {fileID: 11400000, guid: 17ae8395354cddc419113c83a5f66413, type: 2}
   objectiveLabels:
-  - Interest
-  - Walls
+  - Find Interests
+  - Obstacle Avoid
   context:
     minObjectives: 0001
     normObjectives: 0101
@@ -132,7 +134,7 @@ MonoBehaviour:
   indicatorGizmo:
     Enabled: 1
     Wireframe: 0
-    ShowReceptors: 0
+    ShowReceptors: 1
     ShowConstraints: 0
     DrawDoubleSided: 1
     ResolutionThreshold: 32
@@ -173,6 +175,21 @@ MonoBehaviour:
   rangeGizmo:
     Enabled: 0
     Color: {r: 0.2627451, g: 0.79607844, b: 0.24705882, a: 1}
+--- !u!114 &6018658158039315716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3922440575466242747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -2048606044, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 1
+  ObjectiveAsSpeed: -1
+  Context: {fileID: 6151414529711931367}
 --- !u!114 &-8663973536630515173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,7 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Order: 0
-  Label: Find Interest
+  Label: Find Interests
   initialized: 1
   tabState:
     tab0: 0
@@ -196,7 +213,7 @@ MonoBehaviour:
     tab4: 0
   advancedInspector: 0
   FilteredEnvironments:
-  - Interest
+  - Interests
   GameObjects: []
   velocityGizmo:
     Enabled: 0
@@ -248,7 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Order: 0
-  Label: Obstical Avoid
+  Label: Obstacle Avoid
   initialized: 1
   tabState:
     tab0: 0
@@ -258,7 +275,7 @@ MonoBehaviour:
     tab4: 0
   advancedInspector: 0
   FilteredEnvironments:
-  - Dangers
+  - Obstacles
   GameObjects: []
   velocityGizmo:
     Enabled: 0
