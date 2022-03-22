@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public static class Score
 {
     // The amount of score (Initial amount can be changed here)
-    public static int score = 500;
+    public static int score = 0;
     // Unity Event for whenever score variable is changed
     public static UnityEvent scoreEvent = new UnityEvent();
 
