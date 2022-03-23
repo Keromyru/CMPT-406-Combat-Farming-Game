@@ -161,8 +161,11 @@ public class DayNightCycle : MonoBehaviour
 
     public void DisplayTime()  //Shows time and day in Unity Inspector
     {
-        timeDisplay.text = string.Format("{0:00}:{1:00}", hours, minutes);  //The formatting ensures that there will always be 0's in empty spaces
-        dayDisplay.text = "Day: " + days;  //Display day counter
+        // Used for the daynight scene commented it out here to not through errors
+        // timeDisplay.text = string.Format("{0:00}:{1:00}", hours, minutes);  //The formatting ensures that there will always be 0's in empty spaces
+        // dayDisplay.text = "Day: " + days;  //Display day counter
+
+        clockTracker.setTime(hours, minutes);
     }
 
     public void StartDay()  //Starting the day for 7:00 (7:00am)
