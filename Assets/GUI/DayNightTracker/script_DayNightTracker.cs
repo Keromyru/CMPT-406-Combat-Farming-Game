@@ -11,6 +11,9 @@ public class script_DayNightTracker : MonoBehaviour {
 
 	// This is for each digit to show on the tracker
 	public Image digit1, digit2, digit3, digit4;
+
+	// this is to show the current hour/minute of the day
+	// public TextMeshProGUI digit;
 	
 	// The icon for am or pm and day to night
 	public Image amPm, day, night;
@@ -28,6 +31,13 @@ public class script_DayNightTracker : MonoBehaviour {
 		digit2.sprite = spriteFonts.GetSprite( "0" );
 		digit3.sprite = spriteFonts.GetSprite( "0" );
 		digit4.sprite = spriteFonts.GetSprite( "0" );
+
+		// Setup alignment of text
+        // digit.alignment = TextAlignmentOptions.Center;
+        // digit.fontSize = 520;
+        
+        // // Starting day will be 00:00
+        // digit.text = "00:00";
 		
 		//amPm.sprite = spriteFonts.GetSprite( "am" );
 		dayIcon.SetActive( true );
@@ -82,7 +92,8 @@ public class script_DayNightTracker : MonoBehaviour {
 		digit2.sprite = spriteFonts.GetSprite( hour2.ToString() );
 		digit3.sprite = spriteFonts.GetSprite( min1.ToString() );
 		digit4.sprite = spriteFonts.GetSprite( min2.ToString() );
-	
+
+		// digit.text = string.Format( "{0:00}:{1:00}", currentHour, currentMinutes );
 	}
 	
     // Update is called once per frame
