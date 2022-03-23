@@ -588,7 +588,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 788218204}
         m_TargetAssemblyTypeName: DayNightCycle, Assembly-CSharp
-        m_MethodName: StartEclipse
+        m_MethodName: StartDay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4533,7 +4533,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705309871
 GameObject:
@@ -4747,7 +4747,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &788218204
 MonoBehaviour:
@@ -4761,14 +4761,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 248cd2ca5d67a481ab2e3dfab0f33966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clockTracker: {fileID: 0}
   timeDisplay: {fileID: 933825394}
   dayDisplay: {fileID: 620475385}
-  tick: Infinity
+  tick: 1000
   oldTick: 0
   eclipseRate: 4
+  activeEclipse: 0
   seconds: 0
   minutes: 0
-  hours: 20
+  hours: 6
   days: 1
   activateLights: 1
   lights:
@@ -5477,7 +5479,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 788218204}
         m_TargetAssemblyTypeName: DayNightCycle, Assembly-CSharp
-        m_MethodName: EndEclipse
+        m_MethodName: EndDay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
