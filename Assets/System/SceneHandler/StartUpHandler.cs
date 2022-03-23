@@ -8,9 +8,20 @@ using System;
 public class StartUpHandler : MonoBehaviour
 {
     private Scene[] loadedScenes;
+    float timer;
     void Start()
     {
-        StartupCheck();
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        SceneManager.LoadScene("System", LoadSceneMode.Additive);
+    }
+
+    private void FixedUpdate() {
+        
+        
+
+
+
+        
     }
 
     private void StartupCheck(){

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef4f254244d595459a0d045af17ebe1, type: 3}
   m_Name: Music_Menu_Bluegrass_Techno
   m_EditorClassIdentifier: 
-  Name: Music_Menu_Bluegrass_Techno
+  Name: Bluegrass_Techno
   clips:
   - {fileID: 8300000, guid: 3dbd03495c6be314b839fd7c32391c08, type: 3}
   type: 4
@@ -20,3 +20,4 @@ MonoBehaviour:
   pitch: 1
   source: {fileID: 0}
   musicLocation: 1
+  priority: 1
