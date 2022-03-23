@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 9003747336537774727}
   - component: {fileID: 3326467401813457649}
   - component: {fileID: 6095334081708874891}
-  - component: {fileID: -3588178277341073430}
-  - component: {fileID: 1668620343745304441}
   m_Layer: 0
   m_Name: Egg-Root
   m_TagString: Plant
@@ -110,6 +108,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9003747336537774727}
     m_Modifications:
+    - target: {fileID: 1320942620774554993, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000030517578
+      objectReference: {fileID: 0}
     - target: {fileID: 1646422260702074186, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
       propertyPath: m_Name
       value: healthbar_Prefab_PlantHealthBar
