@@ -1,7 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+
+// Mace
 
 public class ShopHandler : MonoBehaviour
 {
@@ -16,7 +16,7 @@ public class ShopHandler : MonoBehaviour
         }
     }
 
-    public List<ShopItem> shopItems = new List<ShopItem>();
+    public static List<ShopItem> shopItems = new List<ShopItem>();
 
     // currency link
     private int current_money;
@@ -28,7 +28,7 @@ public class ShopHandler : MonoBehaviour
 
     // add an alert for shop refresh. to be used by the UI
     public delegate void OnShopRefresh();
-    public OnShopRefresh onShopRefreshCallback;
+    public static OnShopRefresh onShopRefreshCallback;
 
     int min_seeds = 3;  // minimum amount of seeds in shop stack
     int max_seeds = 15;  // maximum amount of seeds in shop stack
