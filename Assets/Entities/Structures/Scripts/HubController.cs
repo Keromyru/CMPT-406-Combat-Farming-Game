@@ -5,25 +5,24 @@ using UnityEngine.Events;
 
 public class HubController : MonoBehaviour, ITakeDamage
 {
-    
+    [Header("Hub Configeration")]
+    public float hubMaxHealth;
+    private Healthbar_HUBController myHealthbar;
     private float hubHealth = 1;
-    [SerializeField] float hubMaxHealth;
-    public delegate void onHubAttacked(int hubHealth);
-
-    #pragma warning disable CS0067 // The event is never used
-    public static event onHubAttacked HubAttacked;
-    #pragma warning restore CS0067
-
     GameObject onDeathEffect;
     AudioClipSO onHitSound;
     AudioClipSO onDeathSound;
-    public void onHit(float damage, GameObject source)
-    {
-        if(source.tag == "Enemy"){ 
-            hubHealth -= damage;
-            if (onHitSound != null) { onHitSound.Play();} //Play onDeathSound
-            if( hubHealth < 0){ onDeath();} //Check Death State
-        }
+    
+    private void Start() {
+        myHealthbar = GetComponentInChildren<Healthbar_HUBController>();
+        hubHealth = hubMaxHealth;
+    }
+    public void onHit(float damage, GameObject source){
+        hubHealth -= damage;
+        if (onHitSound != null) { onHitSound.Play();} //Play onDeathSound
+        myHealthbar.updateHB((int)hubHealth);
+        if( hubHealth < 0){ onDeath();} //Check Death State
+        
     }
 
     private void onDeath(){
@@ -32,8 +31,17 @@ public class HubController : MonoBehaviour, ITakeDamage
         Debug.Log("You have lost the game my dude");
     }
 
-    private void OnDisable() {
-        
+    public void Restore(){
+        hubHealth = hubMaxHealth;
     }
+
+    public int getHealth(){
+        return (int)hubHealth;
+    }
+}
+
+public static class MyHub{
+    public static int Health(){ return GameObject.Find("Hub").GetComponent<HubController>().getHealth(); }
+    public static void Restore(){GameObject.Find("Hub").GetComponent<HubController>().Restore(); } 
 
 }
