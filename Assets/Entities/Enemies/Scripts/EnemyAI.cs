@@ -65,7 +65,7 @@ public class EnemyAI : MonoBehaviour
             tooClose = false;
         }
         
-        
+        CheckTarget();    
     }
     private void OnTriggerEnter2D(Collider2D entity) {
         if (entity.tag == "Plant" ||
@@ -101,30 +101,29 @@ public class EnemyAI : MonoBehaviour
 
     private void CheckTarget(){ //If the target doesn't exist, or it's out of range, or it's daytime;
         if( (myTarget == null || Distance() > myController.myEnemyData.attackRange)){
-            myTarget = theHub;
             SetTarget(FindTarget());
         }
     }
 
     private GameObject FindTarget(){   /// NEEDS TO RETURN A SINGLE TARGET GAMEOBJECT
-        if(targetList.Count == 0){
-            return theHub;
-        }
+        if(targetList.Count == 0){ return theHub; } // Sanity Check, not point doin' stuff if there's nothing to look at.
+
         foreach(TargetPriority priority in myController.myEnemyData.priorityList){
-            Debug.Log(priority.name);
+            
             float tDist = 1000; //Starts with an absurd distance
-            GameObject potentialTarget = theHub; //Sets a place holder
+            GameObject potentialTarget = null; //Sets a place holder
             foreach (GameObject target in targetList){ //checks all it's targets for a new option
-            if(target.tag == priority.tag){
-                float distance = (Vector3.Distance(target.transform.position, gameObject.transform.position));
-                if (distance < tDist && distance < priority.distance){ //If this distance is better than any other 
-                    tDist = distance;
-                    potentialTarget = target; // Sets the potential target
+                if(target.tag == priority.tag){
+                    Debug.Log(target.name);
+                    float distance = (Vector3.Distance(target.transform.position, gameObject.transform.position));
+                    if (distance < tDist && distance < priority.distance){ //If this distance is better than any other 
+                        tDist = distance;
+                        potentialTarget = target; // Sets the potential target
                     }
-             }
-         }
+                }
+            }
+            if (potentialTarget != null){ return potentialTarget; }
         // SetTarget(potentialTarget);
-            return potentialTarget;
         }
         return theHub;
     }

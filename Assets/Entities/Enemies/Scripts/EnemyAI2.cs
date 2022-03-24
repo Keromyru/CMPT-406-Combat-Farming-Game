@@ -15,8 +15,6 @@ public class EnemyAI2 : MonoBehaviour
     public List<GameObject> friendsList; //Dynamic List of Friendly Enemies
     private List<Vector2> pathList;
     private Vector2 myPath;
-    [SerializeField] float socialDistance = 1; //sets the distance of the friendly enmies that is acceptable  **which should obviously be 6m b/c yea
-    [SerializeField] bool tooClose = false;
 
     private void Start() {
         myController = this.GetComponent<EnemyController>(); //Quick Access to the controller
@@ -30,18 +28,34 @@ public class EnemyAI2 : MonoBehaviour
         //TODO: MAKE A THING THAT MAKES IT SO YOUR LIL DUDE DOESN"T WALK ALL UP IN IT'S LIL FRIENDS
         //Debug.Log(this.gameObject.name+" is attacking " + myTarget.name + " and it's "+ Distance() + " units away");
         //This Makes the Baddy Run Up To The Target
-        if (Distance() > myController.myEnemyData.attackRange - 0.2f && !tooClose){
+
+
+
+        if (myDistance() > myController.myEnemyData.attackRange - 0.2f){
             Vector3 targetWithOffset = ((myTarget.transform.position - this.transform.position).normalized + myTarget.transform.position);
             myRB.MovePosition(Vector3.Lerp(this.transform.position, targetWithOffset , Time.deltaTime * enemyMoveSpeed * 0.25f));
         }
 
-        
+
     
         
     }
 
+    private void setNextPathNode(){ //POPS THE PATHLIST
+        if (pathList.Count == 0) { myPath = myTarget.transform.position; }
+        myPath = pathList[0];
+        pathList.RemoveAt(0);
 
+    }
 
+    private void addPathNode(Vector2 newNode){
+
+    }
+
+    private bool atPathNode(){
+
+        return true;
+    }
 
 
 
@@ -73,7 +87,7 @@ public class EnemyAI2 : MonoBehaviour
 
 
     private void CheckTarget(){ //If the target doesn't exist, or it's out of range, or it's daytime;
-        if( (myTarget == null || Distance() > myController.myEnemyData.attackRange)){
+        if( (myTarget == null || myDistance() > myController.myEnemyData.attackRange)){
             myTarget = theHub;
             FindTarget();
         }
@@ -93,7 +107,7 @@ public class EnemyAI2 : MonoBehaviour
     }
 
     //Returns The Distance Between the baddy and its target;
-    private float Distance(){ return Vector3.Distance(this.transform.position, myTarget.transform.position); }
+    private float myDistance(){ return Vector3.Distance(this.transform.position, myTarget.transform.position); }
     private void SetTarget(GameObject myNewTarget){myController.attackTarget = myNewTarget; myTarget = myNewTarget;}
 }
 
