@@ -10,6 +10,7 @@ TagManager:
   - Effect
   - AudioClip
   - Obstacle
+  - randomObstacle
   layers:
   - Default
   - TransparentFX
@@ -23,6 +24,8 @@ TagManager:
   - Player
   - MinimapIcons
   - 
+  - Interest
+  - Wall
   - 
   - 
   - 

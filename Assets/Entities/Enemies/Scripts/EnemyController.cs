@@ -7,7 +7,7 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
     //Stats
     [Header("Enemy Stats")]
     private float enemyHealth = 1;
-    private float enemyMoveSpeed;
+    public float enemyMoveSpeed;
 
     // Behaviors
     private EnemyOnAttackSO onAttackBehavior;
@@ -32,8 +32,8 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
         if (enemyHealth <= 0){ onDeath();}
 
 
-        //This is the when it decides to attack... So whatever we need to determin if its target is applicable
-        //There is no logic in this script to determin a target or to decide when to attack
+        // This is the when it decides to attack... So whatever we need to determin if its target is applicable
+        // There is no logic in this script to determin a target or to decide when to attack
         //  onAttackBehavior.attackRange is how you get it's attacking range
         // this is set up to attack when a target 
         if (!isWaiting  && //the attack timer has gone off

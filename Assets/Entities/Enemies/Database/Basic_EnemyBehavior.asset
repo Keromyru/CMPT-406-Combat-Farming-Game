@@ -21,9 +21,15 @@ MonoBehaviour:
   attackRange: 0.6
   attackDamage: 10
   priorityList:
-  - {fileID: 11400000, guid: 5ac0ed6529ca8544b9b32869783c2efb, type: 2}
-  - {fileID: 11400000, guid: ce3854738b608f341b5423ab3a7f32fe, type: 2}
-  - {fileID: 11400000, guid: 974df331d333430479d7fd00e96aaab4, type: 2}
+  - name: I hate plants
+    tag: Plant
+    distance: 1
+  - name: Player
+    tag: Player
+    distance: 3
+  - name: Plants @ Max
+    tag: Plant
+    distance: 10
   SoundOnHit: 
   SoundOnAttack: 
   SoundOnDeath: 
