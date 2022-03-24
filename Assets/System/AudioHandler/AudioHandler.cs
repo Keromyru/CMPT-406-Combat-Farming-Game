@@ -12,8 +12,16 @@ public class AudioHandler : MonoBehaviour
     private void Awake(){ musicPlayer = this.gameObject.GetComponent<AudioSource>();} //Sets the Audio source for easy recall
     private void FixedUpdate(){ 
         //Starts next file when song is over
-        if (!musicPlayer.isPlaying && !isPaused){ PlayNext();}
+        if (!musicPlayer.isPlaying && !isPaused ){ PlayNext();}
     }
+    void OnApplicationFocus(bool hasFocus){
+        isPaused = !hasFocus;
+    }
+
+    void OnApplicationPause(bool pauseStatus){
+        isPaused = pauseStatus;
+    }
+
     public AudioSource PlaySong(string name) {
         StopMusic();
         //Plays the file using it's perameters, and returns the audiosource
