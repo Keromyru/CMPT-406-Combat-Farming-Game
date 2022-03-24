@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         // Gets the movement input and applies a constant velocity to the player
         Vector2 inputVector = playerInput.actions["PlayerMovement"].ReadValue<Vector2>();
         playerRB.MovePosition(playerRB.position + force + new Vector2(inputVector.x, inputVector.y) * myPlayerData.moveRate);
-        if (force.magnitude > 0){ force = force - (force*Time.deltaTime)/forceTime     ;}
+        if (force.magnitude > 0){ force = force - (force*Time.deltaTime)/forceTime;} // Reduces the force added
     }
 
     //Pointer Location from mask layered raycast
