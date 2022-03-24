@@ -15,6 +15,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] float socialDistance = 1; //sets the distance of the friendly enmies that is acceptable  **which should obviously be 6m b/c yea
     private Vector2 force;
     private float forceTime = 0.5f;
+    private Vector2 myTargetPosition;
 
     private void Start() {
         myController = this.GetComponent<EnemyController>(); //Quick Access to the controller
@@ -26,21 +27,46 @@ public class EnemyAI : MonoBehaviour
 
     private void FixedUpdate() {
         //This Makes the Baddy Run Up To The Target
+        //Finding the location of my target
+        if (myTarget.tag == "Structure") {
+            if (Vector2.Distance(myRB.position,myTarget.GetComponent<PolygonCollider2D>().ClosestPoint(myRB.position)) < 
+                Vector2.Distance(myRB.position,myTarget.GetComponent<BoxCollider2D>().ClosestPoint(myRB.position))){
+                    myTargetPosition = myTarget.GetComponent<PolygonCollider2D>().ClosestPoint(myRB.position);
+                }
+                else {
+                    myTargetPosition = myTarget.GetComponent<BoxCollider2D>().ClosestPoint(myRB.position);
+                }
+        } else {myTargetPosition = myTarget.transform.position;}
+
+        // SOCIAL DISTANCING
+        foreach(GameObject friend in friendsList){ //CHECKS FOR SOCIAL DISTANCING
+            if(Vector2.Distance(myRB.position,friend.transform.position) < socialDistance){
+                knockback(friend.transform.position, 0.1f);
+            }
+            else if (friend.tag == "Structure") {
+                if (Vector2.Distance(myRB.position,friend.GetComponent<PolygonCollider2D>().ClosestPoint(myRB.position)) < 0.1f){
+                knockback(friend.GetComponent<PolygonCollider2D>().ClosestPoint(myRB.position), 0.15f);
+                }
+                if (Vector2.Distance(myRB.position,friend.GetComponent<BoxCollider2D>().ClosestPoint(myRB.position)) < 0.1f){
+                knockback(friend.GetComponent<BoxCollider2D>().ClosestPoint(myRB.position),  0.15f);
+                }
+            }
+
+        }     
+
+
+        //Updating movement
+
         if (myDistance() > myController.myEnemyData.attackRange - 0.2f){
             Vector3 targetWithOffset = ((
-                myTarget.transform.position - this.transform.position).normalized
+                myTargetPosition - myRB.position).normalized
                 * (10 - myDistance())  
-                + myTarget.transform.position);
-
-            myRB.MovePosition(force + Vector2.Lerp(this.transform.position, targetWithOffset , Time.deltaTime * enemyMoveSpeed * 0.1f));
+                + myTargetPosition);
+            myRB.MovePosition(force + Vector2.Lerp( myRB.position, targetWithOffset , Time.deltaTime * enemyMoveSpeed * 0.1f)); //Actual move update
         }
         if (force.magnitude > 0){ force = force - (force*Time.deltaTime)/forceTime;} //this reduced the bounce time
 
-        foreach(GameObject friend in friendsList){ //CHECKS FOR SOCIAL DISTANCING
-            if(Vector2.Distance(this.transform.position,friend.transform.position) < socialDistance){
-                knockback(friend.transform.position, 0.1f);
-            } 
-        }     
+        
         CheckTarget(); //Updated target 
     }
     private void OnTriggerEnter2D(Collider2D entity) {
@@ -50,7 +76,9 @@ public class EnemyAI : MonoBehaviour
             targetList.Add(entity.gameObject); //Adds That Object From Its Attack List
             CheckTarget();
         }
-        else if (entity.tag == "Enemy" || entity.tag == "Obstacle") {
+        if (entity.tag == "Enemy" ||
+            entity.tag == "Obstacle" ||
+            entity.tag == "Structure") {
             friendsList.Add(entity.gameObject); // Adds the friends to its list of friends 
         }
     }
@@ -63,7 +91,9 @@ public class EnemyAI : MonoBehaviour
             CheckTarget();
             if (targetList.Count == 0) { myTarget = theHub;} //Clears the target if there are not more options
         }
-        else if (entity.tag == "Enemy" || entity.tag == "Obstacle") {
+        if (entity.tag == "Enemy" || 
+            entity.tag == "Obstacle"||
+            entity.tag == "Structure") {
             friendsList.Remove(entity.gameObject); // Adds the friends to its list of friends 
         }
     }
