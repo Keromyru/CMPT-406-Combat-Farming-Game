@@ -101,7 +101,6 @@ public class EnemyAI : MonoBehaviour
             GameObject potentialTarget = null; //Sets a place holder
             foreach (GameObject target in targetList){ //checks all it's targets for a new option
                 if(target.tag == priority.tag){
-                    Debug.Log(target.name);
                     float distance = (Vector3.Distance(target.transform.position, gameObject.transform.position));
                     if (distance < tDist && distance < priority.distance){ //If this distance is better than any other 
                         tDist = distance;
@@ -117,9 +116,8 @@ public class EnemyAI : MonoBehaviour
 
     //Returns The Distance Between the baddy and its target;
     private float Distance(){ 
-        if(targetList.Count == 0){
-            myTarget = theHub;
-    }
+        if(targetList.Count == 0){ myTarget = theHub;}
+        else if (myTarget == null){ CheckTarget(); }
         return Vector3.Distance(this.transform.position, myTarget.transform.position); }
     private void SetTarget(GameObject myNewTarget){myController.attackTarget = myNewTarget; myTarget = myNewTarget;}
 }
