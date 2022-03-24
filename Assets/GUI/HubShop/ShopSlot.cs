@@ -9,7 +9,7 @@ using UnityEngine.EventSystems;
 public class ShopSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public Image icon;  // what we want to display in shop
-    Item item;  // scriptable object that's holding our item info
+    public Item item;  // scriptable object that's holding our item info
 
     public Text amountText;  // text to hold the amount in stack
     public int amount; // amount of item in shop
@@ -51,13 +51,6 @@ public class ShopSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         slotTooltipInfo.ClearTooltip();  // disable tooltip for item
         slotTooltip.SetActive(false);
-    }
-
-    // buying an item
-    public void BuyItem() {
-        if (item != null) {
-            item.Buy();
-        }
     }
 
     // this is the new version of OnMouseEnter(), or hovering the item slot

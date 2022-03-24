@@ -24,6 +24,7 @@ public class ShopHandler : MonoBehaviour
     //public Text displayCurrent;
 
     // this array is built in the Inspector!! Drag & Drop seeds in. The last element of array should always be Space Potato
+    // this is saved in the prefab for the ShopHandler so you should be able to srag-and-drop :)
     public Seed[] AllSeeds;
 
     // add an alert for shop refresh. to be used by the UI
@@ -75,21 +76,33 @@ public class ShopHandler : MonoBehaviour
     private void shopRefresh() {
         generateItems();
 
-        // send out an alert that inventory changed
+        // send out an alert that shop changed
         if (onShopRefreshCallback != null) {
             onShopRefreshCallback.Invoke();
         }
     }
 
 
-    void AttemptToPurchase(Item toBuy) {
-        if (current_money < toBuy.price) {
+    public void AttemptToPurchase(ShopSlot toBuy) {
+        Debug.Log("Selected buy.");
+
+        // is it in stock?
+        if (toBuy.amount < 0) {
+            Debug.Log("Trying to buy something that isn't in stock.");
+            return;
+        }
+
+        Item item = toBuy.item;
+
+        // can we afford it?
+        if (current_money < item.price) {
             Debug.Log("Not enough funds!");
         }
         else {
-            toBuy.Buy();
+            item.Buy();
         }
 
         current_money = Currency.getMoney();
+        Debug.Log("Current money is " + current_money);
     }
 }
