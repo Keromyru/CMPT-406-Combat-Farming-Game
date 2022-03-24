@@ -38,16 +38,8 @@ public class EnemyAI : MonoBehaviour
         {
             if(Vector2.Distance(this.transform.position,friend.transform.position) < socialDistance)
             {
-                // knockback(friend.transform.position, 1);
-                // Debug.Log("to close friend");
-                
-                Vector2 direction = (transform.position - myTarget.transform.position).normalized;
-                // Debug.Log(friendDirection);
-                // Debug.Log(direction);
-                
-                
+                Vector2 direction = (transform.position - myTarget.transform.position).normalized;                
                 Vector2 friendDirection = (transform.position - myTarget.transform.position).normalized;
-                // Debug.Log(Vector2.Angle(myTarget.transform.position,friend.transform.position));
                 if(Vector2.Angle(myTarget.transform.position,friend.transform.position) < 10f)
                 {
                     tooClose = true;
@@ -93,11 +85,6 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-      public void knockback(Vector3 origin, float scale)
-    {   //Adds Momentum to the enemy in oposite direction of the Origin
-        Vector2 knockback = (transform.position - origin).normalized*scale;
-         GetComponent<Rigidbody2D>().AddForce(knockback,ForceMode2D.Impulse);
-    }
 
     private void CheckTarget(){ //If the target doesn't exist, or it's out of range, or it's daytime;
         if( (myTarget == null || Distance() > myController.myEnemyData.attackRange)){
