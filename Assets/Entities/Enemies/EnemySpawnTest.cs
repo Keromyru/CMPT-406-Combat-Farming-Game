@@ -13,7 +13,7 @@ public class EnemySpawnTest : MonoBehaviour
         // baddies.spawnEnemy("Basic_enemy", new Vector2(-13.18753f,1.358912f));
         //baddies.spawnEnemy("Basic_enemy", new Vector2(-11.37506f,1.701823f));
         // // baddies.spawnEnemy("Basic_enemy", new Vector2(-5.18753f,1.358912f));
-        // // baddies.spawnEnemy("Basic_enemy", new Vector2(-4.37506f,1.701823f));
+        baddies.spawnEnemy("SplitStrider", new Vector2(-10.0f,2.0f));
     
         for (int i = 0; i < numOfBaddies; i++)
                 {

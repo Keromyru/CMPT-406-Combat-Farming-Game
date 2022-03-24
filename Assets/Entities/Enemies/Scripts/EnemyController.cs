@@ -5,9 +5,8 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
 {
     //Stats
-    [Header("Enemy Stats")]
+    [Header("Don't Set These")]
     private float enemyHealth = 1;
-    public float enemyMoveSpeed;
 
     // Behaviors
     private EnemyOnAttackSO onAttackBehavior;
@@ -20,7 +19,6 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
     // Attack Data  
     private Coroutine attackRoutine; 
     private bool isWaiting; //Is in a state of waiting before it can attack again
-
     public GameObject attackTarget; // <--- STILL NEEDS TARGET LOGIC
     //
 
@@ -50,7 +48,7 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
     ////////////////////////////////////////////////
 
     //Onhit is referenced by ITakeDamage interface
-    public void onHit(float damage, GameObject source){
+    public virtual void onHit(float damage, GameObject source){
         //The Method Existing on the SO will trigger as well as pass final damage to the enemy itself.
         //This can accomedate for any kind of damage negation that may be needed.
         //This also passes this game object so that the script may do whatever it needs with it, or it's position
@@ -58,14 +56,14 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
         enemyHealth -= onHitBehavior.onHit(damage, source, this.gameObject); //Trigger onhit behaviors
     }
 
-    public void onDeath(){
+    public virtual void onDeath(){
         //Triggers the attached Deal Trigger
         //if (myEnemyData.SoundOnDeath != null) {audioController.Play(myEnemyData.SoundOnDeath);} //Play SoundOnDeath if the file has been declared
          if (myEnemyData.SoundOnDeath != null && myEnemyData.SoundOnDeath.Length < 1) {audioController.Play(myEnemyData.SoundOnDeath);}
         onDeathBehavior.onDeath(this.gameObject);
     }
 
-    public void onAttack(){
+    public virtual void onAttack(){
         if (myEnemyData.SoundOnAttack != null && myEnemyData.SoundOnAttack.Length > 0) {audioController.Play(myEnemyData.SoundOnAttack);} //Play SoundOnAttack if the file has been declared  
         Debug.Log(this.gameObject.name+" is doing an attack!");
       onAttackBehavior.OnAttack(myEnemyData.attackDamage,

@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8264408906407544344}
+  - component: {fileID: 5914123828694232929}
+  - component: {fileID: 6234664144287401051}
   - component: {fileID: 8264408906407544323}
   - component: {fileID: 8264408906407544324}
   - component: {fileID: 6744317167915206560}
-  - component: {fileID: 5914123828694232929}
-  - component: {fileID: 6234664144287401051}
   m_Layer: 0
   m_Name: DummyAI_enemy
   m_TagString: Enemy
@@ -36,6 +36,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5914123828694232929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8264408906407544345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63ac908d47d18e42bb5337072669d7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMoveSpeed: 0
+  myEnemyData: {fileID: 11400000, guid: 0f6d8f6125af14b4ba4a45657d52b7ac, type: 2}
+  attackTarget: {fileID: 0}
+--- !u!114 &6234664144287401051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8264408906407544345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b212228f4fe1f3d4ba525a15d72c0d57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetList: []
+  friendsList: []
+  socialDistance: 0.6
 --- !u!50 &8264408906407544323
 Rigidbody2D:
   serializedVersion: 4
@@ -99,37 +129,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 10
---- !u!114 &5914123828694232929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8264408906407544345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e63ac908d47d18e42bb5337072669d7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyMoveSpeed: 0
-  myEnemyData: {fileID: 11400000, guid: 0f6d8f6125af14b4ba4a45657d52b7ac, type: 2}
-  attackTarget: {fileID: 0}
---- !u!114 &6234664144287401051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8264408906407544345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b212228f4fe1f3d4ba525a15d72c0d57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetList: []
-  friendsList: []
-  socialDistance: 0.6
-  tooClose: 0
 --- !u!1 &8264408906484266725
 GameObject:
   m_ObjectHideFlags: 0
