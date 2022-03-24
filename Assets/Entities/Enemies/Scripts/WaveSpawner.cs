@@ -1,25 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 // Written by Blake following a Brackeys tutorial
 public class WaveSpawner : MonoBehaviour
 {
+    // Just used for checking what is going on with the wave
     public enum SpawnState { SPAWNING, WAITING, COUNTING };
 
+    // Allows input for what types of enemies spawn in a wave, how many, how fast
     [System.Serializable]
     public class Wave
     {
-        public string name;
-        public Transform enemy;
+        public string waveName;
+        public string enemyName;
         public int count;
         public float rate;
     }
 
+    // Keeps track of the waves
     public Wave[] waves;
     private int nextWave = 0;
 
+    // Spawn points for all enemies
     public Transform[] spawnPoints;
+    // Copy the spawnPoints list and this one will be used to find which spawnpoint will be used for the next night
+    private List<Transform> spawnPointsReduction;
 
     // Will be replaced later for enemys spawning at night
     public float timeBetweenWaves = 5f;
@@ -31,12 +38,18 @@ public class WaveSpawner : MonoBehaviour
 
     private SpawnState state = SpawnState.COUNTING;
 
+    // The database that holds all the enemies
+    public EnemyDatabaseSO baddies;
+
+
     private void Start()
     {
         if (spawnPoints.Length == 0)
         {
             Debug.LogError("No spawn points referenced");
         }
+        spawnPointsReduction = new List<Transform>(spawnPoints);
+        spawnPointsReduction = spawnPointsReduction.OrderBy(x => Random.value).ToList();
 
         waveCountdown = timeBetweenWaves;
     }
@@ -69,9 +82,17 @@ public class WaveSpawner : MonoBehaviour
         {
             waveCountdown -= Time.deltaTime;
         }
+
+        // Refreshes the spawn locations available
+        if (spawnPointsReduction.Count <= 0)
+        {
+            spawnPointsReduction = new List<Transform>(spawnPoints);
+            spawnPointsReduction = spawnPointsReduction.OrderBy(x => Random.value).ToList();
+        }
     }
 
-    void WaveCompleted()
+    // Starts a new Wave if there are more, else it loops back to the first wave
+    private void WaveCompleted()
     {
         Debug.Log("wave completed!");
 
@@ -89,7 +110,8 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
-    bool EnemyIsAlive()
+    // Checks if there are enemies alive every second
+    private bool EnemyIsAlive()
     {
         searchCountdown -= Time.deltaTime;
         if (searchCountdown <= 0f)
@@ -103,15 +125,19 @@ public class WaveSpawner : MonoBehaviour
         return true;
     }
 
-    IEnumerator SpawnWave(Wave _wave)
+    // Spawn the wave with 1 enemy per rate
+    private IEnumerator SpawnWave(Wave _wave)
     {
-        Debug.Log("Spawning Wave: " + _wave.name);
+        Debug.Log("Spawning Wave: " + _wave.waveName);
         state = SpawnState.SPAWNING;
+
+        Transform spawningLocation = spawnPointsReduction[0];
+        spawnPointsReduction.RemoveAt(0);
 
         // Spawn
         for (int i = 0; i < _wave.count; i++)
         {
-            SpawnEnemy(_wave.enemy);
+            SpawnEnemy(_wave.enemyName, spawningLocation);
             yield return new WaitForSeconds(1f / _wave.rate);
         }
 
@@ -120,12 +146,11 @@ public class WaveSpawner : MonoBehaviour
         yield break;
     }
 
-    void SpawnEnemy(Transform _enemy)
+    // Allows the enemy to be spawned
+    private void SpawnEnemy(string _enemy, Transform location)
     {
         // Spawn Enemy
-        Debug.Log("Spawning Enemy: " + _enemy.name);
-
-        Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        Instantiate(_enemy, _sp.position, _sp.rotation);
+        Debug.Log("Spawning Enemy: " + _enemy);
+        baddies.spawnEnemy(_enemy, location.position);
     }
 }

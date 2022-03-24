@@ -82688,17 +82688,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - name: BasicEnemy
-    enemy: {fileID: 3922440575466242746, guid: c6e30949d04a4eb44b20da11215f5003, type: 3}
+  - waveName: BasicEnemyWave1
+    enemyName: Basic_enemy
     count: 2
     rate: 1
-  - name: BasicEnemyFury
-    enemy: {fileID: 3922440575466242746, guid: c6e30949d04a4eb44b20da11215f5003, type: 3}
-    count: 4
+  - waveName: BasicEnemyWave2
+    enemyName: Basic_enemy
+    count: 3
     rate: 2
-  - name: BasicEnemyRaid
-    enemy: {fileID: 3922440575466242746, guid: c6e30949d04a4eb44b20da11215f5003, type: 3}
-    count: 6
+  - waveName: BasicEnemyWave3
+    enemyName: Basic_enemy
+    count: 4
     rate: 3
   spawnPoints:
   - {fileID: 8872695057641322467}
@@ -82707,8 +82707,10 @@ MonoBehaviour:
   - {fileID: 1351411996}
   - {fileID: 1462058774}
   - {fileID: 1242591732}
+  spawnPointsReduction: []
   timeBetweenWaves: 5
   waveCountdown: 0
+  baddies: {fileID: 11400000, guid: 8afe92503b2738d408b63877c8805055, type: 2}
 --- !u!1001 &3112828491005960239
 PrefabInstance:
   m_ObjectHideFlags: 0
