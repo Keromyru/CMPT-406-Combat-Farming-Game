@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+
 
 
 public class PauseMenu : MonoBehaviour
 {
+    // The inputs from the input system
+    private PlayerInput playerInput;
+
+    public GameObject inventoryui;
 
     public static bool GameIsPaused = false;
 
@@ -31,7 +37,12 @@ public void Resume(){
     pauseMenuUI.SetActive(false);
     Time.timeScale =  1f;
     GameIsPaused = false;
-    Debug.Log("resume");
+    if(inventoryui.active){
+        playerInput.SwitchCurrentActionMap("InputUI");
+    }
+    else{
+        playerInput.SwitchCurrentActionMap("InputPlayer");
+    }
 }
 
 //paused state
@@ -56,6 +67,25 @@ public void QuitGame(){
 public void SaveGame(){
     //TODO
     
+}
+
+// Next three functions are to get the Player Input from the other scene
+void OnEnable()
+{
+    SceneManager.sceneLoaded += OnSceneLoaded;
+}
+
+void OnDisable()
+{
+    SceneManager.sceneLoaded -= OnSceneLoaded;
+}
+
+void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+{
+    if (GameObject.Find("InputHandler") != null)
+    {
+        playerInput = GameObject.Find("InputHandler").GetComponent<PlayerInput>();
+    }
 }
 
 }
