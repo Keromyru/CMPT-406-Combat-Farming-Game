@@ -26,6 +26,6 @@ public class EnemyOnAttackMelee : EnemyOnAttackSO
         ITakeDamage damagable = target.GetComponent<ITakeDamage>(); 
       
         //if it's not a baddy and can take damage, mess it up
-        if( damagable != null && target.tag != "Enemy"){ damagable.onHit(attackDamage,thisObject);}
+        if( damagable != null && target.tag != "Enemy"){ damagable.onHit(damage,thisObject);}
     }
 }

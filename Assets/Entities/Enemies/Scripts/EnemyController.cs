@@ -67,9 +67,9 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
     public void onAttack(){
         if (myEnemyData.SoundOnAttack != null && myEnemyData.SoundOnAttack.Length > 0) {audioController.Play(myEnemyData.SoundOnAttack);} //Play SoundOnAttack if the file has been declared  
         Debug.Log(this.gameObject.name+" is doing an attack!");
-    //   onAttackBehavior.OnAttack(onAttackBehavior.attackDamage,
-    //   attackTarget,// <<<<<<<<<<<<<<<----------------------------------This is where on object that is to be attacked is chosen;
-    //   this.gameObject);      
+      onAttackBehavior.OnAttack(myEnemyData.attackDamage,
+      attackTarget,// <<<<<<<<<<<<<<<----------------------------------This is where on object that is to be attacked is chosen;
+      this.gameObject);      
     }
     
 

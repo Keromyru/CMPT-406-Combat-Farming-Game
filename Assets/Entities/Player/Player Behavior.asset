@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd7fe0649b1a4242a59f8761ac14025, type: 3}
   m_Name: Player Behavior
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 40
   moveRate: 0.075
   soundDeath: 
   soundHurt: 
@@ -20,4 +20,4 @@ MonoBehaviour:
   audioController: {fileID: 11400000, guid: 5612d88e2caa7a0468eb96e45915e092, type: 2}
   onAttackBehavior: {fileID: 11400000, guid: 0e3d800f93603924399d03f0f2c260d3, type: 2}
   onHitBehavior: {fileID: 11400000, guid: 711c65c5a171ea54289533b72ff2c3b9, type: 2}
-  onDeathBehavior: {fileID: 0}
+  onDeathBehavior: {fileID: 11400000, guid: 2b6d085ea21d0bc45a5fc1dd9e334eee, type: 2}
