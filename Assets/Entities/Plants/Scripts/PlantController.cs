@@ -149,6 +149,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         //This also passes this game object so that the script may do whatever it needs with it, or it's position
         health -= onHitBehavior.onHit(damage, source, this.gameObject); //Trigger onhit behaviors
         if (myPlantData.soundHurt != null) {audioController.Play(myPlantData.soundHurt, mySource);}
+        if (GetComponent<FlashEffect>() != null){GetComponent<FlashEffect>().flash();} //Flash Effect On Hit
         if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar  
         if (health <= 0){ onDeath();} //Death Check
     }

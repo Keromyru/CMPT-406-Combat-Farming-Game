@@ -51,11 +51,8 @@ MonoBehaviour:
   ableToImpact:
   - Structure
   - Enemy
-  - Plant
   ableToDamage:
   - Enemy
-  - Plant
-  - Structure
   impactEffect: {fileID: 9046113920722424414, guid: 6f16adf2ad7bbf041b39b2796346de71, type: 3}
   impactSound: {fileID: 11400000, guid: 7b60947a0e5144aa9802d81d371c5c9d, type: 2}
   shotSound: {fileID: 11400000, guid: 3cb05b89f56304c78b978ad0aef70192, type: 2}

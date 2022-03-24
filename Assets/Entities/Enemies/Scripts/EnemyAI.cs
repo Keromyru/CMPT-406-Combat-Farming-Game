@@ -26,49 +26,45 @@ public class EnemyAI : MonoBehaviour
     }
 
     private void FixedUpdate() {
+        CheckTarget(); //Updated target 
         //This Makes the Baddy Run Up To The Target
         //Finding the location of my target
-        if (myTarget.tag == "Structure") {
-            if (Vector2.Distance(myRB.position,myTarget.GetComponent<PolygonCollider2D>().ClosestPoint(myRB.position)) < 
+        if (myTarget.tag == "Structure") {  // Some magic to find the closest point of a structure
+            if (Vector2.Distance(myRB.position,myTarget.GetComponent<PolygonCollider2D>().ClosestPoint(myRB.position)) <  // What's closer?
                 Vector2.Distance(myRB.position,myTarget.GetComponent<BoxCollider2D>().ClosestPoint(myRB.position))){
                     myTargetPosition = myTarget.GetComponent<PolygonCollider2D>().ClosestPoint(myRB.position);
                 }
                 else {
                     myTargetPosition = myTarget.GetComponent<BoxCollider2D>().ClosestPoint(myRB.position);
                 }
-        } else {myTargetPosition = myTarget.transform.position;}
+        } else {myTargetPosition = myTarget.transform.position;} //otherwise business as usual
 
         // SOCIAL DISTANCING
         foreach(GameObject friend in friendsList){ //CHECKS FOR SOCIAL DISTANCING
-            if(Vector2.Distance(myRB.position,friend.transform.position) < socialDistance){
-                knockback(friend.transform.position, 0.1f);
+            if(Vector2.Distance(myRB.position,friend.transform.position) < socialDistance){ //If A FRAN IS TOO CLOSE
+                knockback(friend.transform.position, 0.1f); //PANIK
             }
-            else if (friend.tag == "Structure") {
+            else if (friend.tag == "Structure") { // this just keeps the baddies out of the hub
                 if (Vector2.Distance(myRB.position,friend.GetComponent<PolygonCollider2D>().ClosestPoint(myRB.position)) < 0.1f){
                 knockback(friend.GetComponent<PolygonCollider2D>().ClosestPoint(myRB.position), 0.15f);
-                }
+                } // This checks between the different kind of colliders
                 if (Vector2.Distance(myRB.position,friend.GetComponent<BoxCollider2D>().ClosestPoint(myRB.position)) < 0.1f){
                 knockback(friend.GetComponent<BoxCollider2D>().ClosestPoint(myRB.position),  0.15f);
                 }
             }
-
         }     
 
-
         //Updating movement
-
-        if (myDistance() > myController.myEnemyData.attackRange - 0.2f){
-            Vector3 targetWithOffset = ((
-                myTargetPosition - myRB.position).normalized
-                * (10 - myDistance())  
+        if (myDistance() > myController.myEnemyData.attackRange - 0.2f){ //Moves to attack range
+            Vector3 targetWithOffset = (
+                (myTargetPosition - myRB.position).normalized // Direction
+                * (10 - myDistance())  //Displacement of 10 units
                 + myTargetPosition);
             myRB.MovePosition(force + Vector2.Lerp( myRB.position, targetWithOffset , Time.deltaTime * enemyMoveSpeed * 0.1f)); //Actual move update
         }
-        if (force.magnitude > 0){ force = force - (force*Time.deltaTime)/forceTime;} //this reduced the bounce time
-
-        
-        CheckTarget(); //Updated target 
+        if (force.magnitude > 0){ force = force - (force*Time.deltaTime)/forceTime;} //this reduced the bounce time   
     }
+    //Triggers When Something enters its range
     private void OnTriggerEnter2D(Collider2D entity) {
         if (entity.tag == "Plant" ||
             entity.tag == "Player" ||
@@ -82,7 +78,7 @@ public class EnemyAI : MonoBehaviour
             friendsList.Add(entity.gameObject); // Adds the friends to its list of friends 
         }
     }
-
+        //Triggers When Something leaves its range
     private void OnTriggerExit2D(Collider2D entity) {
         if (entity.tag == "Plant" ||
             entity.tag == "Player" ||
@@ -124,8 +120,8 @@ public class EnemyAI : MonoBehaviour
         }
         return theHub;
     }
-    public void knockback(Vector2 origin, float scale){   //Shoves the player away
-        Vector2 knockback = (myRB.position - origin).normalized*scale;
+    public void knockback(Vector2 origin, float scale){   //Bounces the entity away from whatever you put into it
+        Vector2 knockback = (myRB.position - origin).normalized*scale; 
         force = knockback*scale;
     }
 
