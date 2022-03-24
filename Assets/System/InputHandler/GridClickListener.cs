@@ -68,8 +68,8 @@ public class GridClickListener : MonoBehaviour
                 seedToPlant = null;
             }
 
-            // healthbar_Script_PlantController healthbar = planted.GetComponentInChildren<healthbar_Script_PlantController>();
-            // healthbar.setColor(tilemap.GetColor(cellPosition));
+            healthbar_Script_PlantController healthbar = planted.GetComponentInChildren<healthbar_Script_PlantController>();
+            healthbar.setColor(tilemap.GetColor(cellPosition));
         }     
     }
 

@@ -150,6 +150,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9003747336537774727}
     m_Modifications:
+    - target: {fileID: 596798478640814373, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 2754182701777861537}
     - target: {fileID: 1320942620774554993, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.000030517578
