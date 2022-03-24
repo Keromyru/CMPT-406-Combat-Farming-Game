@@ -82,15 +82,46 @@ public class ShopHandler : MonoBehaviour
         }
     }
 
+    public void AttemptToSell(InventorySlot toSell) {
+
+        if (toSell.amount < 0) {
+            Debug.Log("Trying to sell something that isn't in stock.");
+            return;
+        }
+
+        Item item = toSell.item;
+
+        item.Sell();
+        Inventory.instance.RemoveItem(item);
+
+        current_money = Currency.getMoney();
+        Debug.Log("Current money is " + current_money);
+
+        // send out an alert that shop changed
+        if (onShopRefreshCallback != null) {
+            onShopRefreshCallback.Invoke();
+        }
+
+    }
+
 
     public void AttemptToPurchase(ShopSlot toBuy) {
+
+        // extremely hacky way to get the current slot
+        // grab the name of the slot from scene, shorten it only the char holding slot number
+        // convert back to string then grab an int out of the string
+        // is this over complicated? absolutely! does it work? yes! :)
+        int current = int.Parse(toBuy.name[10].ToString());
+
+        ShopItem shop_item = shopItems[current];
+
         // is it in stock?
-        if (toBuy.amount < 0) {
+        if (shop_item.amount <= 0) {
             Debug.Log("Trying to buy something that isn't in stock.");
             return;
         }
 
-        Item item = toBuy.item;
+        Item item = shop_item.item;
 
         // can we afford it?
         // no
@@ -101,13 +132,6 @@ public class ShopHandler : MonoBehaviour
         else {
             item.Buy();
             Inventory.instance.AddItem(item);
-
-            // extremely hacky way to get the current slot
-            // grab the name of the slot from scene, shorten it only the char holding slot number
-            // convert back to string then grab an int out of the string
-            // is this over complicated? absolutely! does it work? yes! :)
-            int current = int.Parse(toBuy.name[10].ToString());
-
             shopItems[current].amount -= 1;
         }
 

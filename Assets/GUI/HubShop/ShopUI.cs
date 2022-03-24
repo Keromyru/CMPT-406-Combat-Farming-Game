@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-
+using System.Linq;
 // Mace
 
 // manages Shop UI displays
@@ -11,9 +11,11 @@ public class ShopUI : MonoBehaviour
 
     public GameObject shopUI;  // reference to the actual GameObject
 
-    private bool unassigned = true;  // used to see if the InputActions have been properly assigned
-
     private Inventory inventory;
+
+    public Transform playerParent;  // the parent of all player InventorySlots
+
+    InventorySlot[] playerSlots;  // array of player Inventory slots
     
 
     // Start is called before the first frame update
@@ -21,6 +23,11 @@ public class ShopUI : MonoBehaviour
     {
         slots = shopParent.GetComponentsInChildren<ShopSlot>();
         ShopHandler.onShopRefreshCallback += UpdateUI;
+
+        inventory = Inventory.instance;
+        inventory.onItemChangedCallback += UpdateUI;
+
+        playerSlots = playerParent.GetComponentsInChildren<InventorySlot>();
     }
 
     // update UI for shop
@@ -42,6 +49,23 @@ public class ShopUI : MonoBehaviour
             // if there isn't room, wipe the slot back to empty state
             else {
                 slots[i].ClearSlot();
+            }
+        }
+
+        // cycle through all slots, add item if one exists in our inventory
+        for (int i = 0; i < slots.Length; i++) {
+
+            KeyValuePair<Item, int> current_item;
+
+            if (i < inventory.items.Count) {
+                current_item = inventory.items.ElementAt(i);
+
+                playerSlots[i].AddItem(current_item.Key, current_item.Value);
+
+            }
+            // if there isn't room, wipe the slot back to empty state
+            else {
+                playerSlots[i].ClearSlot();
             }
         }
     }

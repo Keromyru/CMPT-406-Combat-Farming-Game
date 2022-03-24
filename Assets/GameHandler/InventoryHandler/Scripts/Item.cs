@@ -45,6 +45,8 @@ public class Item : ScriptableObject
     // sell method for shop
     public virtual void Sell() {
         Debug.Log("Selling " + name);
+
+        Currency.addMoney(price);
     }
 
     // for if we've doing something that takes the item right out of the inventory

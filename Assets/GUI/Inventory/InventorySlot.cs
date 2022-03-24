@@ -9,7 +9,7 @@ using UnityEngine.EventSystems;
 public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public Image icon;  // what we want to display in inventory
-    Item item;  // scriptable object that's holding our item info
+    public Item item;  // scriptable object that's holding our item info
 
     public Button removeButton;  // literally a button on the slot
 
@@ -66,6 +66,12 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void UseItem() {
         if (item != null) {
             item.Use();
+        }
+    }
+
+    public void SellItem() {
+        if (item != null) {
+            item.Sell();
         }
     }
 
