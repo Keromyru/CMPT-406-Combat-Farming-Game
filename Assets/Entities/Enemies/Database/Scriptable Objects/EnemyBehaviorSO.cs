@@ -19,7 +19,7 @@ public class EnemyBehaviorSO : ScriptableObject
   public float attackDamage;
 
   [Header("Target Preferences")]
-  public List<TargetSO> priorityList;
+  public TargetPriority[] priorityList;
 
   [Header("Audio Files")]
   public string SoundOnHit;
