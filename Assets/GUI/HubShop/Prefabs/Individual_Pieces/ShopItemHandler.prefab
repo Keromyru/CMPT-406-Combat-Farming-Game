@@ -157,7 +157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6133548883559096791, guid: 925f47b19478db041b504bc7cf0ac405, type: 3}
       propertyPath: m_Name
-      value: ShopSlot
+      value: ShopSlot (0)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 925f47b19478db041b504bc7cf0ac405, type: 3}
@@ -173,6 +173,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3902963719966906867}
     m_Modifications:
+    - target: {fileID: 6133548883104594327, guid: 925f47b19478db041b504bc7cf0ac405, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6133548883559096776, guid: 925f47b19478db041b504bc7cf0ac405, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -275,6 +279,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3902963719966906867}
     m_Modifications:
+    - target: {fileID: 6133548883104594327, guid: 925f47b19478db041b504bc7cf0ac405, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6133548883559096776, guid: 925f47b19478db041b504bc7cf0ac405, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -377,6 +385,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3902963719966906867}
     m_Modifications:
+    - target: {fileID: 6133548883104594327, guid: 925f47b19478db041b504bc7cf0ac405, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6133548883559096776, guid: 925f47b19478db041b504bc7cf0ac405, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

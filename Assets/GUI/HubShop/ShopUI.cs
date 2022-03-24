@@ -26,7 +26,7 @@ public class ShopUI : MonoBehaviour
     // update UI for shop
     void UpdateUI() {
 
-        //Debug.Log("Updating Shop UI.");
+        Debug.Log("Updating Shop UI.");
 
         // cycle through all slots, add item if one exists in our shop list for the day
         for (int i = 0; i < slots.Length; i++) {

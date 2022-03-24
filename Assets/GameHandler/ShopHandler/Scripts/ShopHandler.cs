@@ -84,8 +84,6 @@ public class ShopHandler : MonoBehaviour
 
 
     public void AttemptToPurchase(ShopSlot toBuy) {
-        Debug.Log("Selected buy.");
-
         // is it in stock?
         if (toBuy.amount < 0) {
             Debug.Log("Trying to buy something that isn't in stock.");
@@ -95,14 +93,30 @@ public class ShopHandler : MonoBehaviour
         Item item = toBuy.item;
 
         // can we afford it?
+        // no
         if (current_money < item.price) {
             Debug.Log("Not enough funds!");
         }
+        // yes
         else {
             item.Buy();
+            Inventory.instance.AddItem(item);
+
+            // extremely hacky way to get the current slot
+            // grab the name of the slot from scene, shorten it only the char holding slot number
+            // convert back to string then grab an int out of the string
+            // is this over complicated? absolutely! does it work? yes! :)
+            int current = int.Parse(toBuy.name[10].ToString());
+
+            shopItems[current].amount -= 1;
         }
 
         current_money = Currency.getMoney();
         Debug.Log("Current money is " + current_money);
+
+        // send out an alert that shop changed
+        if (onShopRefreshCallback != null) {
+            onShopRefreshCallback.Invoke();
+        }
     }
 }

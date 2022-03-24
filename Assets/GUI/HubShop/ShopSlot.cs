@@ -53,6 +53,11 @@ public class ShopSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         slotTooltip.SetActive(false);
     }
 
+    public void Purchased() {
+        amount = amount - 1;
+        amountText.text = amount.ToString();
+    }
+
     // this is the new version of OnMouseEnter(), or hovering the item slot
     public void OnPointerEnter(PointerEventData eventData)
     {
