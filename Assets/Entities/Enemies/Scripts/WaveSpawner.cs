@@ -27,6 +27,8 @@ public class WaveSpawner : MonoBehaviour
     public Transform[] spawnPoints;
     // Copy the spawnPoints list and this one will be used to find which spawnpoint will be used for the next night
     private List<Transform> spawnPointsReduction;
+    // The radius the enemies can spawn randomly within
+    private float spawnRadius = 2f;
 
     // Will be replaced later for enemys spawning at night
     public float timeBetweenWaves = 5f;
@@ -151,6 +153,7 @@ public class WaveSpawner : MonoBehaviour
     {
         // Spawn Enemy
         Debug.Log("Spawning Enemy: " + _enemy);
-        baddies.spawnEnemy(_enemy, location.position);
+        Vector2 randomSpawningPoint = Random.insideUnitCircle * spawnRadius;
+        baddies.spawnEnemy(_enemy, location.position + new Vector3(randomSpawningPoint.x, randomSpawningPoint.y, location.position.z));
     }
 }

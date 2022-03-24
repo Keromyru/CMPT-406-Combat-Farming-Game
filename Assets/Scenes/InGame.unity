@@ -82707,7 +82707,6 @@ MonoBehaviour:
   - {fileID: 1351411996}
   - {fileID: 1462058774}
   - {fileID: 1242591732}
-  spawnPointsReduction: []
   timeBetweenWaves: 5
   waveCountdown: 0
   baddies: {fileID: 11400000, guid: 8afe92503b2738d408b63877c8805055, type: 2}
