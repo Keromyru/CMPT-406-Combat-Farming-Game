@@ -6,24 +6,31 @@ using UnityEngine.Rendering;  //Used to access the volume component
 
 public class DayNightCycle : MonoBehaviour
 {
-    public TextMeshProUGUI timeDisplay;  //Display time
-    public TextMeshProUGUI dayDisplay;  //Display day
+    public script_DayNightTracker clockTracker;
+
+    // public TextMeshProUGUI timeDisplay;  //Display time
+    // public TextMeshProUGUI dayDisplay;  //Display day
     private Volume ppv;  //Post processing volume
 
     [Header("Tick")]
     public float tick;  //Increasing the tick, increases second rate, Infinity is the fastest possible input
     public float oldTick;  //Keep track of original tick
     public float eclipseRate;  //What to times the tick by for the Eclipse
+    public bool activeEclipse = false;  //Check if it is an Eclipse
 
     [Header("Start Time")]
-    public float seconds;
-    public int minutes;
-    public int hours;
+    public float seconds = 0;
+    public int minutes = 0;
+    public int hours = 0;
     public int days = 1;
+	
+	[Header("Day-Night Switch Time")]
+	public int dayStart = 0; // When the day light starts
+	public int dayEnd = 0; // When the day light ends
 
-    [Header("Lights")]
-    public bool activateLights;  //Check if lights are on
-    public GameObject[] lights;  //All the lights turn on when dark
+    // [Header("Lights")]
+    // public bool activateLights;  //Check if lights are on
+    // public GameObject[] lights;  //All the lights turn on when dark
     //public SpriteRenderer[] lanternWithLights;  //lantern sprites (use if you want something to apear only at night or during the day)
 
     //Start is called before the first frame update
@@ -32,14 +39,14 @@ public class DayNightCycle : MonoBehaviour
         ppv = gameObject.GetComponent<Volume>();
 
         //Make sure point light is off at the start
-        if(activateLights == true)  //If lights are on
-        {  
-            for(int i = 0; i < lights.Length; i++)
-            {
-                lights[i].SetActive(false);  //Turn all the lights off
-            }
-            activateLights = false; 
-        }
+        // if(activateLights == true)  //If lights are on
+        // {  
+        //     for(int i = 0; i < lights.Length; i++)
+        //     {
+        //         lights[i].SetActive(false);  //Turn all the lights off
+        //     }
+        //     activateLights = false; 
+        // }
     }
 
     //Update is called once per frame
@@ -63,6 +70,14 @@ public class DayNightCycle : MonoBehaviour
             minutes = 0;
             hours += 1;
         }
+        if( hours >= dayStart && hours < dayEnd )  // Change when day ends and when day starts
+        {
+            clockTracker.swapDayNight( true );  // Tell tracker it is day
+        }
+		if( hours < dayStart || hours >= dayEnd )
+		{
+			clockTracker.swapDayNight( false ); // Tell tracker it is night
+		}
         if(hours >= 24)  //24hr = 1 day
         {
             hours = 0;
@@ -85,17 +100,23 @@ public class DayNightCycle : MonoBehaviour
             }
             */
 
-            if(activateLights == false)  //If lights havent been turned on
-            {
-                if(minutes > 45)  //Wait untill pretty dark
-                {
-                    for(int i = 0; i < lights.Length; i++)
-                    {
-                        lights[i].SetActive(true);  //Turn all the lights on
-                    }
-                    activateLights = true;
-                }
-            }
+            // if(activateLights == false)  //If lights havent been turned on
+            // {
+            //     if(minutes > 45)  //Wait untill pretty dark
+            //     {
+            //         for(int i = 0; i < lights.Length; i++)
+            //         {
+            //             lights[i].SetActive(true);  //Turn all the lights on
+            //         }
+            //         activateLights = true;
+            //     }
+            // }
+        }
+
+        //Night Time for 22:00 (10:00pm)
+        if(hours == 22)
+        {
+            EndEclipse();
         }
 
         if(hours >= 6 && hours < 7)  //Dawn at 6:00 (6:00am) - until 7:00 (7:00am)
@@ -107,39 +128,102 @@ public class DayNightCycle : MonoBehaviour
                 lanternWithLights[i].color = new Color(lanternWithLights[i].color.r, lanternWithLights[i].color.g, lanternWithLights[i].color.b, 1 - (float)mins / 60);  //Make lanternWithLights invisible
             }
             */
-            if(activateLights == true)  //If lights are on
-            {
-                if(minutes > 45)  //Wait untill pretty bright
-                {
-                    for(int i = 0; i < lights.Length; i++)
-                    {
-                        lights[i].SetActive(false);  //Turn lights off
-                    }
-                    activateLights = false;
-                }
+            // if(activateLights == true)  //If lights are on
+            // {
+            //     if(minutes > 45)  //Wait untill pretty bright
+            //     {
+            //         for(int i = 0; i < lights.Length; i++)
+            //         {
+            //             lights[i].SetActive(false);  //Turn lights off
+            //         }
+            //         activateLights = false;
+            //     }
+            // }
+        }
+
+        //This will break the code, you get stuck at 7;00
+        //Day Time 7:00 (7:00am)
+        /*
+        if(hours == 7)
+        {
+            StartDay();
+        }
+        */
+
+        // Random Eclipse start between 8:00 (8:00am) - 18:00 untill (6:00pm)
+        if(hours > 7 && hours <= 18 && activeEclipse == false)
+        {
+            //Get a random time
+            int randomTime = Random.Range(8,18);
+            if(hours == randomTime){
+                //Get a random number
+                int randomNumber = Random.Range(0,10000);  // Estimate 35% change
+                if(randomNumber == 1)
+                StartEclipse();
             }
         }
+
     }
 
     public void DisplayTime()  //Shows time and day in Unity Inspector
     {
-        timeDisplay.text = string.Format("{0:00}:{1:00}", hours, minutes);  //The formatting ensures that there will always be 0's in empty spaces
-        dayDisplay.text = "Day: " + days;  //Display day counter
+        // Used for the daynight scene commented it out here to not through errors
+        // timeDisplay.text = string.Format("{0:00}:{1:00}", hours, minutes);  //The formatting ensures that there will always be 0's in empty spaces
+        // dayDisplay.text = "Day: " + days;  //Display day counter
+
+        clockTracker.setTime(hours, minutes);
     }
 
-    public void EndDay()  //Ending the day to progress to night time
+    public void StartDay()  //Starting the day for 7:00 (7:00am)
     {
+        seconds = 0;
+        minutes = 0;
+        hours = 7;
+    }
 
+    public void EndDay()  //Ending the day to progress to night time for 22:00 (10:00pm)
+    {
+        seconds = 0;
+        minutes = 0;
+        hours = 10;
+
+        //At night end Eclipse
+        if(activeEclipse == true)
+        {
+            EndEclipse();
+        }
     }
 
     public void StartEclipse()  //Starts the Eclipses that causes days to be shortened drastically.
     {
         oldTick = tick;
         tick = tick * eclipseRate;
+        activeEclipse = true;
     }
 
     public void EndEclipse()  //Sets the time speed back to normal.
     {
-        tick = oldTick;
+        if(activeEclipse == true)
+        {
+            tick = oldTick;
+            activeEclipse = false;
+        }
     }
+
+    //Get the time to do somthing at the desired time
+    //Returns a 24 hour time as an int
+    public int GetTime()
+    {
+        return(hours*100)+(minutes);
+    }
+
+    /*
+    //How to use
+    //Example with do somthing at 7:00am
+    int time = GetTime();
+    if(time == 700)
+    {
+        //Do somthing
+    }
+    */
 }
