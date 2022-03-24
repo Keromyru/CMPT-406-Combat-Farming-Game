@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6233012162056371134}
   - component: {fileID: 845623477663927417}
   - component: {fileID: 3612468666723449685}
+  - component: {fileID: -5067242147814769670}
   m_Layer: 0
   m_Name: Hive-Flower
   m_TagString: Plant
@@ -101,6 +102,20 @@ MonoBehaviour:
   growAge: 0
   location: {x: 0, y: 0, z: 0}
   targets: []
+--- !u!114 &-5067242147814769670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2933940020876381200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8074fc0edef90488dd8d511a352ce7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashDuration: 0.2
+  flashMaterial: {fileID: 2100000, guid: 250ac310d9e363d49a286d36ba11ce8d, type: 2}
 --- !u!1001 &5289462541508929828
 PrefabInstance:
   m_ObjectHideFlags: 0
