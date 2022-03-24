@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Enemy
   - Structure
+  - Plant
+  - Effect
+  - AudioClip
+  - Obstacle
+  - randomObstacle
   layers:
   - Default
   - TransparentFX
@@ -17,8 +22,10 @@ TagManager:
   - Midground
   - Foreground
   - Player
+  - MinimapIcons
   - 
-  - 
+  - Interest
+  - Wall
   - 
   - 
   - 
@@ -51,4 +58,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3220929905
+    locked: 0
+  - name: Overlay
+    uniqueID: 3082608077
     locked: 0

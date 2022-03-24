@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2795697412511022812}
   m_Layer: 0
   m_Name: Giga-Gourd
-  m_TagString: Untagged
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,10 +145,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2612463031059291448}
     m_Modifications:
-    - target: {fileID: 596798478640814373, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
-      propertyPath: healthBar
-      value: 
-      objectReference: {fileID: 1806851586277254155}
+    - target: {fileID: 1320942620774554993, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000030517578
+      objectReference: {fileID: 0}
     - target: {fileID: 1646422260702074186, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
       propertyPath: m_Name
       value: healthbar_Prefab_PlantHealthBar

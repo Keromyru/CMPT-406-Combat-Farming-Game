@@ -7,8 +7,7 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
     //Stats
     [Header("Enemy Stats")]
     private float enemyHealth = 1;
-    private float enemyMoveSpeed;
-
+    public float enemyMoveSpeed;
 
     // Behaviors
     private EnemyOnAttackSO onAttackBehavior;
@@ -22,7 +21,7 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
     private Coroutine attackRoutine; 
     private bool isWaiting; //Is in a state of waiting before it can attack again
 
-    private GameObject attackTarget; // <--- STILL NEEDS TARGET LOGIC
+    public GameObject attackTarget; // <--- STILL NEEDS TARGET LOGIC
     //
 
     ////////////////////////////////////////////////
@@ -33,17 +32,18 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
         if (enemyHealth <= 0){ onDeath();}
 
 
-        //This is the when it decides to attack... So whatever we need to determin if its target is applicable
-        //There is no logic in this script to determin a target or to decide when to attack
+        // This is the when it decides to attack... So whatever we need to determin if its target is applicable
+        // There is no logic in this script to determin a target or to decide when to attack
         //  onAttackBehavior.attackRange is how you get it's attacking range
         // this is set up to attack when a target 
-        if (!isWaiting  && //the attack timer has gone off
-            attackTarget != null && //Does exist
-            Vector2.Distance(this.transform.position, attackTarget.transform.position) < onAttackBehavior.attackRange){ //is within range
-            onAttack(); //Does the Attack Action
-            AttackTimer(); //starts the timer coroutine
-        } 
-        
+        if (!isWaiting  && attackTarget != null)
+            if (attackTarget.tag == "Structure" &&
+                (Vector2.Distance(this.transform.position,attackTarget.GetComponent<PolygonCollider2D>().ClosestPoint(this.transform.position)) < myEnemyData.attackRange ||
+                 Vector2.Distance(this.transform.position,attackTarget.GetComponent<BoxCollider2D>().ClosestPoint(this.transform.position)) < myEnemyData.attackRange) ||
+                 Vector2.Distance(this.transform.position, attackTarget.transform.position) < myEnemyData.attackRange){ //is within range
+                    onAttack(); //Does the Attack Action
+                    AttackTimer(); //starts the timer coroutine
+                 }        
     }
     ////////////////////////////////////////////////
     //Triggers
@@ -54,21 +54,23 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
         //The Method Existing on the SO will trigger as well as pass final damage to the enemy itself.
         //This can accomedate for any kind of damage negation that may be needed.
         //This also passes this game object so that the script may do whatever it needs with it, or it's position
-        if (myEnemyData.SoundOnHit != null) {audioController.Play(myEnemyData.SoundOnHit);} //Play SoundOnHit if the file has been declared
+        if (myEnemyData.SoundOnHit != null && myEnemyData.SoundOnHit.Length < 1) {audioController.Play(myEnemyData.SoundOnHit);}
         enemyHealth -= onHitBehavior.onHit(damage, source, this.gameObject); //Trigger onhit behaviors
     }
 
     public void onDeath(){
         //Triggers the attached Deal Trigger
-        if (myEnemyData.SoundOnDeath != null) {audioController.Play(myEnemyData.SoundOnDeath);} //Play SoundOnDeath if the file has been declared
+        //if (myEnemyData.SoundOnDeath != null) {audioController.Play(myEnemyData.SoundOnDeath);} //Play SoundOnDeath if the file has been declared
+         if (myEnemyData.SoundOnDeath != null && myEnemyData.SoundOnDeath.Length < 1) {audioController.Play(myEnemyData.SoundOnDeath);}
         onDeathBehavior.onDeath(this.gameObject);
     }
 
     public void onAttack(){
-      if (myEnemyData.SoundOnAttack != null) {audioController.Play(myEnemyData.SoundOnAttack);} //Play SoundOnAttack if the file has been declared  
-    //   onAttackBehavior.OnAttack(onAttackBehavior.attackDamage,
-    //   attackTarget,// <<<<<<<<<<<<<<<----------------------------------This is where on object that is to be attacked is chosen;
-    //   this.gameObject);      
+        if (myEnemyData.SoundOnAttack != null && myEnemyData.SoundOnAttack.Length > 0) {audioController.Play(myEnemyData.SoundOnAttack);} //Play SoundOnAttack if the file has been declared  
+        Debug.Log(this.gameObject.name+" is doing an attack!");
+      onAttackBehavior.OnAttack(myEnemyData.attackDamage,
+      attackTarget,// <<<<<<<<<<<<<<<----------------------------------This is where on object that is to be attacked is chosen;
+      this.gameObject);      
     }
     
 
@@ -93,7 +95,7 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
         //toggles on the screen shake function
         isWaiting = true;
         // Pause the execution of this function for "duration" seconds.
-        yield return new WaitForSeconds(onAttackBehavior.attackRate);
+        yield return new WaitForSeconds(myEnemyData.attackRate);
         // After the pause, swap back to the original material.
         isWaiting = false;
         // Set the routine to null, signaling that it's finished.
@@ -110,6 +112,7 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
     public void setAudioController(AudioControllerSO newAudioController){ audioController = newAudioController;}
 
     public void setMyEnemyData(EnemyBehaviorSO newMyEnemyData) { myEnemyData = newMyEnemyData;}
+    public void setTarget(GameObject myTarget){ attackTarget = myTarget;}
 
     #endregion
     ////////////////////////////////////////////////

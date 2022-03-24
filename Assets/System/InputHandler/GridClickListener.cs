@@ -26,7 +26,7 @@ public class GridClickListener : MonoBehaviour
     }
 
     void Update(){
-        if (Input.GetButtonDown("Fire1") && seedToPlant != null){
+        if (Input.GetButtonDown("Fire2") && seedToPlant != null){
             Inventory.instance.getItemAmount(seedToPlant);
             // Grab the mouse position
             Vector3 mousePos = Input.mousePosition;
@@ -44,7 +44,7 @@ public class GridClickListener : MonoBehaviour
             
             int plantLocationCollectionLength = plantLocationCollection.Count;
             int obstacleLength = gridHoldingTilemaps.transform.childCount;
-            Debug.Log(obstacleLength);
+            // Debug.Log(obstacleLength);
             for (int i = 0; i < plantLocationCollectionLength; i++ ){
                 if (i < plantLocationCollectionLength && centerPos == plantLocationCollection[i]){
                     Debug.Log("we collided");
@@ -68,8 +68,8 @@ public class GridClickListener : MonoBehaviour
                 seedToPlant = null;
             }
 
-            healthbar_Script_PlantController healthbar = planted.GetComponentInChildren<healthbar_Script_PlantController>();
-            healthbar.setColor(tilemap.GetColor(cellPosition));
+            // healthbar_Script_PlantController healthbar = planted.GetComponentInChildren<healthbar_Script_PlantController>();
+            // healthbar.setColor(tilemap.GetColor(cellPosition));
         }     
     }
 
