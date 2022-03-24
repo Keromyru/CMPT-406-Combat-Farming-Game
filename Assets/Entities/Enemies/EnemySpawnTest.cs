@@ -17,7 +17,7 @@ public class EnemySpawnTest : MonoBehaviour
     
         for (int i = 0; i < numOfBaddies; i++)
                 {
-                    Vector2 offset =  Random.insideUnitCircle * 3;
+                    Vector2 offset =  Random.insideUnitCircle * 6;
                     baddies.spawnEnemy("Basic_enemy", new Vector2(-10+ offset.x ,1f + offset.y));
                 }
     }

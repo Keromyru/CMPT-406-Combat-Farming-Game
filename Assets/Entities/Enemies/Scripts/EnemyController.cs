@@ -36,13 +36,14 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
         // There is no logic in this script to determin a target or to decide when to attack
         //  onAttackBehavior.attackRange is how you get it's attacking range
         // this is set up to attack when a target 
-        if (!isWaiting  && //the attack timer has gone off
-            attackTarget != null && //Does exist
-            Vector2.Distance(this.transform.position, attackTarget.transform.position) < myEnemyData.attackRange){ //is within range
-            onAttack(); //Does the Attack Action
-            AttackTimer(); //starts the timer coroutine
-        } 
-        
+        if (!isWaiting  && attackTarget != null)
+            if (attackTarget.tag == "Structure" &&
+                (Vector2.Distance(this.transform.position,attackTarget.GetComponent<PolygonCollider2D>().ClosestPoint(this.transform.position)) < myEnemyData.attackRange ||
+                 Vector2.Distance(this.transform.position,attackTarget.GetComponent<BoxCollider2D>().ClosestPoint(this.transform.position)) < myEnemyData.attackRange) ||
+                 Vector2.Distance(this.transform.position, attackTarget.transform.position) < myEnemyData.attackRange){ //is within range
+                    onAttack(); //Does the Attack Action
+                    AttackTimer(); //starts the timer coroutine
+                 }        
     }
     ////////////////////////////////////////////////
     //Triggers
@@ -67,9 +68,9 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
     public void onAttack(){
         if (myEnemyData.SoundOnAttack != null && myEnemyData.SoundOnAttack.Length > 0) {audioController.Play(myEnemyData.SoundOnAttack);} //Play SoundOnAttack if the file has been declared  
         Debug.Log(this.gameObject.name+" is doing an attack!");
-    //   onAttackBehavior.OnAttack(onAttackBehavior.attackDamage,
-    //   attackTarget,// <<<<<<<<<<<<<<<----------------------------------This is where on object that is to be attacked is chosen;
-    //   this.gameObject);      
+      onAttackBehavior.OnAttack(myEnemyData.attackDamage,
+      attackTarget,// <<<<<<<<<<<<<<<----------------------------------This is where on object that is to be attacked is chosen;
+      this.gameObject);      
     }
     
 

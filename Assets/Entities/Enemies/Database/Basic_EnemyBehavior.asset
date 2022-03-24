@@ -19,7 +19,7 @@ MonoBehaviour:
   enemyMoveSpeed: 1
   attackRate: 1
   attackRange: 0.6
-  attackDamage: 10
+  attackDamage: 5
   priorityList:
   - name: I hate plants
     tag: Plant

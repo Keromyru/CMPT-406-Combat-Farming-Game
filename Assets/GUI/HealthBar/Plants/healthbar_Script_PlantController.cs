@@ -55,7 +55,7 @@ public class healthbar_Script_PlantController : FadeOutEffect {
 	*/
 	private void fadeCheck(){
 		if(currHealth == maxHealth){ FadeOut();}
-		else { FadeIn();}
+		else if(IsFaded()) { FadeIn();}
 	}
 	
 }

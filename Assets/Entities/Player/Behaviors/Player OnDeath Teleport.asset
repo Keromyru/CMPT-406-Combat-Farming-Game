@@ -9,13 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b2666010b669f249b78a662f94f355e, type: 3}
-  m_Name: SFX_Swoop
+  m_Script: {fileID: 11500000, guid: e5926c1ff83e0d74fa600dee61a2bd30, type: 3}
+  m_Name: Player OnDeath Teleport
   m_EditorClassIdentifier: 
-  Name: AttackSwoop
-  clips:
-  - {fileID: 8300000, guid: 7a74debb67c6f374d8fdf7324908c1fa, type: 3}
-  type: 1
-  volume: 0.33
-  pitch: 1
-  source: {fileID: 0}
+  deathEffect: {fileID: 3704521463509072633, guid: 42637a383b7711d4da92cc615226b04d, type: 3}
+  spawnPoint: {x: 0, y: 0}
