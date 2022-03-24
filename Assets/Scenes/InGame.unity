@@ -259,6 +259,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3112828491120734399, guid: 5016fa31bb858be49be0c7ee908ead9e, type: 3}
   m_PrefabInstance: {fileID: 3112828491005960239}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &250548783 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5899364537074696907, guid: b248ed2b6ccb7894498711a70744be2d, type: 3}
+  m_PrefabInstance: {fileID: 1486989848}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60302039804ebed46a4fd31b0fea30ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &279832857 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 55446294011547746, guid: dcdb52bf9c9e6374dac85c3f58a05c41, type: 3}
@@ -81044,9 +81055,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 1417259911}
     m_Modifications:
     - target: {fileID: 3386002556228948491, guid: bae0c68024462451c8fcd9a06f4c6383, type: 3}
+      propertyPath: dayEnd
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386002556228948491, guid: bae0c68024462451c8fcd9a06f4c6383, type: 3}
+      propertyPath: dayStart
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386002556228948491, guid: bae0c68024462451c8fcd9a06f4c6383, type: 3}
       propertyPath: clockTracker
       value: 
-      objectReference: {fileID: 1815816170}
+      objectReference: {fileID: 250548783}
     - target: {fileID: 3386002556228948492, guid: bae0c68024462451c8fcd9a06f4c6383, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -81165,17 +81184,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1815816170 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8347660403030006287, guid: b248ed2b6ccb7894498711a70744be2d, type: 3}
-  m_PrefabInstance: {fileID: 1486989848}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60302039804ebed46a4fd31b0fea30ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1829552181
 GameObject:
   m_ObjectHideFlags: 0
