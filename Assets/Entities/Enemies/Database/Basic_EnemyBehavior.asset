@@ -16,13 +16,20 @@ MonoBehaviour:
   enemyMaxHealth: 30
   numberOfDropsOnDeath: 1
   cashPerDrop: 100
+  enemyMoveSpeed: 1
   attackRate: 1
-  attackRange: 5
+  attackRange: 0.6
   attackDamage: 10
   priorityList:
-  - {fileID: 11400000, guid: 5ac0ed6529ca8544b9b32869783c2efb, type: 2}
-  - {fileID: 11400000, guid: ce3854738b608f341b5423ab3a7f32fe, type: 2}
-  - {fileID: 11400000, guid: 974df331d333430479d7fd00e96aaab4, type: 2}
+  - name: I hate plants
+    tag: Plant
+    distance: 1
+  - name: Player
+    tag: Player
+    distance: 3
+  - name: Plants @ Max
+    tag: Plant
+    distance: 10
   SoundOnHit: 
   SoundOnAttack: 
   SoundOnDeath: 
@@ -30,5 +37,5 @@ MonoBehaviour:
   onAttackBehavior: {fileID: 11400000, guid: 4a1935208412a034784c540d19326110, type: 2}
   onHitBehavior: {fileID: 11400000, guid: 326dcce30e9055545b48ea8fe69798ca, type: 2}
   onDeathBehavior: {fileID: 11400000, guid: f1cce40e49e03dc44a294458d3614059, type: 2}
-  enemyPrefab: {fileID: 3922440575466242747, guid: c6e30949d04a4eb44b20da11215f5003, type: 3}
+  enemyPrefab: {fileID: 8264408906407544345, guid: de6fbeaa6a970d042ba7e9e4bb8d0c2a, type: 3}
   audioController: {fileID: 11400000, guid: 61664c2b36929b7409adee2b27202783, type: 2}

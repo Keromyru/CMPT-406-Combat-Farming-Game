@@ -38,7 +38,6 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         //Checks if the mouse click is down, and if the reset timer isn't set
         //The behavior of this will be shots so long as  the left-click is held
         if ((playerInput.actions["PrimaryAction"].ReadValue<float>() > 0) && !isWaiting){ onAttack(); }
-        Time.timeScale = 1; //GLITCH, SOMETHING IS PAUSING THE GAME TIMESCALE????   
     }
 
     private void FixedUpdate() {
