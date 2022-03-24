@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.Linq;
 
 public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
 {
     //Stats
     [Header("Don't Set These")]
     private float enemyHealth = 1;
-
     // Behaviors
     private EnemyOnAttackSO onAttackBehavior;
     private EnemyOnHitSO onHitBehavior;
@@ -34,14 +35,13 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
         // There is no logic in this script to determin a target or to decide when to attack
         //  onAttackBehavior.attackRange is how you get it's attacking range
         // this is set up to attack when a target 
-        if (!isWaiting  && attackTarget != null)
-            if (attackTarget.tag == "Structure" &&
-                (Vector2.Distance(this.transform.position,attackTarget.GetComponent<PolygonCollider2D>().ClosestPoint(this.transform.position)) < myEnemyData.attackRange ||
-                 Vector2.Distance(this.transform.position,attackTarget.GetComponent<BoxCollider2D>().ClosestPoint(this.transform.position)) < myEnemyData.attackRange) ||
-                 Vector2.Distance(this.transform.position, attackTarget.transform.position) < myEnemyData.attackRange){ //is within range
-                    onAttack(); //Does the Attack Action
-                    AttackTimer(); //starts the timer coroutine
-                 }        
+        if (!isWaiting  && attackTarget != null ) {
+            if( Vector2.Distance(this.transform.position, attackTarget.transform.position) < myEnemyData.attackRange ||
+            (attackTarget.tag == "Structure" && attackTarget.GetComponents<Collider2D>().Any(s => (Vector2.Distance(this.transform.position, s.ClosestPoint(this.transform.position)) < myEnemyData.attackRange )))) {
+                onAttack(); //Does the Attack Action
+                AttackTimer(); //starts the timer coroutine
+            }
+        }
     }
     ////////////////////////////////////////////////
     //Triggers
