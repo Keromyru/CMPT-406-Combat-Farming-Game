@@ -38,6 +38,8 @@ public class Item : ScriptableObject
     // buy method for shop
     public virtual void Buy() {
         Debug.Log("Buying " + name);
+
+        Currency.subtractMoney(price);
     }
 
     // sell method for shop
