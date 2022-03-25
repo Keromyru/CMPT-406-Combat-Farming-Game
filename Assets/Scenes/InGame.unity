@@ -80376,6 +80376,11 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: -1
   m_TargetDisplay: 0
+--- !u!4 &1708264252 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3112828491234117518, guid: 5016fa31bb858be49be0c7ee908ead9e, type: 3}
+  m_PrefabInstance: {fileID: 3112828491005960239}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1787762763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81937,5 +81942,13 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6478634703984111621, guid: 5016fa31bb858be49be0c7ee908ead9e, type: 3}
+      propertyPath: wateringCan
+      value: 
+      objectReference: {fileID: 1708264252}
+    - target: {fileID: 6478634703984111621, guid: 5016fa31bb858be49be0c7ee908ead9e, type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 248991888}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5016fa31bb858be49be0c7ee908ead9e, type: 3}
