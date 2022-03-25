@@ -8,6 +8,9 @@ using UnityEngine.Events;
 public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
 {
     private float health = 100;
+
+    public Transform playerTransform;
+    public Transform wateringCan;
     [SerializeField] PlayerBevahviorSO myPlayerData;
     private PlayerOnAttackSO onAttackBehavior;
     private PlayerOnHitSO onHitBehavior;
@@ -46,6 +49,20 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         Vector2 inputVector = playerInput.actions["PlayerMovement"].ReadValue<Vector2>();
         playerRB.MovePosition(playerRB.position + force + new Vector2(inputVector.x, inputVector.y) * myPlayerData.moveRate);
         if (force.magnitude > 0){ force = force - (force*Time.deltaTime)/forceTime;} // Reduces the force added
+        if (inputVector.x == -1){
+            // flip rotational y to 0
+            // Needs to be a Quaternion as rotation is only described as one
+            Quaternion aQuaternion = Quaternion.Euler(0, 0, 0);
+            playerTransform.rotation = aQuaternion; 
+            wateringCan.rotation = aQuaternion;
+        } else if (inputVector.x == 1){
+            // flip rotational y to 180
+            // Needs to be a Quaternion as rotation is only described as one
+            Quaternion aQuaternion = Quaternion.Euler(0, 180, 0);
+            playerTransform.rotation = aQuaternion;
+            wateringCan.rotation = aQuaternion;
+        } 
+
     }
 
     //Pointer Location from mask layered raycast
