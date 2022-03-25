@@ -30,7 +30,7 @@ Transform:
   m_LocalPosition: {x: 0.3, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
-  - {fileID: 2865884136931012534}
+  - {fileID: 403326490755496034}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashDuration: 0.2
   flashMaterial: {fileID: 2100000, guid: 250ac310d9e363d49a286d36ba11ce8d, type: 2}
---- !u!1001 &5289462541508929828
+--- !u!1001 &7726698213319687920
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -126,11 +126,7 @@ PrefabInstance:
     - target: {fileID: 596798478640814373, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
       propertyPath: healthBar
       value: 
-      objectReference: {fileID: 1359099667469968301}
-    - target: {fileID: 1320942620774554993, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.000030517578
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3495128438835606649}
     - target: {fileID: 1646422260702074186, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
       propertyPath: m_Name
       value: healthbar_Prefab_PlantHealthBar
@@ -141,19 +137,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7972031425957119634, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.0007
+      value: 0.000775706
       objectReference: {fileID: 0}
     - target: {fileID: 7972031425957119634, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.0007
+      value: 0.00066706
       objectReference: {fileID: 0}
     - target: {fileID: 7972031425957119634, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 7972031425957119634, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.297
+      value: -0.303
       objectReference: {fileID: 0}
     - target: {fileID: 7972031425957119634, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -189,15 +185,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
---- !u!4 &2865884136931012534 stripped
+--- !u!4 &403326490755496034 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7972031425957119634, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
-  m_PrefabInstance: {fileID: 5289462541508929828}
+  m_PrefabInstance: {fileID: 7726698213319687920}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1359099667469968301 stripped
+--- !u!114 &3495128438835606649 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6610035045681449609, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
-  m_PrefabInstance: {fileID: 5289462541508929828}
+  m_PrefabInstance: {fileID: 7726698213319687920}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
