@@ -17,12 +17,17 @@ public class GridClickListener : MonoBehaviour
 
     public PlantDatabaseSO plantDatabase;
     private List<Vector3> plantLocationCollection;
+
+    [SerializeField] private GameObject hotbar;
+    private Seed seedToPlant;
     void Start(){
         plantLocationCollection = new List<Vector3>();
+        seedToPlant = null;
     }
 
     void Update(){
-        if (Input.GetButtonDown("Fire1")){
+        if (Input.GetButtonDown("Fire2") && seedToPlant != null){
+            Inventory.instance.getItemAmount(seedToPlant);
             // Grab the mouse position
             Vector3 mousePos = Input.mousePosition;
             // create the ray for casting
@@ -39,8 +44,8 @@ public class GridClickListener : MonoBehaviour
             
             int plantLocationCollectionLength = plantLocationCollection.Count;
             int obstacleLength = gridHoldingTilemaps.transform.childCount;
-            Debug.Log(obstacleLength);
-            for (int i = 0; i < obstacleLength; i++ ){
+            // Debug.Log(obstacleLength);
+            for (int i = 0; i < plantLocationCollectionLength; i++ ){
                 if (i < plantLocationCollectionLength && centerPos == plantLocationCollection[i]){
                     Debug.Log("we collided");
                     return;
@@ -55,9 +60,20 @@ public class GridClickListener : MonoBehaviour
                 //     return;
                 // }
             }
-            GameObject plant = plantDatabase.spawnPlant("Eggroot", centerPos);
-            Debug.Log(tilemap.GetColor(cellPosition));
+            GameObject planted = plantDatabase.spawnPlant(seedToPlant.getSpawnName(), centerPos);
+            seedToPlant.remove();
             plantLocationCollection.Add(centerPos);
+
+            if (Inventory.instance.getItemAmount(seedToPlant) <= 0){
+                seedToPlant = null;
+            }
+
+            healthbar_Script_PlantController healthbar = planted.GetComponentInChildren<healthbar_Script_PlantController>();
+            healthbar.setColor(tilemap.GetColor(cellPosition));
         }     
+    }
+
+    public void setItemToPlant(Seed seed){
+       seedToPlant = seed;
     }
 }

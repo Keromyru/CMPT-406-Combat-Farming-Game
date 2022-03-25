@@ -79283,6 +79283,7 @@ MonoBehaviour:
   obstacleTilemap: {fileID: 0}
   cam: {fileID: 326382429}
   plantDatabase: {fileID: 11400000, guid: 8f9f3916502b6104cb92815e003404a6, type: 2}
+  hotbar: {fileID: 0}
 --- !u!1 &738477905
 GameObject:
   m_ObjectHideFlags: 0
