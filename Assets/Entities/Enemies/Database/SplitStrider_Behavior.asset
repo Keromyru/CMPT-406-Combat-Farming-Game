@@ -18,7 +18,7 @@ MonoBehaviour:
   cashPerDrop: 100
   enemyMoveSpeed: 1
   attackRate: 3
-  attackRange: 1
+  attackRange: 0.5
   attackDamage: 10
   priorityList:
   - name: I  hate the player
