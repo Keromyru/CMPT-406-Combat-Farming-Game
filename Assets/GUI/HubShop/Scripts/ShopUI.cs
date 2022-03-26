@@ -15,13 +15,17 @@ public class ShopUI : MonoBehaviour
 
     private Inventory inventory;
 
-    public Transform playerParent;  // the parent of all player InventorySlots
+    public Transform playerInventoryParent;  // the parent of all player InventorySlots
 
     InventorySlot[] playerSlots;  // array of player Inventory slots
 
     public TMP_Text playerFunds;
 
     bool inRange;
+
+    public GameObject minimap;  // minimap to disappear when shop toogles open, help with clutter
+
+    public GameObject tracker;  // same deal as minimap, gets too cluttered
     
 
     // Start is called before the first frame update
@@ -33,7 +37,7 @@ public class ShopUI : MonoBehaviour
         inventory = Inventory.instance;
         inventory.onItemChangedCallback += UpdateUI;
 
-        playerSlots = playerParent.GetComponentsInChildren<InventorySlot>();
+        playerSlots = playerInventoryParent.GetComponentsInChildren<InventorySlot>();
         
     }
 
@@ -43,16 +47,20 @@ public class ShopUI : MonoBehaviour
 
         if (inRange) {
             shopUI.SetActive(true);
+            minimap.SetActive(false);
+            tracker.SetActive(false);
         }
         else {
             shopUI.SetActive(false);
+            minimap.SetActive(true);
+            tracker.SetActive(true);
         }
     }
 
     // update UI for shop
     void UpdateUI() {
 
-        Debug.Log("Updating Shop UI.");
+        // Debug.Log("Updating Shop UI.");
 
         playerFunds.text = Currency.getMoney().ToString();
 

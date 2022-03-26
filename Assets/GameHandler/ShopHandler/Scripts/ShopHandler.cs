@@ -58,17 +58,10 @@ public class ShopHandler : MonoBehaviour
     void Start()
     {
         current_money = Currency.getMoney();
-        //displayCurrent.text = "Current Funds: " + current_money;
-
-        Debug.Log("Current money is " + current_money);
 
         // DayNight.StartDay += shopRefresh;
 
         shopRefresh();
-
-        for (int i = 0; i < shopItems.Count; i++) {
-            Debug.Log("Item is " + shopItems[i].item + " with amount " + shopItems[i].amount);
-        }
     }
 
     private void shopRefresh() {
@@ -82,6 +75,8 @@ public class ShopHandler : MonoBehaviour
 
     public void AttemptToSell(InventorySlot toSell) {
 
+        Debug.Log("sell selected");
+
         if (toSell.amount < 0) {
             Debug.Log("Trying to sell something that isn't in stock.");
             return;
@@ -93,7 +88,6 @@ public class ShopHandler : MonoBehaviour
         Inventory.instance.RemoveItem(item);
 
         current_money = Currency.getMoney();
-        Debug.Log("Current money is " + current_money);
 
         // send out an alert that shop changed
         if (onShopRefreshCallback != null) {
@@ -134,7 +128,6 @@ public class ShopHandler : MonoBehaviour
         }
 
         current_money = Currency.getMoney();
-        Debug.Log("Current money is " + current_money);
 
         // send out an alert that shop changed
         if (onShopRefreshCallback != null) {

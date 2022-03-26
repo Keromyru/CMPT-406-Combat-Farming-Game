@@ -24,9 +24,6 @@ public class SellingInventory : MonoBehaviour
 
     // update UI for hotbar & inventory
     void UpdateUI() {
-
-        //Debug.Log("Updating Inventory + Hotbar UI.");
-
         // cycle through all slots, add item if one exists in our inventory
         for (int i = 0; i < slots.Length; i++) {
 
