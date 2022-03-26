@@ -21,8 +21,6 @@ public class ShopHandler : MonoBehaviour
     // currency link
     private int current_money;
 
-    //public Text displayCurrent;
-
     // this array is built in the Inspector!! Drag & Drop seeds in. The last element of array should always be Space Potato
     // this is saved in the prefab for the ShopHandler so you should be able to srag-and-drop :)
     public Seed[] AllSeeds;
@@ -64,13 +62,13 @@ public class ShopHandler : MonoBehaviour
 
         Debug.Log("Current money is " + current_money);
 
-        for (int i = 0; i < shopItems.Count; i++) {
-            Debug.Log("Item is " + shopItems[i].item + " with amount " + shopItems[i].amount);
-        }
-
         // DayNight.StartDay += shopRefresh;
 
         shopRefresh();
+
+        for (int i = 0; i < shopItems.Count; i++) {
+            Debug.Log("Item is " + shopItems[i].item + " with amount " + shopItems[i].amount);
+        }
     }
 
     private void shopRefresh() {
@@ -111,7 +109,7 @@ public class ShopHandler : MonoBehaviour
         // grab the name of the slot from scene, shorten it only the char holding slot number
         // convert back to string then grab an int out of the string
         // is this over complicated? absolutely! does it work? yes! :)
-        int current = int.Parse(toBuy.name[10].ToString());
+        int current = int.Parse(toBuy.name[0].ToString());
 
         ShopItem shop_item = shopItems[current];
 
