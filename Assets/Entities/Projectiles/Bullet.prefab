@@ -47,13 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33067c5875e8d4e419d46c3de53f872f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifeTime: 2
   ableToImpact:
   - Structure
   - Enemy
-  - Plant
   ableToDamage:
   - Enemy
-  - Plant
   impactEffect: {fileID: 9046113920722424414, guid: 6f16adf2ad7bbf041b39b2796346de71, type: 3}
   impactSound: {fileID: 11400000, guid: 7b60947a0e5144aa9802d81d371c5c9d, type: 2}
   shotSound: {fileID: 11400000, guid: 3cb05b89f56304c78b978ad0aef70192, type: 2}

@@ -8,8 +8,8 @@ public class DayNightCycle : MonoBehaviour
 {
     public script_DayNightTracker clockTracker;
 
-    public TextMeshProUGUI timeDisplay;  //Display time
-    public TextMeshProUGUI dayDisplay;  //Display day
+    // public TextMeshProUGUI timeDisplay;  //Display time
+    // public TextMeshProUGUI dayDisplay;  //Display day
     private Volume ppv;  //Post processing volume
 
     [Header("Tick")]
@@ -23,10 +23,14 @@ public class DayNightCycle : MonoBehaviour
     public int minutes = 0;
     public int hours = 0;
     public int days = 1;
+	
+	[Header("Day-Night Switch Time")]
+	public int dayStart = 0; // When the day light starts
+	public int dayEnd = 0; // When the day light ends
 
-    [Header("Lights")]
-    public bool activateLights;  //Check if lights are on
-    public GameObject[] lights;  //All the lights turn on when dark
+    // [Header("Lights")]
+    // public bool activateLights;  //Check if lights are on
+    // public GameObject[] lights;  //All the lights turn on when dark
     //public SpriteRenderer[] lanternWithLights;  //lantern sprites (use if you want something to apear only at night or during the day)
 
     //Start is called before the first frame update
@@ -35,14 +39,14 @@ public class DayNightCycle : MonoBehaviour
         ppv = gameObject.GetComponent<Volume>();
 
         //Make sure point light is off at the start
-        if(activateLights == true)  //If lights are on
-        {  
-            for(int i = 0; i < lights.Length; i++)
-            {
-                lights[i].SetActive(false);  //Turn all the lights off
-            }
-            activateLights = false; 
-        }
+        // if(activateLights == true)  //If lights are on
+        // {  
+        //     for(int i = 0; i < lights.Length; i++)
+        //     {
+        //         lights[i].SetActive(false);  //Turn all the lights off
+        //     }
+        //     activateLights = false; 
+        // }
     }
 
     //Update is called once per frame
@@ -66,12 +70,14 @@ public class DayNightCycle : MonoBehaviour
             minutes = 0;
             hours += 1;
         }
-        /*
-        if(hours == 12)  //AM to PM
+        if( hours >= dayStart && hours < dayEnd )  // Change when day ends and when day starts
         {
-            clockTracker.swapDayNight(); 
+            clockTracker.swapDayNight( true );  // Tell tracker it is day
         }
-        */
+		if( hours < dayStart || hours >= dayEnd )
+		{
+			clockTracker.swapDayNight( false ); // Tell tracker it is night
+		}
         if(hours >= 24)  //24hr = 1 day
         {
             hours = 0;
@@ -94,17 +100,17 @@ public class DayNightCycle : MonoBehaviour
             }
             */
 
-            if(activateLights == false)  //If lights havent been turned on
-            {
-                if(minutes > 45)  //Wait untill pretty dark
-                {
-                    for(int i = 0; i < lights.Length; i++)
-                    {
-                        lights[i].SetActive(true);  //Turn all the lights on
-                    }
-                    activateLights = true;
-                }
-            }
+            // if(activateLights == false)  //If lights havent been turned on
+            // {
+            //     if(minutes > 45)  //Wait untill pretty dark
+            //     {
+            //         for(int i = 0; i < lights.Length; i++)
+            //         {
+            //             lights[i].SetActive(true);  //Turn all the lights on
+            //         }
+            //         activateLights = true;
+            //     }
+            // }
         }
 
         //Night Time for 22:00 (10:00pm)
@@ -122,17 +128,17 @@ public class DayNightCycle : MonoBehaviour
                 lanternWithLights[i].color = new Color(lanternWithLights[i].color.r, lanternWithLights[i].color.g, lanternWithLights[i].color.b, 1 - (float)mins / 60);  //Make lanternWithLights invisible
             }
             */
-            if(activateLights == true)  //If lights are on
-            {
-                if(minutes > 45)  //Wait untill pretty bright
-                {
-                    for(int i = 0; i < lights.Length; i++)
-                    {
-                        lights[i].SetActive(false);  //Turn lights off
-                    }
-                    activateLights = false;
-                }
-            }
+            // if(activateLights == true)  //If lights are on
+            // {
+            //     if(minutes > 45)  //Wait untill pretty bright
+            //     {
+            //         for(int i = 0; i < lights.Length; i++)
+            //         {
+            //             lights[i].SetActive(false);  //Turn lights off
+            //         }
+            //         activateLights = false;
+            //     }
+            // }
         }
 
         //This will break the code, you get stuck at 7;00
@@ -161,8 +167,11 @@ public class DayNightCycle : MonoBehaviour
 
     public void DisplayTime()  //Shows time and day in Unity Inspector
     {
-        timeDisplay.text = string.Format("{0:00}:{1:00}", hours, minutes);  //The formatting ensures that there will always be 0's in empty spaces
-        dayDisplay.text = "Day: " + days;  //Display day counter
+        // Used for the daynight scene commented it out here to not through errors
+        // timeDisplay.text = string.Format("{0:00}:{1:00}", hours, minutes);  //The formatting ensures that there will always be 0's in empty spaces
+        // dayDisplay.text = "Day: " + days;  //Display day counter
+
+        clockTracker.setTime(hours, minutes);
     }
 
     public void StartDay()  //Starting the day for 7:00 (7:00am)

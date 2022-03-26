@@ -148,4 +148,8 @@ public class Inventory : MonoBehaviour
             }
         }
     }
+
+    public int getItemAmount(Item item){
+        return items.ContainsKey(item) ? items[item] : 0;
+    }
 }

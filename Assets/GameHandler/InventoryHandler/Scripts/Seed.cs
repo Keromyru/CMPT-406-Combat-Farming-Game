@@ -24,15 +24,26 @@ public class Seed : Item
 
         // TODO: planting connection goes here! call planting here!
         // I'm not sure if it would be invoking a script or calling an entry function, but whatever you need to do :)
-        Debug.Log("Planting seeds of type " + name);
+        Debug.Log("Planting seeds of type " + spawnName);
+        GridClickListener clicky = GameObject.Find("EnvironmentTileMap").GetComponent<GridClickListener>();
+        clicky.setItemToPlant(this);
 
-        // I have a placeholder boolean check here so the seed only gets removed if it's successfully planted
-        // right now it just auto-removes the seeds after use because there's nothing to check so...
-        // it's always okay to use.
-        bool wasPlanted = true;
 
-        if (wasPlanted) {
-            base.RemoveFromInventory();
-        }
+        // // I have a placeholder boolean check here so the seed only gets removed if it's successfully planted
+        // // right now it just auto-removes the seeds after use because there's nothing to check so...
+        // // it's always okay to use.
+        // bool wasPlanted = true;
+
+        // if (wasPlanted) {
+        //     base.RemoveFromInventory();
+        // }
+    }
+
+    public string getSpawnName(){
+        return spawnName;
+    }
+
+    public void remove(){
+        base.RemoveFromInventory();
     }
 }
