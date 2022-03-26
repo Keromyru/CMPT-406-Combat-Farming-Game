@@ -54,8 +54,7 @@ public class ShopHandler : MonoBehaviour
     }
     
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         current_money = Currency.getMoney();
 
@@ -74,8 +73,6 @@ public class ShopHandler : MonoBehaviour
     }
 
     public void AttemptToSell(InventorySlot toSell) {
-
-        Debug.Log("sell selected");
 
         if (toSell.amount < 0) {
             Debug.Log("Trying to sell something that isn't in stock.");
