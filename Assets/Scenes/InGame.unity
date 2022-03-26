@@ -188,6 +188,7 @@ MonoBehaviour:
   shopParent: {fileID: 284245407}
   shopUI: {fileID: 284245406}
   playerParent: {fileID: 182941876}
+  playerFunds: {fileID: 864254078}
 --- !u!114 &64394083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79647,6 +79648,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4533609790102429543, guid: 6821c688ed4f14e3b976c5db35da2780, type: 3}
   m_PrefabInstance: {fileID: 847521315}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &864254078 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4266322015776120694, guid: df9795e2e103b7844a00e546c8e6f4a3, type: 3}
+  m_PrefabInstance: {fileID: 371538424}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &937255842
 GameObject:
   m_ObjectHideFlags: 0

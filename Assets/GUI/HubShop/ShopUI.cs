@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
+
 // Mace
 
 // manages Shop UI displays
@@ -16,6 +18,8 @@ public class ShopUI : MonoBehaviour
     public Transform playerParent;  // the parent of all player InventorySlots
 
     InventorySlot[] playerSlots;  // array of player Inventory slots
+
+    public TMP_Text playerFunds;
     
 
     // Start is called before the first frame update
@@ -34,6 +38,8 @@ public class ShopUI : MonoBehaviour
     void UpdateUI() {
 
         Debug.Log("Updating Shop UI.");
+
+        playerFunds.text = Currency.getMoney().ToString();
 
         // cycle through all slots, add item if one exists in our shop list for the day
         for (int i = 0; i < slots.Length; i++) {
