@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: 545bf68d937bbde40b5bd6c96eb1cfd1
+=======
+guid: c116337ec50da2643ad3d0a0dbb2a5f9
+>>>>>>> Stashed changes
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -166,6 +170,7 @@ TextureImporter:
     physicsShape: []
     bones:
     - name: bone_1
+<<<<<<< Updated upstream
       position: {x: 280.2229, y: 862.3216, z: -1}
       rotation: {x: 0, y: 0, z: 0.71853715, w: 0.6954886}
       length: 246.24551
@@ -204,6 +209,46 @@ TextureImporter:
       position: {x: 123.17358, y: -0.000013886085, z: 0}
       rotation: {x: 0, y: 0, z: 0.7028348, w: 0.7113531}
       length: 96.45429
+=======
+      position: {x: 277.54776, y: 862.3216, z: -1}
+      rotation: {x: 0, y: 0, z: 0.7144332, w: 0.69970375}
+      length: 256.87094
+      parentId: -1
+    - name: bone_2
+      position: {x: 256.87088, y: -0.00006593789, z: 0}
+      rotation: {x: 0, y: 0, z: 0.00017243228, w: 1}
+      length: 254.1963
+      parentId: 0
+    - name: bone_3
+      position: {x: 644.04456, y: 1293.0222, z: 0}
+      rotation: {x: 0, y: 0, z: 0.015032998, w: 0.999887}
+      length: 355.95706
+      parentId: -1
+    - name: bone_4
+      position: {x: 676.1465, y: 1159.2643, z: 1}
+      rotation: {x: 0, y: 0, z: -0.59233654, w: 0.80569065}
+      length: 89.68768
+      parentId: -1
+    - name: bone_5
+      position: {x: 662.7707, y: 977.35345, z: -1}
+      rotation: {x: 0, y: 0, z: -0.7660895, w: 0.64273393}
+      length: 138.54123
+      parentId: -1
+    - name: bone_6
+      position: {x: 138.54124, y: 0.000029084458, z: 0}
+      rotation: {x: 0, y: 0, z: 0.74628854, w: 0.66562265}
+      length: 88.44231
+      parentId: 4
+    - name: bone_7
+      position: {x: 644.04456, y: 763.34076, z: -1}
+      rotation: {x: 0, y: 0, z: -0.7226344, w: 0.6912305}
+      length: 120.50103
+      parentId: -1
+    - name: bone_8
+      position: {x: 120.50107, y: 0.000006277958, z: 0}
+      rotation: {x: 0, y: 0, z: 0.7037097, w: 0.7104876}
+      length: 99.12539
+>>>>>>> Stashed changes
       parentId: 6
     spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
@@ -416,7 +461,11 @@ TextureImporter:
     - {x: 191.86464, y: 1224.3962}
     - {x: 201.46896, y: 1090.3546}
     - {x: 410.3125, y: 763.20514}
+<<<<<<< Updated upstream
     indices: 4400000043000000ca000000030000000700000004000000ca0000003b0000003a000000ca00000000000000450000003e0000003d00000040000000030000000200000008000000ca00000039000000380000000100000000000000ca00000004000000060000000500000003000000080000000700000001000000ca0000000200000007000000060000000400000008000000ca000000cb0000003d00000041000000400000003f0000003e000000400000003a00000039000000ca0000009000000094000000910000000a000000cb0000000b00000099000000980000009000000042000000ca0000004300000044000000ca000000450000003d000000ca00000041000000bd000000bb000000ba0000004200000041000000ca0000000800000002000000ca0000000b000000cb0000000c0000000900000008000000cb000000c7000000cf000000c80000009600000098000000970000009500000098000000960000008f0000009900000090000000980000009500000094000000cb0000000a000000090000009400000090000000980000009400000092000000910000008f0000009a00000099000000bb000000bd000000bc000000ba000000b9000000b5000000b9000000b8000000b6000000b7000000b6000000b8000000b5000000bd000000ba000000b9000000b6000000b5000000bd000000b5000000be000000920000009400000093000000cf000000c7000000c6000000c5000000c8000000cf0000003b000000ca0000003d0000003d0000003c0000003b000000ca00000038000000370000000d0000000c000000cb000000b5000000b4000000be000000be000000b4000000bf0000009a0000008f0000008e0000009b0000009a0000008d000000ce000000cb000000ca0000000e0000000d000000cb0000008d0000009a0000008e00000037000000ce000000ca000000bf000000b4000000b3000000ce00000037000000360000009b0000008c0000009c000000c1000000a7000000c2000000bf000000b3000000b2000000b1000000c1000000c0000000b1000000c0000000bf000000ce00000036000000350000009c000000a10000009d0000008d0000008c0000009b000000a6000000c3000000c2000000ce00000035000000340000009d000000a10000009e000000a00000009f0000009e000000bf000000b2000000b1000000cb000000cc0000000e0000003400000033000000ce000000cb000000ce000000cc000000c2000000a7000000a6000000c4000000c3000000a600000032000000ce000000330000008c000000a10000009c0000000f0000000e000000cc000000a00000009e000000a1000000a7000000c1000000a8000000a8000000c1000000b1000000100000000f000000cc00000032000000cd000000ce00000010000000cc00000011000000cc000000ce000000cd00000031000000cd000000320000001200000011000000cc000000a2000000a10000008c000000cd0000003100000030000000cc0000001300000012000000a30000008c000000a4000000a20000008c000000a30000008c0000008b000000a4000000300000002f000000cd000000cc0000001400000013000000aa000000a9000000b1000000a8000000b1000000a9000000b0000000af000000b1000000aa000000b1000000ab000000af000000ab000000b10000002c0000002f0000002e0000002f0000002c000000cd000000c900000014000000cc000000c90000001500000014000000ab000000af000000ae0000005500000054000000570000006a0000006c0000006b00000027000000cd00000028000000cd000000270000002600000025000000cd000000260000002200000021000000c90000002400000023000000c900000022000000c90000002300000059000000510000005a0000002100000020000000c9000000cd0000002b0000002a0000001f0000001e000000c900000024000000cd00000025000000cd000000c9000000cc0000001600000015000000c90000001800000017000000c9000000a5000000a400000089000000c90000001900000018000000cd00000024000000c90000001a000000c90000001b0000002a00000029000000cd0000001a00000019000000c90000006f0000006e0000006c000000200000001f000000c90000001c0000001b000000c90000005a000000500000005b000000520000005100000059000000a40000008a000000890000006500000047000000730000001d0000001c000000c90000006800000067000000710000001d000000c90000001e0000004b000000600000005f0000005c0000004e0000005d0000005e0000004c0000005f0000004700000061000000600000005800000054000000530000006e0000006d0000006c0000005e0000005d0000004d000000a500000089000000880000002b000000cd0000002c0000006c0000006a000000690000001700000016000000c9000000560000005500000057000000500000005a000000510000004a000000490000004800000047000000600000004a0000006400000063000000620000002e0000002d0000002c0000004c0000005e0000004d000000700000006f00000069000000ac000000ab000000ae000000570000005400000058000000ae000000ad000000ac0000005300000052000000590000004700000074000000730000007400000046000000750000005f0000004c0000004b0000007400000047000000460000004f0000005c0000005b0000006c000000690000006f0000005900000058000000530000004f0000004e0000005c000000660000006500000072000000600000004b0000004a0000006200000061000000470000007200000071000000660000007100000070000000680000006800000070000000690000006500000062000000470000008a000000a40000008b00000048000000470000004a000000500000004f0000005b0000005d0000004e0000004d0000007100000067000000660000002900000028000000cd000000640000006200000065000000650000007300000072000000850000007b00000076000000830000007b00000084000000840000007b00000085000000860000008500000087000000780000007a000000790000007d0000007c0000007b0000007e000000800000007f00000087000000850000007600000078000000770000007a0000007d000000820000007e000000760000007b000000770000007b000000820000007d0000007e0000008200000080000000800000008200000081000000820000007b000000830000007b0000007a00000077000000
+=======
+    indices: 4400000043000000ca0000003d000000ca0000004100000042000000ca0000004300000003000000070000000400000044000000ca000000450000000a000000cb0000000b000000070000000600000004000000ca0000003b0000003a0000000400000006000000050000000800000002000000ca00000001000000ca000000020000003a00000039000000ca000000c7000000cf000000c8000000ca0000000000000045000000c5000000c8000000cf0000000d0000000c000000cb0000000100000000000000ca0000003d00000041000000400000000300000002000000080000003b000000ca0000003d000000ca00000039000000380000003f0000003e00000040000000cb0000000a00000009000000ca00000038000000370000000b000000cb0000000c000000cf000000c7000000c60000000900000008000000cb000000030000000800000007000000940000009200000091000000960000009800000097000000950000009800000096000000980000009500000094000000bd000000bb000000ba0000009900000098000000900000004200000041000000ca0000009400000090000000980000003d0000003c0000003b000000ba000000b9000000b5000000b9000000b8000000b6000000b5000000bd000000ba000000b9000000b6000000b5000000bd000000b5000000be000000b7000000b6000000b800000090000000940000009100000008000000ca000000cb0000003e0000003d00000040000000bb000000bd000000bc000000920000009400000093000000b5000000b4000000be000000be000000b4000000bf0000008f00000099000000900000008f0000009a000000990000000e0000000d000000cb00000037000000ce000000ca000000ce000000cb000000ca0000009b0000009a0000008d000000ce00000037000000360000009a0000008f0000008e000000bf000000b4000000b3000000c1000000a7000000c2000000ce00000036000000350000008d0000009a0000008e000000bf000000b3000000b20000009b0000008c0000009c000000b1000000c1000000c0000000b1000000c0000000bf000000ce0000003500000034000000a6000000c3000000c2000000a00000009f0000009e0000009c000000a10000009d0000003400000033000000ce0000009d000000a10000009e0000008d0000008c0000009b000000c2000000a7000000a6000000c4000000c3000000a6000000cb000000cc0000000e000000bf000000b2000000b100000032000000ce00000033000000cb000000ce000000cc0000000f0000000e000000cc000000a00000009e000000a1000000a7000000c1000000a8000000100000000f000000cc0000008c000000a10000009c000000a8000000c1000000b100000032000000cd000000ce00000010000000cc0000001100000031000000cd00000032000000cc000000ce000000cd0000001200000011000000cc000000cd0000003100000030000000cc0000001300000012000000300000002f000000cd0000002c0000002f0000002e000000cc00000014000000130000002e0000002d0000002c000000a2000000a10000008c000000a20000008c000000a3000000a30000008c000000a40000008c0000008b000000a4000000aa000000a9000000b1000000a8000000b1000000a9000000aa000000b1000000ab000000af000000ab000000b1000000b0000000af000000b10000002f0000002c000000cd000000c900000014000000cc000000c900000015000000140000006c0000006a000000690000006a0000006c0000006b0000006600000065000000720000006f0000006e0000006c000000640000006200000065000000720000007100000066000000620000006100000047000000600000004b0000004a0000005600000055000000570000007100000070000000680000006c000000690000006f000000470000007400000073000000530000005200000059000000700000006f000000690000005a000000500000005b0000004c0000005e0000004d000000640000006300000062000000650000007300000072000000500000004f0000005b0000007400000047000000460000005e0000004c0000005f0000005d0000004e0000004d0000005e0000005d0000004d0000005c0000004e0000005d000000470000006100000060000000580000005400000053000000680000007000000069000000500000005a000000510000006e0000006d0000006c0000006800000067000000710000005500000054000000570000005f0000004c0000004b0000006500000062000000470000007400000046000000750000006500000047000000730000005200000051000000590000007100000067000000660000004b000000600000005f0000005700000054000000580000005900000058000000530000001d0000001c000000c9000000a40000008a000000890000002a00000029000000cd00000059000000510000005a0000002900000028000000cd0000001a00000019000000c90000001d000000c90000001e000000ac000000ab000000ae000000ab000000af000000ae0000008a000000a40000008b0000002100000020000000c9000000cd0000002700000026000000200000001f000000c900000022000000c9000000230000002200000021000000c9000000a50000008900000088000000c900000019000000180000001f0000001e000000c900000048000000470000004a000000cd000000c9000000cc000000ae000000ad000000ac0000001700000016000000c9000000cd00000024000000c90000001c0000001b000000c90000002400000023000000c900000025000000cd000000260000001800000017000000c90000004f0000005c0000005b0000004f0000004e0000005c0000004a00000049000000480000001a000000c90000001b00000047000000600000004a00000027000000cd000000280000001600000015000000c900000024000000cd00000025000000a5000000a400000089000000cd0000002b0000002a0000002b000000cd0000002c0000008600000085000000870000007b0000007a00000077000000780000007a0000007900000078000000770000007a000000830000007b00000084000000820000007b000000830000007d0000007c0000007b0000007e000000800000007f0000007b000000820000007d000000840000007b000000850000008000000082000000810000007d000000820000007e000000760000007b00000077000000850000007b000000760000008700000085000000760000007e0000008200000080000000
+>>>>>>> Stashed changes
     edges:
     - {x: 1, y: 0}
     - {x: 1, y: 2}
@@ -701,7 +750,11 @@ TextureImporter:
       boneIndex[1]: 0
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 1
+=======
+    - weight[0]: 0.99999994
+>>>>>>> Stashed changes
       weight[1]: 0
       weight[2]: 0
       weight[3]: 0
@@ -725,6 +778,7 @@ TextureImporter:
       boneIndex[1]: 0
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.85941994
       weight[1]: 0.14058007
       weight[2]: 0
@@ -735,20 +789,38 @@ TextureImporter:
       boneIndex[3]: 0
     - weight[0]: 0.76479185
       weight[1]: 0.23520814
+=======
+    - weight[0]: 1
+      weight[1]: 0
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 0
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+    - weight[0]: 0.8317186
+      weight[1]: 0.16828138
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 0
       boneIndex[1]: 1
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.642096
       weight[1]: 0.35790402
+=======
+    - weight[0]: 0.7189324
+      weight[1]: 0.2810676
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 0
       boneIndex[1]: 1
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.50490046
       weight[1]: 0.49509954
       weight[2]: 0
@@ -759,53 +831,68 @@ TextureImporter:
       boneIndex[3]: 0
     - weight[0]: 0.63756174
       weight[1]: 0.36243823
+=======
+    - weight[0]: 0.57687336
+      weight[1]: 0.42312664
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 0
+      boneIndex[1]: 1
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+    - weight[0]: 0.5680318
+      weight[1]: 0.43196824
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 1
       boneIndex[1]: 0
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.7448236
       weight[1]: 0.2551764
+=======
+    - weight[0]: 0.7002544
+      weight[1]: 0.29974562
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 1
       boneIndex[1]: 0
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.8291928
       weight[1]: 0.17080718
+=======
+    - weight[0]: 0.8091413
+      weight[1]: 0.19085872
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 1
       boneIndex[1]: 0
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.8891442
       weight[1]: 0.11085582
+=======
+    - weight[0]: 0.8848211
+      weight[1]: 0.115178905
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 1
       boneIndex[1]: 0
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
+=======
     - weight[0]: 0.99999994
+>>>>>>> Stashed changes
       weight[1]: 0
       weight[2]: 0
       weight[3]: 0
@@ -813,15 +900,19 @@ TextureImporter:
       boneIndex[1]: 0
       boneIndex[2]: 0
       boneIndex[3]: 0
+    - weight[0]: 1
+      weight[1]: 0
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 1
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.99999994
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
+=======
     - weight[0]: 1
+>>>>>>> Stashed changes
       weight[1]: 0
       weight[2]: 0
       weight[3]: 0
@@ -829,151 +920,11 @@ TextureImporter:
       boneIndex[1]: 0
       boneIndex[2]: 0
       boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 1
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.99999994
+=======
+    - weight[0]: 1
+>>>>>>> Stashed changes
       weight[1]: 0
       weight[2]: 0
       weight[3]: 0
@@ -997,38 +948,241 @@ TextureImporter:
       boneIndex[1]: 0
       boneIndex[2]: 0
       boneIndex[3]: 0
+    - weight[0]: 1
+      weight[1]: 0
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 1
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+    - weight[0]: 1
+      weight[1]: 0
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 1
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+    - weight[0]: 1
+      weight[1]: 0
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 1
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+    - weight[0]: 1
+      weight[1]: 0
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 1
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+    - weight[0]: 1
+      weight[1]: 0
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 1
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+    - weight[0]: 1
+      weight[1]: 0
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 1
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+    - weight[0]: 1
+      weight[1]: 0
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 1
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+    - weight[0]: 1
+      weight[1]: 0
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 1
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+    - weight[0]: 1
+      weight[1]: 0
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 1
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+    - weight[0]: 1
+      weight[1]: 0
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 1
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+<<<<<<< Updated upstream
+    - weight[0]: 1
+=======
+    - weight[0]: 0.99999994
+>>>>>>> Stashed changes
+      weight[1]: 0
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 1
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+    - weight[0]: 1
+      weight[1]: 0
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 1
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+    - weight[0]: 1
+      weight[1]: 0
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 1
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+    - weight[0]: 1
+      weight[1]: 0
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 1
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+    - weight[0]: 1
+      weight[1]: 0
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 1
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+<<<<<<< Updated upstream
+    - weight[0]: 1
+=======
+    - weight[0]: 0.99999994
+>>>>>>> Stashed changes
+      weight[1]: 0
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 1
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+    - weight[0]: 1
+      weight[1]: 0
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 1
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+<<<<<<< Updated upstream
+    - weight[0]: 0.99999994
+=======
+    - weight[0]: 1
+>>>>>>> Stashed changes
+      weight[1]: 0
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 1
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+<<<<<<< Updated upstream
+    - weight[0]: 1
+      weight[1]: 0
+=======
+    - weight[0]: 0.8710263
+      weight[1]: 0.12897372
+>>>>>>> Stashed changes
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 1
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+<<<<<<< Updated upstream
+    - weight[0]: 1
+      weight[1]: 0
+=======
+    - weight[0]: 0.8456084
+      weight[1]: 0.15439159
+>>>>>>> Stashed changes
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 1
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.87520295
       weight[1]: 0.12479706
+=======
+    - weight[0]: 0.8006073
+      weight[1]: 0.19939268
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 1
       boneIndex[1]: 0
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.81464
       weight[1]: 0.18536
+=======
+    - weight[0]: 0.73454547
+      weight[1]: 0.26545456
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 1
       boneIndex[1]: 0
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.7327933
       weight[1]: 0.2672067
+=======
+    - weight[0]: 0.6502495
+      weight[1]: 0.34975052
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 1
       boneIndex[1]: 0
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.62747806
       weight[1]: 0.37252194
+=======
+    - weight[0]: 0.54470897
+      weight[1]: 0.45529103
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 1
       boneIndex[1]: 0
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.5206288
       weight[1]: 0.47937122
       weight[2]: 0
@@ -1039,28 +1193,51 @@ TextureImporter:
       boneIndex[3]: 0
     - weight[0]: 0.57069206
       weight[1]: 0.42930794
+=======
+    - weight[0]: 0.55903125
+      weight[1]: 0.44096875
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 0
       boneIndex[1]: 1
       boneIndex[2]: 0
       boneIndex[3]: 0
+    - weight[0]: 0.64551973
+      weight[1]: 0.35448027
+>>>>>>> Stashed changes
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 0
+      boneIndex[1]: 1
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.6889387
       weight[1]: 0.31106132
+=======
+    - weight[0]: 0.75529087
+      weight[1]: 0.24470913
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 0
       boneIndex[1]: 1
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.7858019
       weight[1]: 0.21419808
+=======
+    - weight[0]: 0.84046185
+      weight[1]: 0.15953815
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 0
       boneIndex[1]: 1
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.860002
       weight[1]: 0.139998
       weight[2]: 0
@@ -1070,6 +1247,17 @@ TextureImporter:
       boneIndex[2]: 0
       boneIndex[3]: 0
     - weight[0]: 1
+=======
+    - weight[0]: 1
+      weight[1]: 0
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 0
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+    - weight[0]: 0.99999994
+>>>>>>> Stashed changes
       weight[1]: 0
       weight[2]: 0
       weight[3]: 0
@@ -1101,7 +1289,11 @@ TextureImporter:
       boneIndex[1]: 0
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.99999994
+=======
+    - weight[0]: 1
+>>>>>>> Stashed changes
       weight[1]: 0
       weight[2]: 0
       weight[3]: 0
@@ -1109,7 +1301,11 @@ TextureImporter:
       boneIndex[1]: 0
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.99999994
+=======
+    - weight[0]: 1
+>>>>>>> Stashed changes
       weight[1]: 0
       weight[2]: 0
       weight[3]: 0
@@ -1733,7 +1929,11 @@ TextureImporter:
       boneIndex[1]: 0
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.99999994
+=======
+    - weight[0]: 1
+>>>>>>> Stashed changes
       weight[1]: 0
       weight[2]: 0
       weight[3]: 0
@@ -1741,31 +1941,95 @@ TextureImporter:
       boneIndex[1]: 0
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.6774448
       weight[1]: 0.32255518
+=======
+    - weight[0]: 0.7458489
+      weight[1]: 0.2541511
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 5
       boneIndex[1]: 4
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.73672307
       weight[1]: 0.2632769
+=======
+    - weight[0]: 0.62240887
+      weight[1]: 0.3775911
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 4
       boneIndex[1]: 5
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.8359802
       weight[1]: 0.16401981
+=======
+    - weight[0]: 0.7437169
+      weight[1]: 0.2562831
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 4
       boneIndex[1]: 5
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 1
+      weight[1]: 0
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 4
+      boneIndex[1]: 0
+=======
+    - weight[0]: 0.8625698
+      weight[1]: 0.13743018
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 4
+      boneIndex[1]: 5
+>>>>>>> Stashed changes
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+    - weight[0]: 1
+      weight[1]: 0
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 4
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+    - weight[0]: 1
+      weight[1]: 0
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 4
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+<<<<<<< Updated upstream
+    - weight[0]: 1
+=======
+    - weight[0]: 0.99999994
+>>>>>>> Stashed changes
+      weight[1]: 0
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 4
+      boneIndex[1]: 0
+      boneIndex[2]: 0
+      boneIndex[3]: 0
+<<<<<<< Updated upstream
+    - weight[0]: 1
+=======
+    - weight[0]: 0.99999994
+>>>>>>> Stashed changes
       weight[1]: 0
       weight[2]: 0
       weight[3]: 0
@@ -1853,68 +2117,60 @@ TextureImporter:
       boneIndex[1]: 0
       boneIndex[2]: 0
       boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 4
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 4
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 4
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
-    - weight[0]: 1
-      weight[1]: 0
-      weight[2]: 0
-      weight[3]: 0
-      boneIndex[0]: 4
-      boneIndex[1]: 0
-      boneIndex[2]: 0
-      boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.7104246
       weight[1]: 0.2895754
+=======
+    - weight[0]: 0.881666
+      weight[1]: 0.11833401
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 4
       boneIndex[1]: 5
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.5754281
       weight[1]: 0.42457184
+=======
+    - weight[0]: 0.67647326
+      weight[1]: 0.3235267
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 4
       boneIndex[1]: 5
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.5220012
       weight[1]: 0.47799876
+=======
+    - weight[0]: 0.5783388
+      weight[1]: 0.42166123
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 4
       boneIndex[1]: 5
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.84698135
       weight[1]: 0.15301868
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 5
       boneIndex[1]: 4
+=======
+    - weight[0]: 1
+      weight[1]: 0
+      weight[2]: 0
+      weight[3]: 0
+      boneIndex[0]: 5
+      boneIndex[1]: 0
+>>>>>>> Stashed changes
       boneIndex[2]: 0
       boneIndex[3]: 0
     - weight[0]: 1
@@ -1949,23 +2205,37 @@ TextureImporter:
       boneIndex[1]: 0
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.6362931
       weight[1]: 0.3637069
+=======
+    - weight[0]: 0.5445409
+      weight[1]: 0.4554591
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 7
       boneIndex[1]: 6
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.69417965
       weight[1]: 0.30582038
+=======
+    - weight[0]: 0.6005375
+      weight[1]: 0.3994625
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 7
       boneIndex[1]: 6
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 1
+=======
+    - weight[0]: 0.99999994
+>>>>>>> Stashed changes
       weight[1]: 0
       weight[2]: 0
       weight[3]: 0
@@ -2037,32 +2307,52 @@ TextureImporter:
       boneIndex[1]: 0
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.76960063
       weight[1]: 0.23039937
+=======
+    - weight[0]: 0.7613458
+      weight[1]: 0.2386542
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 7
       boneIndex[1]: 6
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.570186
       weight[1]: 0.429814
+=======
+    - weight[0]: 0.5865545
+      weight[1]: 0.41344544
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 6
       boneIndex[1]: 7
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.6710524
       weight[1]: 0.32894757
+=======
+    - weight[0]: 0.6919383
+      weight[1]: 0.30806172
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 6
       boneIndex[1]: 7
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.852267
       weight[1]: 0.14773296
+=======
+    - weight[0]: 0.8751634
+      weight[1]: 0.12483665
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 6
@@ -2181,16 +2471,26 @@ TextureImporter:
       boneIndex[1]: 0
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.61214274
       weight[1]: 0.38785726
+=======
+    - weight[0]: 0.6964333
+      weight[1]: 0.3035667
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 6
       boneIndex[1]: 7
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.6141017
       weight[1]: 0.38589826
+=======
+    - weight[0]: 0.6993845
+      weight[1]: 0.3006155
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 6
@@ -2269,8 +2569,13 @@ TextureImporter:
       boneIndex[1]: 0
       boneIndex[2]: 0
       boneIndex[3]: 0
+<<<<<<< Updated upstream
     - weight[0]: 0.7004755
       weight[1]: 0.2995245
+=======
+    - weight[0]: 0.77599496
+      weight[1]: 0.22400504
+>>>>>>> Stashed changes
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 0
