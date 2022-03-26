@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 // Mace
 
@@ -11,13 +12,19 @@ public class ShopSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public Image icon;  // what we want to display in shop
     public Item item;  // scriptable object that's holding our item info
 
-    public Text amountText;  // text to hold the amount in stack
+    public TMP_Text amountText;  // text to hold the amount in stack
     public int amount; // amount of item in shop
 
     public Button useButton; // button to buy item
 
     public Tooltip slotTooltipInfo;  // tooltip info for current item
     public GameObject slotTooltip;  // the actual gameobject for the tooltip
+
+    public TMP_Text itemName;  // name of item for slot
+
+    public TMP_Text itemPrice;  // price of the item for slot
+
+
 
 
     // adding item to inventory
@@ -30,6 +37,10 @@ public class ShopSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         amountText.text = amount.ToString();  // update to current item stack
         amountText.enabled = true;  // display item stack
+
+        itemName.text = item.name;
+
+        itemPrice.text = item.price.ToString();
 
         useButton.interactable = true;  // can now use the item as well
 
@@ -46,6 +57,9 @@ public class ShopSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         amountText.text = "0";
         amountText.enabled = false;
+
+        itemName.text = "";
+        itemPrice.text = "";
 
         useButton.interactable = false;  // no more use button
 
