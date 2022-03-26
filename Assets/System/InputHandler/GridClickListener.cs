@@ -20,13 +20,17 @@ public class GridClickListener : MonoBehaviour
 
     [SerializeField] private GameObject hotbar;
     private Seed seedToPlant;
+    private bool ableToPlant;
     void Start(){
         plantLocationCollection = new List<Vector3>();
         seedToPlant = null;
+        DayNightCycle.isNowDay += itIsNowDay;
+        DayNightCycle.isNowNight += itIsNowNight;
+        ableToPlant = true;
     }
 
     void Update(){
-        if (Input.GetButtonDown("Fire2") && seedToPlant != null){
+        if (ableToPlant && Input.GetButtonDown("Fire2") && seedToPlant != null){
             Inventory.instance.getItemAmount(seedToPlant);
             // Grab the mouse position
             Vector3 mousePos = Input.mousePosition;
@@ -71,6 +75,14 @@ public class GridClickListener : MonoBehaviour
             healthbar_Script_PlantController healthbar = planted.GetComponentInChildren<healthbar_Script_PlantController>();
             healthbar.setColor(tilemap.GetColor(cellPosition));
         }     
+    }
+
+    void itIsNowNight(){
+        ableToPlant = false;
+    }
+
+    void itIsNowDay(){
+        ableToPlant = true;
     }
 
     public void setItemToPlant(Seed seed){
