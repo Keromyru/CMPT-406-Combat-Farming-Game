@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,7 +10,6 @@ public class SellingInventory : MonoBehaviour
     Inventory inventory;  // get singleton inventory
     public Transform itemsParent;  // the parent of all InventorySlots
     InventorySlot[] slots;  // array of Inventory slots
-    public GameObject inventoryUI;  // reference to the actual GameObject
 
     // Start is called before the first frame update
     void Start()

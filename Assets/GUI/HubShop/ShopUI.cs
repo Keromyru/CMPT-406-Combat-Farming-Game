@@ -20,6 +20,8 @@ public class ShopUI : MonoBehaviour
     InventorySlot[] playerSlots;  // array of player Inventory slots
 
     public TMP_Text playerFunds;
+
+    bool inRange;
     
 
     // Start is called before the first frame update
@@ -32,6 +34,19 @@ public class ShopUI : MonoBehaviour
         inventory.onItemChangedCallback += UpdateUI;
 
         playerSlots = playerParent.GetComponentsInChildren<InventorySlot>();
+        
+    }
+
+    void FixedUpdate()
+    {
+        inRange = RangeFromHub.forPlayer(0.5f);
+
+        if (inRange) {
+            shopUI.SetActive(true);
+        }
+        else {
+            shopUI.SetActive(false);
+        }
     }
 
     // update UI for shop
