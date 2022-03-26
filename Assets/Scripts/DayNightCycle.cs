@@ -6,6 +6,26 @@ using UnityEngine.Rendering;  //Used to access the volume component
 
 public class DayNightCycle : MonoBehaviour
 {
+    // event delegate for others to subscribe too
+    public delegate void IsDay();
+    public delegate void IsNight();
+
+    /* 
+        Anything that needs to know what time of day it is, needs to subscribe to these events
+        can be done by having a specific method that adds a function to these two below like:
+        DayNightCycle.isNowDay += myDayEventInDifferentScript;
+        DayNightCycle.isNowNight += myNightEventInDifferentScript;
+
+        If someones does not want to forever be subscribed it can remove its reference with a 
+        DayNightCycle.isNowDay -= myDayEventInDifferentScript;
+
+        Typically this with onEnable and onDisable however i am sure that can be done at specific points
+        where it makes sense
+    */
+    public static event IsDay isNowDay;
+    public static event IsNight isNowNight;
+
+
     public script_DayNightTracker clockTracker;
 
     // public TextMeshProUGUI timeDisplay;  //Display time
@@ -70,12 +90,16 @@ public class DayNightCycle : MonoBehaviour
             minutes = 0;
             hours += 1;
         }
+        // it is now day time
         if( hours >= dayStart && hours < dayEnd )  // Change when day ends and when day starts
-        {
+        {   
+            isNowDay();
             clockTracker.swapDayNight( true );  // Tell tracker it is day
         }
+        /// it is now night time
 		if( hours < dayStart || hours >= dayEnd )
-		{
+		{   
+            isNowNight();
 			clockTracker.swapDayNight( false ); // Tell tracker it is night
 		}
         if(hours >= 24)  //24hr = 1 day
@@ -179,6 +203,8 @@ public class DayNightCycle : MonoBehaviour
         seconds = 0;
         minutes = 0;
         hours = 7;
+        // since this method circumvents the normal passage of time need to ensure that this is called
+        isNowDay();
     }
 
     public void EndDay()  //Ending the day to progress to night time for 22:00 (10:00pm)
@@ -192,6 +218,8 @@ public class DayNightCycle : MonoBehaviour
         {
             EndEclipse();
         }
+        // this method circumvents the normal passage of time need to ensure that this is called
+        isNowNight();
     }
 
     public void StartEclipse()  //Starts the Eclipses that causes days to be shortened drastically.
