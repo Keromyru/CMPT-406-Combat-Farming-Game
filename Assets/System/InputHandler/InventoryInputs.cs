@@ -47,6 +47,8 @@ public class InventoryInputs : MonoBehaviour
     // how big is the interaction area around the player?
     public float interactionRadius = 0.5f;
 
+    private int oldCount = 0;
+
 
     void Start()
     {
@@ -93,7 +95,11 @@ public class InventoryInputs : MonoBehaviour
             }
         }
 
-        DeselectAll();
+        if (oldCount != stop) {
+            DeselectAll();
+        }
+
+        oldCount = stop;
     }
 
 
