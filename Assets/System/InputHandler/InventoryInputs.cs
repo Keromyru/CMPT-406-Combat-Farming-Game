@@ -62,6 +62,14 @@ public class InventoryInputs : MonoBehaviour
         }
     }
 
+    void DeselectAll() {
+        
+        for (int i = 0; i < hotbarActions.Count; i++) {
+            hotbarActions[i].DeselectItem();
+        }
+        
+    }
+
 
     // build list of hotbar items
     void fetchHotbarItems()
@@ -84,6 +92,8 @@ public class InventoryInputs : MonoBehaviour
                 //Debug.Log("Added " + hotbarActions[i].name + " to hotbar actions.");
             }
         }
+
+        DeselectAll();
     }
 
 
