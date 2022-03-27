@@ -70,7 +70,7 @@ public class ShopHandler : MonoBehaviour
 
         generateItems();
         
-        DayNightCycle.isStartOfDay += shopRefresh;
+        DayNightCycle.isNowDay += shopRefresh;
     }
 
     private void shopRefresh() {

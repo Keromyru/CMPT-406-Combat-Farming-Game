@@ -24,8 +24,8 @@ public class Inventory : MonoBehaviour
         }
         instance = this;
 
-        DayNightCycle.isStartOfDay += IsDay;
-        DayNightCycle.isEndOfDay += IsNight;
+        DayNightCycle.isNowDay += IsDay;
+        DayNightCycle.isNowNight += IsNight;
     }
     // end adding singleton
 

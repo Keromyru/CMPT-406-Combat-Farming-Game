@@ -25,6 +25,8 @@ public class DayNightCycle : MonoBehaviour
     public static event IsDay isNowDay;
     public static event IsNight isNowNight;
 
+    private bool daytime;
+
 
     public script_DayNightTracker clockTracker;
 
@@ -92,15 +94,21 @@ public class DayNightCycle : MonoBehaviour
         }
         // it is now day time
         if( hours >= dayStart && hours < dayEnd )  // Change when day ends and when day starts
-        {   
-            isNowDay();
+        {
             clockTracker.swapDayNight( true );  // Tell tracker it is day
+            if (daytime != true) {
+                daytime = true;
+                isNowDay();
+            }
         }
         /// it is now night time
 		if( hours < dayStart || hours >= dayEnd )
-		{   
-            isNowNight();
+		{
 			clockTracker.swapDayNight( false ); // Tell tracker it is night
+            if (daytime == true) {
+                daytime = false;
+                isNowNight();
+            }
 		}
         if(hours >= 24)  //24hr = 1 day
         {
@@ -205,6 +213,7 @@ public class DayNightCycle : MonoBehaviour
         hours = 7;
         // since this method circumvents the normal passage of time need to ensure that this is called
         isNowDay();
+        daytime = true;
     }
 
     public void EndDay()  //Ending the day to progress to night time for 22:00 (10:00pm)
@@ -220,6 +229,7 @@ public class DayNightCycle : MonoBehaviour
         }
         // this method circumvents the normal passage of time need to ensure that this is called
         isNowNight();
+        daytime = false;
     }
 
     public void StartEclipse()  //Starts the Eclipses that causes days to be shortened drastically.

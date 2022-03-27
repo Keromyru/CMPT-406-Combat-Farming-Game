@@ -41,8 +41,8 @@ public class InventoryUI : MonoBehaviour
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
         hotbarSlots = hotbarParent.GetComponentsInChildren<HotbarSlot>();
 
-        DayNightCycle.isStartOfDay += NowDay;
-        DayNightCycle.isEndOfDay += NowNight;
+        DayNightCycle.isNowDay += NowDay;
+        DayNightCycle.isNowNight += NowNight;
     }
 
     void NowDay() {
