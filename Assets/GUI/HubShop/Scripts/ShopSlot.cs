@@ -29,7 +29,7 @@ public class ShopSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     // adding item to inventory
     // takes the scriptable object in as an agrument, grabs all other info from there
-    public void AddItem(Item newItem, int amount) {
+    public void AddItem(Item newItem, int amount, int markupPrice) {
         item = newItem;
 
         icon.sprite = item.icon;  // update shop sprite
@@ -40,7 +40,7 @@ public class ShopSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         itemName.text = item.name;
 
-        itemPrice.text = item.price.ToString();
+        itemPrice.text = markupPrice.ToString();
 
         useButton.interactable = true;  // can now use the item as well
 

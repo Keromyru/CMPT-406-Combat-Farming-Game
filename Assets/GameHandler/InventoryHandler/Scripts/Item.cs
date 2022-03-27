@@ -36,10 +36,10 @@ public class Item : ScriptableObject
     }
 
     // buy method for shop
-    public virtual void Buy() {
+    public virtual void Buy(int buyPrice) {
         Debug.Log("Buying " + name);
 
-        Currency.subtractMoney(price);
+        Currency.subtractMoney(buyPrice);
     }
 
     // sell method for shop

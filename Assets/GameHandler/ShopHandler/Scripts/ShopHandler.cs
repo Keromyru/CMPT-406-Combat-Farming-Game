@@ -9,10 +9,12 @@ public class ShopHandler : MonoBehaviour
     public class ShopItem {
         public Item item;
         public int amount;
+        public int price;
 
-        public ShopItem (Item toBuy, int total){
+        public ShopItem (Item toBuy, int total, int value){
                 item = toBuy;
-                amount = total;        
+                amount = total;
+                price = value;    
         }
     }
 
@@ -32,6 +34,10 @@ public class ShopHandler : MonoBehaviour
     int min_seeds = 3;  // minimum amount of seeds in shop stack
     int max_seeds = 15;  // maximum amount of seeds in shop stack
 
+    public float markup = 1.3f;
+
+    public float special_discount = 1.15f;
+
     private void generateItems() {
 
         // grab random seeds
@@ -41,16 +47,16 @@ public class ShopHandler : MonoBehaviour
 
         // grab random values between min & max, add to list of items
         int amount = Random.Range(min_seeds, max_seeds);
-        shopItems.Add(new ShopItem(AllSeeds[pick1], amount));
+        shopItems.Add(new ShopItem(AllSeeds[pick1], amount, (int)(Mathf.Round(AllSeeds[pick1].price * special_discount))));
 
         amount = Random.Range(min_seeds, max_seeds);
-        shopItems.Add(new ShopItem(AllSeeds[pick2], amount));
+        shopItems.Add(new ShopItem(AllSeeds[pick2], amount, (int)Mathf.Round(AllSeeds[pick2].price * markup)));
 
         amount = Random.Range(min_seeds, max_seeds);
-        shopItems.Add(new ShopItem(AllSeeds[pick3], amount));
+        shopItems.Add(new ShopItem(AllSeeds[pick3], amount, (int)Mathf.Round(AllSeeds[pick3].price * markup)));
 
         // the illusion of choice... always offer the player more space potatoes, but at a cost (you only get a few)
-        shopItems.Add(new ShopItem(AllSeeds[AllSeeds.Length-1], min_seeds));
+        shopItems.Add(new ShopItem(AllSeeds[AllSeeds.Length-1], min_seeds, (int)Mathf.Round(AllSeeds[AllSeeds.Length-1].price * markup)));
     }
     
 
@@ -114,12 +120,12 @@ public class ShopHandler : MonoBehaviour
 
         // can we afford it?
         // no
-        if (current_money < item.price) {
+        if (current_money < shop_item.price) {
             Debug.Log("Not enough funds!");
         }
         // yes
         else {
-            item.Buy();
+            item.Buy(shop_item.price);
             Inventory.instance.AddItem(item);
             shopItems[current].amount -= 1;
         }

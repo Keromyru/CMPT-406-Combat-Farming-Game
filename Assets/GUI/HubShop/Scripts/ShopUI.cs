@@ -72,7 +72,7 @@ public class ShopUI : MonoBehaviour
             if (i < slots.Length) {
                 current_item = ShopHandler.shopItems[i];
 
-                slots[i].AddItem(current_item.item, current_item.amount);
+                slots[i].AddItem(current_item.item, current_item.amount, current_item.price);
 
             }
             // if there isn't room, wipe the slot back to empty state
