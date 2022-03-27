@@ -25,10 +25,8 @@ public class WaveSpawner : MonoBehaviour
 
     // Spawn points for all enemies
     public Transform[] spawnPoints;
-    // Copy the spawnPoints list and this one will be used to find which spawnpoint will be used for the next night
-    private List<Transform> spawnPointsReduction;
     // The radius the enemies can spawn randomly within
-    private float spawnRadius = 2f;
+    private float spawnRadius = 4f;
 
     // Will be replaced later for enemys spawning at night
     public float timeBetweenWaves = 5f;
@@ -50,8 +48,9 @@ public class WaveSpawner : MonoBehaviour
         {
             Debug.LogError("No spawn points referenced");
         }
-        spawnPointsReduction = new List<Transform>(spawnPoints);
+        List<Transform> spawnPointsReduction = new List<Transform>(spawnPoints);
         spawnPointsReduction = spawnPointsReduction.OrderBy(x => Random.value).ToList();
+        EnemySpawnList.setList(spawnPointsReduction);
 
         waveCountdown = timeBetweenWaves;
     }
@@ -86,10 +85,11 @@ public class WaveSpawner : MonoBehaviour
         }
 
         // Refreshes the spawn locations available
-        if (spawnPointsReduction.Count <= 0)
+        if (EnemySpawnList.getList().Count <= 0)
         {
-            spawnPointsReduction = new List<Transform>(spawnPoints);
+            List<Transform> spawnPointsReduction = new List<Transform>(spawnPoints);
             spawnPointsReduction = spawnPointsReduction.OrderBy(x => Random.value).ToList();
+            EnemySpawnList.setList(spawnPointsReduction);
         }
     }
 
@@ -104,6 +104,7 @@ public class WaveSpawner : MonoBehaviour
         if (nextWave + 1 > waves.Length - 1)
         {
             nextWave = 0;
+            upgradeEnemies();
             Debug.Log("Completed all waves. Looping...");
         }
         else
@@ -133,8 +134,8 @@ public class WaveSpawner : MonoBehaviour
         Debug.Log("Spawning Wave: " + _wave.waveName);
         state = SpawnState.SPAWNING;
 
-        Transform spawningLocation = spawnPointsReduction[0];
-        spawnPointsReduction.RemoveAt(0);
+        Transform spawningLocation = EnemySpawnList.getFirstSpawn();
+        EnemySpawnList.removeFirstSpawn();
 
         // Spawn
         for (int i = 0; i < _wave.count; i++)
@@ -153,7 +154,16 @@ public class WaveSpawner : MonoBehaviour
     {
         // Spawn Enemy
         Debug.Log("Spawning Enemy: " + _enemy);
-        Vector2 randomSpawningPoint = Random.insideUnitCircle * spawnRadius;
+        Vector2 randomSpawningPoint = new Vector2(Random.insideUnitCircle.x * spawnRadius, Random.insideUnitCircle.y * spawnRadius/2);
         baddies.spawnEnemy(_enemy, location.position + new Vector3(randomSpawningPoint.x, randomSpawningPoint.y, location.position.z));
+    }
+
+    // Used to upgrade the enemies count and their stats after each night
+    private void upgradeEnemies()
+    {
+        foreach (Wave theWave in waves)
+        {
+            theWave.count += 1;
+        }
     }
 }
