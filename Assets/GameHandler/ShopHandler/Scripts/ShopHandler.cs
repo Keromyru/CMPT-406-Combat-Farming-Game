@@ -40,6 +40,8 @@ public class ShopHandler : MonoBehaviour
 
     private void generateItems() {
 
+        shopItems.Clear();
+
         // grab random seeds
         int pick1 = Random.Range(0, AllSeeds.Length);
         int pick2 = Random.Range(0, AllSeeds.Length);
@@ -64,12 +66,17 @@ public class ShopHandler : MonoBehaviour
     {
         current_money = Currency.getMoney();
 
-        // DayNight.StartDay += shopRefresh;
+        //shopRefresh();
 
-        shopRefresh();
+        generateItems();
+        
+        DayNightCycle.isStartOfDay += shopRefresh;
     }
 
     private void shopRefresh() {
+
+        Debug.Log("SHOP REFRESHED?");
+
         generateItems();
 
         // send out an alert that shop changed

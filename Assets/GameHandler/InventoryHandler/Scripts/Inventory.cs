@@ -23,6 +23,9 @@ public class Inventory : MonoBehaviour
             return;
         }
         instance = this;
+
+        DayNightCycle.isStartOfDay += IsDay;
+        DayNightCycle.isEndOfDay += IsNight;
     }
     // end adding singleton
 
@@ -98,6 +101,18 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    void IsNight() {
+        Debug.Log("fired night in inv");
+        day = false;
+        SortInventory();
+    }
+
+    void IsDay() {
+        Debug.Log("fired day in inv");
+        day = true;
+        SortInventory();
+    }
+
 
     // sort the inventory
     private void SortInventory() {
@@ -146,6 +161,12 @@ public class Inventory : MonoBehaviour
             foreach (KeyValuePair<Item, int> daytime in allDayItems) {
                 items.Add(daytime.Key, daytime.Value);
             }
+        }
+
+        // send out an alert that inventory changed
+        if (onItemChangedCallback != null) {
+            onItemChangedCallback.Invoke();
+            Debug.Log("INVENTORY SORT FIRED!!!");
         }
     }
 

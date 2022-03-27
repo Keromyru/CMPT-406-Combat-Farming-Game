@@ -60,7 +60,7 @@ public class ShopUI : MonoBehaviour
     // update UI for shop
     void UpdateUI() {
 
-        // Debug.Log("Updating Shop UI.");
+        Debug.Log("Updating Shop UI.");
 
         playerFunds.text = Currency.getMoney().ToString();
 
