@@ -9,10 +9,7 @@ public class EnemyBehaviorSO : ScriptableObject
   public float enemyMaxHealth;
 
   public int numberOfDropsOnDeath;
-  public int cashPerDrop;
   public float enemyMoveSpeed;
-
-
   [Header("Enemy Attack")]
   public float attackRate;
   public float attackRange;
