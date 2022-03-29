@@ -23,6 +23,9 @@ public class Inventory : MonoBehaviour
             return;
         }
         instance = this;
+
+        DayNightCycle.isNowDay += IsDay;
+        DayNightCycle.isNowNight += IsNight;
     }
     // end adding singleton
 
@@ -99,6 +102,20 @@ public class Inventory : MonoBehaviour
     }
 
 
+    // change to night inventory
+    void IsNight() {
+        day = false;
+        SortInventory();
+    }
+
+
+    // change to day inventory
+    void IsDay() {
+        day = true;
+        SortInventory();
+    }
+
+
     // sort the inventory
     private void SortInventory() {
         // separate all the time items from night & day only items.
@@ -146,6 +163,11 @@ public class Inventory : MonoBehaviour
             foreach (KeyValuePair<Item, int> daytime in allDayItems) {
                 items.Add(daytime.Key, daytime.Value);
             }
+        }
+
+        // send out an alert that inventory changed
+        if (onItemChangedCallback != null) {
+            onItemChangedCallback.Invoke();
         }
     }
 
