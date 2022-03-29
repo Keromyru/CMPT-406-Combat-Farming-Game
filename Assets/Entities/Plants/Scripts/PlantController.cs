@@ -118,6 +118,15 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         Destroy(this.gameObject);
     }
 
+    private void checkGrowthPhase(){
+        if(myPlantData.nextPhase != null && 
+            growAge >= myPlantData.matureAge )
+        {
+            nextGrowthPhase();
+    
+        }
+    }
+    
 
     ////////////////////////////////////////////////
     //Triggers
@@ -128,10 +137,8 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         growAge++; 
         dayTime = true;
         targets.Clear(); //Clear Attack List
-        if(myPlantData.nextPhase != null && myPlantData.matureAge != 0){
-            nextGrowthPhase();
-        }
-        if (myPlantData.harvestable && growAge >= myPlantData.harvestCycle){
+        checkGrowthPhase();
+        if (myPlantData.harvestable && growAge >= myPlantData.DaysUntilHarvest){
             isReady = true;
         }
         if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar
@@ -140,6 +147,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
 
     public void newNight(){
         dayTime = false;
+        checkGrowthPhase();
     }
 
     //Onhit is referenced by ITakeDamage interface
@@ -224,7 +232,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     public void setOnAttack(PlantOnAttackSO newOnAttack){ onAttackBehavior = newOnAttack; }
     public void setOnHarvest(PlantOnHarvestSO newOnHarvest){ onHarvestBehavior = newOnHarvest; }
     public void setAudioController( AudioControllerSO newAudioController) { audioController = newAudioController;}
-    public float getRemaining() { return myPlantData.plantMaxEnergy - energy; }
+    public float getRemaining() { return myPlantData.plantMaxHealth - health; }
    
     public void setMyPlantData(PlantBehaviorSO newPlantData) {myPlantData = newPlantData; }
     public void setMyPlantSpawner(PlantDatabaseSO newPlantSpawner) {myPlantSpawner = newPlantSpawner; }
