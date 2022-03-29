@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 //TDK443
 [CreateAssetMenu(fileName = "EnemyDatabase", menuName = "Enemy Data/Enemy Database")]
 public class EnemyDatabaseSO : ScriptableObject
@@ -19,4 +20,6 @@ public class EnemyDatabaseSO : ScriptableObject
         EnemyBehaviorSO enemy = enemyList.First(x => x.enemyName.Contains(name));
         return enemy.spawnEnemy(name, location);;
     }
+
+    public void ClearAllEnemies(){ Array.ForEach(GameObject.FindGameObjectsWithTag("Enemy"), b => Destroy(b));}
 }

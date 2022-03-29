@@ -86,14 +86,14 @@ public class PlantBehaviorSO : ScriptableObject
     
 
     //This one is for the load system to put things back as is.
-    public GameObject spawnPlant(string name, Vector3 tileLocation, float health, float energy, int age){
+    public GameObject spawnPlant(string name, Vector3 tileLocation, float health, int age){
         GameObject plant = spawnPlant(name,tileLocation);
         //Grab the interface of the newly created plant
         IPlantControl plantControl = plant.GetComponent<IPlantControl>();
         
         plantControl.setGrowAge(age);
         plantControl.setHealth(health);
-        plantControl.setEnergy(energy);
+
 
 
         return plant;

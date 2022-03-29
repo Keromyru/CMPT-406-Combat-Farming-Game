@@ -21,8 +21,8 @@ public class PlantDatabaseSO : ScriptableObject
         return plant.spawnPlant(name, location);
     }
     //This one is for the load system to put things back as is.
-    public GameObject spawnPlant(string name, Vector2 location, float health, float energy, int age){
-        GameObject plant = spawnPlant(name,location,health, energy, age);
+    public GameObject spawnPlant(string name, Vector2 location, float health, int age){
+        GameObject plant = spawnPlant(name,location,health, age);
 
         return plant;
     }
