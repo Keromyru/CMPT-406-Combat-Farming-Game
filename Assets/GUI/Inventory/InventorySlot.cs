@@ -9,7 +9,7 @@ using UnityEngine.EventSystems;
 public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public Image icon;  // what we want to display in inventory
-    Item item;  // scriptable object that's holding our item info
+    public Item item;  // scriptable object that's holding our item info
 
     public Button removeButton;  // literally a button on the slot
 
@@ -69,6 +69,13 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         }
     }
 
+    // sells the item for its sell amount
+    public void SellItem() {
+        if (item != null) {
+            item.Sell();
+        }
+    }
+
     // if we can't use the slot at present (i.e. wrong time of day)
     public void MarkUnusable() {
         // dim the sprite
@@ -111,5 +118,17 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         // no more tooltip
         slotTooltip.SetActive(false);
+    }
+
+    // for the first eight slots, selects the corresponding section on the hotbar too
+    public void SelectSlot() {
+    
+        string pressed_button = this.gameObject.name;
+        
+        Debug.Log("pressed " + pressed_button);
+
+        int picked_item = int.Parse(pressed_button[15].ToString()) - 1;
+
+        InventoryInputs.instance.InventoryClick(picked_item);
     }
 }

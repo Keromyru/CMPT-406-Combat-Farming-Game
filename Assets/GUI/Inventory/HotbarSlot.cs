@@ -64,6 +64,14 @@ public class HotbarSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         }
     }
 
+    public void DeselectItem() {
+        background.isOn = false;
+    }
+
+    public void SelectItem() {
+        background.isOn = true;
+    }
+
     // if we can't use the slot at present (i.e. wrong time of day)
     public void MarkUnusable() {
         // dim the sprite

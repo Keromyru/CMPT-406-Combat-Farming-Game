@@ -9,16 +9,14 @@ public class EnemyBehaviorSO : ScriptableObject
   public float enemyMaxHealth;
 
   public int numberOfDropsOnDeath;
-  public int cashPerDrop;
-
-
+  public float enemyMoveSpeed;
   [Header("Enemy Attack")]
   public float attackRate;
   public float attackRange;
   public float attackDamage;
 
   [Header("Target Preferences")]
-  public List<TargetSO> priorityList;
+  public TargetPriority[] priorityList;
 
   [Header("Audio Files")]
   public string SoundOnHit;

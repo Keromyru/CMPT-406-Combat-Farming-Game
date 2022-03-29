@@ -8,6 +8,9 @@ using UnityEngine.Events;
 public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
 {
     private float health = 100;
+
+    public Transform playerTransform;
+    public Transform wateringCan;
     [SerializeField] PlayerBevahviorSO myPlayerData;
     private PlayerOnAttackSO onAttackBehavior;
     private PlayerOnHitSO onHitBehavior;
@@ -20,8 +23,8 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     // Attack Data  
     private Coroutine attackRoutine; 
     private bool isWaiting; //Is in a state of waiting before it can attack again 
-    
-
+    private Vector2 force;
+    private float forceTime = 0.2f;
     void Start(){GameCamera.SetTarget(this.gameObject);}//Sets the player as the camera focus
 
     //PLAYER LOGIC
@@ -38,29 +41,29 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         //Checks if the mouse click is down, and if the reset timer isn't set
         //The behavior of this will be shots so long as  the left-click is held
         if ((playerInput.actions["PrimaryAction"].ReadValue<float>() > 0) && !isWaiting){ onAttack(); }
-        Time.timeScale = 1; //GLITCH, SOMETHING IS PAUSING THE GAME TIMESCALE????   
     }
 
     private void FixedUpdate() {
         // Written by Blake Williams
         // Gets the movement input and applies a constant velocity to the player
         Vector2 inputVector = playerInput.actions["PlayerMovement"].ReadValue<Vector2>();
-        playerRB.MovePosition(playerRB.position + new Vector2(inputVector.x, inputVector.y) * myPlayerData.moveRate);
+        playerRB.MovePosition(playerRB.position + force + new Vector2(inputVector.x, inputVector.y) * myPlayerData.moveRate);
+        if (force.magnitude > 0){ force = force - (force*Time.deltaTime)/forceTime;} // Reduces the force added
+        if (inputVector.x == -1){
+            // flip rotational y to 0
+            // Needs to be a Quaternion as rotation is only described as one
+            Quaternion aQuaternion = Quaternion.Euler(0, 0, 0);
+            playerTransform.rotation = aQuaternion; 
+            wateringCan.rotation = aQuaternion;
+        } else if (inputVector.x == 1){
+            // flip rotational y to 180
+            // Needs to be a Quaternion as rotation is only described as one
+            Quaternion aQuaternion = Quaternion.Euler(0, 180, 0);
+            playerTransform.rotation = aQuaternion;
+            wateringCan.rotation = aQuaternion;
+        } 
 
-        
     }
-    /*
-    //Pointer Location Extracted from Blakes Code
-    private Vector2 pointerLocation(){
-        Vector3 mousePos = Mouse.current.position.ReadValue();
-        mousePos.z = -1000;
-        Vector3 MousePosition = myCamera.GetComponent<Camera>().ScreenToWorldPoint(mousePos);
-        MousePosition.y += 523f;
-        MousePosition.z = 0f;
-   
-        return MousePosition;
-    }
-    */
 
     //Pointer Location from mask layered raycast
     private Vector2 pointerLocation(){
@@ -84,12 +87,13 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
             PointerPosition.y += 523f;
             PointerPosition.z = 0f;
         }
-
-   
         return PointerPosition;
     }
 
-
+    public void knockback(Vector2 origin, float scale){   //Shoves the player away
+        Vector2 knockback = (playerRB.position - origin).normalized*scale;
+        force = knockback*scale;
+    }
 
     public void resetHealth(){ //Reset health
         if (myPlayerData.soundHeal != null) {audioController.Play(myPlayerData.soundHeal);} //Play myPlayerData.soundHeal if the file has been declared
@@ -120,6 +124,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
             if (myPlayerData.soundHurt != null) {audioController.Play(myPlayerData.soundHurt);} //Play soundHurt if the file has been declared
         }
         GetComponent<FlashEffect>().flash();
+        knockback(source.transform.position, 0.25f);
         event_PlayerHealthChange.Invoke();
         //Death Check
         if(health <= 0){ onDeath();}

@@ -526,6 +526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 7109773323853993937}
+  item: {fileID: 0}
   removeButton: {fileID: 7109773323930722634}
   amountText: {fileID: 5399500134213399387}
   amount: 0
@@ -864,6 +865,18 @@ MonoBehaviour:
       - m_Target: {fileID: 4942314239818005228}
         m_TargetAssemblyTypeName: InventorySlot, Assembly-CSharp
         m_MethodName: UseItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4942314239818005228}
+        m_TargetAssemblyTypeName: InventorySlot, Assembly-CSharp
+        m_MethodName: SelectSlot
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
