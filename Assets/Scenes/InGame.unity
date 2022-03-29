@@ -80778,11 +80778,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3728818336796706671, guid: b248ed2b6ccb7894498711a70744be2d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3728818336796706671, guid: b248ed2b6ccb7894498711a70744be2d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 119
       objectReference: {fileID: 0}
     - target: {fileID: 4127059777208505979, guid: b248ed2b6ccb7894498711a70744be2d, type: 3}
       propertyPath: m_AnchoredPosition.x
