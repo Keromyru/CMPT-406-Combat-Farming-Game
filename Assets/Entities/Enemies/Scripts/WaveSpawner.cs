@@ -156,6 +156,7 @@ public class WaveSpawner : MonoBehaviour
         {
             if (!isNight)
             {
+                state = SpawnState.WAITING;
                 yield break;
             }
 
@@ -198,12 +199,12 @@ public class WaveSpawner : MonoBehaviour
         isNight = false;
         aliveEnemies = false;
         ClearAllEnemies();
+        upgradeEnemies();
     }
 
     // When night hits enemies start to spawn (This will need to be implemented to day night cycle)
     private void onNight()
     {
-        upgradeEnemies();
         isNight = true;
     }
 }
