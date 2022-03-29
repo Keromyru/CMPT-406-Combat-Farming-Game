@@ -134,6 +134,8 @@ public class ShopHandler : MonoBehaviour
         Item item = shop_item.item;
 
         // can we afford it?
+        current_money = Currency.getMoney();
+
         // no
         if (current_money < shop_item.price) {
             Debug.Log("Not enough funds!");
