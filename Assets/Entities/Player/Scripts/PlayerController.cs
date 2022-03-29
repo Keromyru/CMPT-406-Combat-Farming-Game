@@ -53,11 +53,13 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
                 if (myFarm.Length != 0) {
                     GameObject myPlant = (myFarm.OrderBy(plants => fromPointer(plants)).First());
                     if (myPlant != null && fromPlayer(myPlant) < myPlayerData.interactionRange){
+                        // Debug.Log("in the check for harvesting");
                         if(myPlant.GetComponent<IPlantControl>().HarvestReady()){
                             myPlant.GetComponent<IPlantControl>().onHarvest();
-                        } else {
-                            onWater(myPlant);
-                        }
+                        } 
+                        // else {
+                        //     onWater(myPlant);
+                        // }
                     }
                 }    
             } 

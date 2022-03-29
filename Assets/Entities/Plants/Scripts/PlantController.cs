@@ -142,11 +142,14 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     //the IPlantControl interface
     public virtual void newDay(){
         growAge++; 
+        Debug.Log(growAge);
         dayTime = true;
         targets.Clear(); //Clear Attack List
         checkGrowthPhase();
         if (myPlantData.harvestable && growAge >= myPlantData.DaysUntilHarvest){
             isReady = true;
+            SpriteRenderer mySprite = GetComponent<SpriteRenderer>();
+            mySprite.color = new Color(.5f, .5f, .5f);
         }
         if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar
     }

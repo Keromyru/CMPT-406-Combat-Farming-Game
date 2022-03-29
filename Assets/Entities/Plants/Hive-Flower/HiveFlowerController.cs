@@ -9,7 +9,7 @@ public class HiveFlowerController : PlantController {
     
     void Start(){
         mylight = GetComponent<UnityEngine.Experimental.Rendering.Universal.Light2D>();
-        Debug.Log(mylight);
+        // Debug.Log(mylight);
     }
     public override void newDay(){
         base.newDay();

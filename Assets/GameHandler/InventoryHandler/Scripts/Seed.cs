@@ -24,7 +24,7 @@ public class Seed : Item
 
         // TODO: planting connection goes here! call planting here!
         // I'm not sure if it would be invoking a script or calling an entry function, but whatever you need to do :)
-        Debug.Log("Planting seeds of type " + spawnName);
+        // Debug.Log("Planting seeds of type " + spawnName);
         GridClickListener clicky = GameObject.Find("EnvironmentTileMap").GetComponent<GridClickListener>();
         clicky.setItemToPlant(this);
 

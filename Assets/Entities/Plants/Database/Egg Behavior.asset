@@ -20,8 +20,8 @@ MonoBehaviour:
   plantAgroValue: 0
   canAttack: 0
   matureAge: 0
-  harvestable: 0
-  DaysUntilHarvest: 2
+  harvestable: 1
+  DaysUntilHarvest: 1
   soundDeath: 
   soundAttack: 
   soundHarvested: 
