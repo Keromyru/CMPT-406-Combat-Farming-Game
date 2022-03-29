@@ -82,6 +82,8 @@ public class ShopHandler : MonoBehaviour
         //Debug.Log("SHOP REFRESHED?");
         generateItems();
 
+        current_money = Currency.getMoney();
+
         // send out an alert that shop changed
         if (onShopRefreshCallback != null) {
             onShopRefreshCallback.Invoke();

@@ -27,6 +27,8 @@ public class ShopUI : MonoBehaviour
     public GameObject minimap;  // minimap to disappear when shop toogles open, help with clutter
 
     public GameObject tracker;  // same deal as minimap, gets too cluttered
+
+    private bool isNight = false;
     
 
     // Start is called before the first frame update
@@ -39,12 +41,27 @@ public class ShopUI : MonoBehaviour
         inventory.onItemChangedCallback += UpdateUI;
 
         playerSlots = playerInventoryParent.GetComponentsInChildren<InventorySlot>();
-        
+
+        DayNightCycle.isNowNight += Nighttime;
+        DayNightCycle.isNowDay += Daytime;
     }
+
+    void Nighttime() {
+        isNight = true;
+    }
+
+    void Daytime() {
+        isNight = false;
+    }
+
 
     // checks you're near the hub
     void FixedUpdate()
     {
+        if (isNight) {
+            return;
+        }
+        
         inRange = RangeFromHub.forPlayer(0.5f);
 
         // yes, make shop appear, remove minimap & time tracker
