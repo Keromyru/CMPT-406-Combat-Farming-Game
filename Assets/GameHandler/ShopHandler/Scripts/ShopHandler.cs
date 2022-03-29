@@ -62,21 +62,23 @@ public class ShopHandler : MonoBehaviour
 
         // the illusion of choice... always offer the player more space potatoes, but at a cost (you only get a few)
         shopItems.Add(new ShopItem(AllSeeds[AllSeeds.Length-1], min_seeds, (int)Mathf.Round(AllSeeds[AllSeeds.Length-1].price * markup)));
+
+        current_money = Currency.getMoney();
     }
     
 
-    // get money, get items, set the refresh call
-    void Awake()
+    // get items, set the refresh call
+    void Start()
     {
-        current_money = Currency.getMoney();
         generateItems();  
         DayNightCycle.isNowDay += shopRefresh;
+        
+        current_money = Currency.getMoney();
     }
 
 
     // generate a new list of items
     private void shopRefresh() {
-
         //Debug.Log("SHOP REFRESHED?");
         generateItems();
 
