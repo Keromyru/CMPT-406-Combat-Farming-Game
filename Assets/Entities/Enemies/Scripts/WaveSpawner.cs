@@ -59,6 +59,8 @@ public class WaveSpawner : MonoBehaviour
         EnemySpawnList.setList(spawnPointsReduction);
 
         waveCountdown = timeBetweenWaves;
+        DayNightCycle.isNowDay += onDay;
+        DayNightCycle.isNowNight += onNight;
     }
 
     private void Update()
