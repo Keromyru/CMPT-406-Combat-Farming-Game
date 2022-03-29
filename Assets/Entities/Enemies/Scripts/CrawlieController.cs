@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class CrawlieController : EnemyController
 {
+     // animator varilibles
+    public Animator myAnim;
+    public Rigidbody2D enemyRb;
+    
     public override void onAttack(){
+        
+   
+    // these are inherting base behavaiour from the enemy controller. 
+    
         base.onAttack();
     }
     public override void onDeath() {
