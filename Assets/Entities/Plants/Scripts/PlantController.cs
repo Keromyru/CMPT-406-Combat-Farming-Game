@@ -140,7 +140,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     ////////////////////////////////////////////////
     //This should be a call that would be triggered by the time control system as an event or an interated list of
     //the IPlantControl interface
-    public void newDay(){
+    public virtual void newDay(){
         growAge++; 
         dayTime = true;
         targets.Clear(); //Clear Attack List
@@ -151,7 +151,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar
     }
 
-    public void newNight(){
+    public virtual void newNight(){
         dayTime = false;
         checkGrowthPhase();
     }
