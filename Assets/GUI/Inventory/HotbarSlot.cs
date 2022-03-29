@@ -58,9 +58,9 @@ public class HotbarSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             return;
         }
 
-        background.isOn = true;
         if (item != null) {
             item.Use();
+            background.isOn = true;
         }
     }
 
