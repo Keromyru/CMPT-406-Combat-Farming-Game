@@ -125,7 +125,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     
         string pressed_button = this.gameObject.name;
         
-        Debug.Log("pressed " + pressed_button);
+        // Debug.Log("pressed " + pressed_button);
 
         int picked_item = int.Parse(pressed_button[15].ToString()) - 1;
 

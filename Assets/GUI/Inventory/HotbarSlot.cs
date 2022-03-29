@@ -54,7 +54,7 @@ public class HotbarSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     // much like the UseItem() call in InventorySlot, this does nothing right now :)
     public void UseItem() {
         if (!canBeUsed) {
-            Debug.Log("Cannot use item right now.");
+            // Debug.Log("Cannot use item right now.");
             return;
         }
 

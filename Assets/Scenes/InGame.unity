@@ -81246,11 +81246,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3386002556228948491, guid: bae0c68024462451c8fcd9a06f4c6383, type: 3}
       propertyPath: dayEnd
-      value: 21
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3386002556228948491, guid: bae0c68024462451c8fcd9a06f4c6383, type: 3}
       propertyPath: dayStart
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3386002556228948491, guid: bae0c68024462451c8fcd9a06f4c6383, type: 3}
       propertyPath: clockTracker
