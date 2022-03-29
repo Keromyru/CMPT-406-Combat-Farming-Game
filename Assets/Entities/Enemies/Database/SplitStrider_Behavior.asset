@@ -15,14 +15,19 @@ MonoBehaviour:
   enemyName: SplitStrider
   enemyMaxHealth: 50
   numberOfDropsOnDeath: 1
-  cashPerDrop: 100
   enemyMoveSpeed: 1
   attackRate: 3
   attackRange: 0.5
   attackDamage: 10
   priorityList:
+  - name: I hate Plnts
+    tag: plant
+    distance: 1
   - name: I  hate the player
     tag: Player
+    distance: 10
+  - name: i really do not like the plants
+    tag: Plant
     distance: 10
   SoundOnHit: 
   SoundOnAttack: 
