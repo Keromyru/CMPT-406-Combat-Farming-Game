@@ -7,11 +7,15 @@ public class PlayerBevahviorSO : ScriptableObject
      [Header("Player Stats")]
     public float maxHealth;
     public float moveRate;
+    public float WaterQuantity;
+    public float WaterRate;
+    public float interactionRange;
 
     [Header("Audio Files")]
     public string soundDeath;
     public string soundHurt;
     public string soundHeal;
+    public string soundWater;
     
     public AudioControllerSO audioController;
 

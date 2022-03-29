@@ -8,15 +8,15 @@ public class PlantOnHarvestSO : ScriptableObject, IPlantOnHarvest
     [SerializeField] int minYield, maxYield;
     [SerializeField] float dropRadius;
     [SerializeField] int credValue;
-    [SerializeField] float spewSpeed;
+    [SerializeField] float Spread;
     public virtual void OnHarvest(GameObject thisObject)
     {
         int numOfDrops = Random.Range(minYield,maxYield);
         for (int i = 0; i < numOfDrops; i++) {  //For the number of elements that were chosen to be spawned
-            GameObject newDrop = Instantiate(dropPool[Random.Range(0,dropPool.Length-1)], thisObject.transform.position, Quaternion.identity);
-            Rigidbody2D rb  = newDrop.GetComponent<Rigidbody2D>();
-            Vector3 launch = newDrop.transform.localPosition + Random.insideUnitSphere * spewSpeed;
-            rb.AddForce(launch, ForceMode2D.Impulse);
+            Vector3 SpawnSpread = Random.insideUnitSphere * Spread;
+            SpawnSpread.z = 0;
+            GameObject newDrop = Instantiate(dropPool[Random.Range(0,dropPool.Length-1)], thisObject.transform.position + SpawnSpread, Quaternion.identity);
+            thisObject.GetComponent<PlantController>().onDeath();
         }  
     }
 }

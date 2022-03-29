@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8227830116943569222}
   - component: {fileID: 743292186056257352}
   - component: {fileID: 4757787965768657346}
+  - component: {fileID: 642993605576382392}
   m_Layer: 0
   m_Name: Hydra
   m_TagString: Plant
@@ -153,6 +154,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashDuration: 0.2
   flashMaterial: {fileID: 2100000, guid: 250ac310d9e363d49a286d36ba11ce8d, type: 2}
+--- !u!61 &642993605576382392
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3435683626492516636}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0051196218, y: -0.14164183}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5119332, y: 0.47780263}
+  m_EdgeRadius: 0
 --- !u!1001 &2939333096271154695
 PrefabInstance:
   m_ObjectHideFlags: 0
