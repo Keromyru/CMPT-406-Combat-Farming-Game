@@ -1021,8 +1021,28 @@ PrefabInstance:
       value: MainCamera
       objectReference: {fileID: 0}
     - target: {fileID: 55446294011547748, guid: dcdb52bf9c9e6374dac85c3f58a05c41, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 55446294011547748, guid: dcdb52bf9c9e6374dac85c3f58a05c41, type: 3}
       propertyPath: field of view
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 55446294011547748, guid: dcdb52bf9c9e6374dac85c3f58a05c41, type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 55446294011547748, guid: dcdb52bf9c9e6374dac85c3f58a05c41, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.16180134
+      objectReference: {fileID: 0}
+    - target: {fileID: 55446294011547748, guid: dcdb52bf9c9e6374dac85c3f58a05c41, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.23108236
+      objectReference: {fileID: 0}
+    - target: {fileID: 55446294011547748, guid: dcdb52bf9c9e6374dac85c3f58a05c41, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.33962262
       objectReference: {fileID: 0}
     - target: {fileID: 55446294011547748, guid: dcdb52bf9c9e6374dac85c3f58a05c41, type: 3}
       propertyPath: m_CullingMask.m_Bits
