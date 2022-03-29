@@ -75,7 +75,7 @@ public class ShopHandler : MonoBehaviour
 
     private void shopRefresh() {
 
-        Debug.Log("SHOP REFRESHED?");
+        //Debug.Log("SHOP REFRESHED?");
 
         generateItems();
 

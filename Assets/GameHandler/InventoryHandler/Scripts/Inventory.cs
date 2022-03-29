@@ -102,13 +102,13 @@ public class Inventory : MonoBehaviour
     }
 
     void IsNight() {
-        Debug.Log("fired night in inv");
+        //Debug.Log("fired night in inv");
         day = false;
         SortInventory();
     }
 
     void IsDay() {
-        Debug.Log("fired day in inv");
+        //Debug.Log("fired day in inv");
         day = true;
         SortInventory();
     }
@@ -166,7 +166,6 @@ public class Inventory : MonoBehaviour
         // send out an alert that inventory changed
         if (onItemChangedCallback != null) {
             onItemChangedCallback.Invoke();
-            Debug.Log("INVENTORY SORT FIRED!!!");
         }
     }
 

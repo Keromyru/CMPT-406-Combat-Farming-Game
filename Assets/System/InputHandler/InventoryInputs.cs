@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.EventSystems;
+
 // Mace
 
 // okay I've seriously rewritten this script like five times, it's a little rough
@@ -31,6 +33,8 @@ public class InventoryInputs : MonoBehaviour
     // to stop the code from reassigning inputs
     private bool unassigned = true;
 
+    public static InventoryInputs instance;
+
 
     // tracking what items are in the hot bar
     [SerializeField] private List<HotbarSlot> hotbarActions;
@@ -46,7 +50,7 @@ public class InventoryInputs : MonoBehaviour
     [SerializeField] private Transform player;
     // how big is the interaction area around the player?
     public float interactionRadius = 0.5f;
-
+    // did we lose or gain an item?
     private int oldCount = 0;
 
 
@@ -64,12 +68,25 @@ public class InventoryInputs : MonoBehaviour
         }
     }
 
+    void Awake()
+    {
+        if (instance != null) {
+            return;
+        }
+        instance = this;
+    }
+
+    // select nothing!!
     void DeselectAll() {
-        
         for (int i = 0; i < hotbarActions.Count; i++) {
             hotbarActions[i].DeselectItem();
         }
-        
+    }
+
+    public void InventoryClick(int position) {
+        if (position < max_length) {
+            hotbarActions[position].SelectItem();
+        }
     }
 
 
@@ -95,10 +112,12 @@ public class InventoryInputs : MonoBehaviour
             }
         }
 
+        // if there's a new number of items in the inventory, deselect current
         if (oldCount != stop) {
             DeselectAll();
         }
 
+        // update the count at last reload
         oldCount = stop;
     }
 
