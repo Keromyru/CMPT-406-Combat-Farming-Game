@@ -9,8 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 488664190, guid: b26ce4b80a42c6441af375612ff69ca2, type: 3}
-  m_Name: SpatialSensor
+  m_Script: {fileID: 11500000, guid: bff3d6966b6c19d45af824b8effcbba9, type: 3}
+  m_Name: OnHarvest SpacePotato
   m_EditorClassIdentifier: 
-  SpatialSensor:
-    receptors: []
+  dropPool: []
+  minYield: 0
+  maxYieldl: 0
+  dropRadius: 0
+  credValue: 0
+  spewSpeed: 0
