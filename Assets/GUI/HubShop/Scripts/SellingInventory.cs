@@ -4,7 +4,8 @@ using System.Linq;
 
 // Mace
 
-// manages Inventory and Hotbar UI displays
+// manages sell side for shop, updates the UI to match inventory
+// goes on the actual Shop prefab
 public class SellingInventory : MonoBehaviour
 {
     Inventory inventory;  // get singleton inventory

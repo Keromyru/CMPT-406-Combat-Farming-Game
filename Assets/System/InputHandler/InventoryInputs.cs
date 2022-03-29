@@ -68,6 +68,7 @@ public class InventoryInputs : MonoBehaviour
         }
     }
 
+    // add a singleton instance so I can cheat and use this when selecting an item (in InventorySlot)
     void Awake()
     {
         if (instance != null) {
@@ -75,6 +76,8 @@ public class InventoryInputs : MonoBehaviour
         }
         instance = this;
     }
+    // end adding a singleton
+
 
     // select nothing!!
     void DeselectAll() {
@@ -82,7 +85,9 @@ public class InventoryInputs : MonoBehaviour
             hotbarActions[i].DeselectItem();
         }
     }
+    
 
+    // select the hotbar location when the inventory is clicked
     public void InventoryClick(int position) {
         if (position < max_length) {
             hotbarActions[position].SelectItem();

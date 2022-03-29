@@ -3,6 +3,7 @@ using UnityEngine;
 
 // Mace
 
+// Attached to the ShopHandler object, in GameHandler
 public class ShopHandler : MonoBehaviour
 {
     // hacky way to basically make a dictionary that lets me use duplicate keys
@@ -24,7 +25,7 @@ public class ShopHandler : MonoBehaviour
     private int current_money;
 
     // this array is built in the Inspector!! Drag & Drop seeds in. The last element of array should always be Space Potato
-    // this is saved in the prefab for the ShopHandler so you should be able to srag-and-drop :)
+    // this is saved in the prefab for the ShopHandler so you should be able to drag-and-drop :)
     public Seed[] AllSeeds;
 
     // add an alert for shop refresh. to be used by the UI
@@ -34,13 +35,15 @@ public class ShopHandler : MonoBehaviour
     int min_seeds = 3;  // minimum amount of seeds in shop stack
     int max_seeds = 15;  // maximum amount of seeds in shop stack
 
-    public float markup = 1.3f;
+    public float markup = 1.3f;  // mark items up to 30% in shop
 
-    public float special_discount = 1.15f;
+    public float special_discount = 1.15f;  // mark speciality items up to 15% in shop
 
+
+    // generate a list of items for sale
     private void generateItems() {
 
-        shopItems.Clear();
+        shopItems.Clear();  // kill the old shop. new shop now.
 
         // grab random seeds
         int pick1 = Random.Range(0, AllSeeds.Length);
@@ -62,21 +65,19 @@ public class ShopHandler : MonoBehaviour
     }
     
 
+    // get money, get items, set the refresh call
     void Awake()
     {
         current_money = Currency.getMoney();
-
-        //shopRefresh();
-
-        generateItems();
-        
+        generateItems();  
         DayNightCycle.isNowDay += shopRefresh;
     }
 
+
+    // generate a new list of items
     private void shopRefresh() {
 
         //Debug.Log("SHOP REFRESHED?");
-
         generateItems();
 
         // send out an alert that shop changed
@@ -85,6 +86,8 @@ public class ShopHandler : MonoBehaviour
         }
     }
 
+
+    // try to sell the item - will also remove it from inventory
     public void AttemptToSell(InventorySlot toSell) {
 
         if (toSell.amount < 0) {
@@ -107,6 +110,7 @@ public class ShopHandler : MonoBehaviour
     }
 
 
+    // try to buy something from shop and add it to inventory
     public void AttemptToPurchase(ShopSlot toBuy) {
 
         // extremely hacky way to get the current slot

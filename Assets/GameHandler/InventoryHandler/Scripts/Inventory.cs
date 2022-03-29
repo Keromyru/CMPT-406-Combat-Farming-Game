@@ -101,14 +101,16 @@ public class Inventory : MonoBehaviour
         }
     }
 
+
+    // change to night inventory
     void IsNight() {
-        //Debug.Log("fired night in inv");
         day = false;
         SortInventory();
     }
 
+
+    // change to day inventory
     void IsDay() {
-        //Debug.Log("fired day in inv");
         day = true;
         SortInventory();
     }

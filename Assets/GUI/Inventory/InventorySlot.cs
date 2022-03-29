@@ -69,6 +69,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         }
     }
 
+    // sells the item for its sell amount
     public void SellItem() {
         if (item != null) {
             item.Sell();
@@ -119,6 +120,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         slotTooltip.SetActive(false);
     }
 
+    // for the first eight slots, selects the corresponding section on the hotbar too
     public void SelectSlot() {
     
         string pressed_button = this.gameObject.name;

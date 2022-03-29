@@ -6,6 +6,7 @@ using TMPro;
 // Mace
 
 // manages Shop UI displays
+// goes on the actual Shop prefab
 public class ShopUI : MonoBehaviour
 {
     public Transform shopParent;  // the parent of all ShopSlots
@@ -13,15 +14,15 @@ public class ShopUI : MonoBehaviour
 
     public GameObject shopUI;  // reference to the actual GameObject
 
-    private Inventory inventory;
+    private Inventory inventory;  // singleton inventory
 
     public Transform playerInventoryParent;  // the parent of all player InventorySlots
 
     InventorySlot[] playerSlots;  // array of player Inventory slots
 
-    public TMP_Text playerFunds;
+    public TMP_Text playerFunds;  // text rep of current money
 
-    bool inRange;
+    bool inRange;  // in range of hub?
 
     public GameObject minimap;  // minimap to disappear when shop toogles open, help with clutter
 
@@ -41,21 +42,25 @@ public class ShopUI : MonoBehaviour
         
     }
 
+    // checks you're near the hub
     void FixedUpdate()
     {
         inRange = RangeFromHub.forPlayer(0.5f);
 
+        // yes, make shop appear, remove minimap & time tracker
         if (inRange) {
             shopUI.SetActive(true);
             minimap.SetActive(false);
             tracker.SetActive(false);
         }
+        // no, hide shop and display minimap & time tracker
         else {
             shopUI.SetActive(false);
             minimap.SetActive(true);
             tracker.SetActive(true);
         }
     }
+
 
     // update UI for shop
     void UpdateUI() {

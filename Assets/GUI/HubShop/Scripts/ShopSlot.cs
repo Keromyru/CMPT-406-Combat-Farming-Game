@@ -25,8 +25,6 @@ public class ShopSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public TMP_Text itemPrice;  // price of the item for slot
 
 
-
-
     // adding item to inventory
     // takes the scriptable object in as an agrument, grabs all other info from there
     public void AddItem(Item newItem, int amount, int markupPrice) {
@@ -46,6 +44,7 @@ public class ShopSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         slotTooltipInfo.UpdateTooltip(newItem);  // update tooltip information
     }
+
 
     // nuke all the options to nothing
     public void ClearSlot() {
@@ -67,10 +66,14 @@ public class ShopSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         slotTooltip.SetActive(false);
     }
 
+
+    // if you bought something, knock the amount down by one
+    // there's a check done elsewhere to make sure this is never below zero
     public void Purchased() {
         amount = amount - 1;
         amountText.text = amount.ToString();
     }
+
 
     // this is the new version of OnMouseEnter(), or hovering the item slot
     public void OnPointerEnter(PointerEventData eventData)
@@ -80,6 +83,7 @@ public class ShopSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             slotTooltip.SetActive(true);
         }
     }
+
 
     // this is the new version of OnMouseExit(), or stop hovering item slot
     public void OnPointerExit(PointerEventData eventData)
