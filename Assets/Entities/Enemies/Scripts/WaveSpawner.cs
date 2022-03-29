@@ -41,6 +41,12 @@ public class WaveSpawner : MonoBehaviour
     // The database that holds all the enemies
     public EnemyDatabaseSO baddies;
 
+    // Checks if enemies are still alive
+    public bool aliveEnemies = false;
+
+
+    // Bool to check if it is night time
+    public bool isNight = true;
 
     private void Start()
     {
@@ -57,31 +63,38 @@ public class WaveSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (state == SpawnState.WAITING)
+        if (isNight)
         {
-            // Check if enemies are still alive
-            if (!EnemyIsAlive())
+            if (state == SpawnState.WAITING)
             {
-                // Begin new round/wave
-                WaveCompleted();
+                // Check if enemies are still alive
+                if (!EnemyIsAlive())
+                {
+                    // Begin new round/wave
+                    WaveCompleted();
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+            if (waveCountdown <= 0)
+            {
+                if (state != SpawnState.SPAWNING)
+                {
+                    // Start spawning wave
+                    StartCoroutine(SpawnWave(waves[nextWave]));
+                }
             }
             else
             {
-                return;
+                waveCountdown -= Time.deltaTime;
             }
         }
-
-        if (waveCountdown <= 0)
+        else if (aliveEnemies)
         {
-            if (state != SpawnState.SPAWNING)
-            {
-                // Start spawning wave
-                StartCoroutine(SpawnWave(waves[nextWave]));
-            }
-        }
-        else
-        {
-            waveCountdown -= Time.deltaTime;
+            onDay();
         }
 
         // Refreshes the spawn locations available
@@ -125,6 +138,7 @@ public class WaveSpawner : MonoBehaviour
                 return false;
             }
         }
+        aliveEnemies = true;
         return true;
     }
 
@@ -140,6 +154,11 @@ public class WaveSpawner : MonoBehaviour
         // Spawn
         for (int i = 0; i < _wave.count; i++)
         {
+            if (!isNight)
+            {
+                yield break;
+            }
+
             SpawnEnemy(_wave.enemyName, spawningLocation);
             yield return new WaitForSeconds(1f / _wave.rate);
         }
@@ -165,5 +184,26 @@ public class WaveSpawner : MonoBehaviour
         {
             theWave.count += 1;
         }
+    }
+
+    // Deletes all enemies
+    private void ClearAllEnemies()
+    {
+        System.Array.ForEach(GameObject.FindGameObjectsWithTag("Enemy"), b => Destroy(b));
+    }
+
+    // When day hits all enemies are deleted (This will need to be implemented to day night cycle)
+    private void onDay()
+    {
+        isNight = false;
+        aliveEnemies = false;
+        ClearAllEnemies();
+    }
+
+    // When night hits enemies start to spawn (This will need to be implemented to day night cycle)
+    private void onNight()
+    {
+        upgradeEnemies();
+        isNight = true;
     }
 }
