@@ -12,9 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bff3d6966b6c19d45af824b8effcbba9, type: 3}
   m_Name: OnHarvest SpacePotato
   m_EditorClassIdentifier: 
-  dropPool: []
-  minYield: 0
-  maxYieldl: 0
-  dropRadius: 0
+  dropPool:
+  - {fileID: 9068179564084199155, guid: 842de95a319a840449ccf621ba3833ed, type: 3}
+  - {fileID: 6403223338433610526, guid: 7c1facdbc716cb24cb2da51a14ae77e9, type: 3}
+  - {fileID: 1680092049937385966, guid: 1e80f40a0e2983c4794d7b6f437c3438, type: 3}
+  - {fileID: 1680092049937385966, guid: 1e80f40a0e2983c4794d7b6f437c3438, type: 3}
+  - {fileID: 1680092049937385966, guid: 1e80f40a0e2983c4794d7b6f437c3438, type: 3}
+  minYield: 3
+  maxYield: 5
+  dropRadius: 1
   credValue: 0
-  spewSpeed: 0
+  spewSpeed: 1

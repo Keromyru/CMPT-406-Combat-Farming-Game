@@ -23,10 +23,10 @@ public class Magnetic : MonoBehaviour
         }
         else if (distance < magnetRange) {            
         //Float towrds player
-            float speed = 5/distance * 2;
+            float speed = 5/distance * 0.7f;
             gameObject.transform.position =  Vector3.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
             //Scale Pickup As it approaches
-            if (distance < 1){ transform.localScale = new Vector3(distance/2,distance/2, 0);} 
+            if (distance < 1){ transform.localScale = new Vector3((1-distance)/2,(1-distance)/2, 0);} 
         }
     }
 
