@@ -21,12 +21,14 @@ public class GridClickListener : MonoBehaviour
     [SerializeField] private GameObject hotbar;
     private Seed seedToPlant;
     private bool ableToPlant;
+
     void Start(){
         plantLocationCollection = new List<Vector3>();
         seedToPlant = null;
         DayNightCycle.isNowDay += itIsNowDay;
         DayNightCycle.isNowNight += itIsNowNight;
         ableToPlant = true;
+
     }
 
     void Update(){
@@ -51,7 +53,7 @@ public class GridClickListener : MonoBehaviour
             // Debug.Log(obstacleLength);
             for (int i = 0; i < plantLocationCollectionLength; i++ ){
                 if (i < plantLocationCollectionLength && centerPos == plantLocationCollection[i]){
-                    Debug.Log("we collided");
+                    // Debug.Log("we collided");
                     return;
                 }
                 // Vector3 vectorpos = (obstacleTilemap.WorldToCell(

@@ -51,7 +51,7 @@ public class Inventory : MonoBehaviour
     public bool AddItem(Item item) {
         // is there space for an item?
         if (items.Count >= max_space) {
-            Debug.Log("Inventory is full.");
+            // Debug.Log("Inventory is full.");
             return false;
         }
 
@@ -60,7 +60,7 @@ public class Inventory : MonoBehaviour
 
             // if there's too many items to stack
             if (items[item] >= max_stack) {
-                Debug.Log("Cannot hold anymore items of this type.");
+                // Debug.Log("Cannot hold anymore items of this type.");
                 return false;
             }
             
