@@ -49,10 +49,12 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         if (GameObject.Find("LightingHandler").GetComponentInChildren<DayNightCycle>().daytime == true){ //Sets Gun and watercan states
             Raygun.SetActive(false);
             wateringCan.SetActive(true);
+            myCursor.setDefault();
             
         } else {
             Raygun.SetActive(true);
             wateringCan.SetActive(false);
+            myCursor.setCombat();
         }
     }
 
