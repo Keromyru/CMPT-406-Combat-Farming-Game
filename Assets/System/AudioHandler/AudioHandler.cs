@@ -21,6 +21,15 @@ public class AudioHandler : MonoBehaviour
     void OnApplicationPause(bool pauseStatus){
         isPaused = pauseStatus;
     }
+    void OnEnable() {
+        DayNightCycle.isNowDay += newDay;
+        DayNightCycle.isNowNight += newNight;
+        } //Subscribe to on Scene Loaded Event
+
+    void OnDisable() {
+        DayNightCycle.isNowDay -= newDay;
+        DayNightCycle.isNowNight -= newNight;
+        } //unsubscribe to on Scene Loaded Event
 
     public AudioSource PlaySong(string name) {
         StopMusic();
@@ -43,10 +52,10 @@ public class AudioHandler : MonoBehaviour
     }
 
     //Night Time
-    public void onNight(){ this.StartPlayList("NightCycle");}
+    public void newNight(){ this.StartPlayList("NightCycle");}
 
     //Day Time
-    public void OnDay(){this.StartPlayList("DayCycle");}
+    public void newDay(){this.StartPlayList("DayCycle");}
 
     //Stops the Player
     public void StopMusic(){

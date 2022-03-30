@@ -52,14 +52,15 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
             if(IsDay){
                 if (myFarm.Length != 0) {
                     GameObject myPlant = (myFarm.OrderBy(plants => fromPointer(plants)).First());
+                    Debug.Log("Is Day:"+IsDay+"    myPlants"+myPlant);
                     if (myPlant != null && fromPlayer(myPlant) < myPlayerData.interactionRange){
-                        // Debug.Log("in the check for harvesting");
                         if(myPlant.GetComponent<IPlantControl>().HarvestReady()){
-                            myPlant.GetComponent<IPlantControl>().onHarvest();
-                        } 
-                        // else {
-                        //     onWater(myPlant);
-                        // }
+                             Debug.Log("Harvesting "+myPlant.name);
+                            onHarvest(myPlant);
+                        } else {
+                            Debug.Log("Watering "+myPlant.name);
+                            onWater(myPlant);
+                        }
                     }
                 }    
             } 
@@ -212,7 +213,11 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
             ActionTimer(onAttackBehavior.fireRate);//START TIMER
         }
     }
+    public void onHarvest(GameObject myPlant){
+        myPlant.GetComponent<IPlantControl>().onHarvest();
 
+         ActionTimer(1f);
+    }
     public void onWater(GameObject myPlant){
         if( myPlant.GetComponent<IPlantControl>() != null && fromPointer(myPlant) < 1) {
             myPlant.GetComponent<IPlantControl>().waterPlant(myPlayerData.WaterQuantity);   //Water plant
