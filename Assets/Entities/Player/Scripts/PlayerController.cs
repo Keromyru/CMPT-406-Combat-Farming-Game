@@ -11,7 +11,9 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     private float health = 100;
 
     public Transform playerTransform;
-    public Transform wateringCan;
+    public GameObject wateringCan;
+    public GameObject Raygun;
+    [SerializeField] float firePointLength = 1;
 
     //Behaviors
     [SerializeField] PlayerBevahviorSO myPlayerData;
@@ -37,12 +39,21 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
 
     //PLAYER LOGIC
     private void Awake() { 
-    myCamera = GameObject.Find("Main Camera"); //Find and set camera
-    playerRB = this.GetComponent<Rigidbody2D>(); //Set Rigid Body Shortcut for Blakes Code
-    onAttackBehavior = myPlayerData.onAttackBehavior; //Set onAttackBehavior
-    onHitBehavior = myPlayerData.onHitBehavior; //Set onHitBehavior
-    onDeathBehavior = myPlayerData.onDeathBehavior; //Set onDeathBehavior
-    audioController = myPlayerData.audioController; //Set audioController   
+        myCamera = GameObject.Find("Main Camera"); //Find and set camera
+        playerRB = this.GetComponent<Rigidbody2D>(); //Set Rigid Body Shortcut for Blakes Code        
+        onAttackBehavior = myPlayerData.onAttackBehavior; //Set onAttackBehavior
+        onHitBehavior = myPlayerData.onHitBehavior; //Set onHitBehavior
+        onDeathBehavior = myPlayerData.onDeathBehavior; //Set onDeathBehavior
+        audioController = myPlayerData.audioController; //Set audioController   
+
+        if (GameObject.Find("LightingHandler").GetComponentInChildren<DayNightCycle>().daytime == true){ //Sets Gun and watercan states
+            Raygun.SetActive(false);
+            wateringCan.SetActive(true);
+            
+        } else {
+            Raygun.SetActive(true);
+            wateringCan.SetActive(false);
+        }
     }
 
     private void Update() {
@@ -82,14 +93,28 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
             // Needs to be a Quaternion as rotation is only described as one
             Quaternion aQuaternion = Quaternion.Euler(0, 0, 0);
             playerTransform.rotation = aQuaternion; 
-            wateringCan.rotation = aQuaternion;
+            if(wateringCan.activeSelf == true){ wateringCan.transform.rotation = aQuaternion;}
         } else if (inputVector.x == 1){
             // flip rotational y to 180
             // Needs to be a Quaternion as rotation is only described as one
             Quaternion aQuaternion = Quaternion.Euler(0, 180, 0);
             playerTransform.rotation = aQuaternion;
-            wateringCan.rotation = aQuaternion;
+            if(wateringCan.activeSelf == true){ wateringCan.transform.rotation = aQuaternion;}
         } 
+        //Gun Pointing
+        Vector3 sLocation = playerTransform.position; //Source of bullets location
+        Vector3 tLocation = pointerLocation();
+        Vector3 targetDirection =  (tLocation - sLocation).normalized; //Direction
+
+        // a Normalized Vector * the distance from the focal point desired + from the source of the 
+        if(Raygun.activeSelf == true){
+            Vector3 trackedLocation = (targetDirection * firePointLength)  + sLocation;
+            float angle = Mathf.Atan2(targetDirection.y, targetDirection.x)* Mathf.Rad2Deg - 90f; //Converts the vecter into a RAD angle, then into degrees. Adds 90deg as an offset
+            Quaternion trackedRotation =   Quaternion.Euler(0,0,angle+270);
+            if(trackedLocation.x > sLocation.x){ Raygun.GetComponentInChildren<SpriteRenderer>().flipY = true ;} else {Raygun.GetComponentInChildren<SpriteRenderer>().flipY = false;}
+            Raygun.transform.position = trackedLocation;
+            Raygun.transform.rotation = trackedRotation;
+        }
     }
 
     //Pointer Location from mask layered raycast
@@ -172,6 +197,8 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         else{ return 1000;}
     }
 
+
+
     //TRIGGERS
     public void onHit(float damage, GameObject source)
     {    //if it's a baddy, take the damage
@@ -190,11 +217,15 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         resetHealth();
         myFarm = GameObject.FindGameObjectsWithTag("Plant");
         IsDay = true;
+        Raygun.SetActive(false);
+        wateringCan.SetActive(true);
 
     }
    
     public void newNight(){
         IsDay = false;
+        Raygun.SetActive(true);
+        wateringCan.SetActive(false);
     }
 
     public void onDeath(){
@@ -222,6 +253,10 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         if( myPlant.GetComponent<IPlantControl>() != null && fromPointer(myPlant) < 1) {
             myPlant.GetComponent<IPlantControl>().waterPlant(myPlayerData.WaterQuantity);   //Water plant
             if (myPlayerData.soundWater != null) {audioController.Play(myPlayerData.soundWater);} //Play sound if there is one
+            if (myPlayerData.WaterEffect != null) {
+                Instantiate(myPlayerData.WaterEffect,
+                new Vector3 (myPlant.transform.position.x, myPlant.transform.position.y-0.2f,0), 
+                Quaternion.identity);}
         }
         ActionTimer(myPlayerData.WaterRate); 
     }

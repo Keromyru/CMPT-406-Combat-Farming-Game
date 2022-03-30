@@ -24,6 +24,6 @@ public class PlayerBevahviorSO : ScriptableObject
     public PlayerOnHitSO onHitBehavior;
     public PlayerOnDeathSO onDeathBehavior;
 
-
-     
+    [Header("Effects")]
+    public GameObject WaterEffect;
 }
