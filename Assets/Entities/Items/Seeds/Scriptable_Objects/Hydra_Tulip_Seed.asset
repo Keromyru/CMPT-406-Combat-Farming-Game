@@ -17,6 +17,7 @@ MonoBehaviour:
   isSellable: 1
   price: 500
   available: 0
-  description: These seeds will grow into a Hydra Tulip.
+  description: These seeds will grow into a Hydra Tulip. A Hydra Tulip is a vicious
+    plant that unleashes far-range attacks on enemy lifeforms.
   isPlantable: 1
   spawnName: Hydra
