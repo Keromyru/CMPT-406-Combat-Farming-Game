@@ -80,7 +80,7 @@ public class InventoryInputs : MonoBehaviour
 
 
     // select nothing!!
-    void DeselectAll() {
+    public void DeselectAll() {
         for (int i = 0; i < hotbarActions.Count; i++) {
             hotbarActions[i].DeselectItem();
         }
