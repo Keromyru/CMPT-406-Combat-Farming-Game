@@ -32,19 +32,19 @@ public class Item : ScriptableObject
     // works just like Interact() in Interactable.cs does, just be sure to include
     // "public virtual void Use() { Base.Use(); AND THEN ANY CODE YOU WANT; }"
     public virtual void Use() {
-        Debug.Log("Using " + name);
+        // Debug.Log("Using " + name);
     }
 
     // buy method for shop
     public virtual void Buy(int buyPrice) {
-        Debug.Log("Buying " + name);
+        // Debug.Log("Buying " + name);
 
         Currency.subtractMoney(buyPrice);
     }
 
     // sell method for shop
     public virtual void Sell() {
-        Debug.Log("Selling " + name);
+        // Debug.Log("Selling " + name);
 
         Currency.addMoney(price);
     }

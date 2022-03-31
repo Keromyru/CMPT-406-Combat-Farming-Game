@@ -16,6 +16,7 @@ MonoBehaviour:
   moveRate: 0.075
   WaterQuantity: 5
   WaterRate: 0.5
+  interactionRange: 2
   soundDeath: 
   soundHurt: 
   soundHeal: 
