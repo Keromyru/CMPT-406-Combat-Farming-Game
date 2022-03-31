@@ -49,6 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e63edaa92fee2c48bdd94607dd928eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  wateringCan: {fileID: 0}
   myPlayerData: {fileID: 11400000, guid: e0c81fbfda1f7a249a2192b665d2e593, type: 2}
 --- !u!114 &3231876348994428816
 MonoBehaviour:
