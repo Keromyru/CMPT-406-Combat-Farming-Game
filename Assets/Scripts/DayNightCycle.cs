@@ -185,7 +185,7 @@ public class DayNightCycle : MonoBehaviour
         */
 
         // Random Eclipse start between 8:00 (8:00am) - 18:00 untill (6:00pm)
-        if(hours > 7 && hours <= 18 && activeEclipse == false)
+        if(hours > dayStart && hours <= dayEnd && activeEclipse == false)
         {
             //Get a random time
             int randomTime = Random.Range(8,18);

@@ -16,8 +16,8 @@ MonoBehaviour:
   - {fileID: 7944093273229674206, guid: 9da478cbc57474196aa1e34754c24d26, type: 3}
   - {fileID: 4260015578173857193, guid: bba3a00450a45c34e8a830329b1311b1, type: 3}
   - {fileID: 1680092049937385966, guid: 1e80f40a0e2983c4794d7b6f437c3438, type: 3}
-  minYield: 2
-  maxYield: 4
+  minYield: 1
+  maxYield: 3
   dropRadius: 1
   credValue: 0
   Spread: 0
