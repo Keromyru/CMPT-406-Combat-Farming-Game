@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bff3d6966b6c19d45af824b8effcbba9, type: 3}
+  m_Name: OnHarvestHydra
+  m_EditorClassIdentifier: 
+  dropPool:
+  - {fileID: 2099945048107503429, guid: af5818c84fb304136a09eaeabc38bf9d, type: 3}
+  - {fileID: 4260015578173857193, guid: bba3a00450a45c34e8a830329b1311b1, type: 3}
+  minYield: 1
+  maxYield: 2
+  dropRadius: 1
+  credValue: 0
+  Spread: 0

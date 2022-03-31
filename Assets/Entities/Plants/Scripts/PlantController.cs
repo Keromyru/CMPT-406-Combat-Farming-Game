@@ -17,7 +17,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     [SerializeField] private int growAge;
     [SerializeField]private Vector3 location; //Location is just where it lives, this is stored for easy Save Retrieval
     private bool dayTime = false;  
-    private bool isReady = false;
+    [SerializeField] private bool isReady = false;
 
 
     private PlantBehaviorSO myPlantData; //References the plants Entry in the Database
@@ -29,8 +29,6 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     private PlantOnAttackSO onAttackBehavior;
     private PlantOnDeathSO onDeathBehavior;
     private PlantOnHarvestSO onHarvestBehavior;
-
-    
 
     // Attack Data  
     private Coroutine attackRoutine; 
@@ -74,6 +72,15 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
             if (targets.Count == 0) { attackTarget = null;} //Clears the target if there are not more options
         }
     }
+    void OnEnable() {
+        DayNightCycle.isNowDay += newDay;
+        DayNightCycle.isNowNight += newNight;
+    } //Subscribe to on Scene Loaded Event
+
+    void OnDisable() {
+        DayNightCycle.isNowDay -= newDay;
+        DayNightCycle.isNowNight -= newNight;
+    } //unsubscribe to on Scene Loaded Event
 
     private bool CheckTarget(){ //If the target doesn't exist, or it's out of range, or it's daytime;
         if( (attackTarget == null || distance(attackTarget) > onAttackBehavior.attackRange)){
@@ -98,8 +105,8 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     public bool waterPlant(float amount){
         health += amount;
         //Catch to prevent overfilling
-        if (energy > myPlantData.plantMaxHealth) { health = myPlantData.plantMaxHealth;}
-
+        if (health > myPlantData.plantMaxHealth) { health = myPlantData.plantMaxHealth;}
+        if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar  
         //Returns true if plant energy is now ful
         if (health >= myPlantData.plantMaxHealth){return true;}
         else { return false;}
@@ -133,19 +140,21 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     ////////////////////////////////////////////////
     //This should be a call that would be triggered by the time control system as an event or an interated list of
     //the IPlantControl interface
-    public void newDay(){
+    public virtual void newDay(){
         growAge++; 
+        Debug.Log(growAge);
         dayTime = true;
         targets.Clear(); //Clear Attack List
         checkGrowthPhase();
         if (myPlantData.harvestable && growAge >= myPlantData.DaysUntilHarvest){
             isReady = true;
+            SpriteRenderer mySprite = GetComponent<SpriteRenderer>();
+            mySprite.color = new Color(.5f, .5f, .5f);
         }
         if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar
-
     }
 
-    public void newNight(){
+    public virtual void newNight(){
         dayTime = false;
         checkGrowthPhase();
     }
@@ -242,6 +251,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     public void setGrowAge(int newGrowAge){ growAge = newGrowAge; }
     public int getGrowAge(){ return growAge; }
 
+    public bool HarvestReady(){ return isReady; }
     public void setHealth(float newHealth){ health = newHealth;}
     public float getHealth(){return health;}
     public float getMaxHealth(){return myPlantData.plantMaxHealth;}

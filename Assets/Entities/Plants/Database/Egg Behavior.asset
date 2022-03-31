@@ -17,20 +17,17 @@ MonoBehaviour:
   plantMaxHealth: 50
   plantMaxEnergy: 100
   plantType: 1
+  plantAgroValue: 0
   canAttack: 0
   matureAge: 0
-  harvestable: 0
-  harvestCycle: 0
-  deathAge: 0
-  seedDropMin: 0
-  seedDropMax: 0
-  harvestValue: 0
+  harvestable: 1
+  DaysUntilHarvest: 1
   soundDeath: 
   soundAttack: 
   soundHarvested: 
   soundHurt: 
   soundGrowth: 
-  harvestPrefab: {fileID: 0}
+  GrowPhaseEffect: {fileID: 0}
   plantPrefab: {fileID: 4348077702683041689, guid: a94ee614a15bf8a4482937fbe8068a84, type: 3}
   nextPhase: {fileID: 0}
   audioController: {fileID: 11400000, guid: 61664c2b36929b7409adee2b27202783, type: 2}
@@ -38,4 +35,4 @@ MonoBehaviour:
   onHit: {fileID: 11400000, guid: c22c187a6ef38ae439dabd299ead49ae, type: 2}
   onAttack: {fileID: 11400000, guid: d97243c8f1669e84b84de4d3a9f1ae6d, type: 2}
   onDeath: {fileID: 11400000, guid: 169f5d4cc04e2c4448ac8618714d612f, type: 2}
-  onHarvest: {fileID: 11400000, guid: fbd298fc7c35b4344b11bb12e1fe496f, type: 2}
+  onHarvest: {fileID: 11400000, guid: 33d6fcfb63f28fc48969670615f3a599, type: 2}

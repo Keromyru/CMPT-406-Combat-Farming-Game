@@ -17,6 +17,7 @@ MonoBehaviour:
   isSellable: 1
   price: 100
   available: 0
-  description: These seeds will grow into a Space Potato.
+  description: These seeds will grow into an Eggroot. The Eggroot is a simple plant,
+    quick to ripen for harvest and easy to sell.
   isPlantable: 1
   spawnName: Eggroot

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using System.Linq;
 
 public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
 {
@@ -11,20 +12,27 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
 
     public Transform playerTransform;
     public Transform wateringCan;
+
+    //Behaviors
     [SerializeField] PlayerBevahviorSO myPlayerData;
     private PlayerOnAttackSO onAttackBehavior;
     private PlayerOnHitSO onHitBehavior;
     private PlayerOnDeathSO onDeathBehavior;
     private AudioControllerSO audioController;
+
+    // Data
     private GameObject myCamera;
     private PlayerInput playerInput;  // The inputs from the InputSystem
     private Rigidbody2D playerRB;     
     UnityEvent event_PlayerHealthChange = new UnityEvent();
+    public GameObject[] myFarm;
+
     // Attack Data  
-    private Coroutine attackRoutine; 
+    private Coroutine actionRoutine; 
     private bool isWaiting; //Is in a state of waiting before it can attack again 
     private Vector2 force;
     private float forceTime = 0.2f;
+    bool IsDay; //Just for reference if it's day
     void Start(){GameCamera.SetTarget(this.gameObject);}//Sets the player as the camera focus
 
     //PLAYER LOGIC
@@ -40,7 +48,26 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     private void Update() {
         //Checks if the mouse click is down, and if the reset timer isn't set
         //The behavior of this will be shots so long as  the left-click is held
-        if ((playerInput.actions["PrimaryAction"].ReadValue<float>() > 0) && !isWaiting){ onAttack(); }
+        if ((playerInput.actions["PrimaryAction"].ReadValue<float>() > 0) && !isWaiting){
+            if(IsDay){
+                if (myFarm.Length != 0) {
+                    GameObject myPlant = (myFarm.OrderBy(plants => fromPointer(plants)).First());
+                    if (myPlant != null && fromPlayer(myPlant) < myPlayerData.interactionRange){
+                        // Debug.Log("in the check for harvesting");
+                        if(myPlant.GetComponent<IPlantControl>().HarvestReady()){
+                            myPlant.GetComponent<IPlantControl>().onHarvest();
+                        } 
+                        // else {
+                        //     onWater(myPlant);
+                        // }
+                    }
+                }    
+            } 
+            else {
+                onAttack();
+            
+            }
+        }        
     }
 
     private void FixedUpdate() {
@@ -62,7 +89,6 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
             playerTransform.rotation = aQuaternion;
             wateringCan.rotation = aQuaternion;
         } 
-
     }
 
     //Pointer Location from mask layered raycast
@@ -90,13 +116,24 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         return PointerPosition;
     }
 
+    private IPlantControl pointerObject(){
+        //Argument: Location of a pointer
+        //Returns Object At the location of the Pointer
+        IPlantControl clickedInterface = null;
+        Ray ray = Camera.main.ScreenPointToRay(pointerLocation());
+        if (Physics.Raycast(ray, out RaycastHit hit3D)) {
+            GameObject clickedObject = hit3D.collider.gameObject;
+            if (clickedObject != null){ clickedInterface = clickedObject.GetComponent<IPlantControl>(); }
+        }
+        return clickedInterface;
+    }
+
     public void knockback(Vector2 origin, float scale){   //Shoves the player away
         Vector2 knockback = (playerRB.position - origin).normalized*scale;
         force = knockback*scale;
     }
 
     public void resetHealth(){ //Reset health
-        if (myPlayerData.soundHeal != null) {audioController.Play(myPlayerData.soundHeal);} //Play myPlayerData.soundHeal if the file has been declared
         health = myPlayerData.maxHealth;
         event_PlayerHealthChange.Invoke();
     }
@@ -108,13 +145,31 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         event_PlayerHealthChange.Invoke();
     }
 
-    void OnEnable() {SceneManager.sceneLoaded += OnSceneLoaded;} //Subscribe to on Scene Loaded Event
+        
+    void OnEnable() {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        DayNightCycle.isNowDay += newDay;
+        DayNightCycle.isNowNight += newNight;
+        } //Subscribe to on Scene Loaded Event
 
-    void OnDisable() {SceneManager.sceneLoaded -= OnSceneLoaded;} //unsubscribe to on Scene Loaded Event
+    void OnDisable() {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        DayNightCycle.isNowDay -= newDay;
+        DayNightCycle.isNowNight -= newNight;
+        } //unsubscribe to on Scene Loaded Event
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) { //If not null, add player input to "playerInput"
         if (GameObject.Find("InputHandler") != null) { playerInput = GameObject.Find("InputHandler").GetComponent<PlayerInput>();}
         }
+    
+    private float fromPlayer(GameObject other){
+        return Vector2.Distance(other.transform.position, this.transform.position);
+    }
+
+    private float fromPointer(GameObject other){
+        if (other != null) {return Vector2.Distance(pointerLocation(), other.transform.position);}
+        else{ return 1000;}
+    }
 
     //TRIGGERS
     public void onHit(float damage, GameObject source)
@@ -131,11 +186,14 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     }
 
     public void newDay(){ //On a new day
-    resetHealth();
+        resetHealth();
+        myFarm = GameObject.FindGameObjectsWithTag("Plant");
+        IsDay = true;
+
     }
    
     public void newNight(){
-    
+        IsDay = false;
     }
 
     public void onDeath(){
@@ -151,34 +209,42 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
                 pointerLocation(),
                 this.gameObject
             );
-            AttackTimer();//START TIMER
+            ActionTimer(onAttackBehavior.fireRate);//START TIMER
         }
+    }
+
+    public void onWater(GameObject myPlant){
+        if( myPlant.GetComponent<IPlantControl>() != null && fromPointer(myPlant) < 1) {
+            myPlant.GetComponent<IPlantControl>().waterPlant(myPlayerData.WaterQuantity);   //Water plant
+            if (myPlayerData.soundWater != null) {audioController.Play(myPlayerData.soundWater);} //Play sound if there is one
+        }
+        ActionTimer(myPlayerData.WaterRate); 
     }
 
     ////////////////////////////////////////////////
     // Attack Interval Coroutine
 
     //Starts attack Timer
-     public void AttackTimer(){
-        if (attackRoutine != null)
+     public void ActionTimer(float timer){
+        if (actionRoutine != null)
         {
             // In this case, we should stop it first.
             // Multiple AttackRoutine at the same time would cause bugs.
-            StopCoroutine(attackRoutine);
+            StopCoroutine(actionRoutine);
         }
         // Start the Coroutine, and store the reference for it.
-        attackRoutine = StartCoroutine(AttackRoutine());            
+        actionRoutine = StartCoroutine(ActionRoutine(timer));            
      }
 
-    private IEnumerator AttackRoutine(){
+    private IEnumerator ActionRoutine(float timer){
         //toggles on the screen shake function
         isWaiting = true;
         // Pause the execution of this function for "duration" seconds.
-        yield return new WaitForSeconds(onAttackBehavior.fireRate);
+        yield return new WaitForSeconds(timer);
         // After the pause, swap back to the original material.
         isWaiting = false;
         // Set the routine to null, signaling that it's finished.
-        attackRoutine = null;
+        actionRoutine = null;
     }
     ////////////////////////////////////////////////
     #region Sets and Gets
