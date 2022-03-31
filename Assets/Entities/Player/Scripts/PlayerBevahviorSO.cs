@@ -30,4 +30,6 @@ public class PlayerBevahviorSO : ScriptableObject
     public GameObject EnemyArrow;
     [Tooltip("This should be only visable on the minimap")]
     public GameObject HubArrow;
+    public float lightOnDelay;
+    public float lightOffDelay;
 }

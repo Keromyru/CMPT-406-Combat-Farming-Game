@@ -35,7 +35,6 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     public GameObject[] myFarm;
     private GameObject theHub;
     private UnityEngine.Experimental.Rendering.Universal.Light2D myLight; 
-
     // Attack Data  
     private Coroutine actionRoutine; 
     private bool isWaiting; //Is in a state of waiting before it can attack again 
@@ -266,7 +265,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         IsDay = true;
         Raygun.SetActive(false);
         wateringCan.SetActive(true);
-        myLight.enabled = false;
+        LampOff();
     }
    
     public void newNight(){
@@ -274,7 +273,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         Raygun.SetActive(true);
         wateringCan.SetActive(false);
         myCursor.setCombat();
-        StartCoroutine(ActivateLamp(5f));
+        LampOn();
     }
 
     public void onDeath(){
@@ -336,10 +335,43 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         actionRoutine = null;
     }
 
-    private IEnumerator ActivateLamp(float timer){
-        yield return new WaitForSeconds(timer);
-        myLight.enabled = true;
+    ////////////////////////////////////////////////////////////////
+    // LAMP EFFECTS
+    private void LampOn(){
+        Debug.Log("Lamp on");
+        StartCoroutine(LightOnRoutine(2,myPlayerData.lightOnDelay));
     }
+    private void LampOff(){
+        StartCoroutine(LightOffRoutine(2,myPlayerData.lightOffDelay));
+    }
+
+
+    private IEnumerator LightOffRoutine( int fadeSpeed = 2, float timer = 0) { 
+        yield return new WaitForSeconds(timer);
+        float fadeKey = 1;
+        while (fadeKey > 0) {
+            fadeKey -= Time.fixedDeltaTime*(1f/fadeSpeed);
+            myLight.intensity = fadeKey;       
+            yield return null;
+        }
+        yield return new WaitForEndOfFrame();
+    }
+
+    private IEnumerator LightOnRoutine( int fadeSpeed = 2, float timer  = 0) { 
+        yield return new WaitForSeconds(timer);
+        float fadeKey = 0;
+        while (fadeKey < 1) {
+            fadeKey += Time.fixedDeltaTime*(1f/fadeSpeed);
+            myLight.intensity = fadeKey;       
+            yield return null;
+        }
+        yield return new WaitForEndOfFrame();
+    }
+
+
+
+
+
     ////////////////////////////////////////////////
     #region Sets and Gets
     ////////////////////////////////////////////////
