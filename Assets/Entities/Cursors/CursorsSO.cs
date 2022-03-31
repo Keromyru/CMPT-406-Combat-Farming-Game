@@ -19,6 +19,10 @@ public class CursorsSO : ScriptableObject
     public void setCursorHive(){ Cursor.SetCursor(hiveCursor, Vector2.zero,CursorMode.Auto);}
     public void setCursorPotato(){ Cursor.SetCursor(potatCursor, Vector2.zero,CursorMode.Auto);}
     public void setCursorHydra(){ Cursor.SetCursor(hydraCursor, Vector2.zero,CursorMode.Auto);}
+
+    private void OnEnable() {
+
+    }
 }
 
 public static class myCursor{

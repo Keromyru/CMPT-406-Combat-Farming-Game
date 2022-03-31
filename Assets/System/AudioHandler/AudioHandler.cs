@@ -9,7 +9,10 @@ public class AudioHandler : MonoBehaviour
     public MusicControllerSO controller;
     private AudioSource musicPlayer;
     private bool isPaused = true;
-    private void Awake(){ musicPlayer = this.gameObject.GetComponent<AudioSource>();} //Sets the Audio source for easy recall
+    private void Awake(){ 
+        isPaused = true;
+        musicPlayer = this.gameObject.GetComponent<AudioSource>();
+        } //Sets the Audio source for easy recall
     private void FixedUpdate(){ 
         //Starts next file when song is over
         if (!musicPlayer.isPlaying && !isPaused ){ PlayNext();}

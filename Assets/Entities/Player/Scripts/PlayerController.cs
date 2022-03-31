@@ -10,10 +10,15 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
 {
     private float health = 100;
 
-    public Transform playerTransform;
-    public GameObject wateringCan;
-    public GameObject Raygun;
+    [SerializeField] Transform playerTransform;
+    [SerializeField] GameObject wateringCan;
+    [SerializeField] GameObject Raygun;
+    [SerializeField] GameObject EnemyArrow;
+    [SerializeField] GameObject HubArrow;
     [SerializeField] float firePointLength = 1;
+    [SerializeField] float enemyArrowLength = 1;
+    [SerializeField] float hubArrowLength = 1;
+
 
     //Behaviors
     [SerializeField] PlayerBevahviorSO myPlayerData;
@@ -28,6 +33,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     private Rigidbody2D playerRB;     
     UnityEvent event_PlayerHealthChange = new UnityEvent();
     public GameObject[] myFarm;
+    private GameObject theHub;
 
     // Attack Data  
     private Coroutine actionRoutine; 
@@ -40,22 +46,13 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     //PLAYER LOGIC
     private void Awake() { 
         myCamera = GameObject.Find("Main Camera"); //Find and set camera
-        playerRB = this.GetComponent<Rigidbody2D>(); //Set Rigid Body Shortcut for Blakes Code        
+        playerRB = this.GetComponent<Rigidbody2D>(); //Set Rigid Body Shortcut for Blakes Code      
+        theHub =  GameObject.Find("HUB"); //Find and set hub reference
+
         onAttackBehavior = myPlayerData.onAttackBehavior; //Set onAttackBehavior
         onHitBehavior = myPlayerData.onHitBehavior; //Set onHitBehavior
         onDeathBehavior = myPlayerData.onDeathBehavior; //Set onDeathBehavior
         audioController = myPlayerData.audioController; //Set audioController   
-
-        if (GameObject.Find("LightingHandler").GetComponentInChildren<DayNightCycle>().daytime == true){ //Sets Gun and watercan states
-            Raygun.SetActive(false);
-            wateringCan.SetActive(true);
-            myCursor.setDefault();
-            
-        } else {
-            Raygun.SetActive(true);
-            wateringCan.SetActive(false);
-            myCursor.setCombat();
-        }
     }
 
     private void Update() {
@@ -79,7 +76,6 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
             } 
             else {
                 onAttack();
-            
             }
         }        
     }
@@ -103,13 +99,15 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
             playerTransform.rotation = aQuaternion;
             if(wateringCan.activeSelf == true){ wateringCan.transform.rotation = aQuaternion;}
         } 
-        //Gun Pointing
-        Vector3 sLocation = playerTransform.position; //Source of bullets location
-        Vector3 tLocation = pointerLocation();
-        Vector3 targetDirection =  (tLocation - sLocation).normalized; //Direction
-
-        // a Normalized Vector * the distance from the focal point desired + from the source of the 
+        //RAYGUN ANGLE AND DIRECTION
         if(Raygun.activeSelf == true){
+               
+            // a Normalized Vector * the distance from the focal point desired + from the source of the 
+            Vector3 sLocation = playerTransform.position; //Source of bullets location
+            Vector3 tLocation = pointerLocation();
+            Vector3 targetDirection =  (tLocation - sLocation).normalized; //Direction
+
+
             Vector3 trackedLocation = (targetDirection * firePointLength)  + sLocation;
             float angle = Mathf.Atan2(targetDirection.y, targetDirection.x)* Mathf.Rad2Deg - 90f; //Converts the vecter into a RAD angle, then into degrees. Adds 90deg as an offset
             Quaternion trackedRotation =   Quaternion.Euler(0,0,angle+270);
@@ -117,6 +115,47 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
             Raygun.transform.position = trackedLocation;
             Raygun.transform.rotation = trackedRotation;
         }
+        //ENEMY TRACKER
+        if(IsDay == false){
+            if (GameObject.FindGameObjectWithTag("Enemy") != null){ //If there is a baddy
+                GameObject myBaddy = (GameObject.FindGameObjectsWithTag("Enemy").OrderBy(baddy => fromPlayer(baddy)).First()); //Check all baddies, and return the closest
+                if (fromPlayer(myBaddy) > 6) {
+                    EnemyArrow.SetActive(true);
+                    // a Normalized Vector * the distance from the focal point desired + from the source of the 
+                    Vector3 sLocation = playerTransform.position; //Source of bullets location
+                    Vector3 tLocation = myBaddy.transform.position;
+                    Vector3 targetDirection =  (tLocation - sLocation).normalized; //Direction
+
+                    Vector3 trackedLocation = (targetDirection * enemyArrowLength)  + sLocation;
+                    float angle = Mathf.Atan2(targetDirection.y, targetDirection.x)* Mathf.Rad2Deg - 90; //Converts the vecter into a RAD angle, then into degrees. Adds 90deg as an offset
+                    Quaternion trackedRotation =   Quaternion.Euler(0,0,angle);
+                    EnemyArrow.transform.position = trackedLocation;
+                    EnemyArrow.transform.rotation = trackedRotation;
+                }
+            } else {
+                EnemyArrow.SetActive(false);
+            }
+        } else {
+            EnemyArrow.SetActive(false);
+        }
+        //HUB TRACKER
+         if (fromPlayer(theHub) > 10) {
+                    HubArrow.SetActive(true);
+                    // a Normalized Vector * the distance from the focal point desired + from the source of the 
+                    Vector3 sLocation = playerTransform.position; //Source of bullets location
+                    Vector3 tLocation = theHub.transform.position;
+                    Vector3 targetDirection =  (tLocation - sLocation).normalized; //Direction
+
+                    Vector3 trackedLocation = (targetDirection * hubArrowLength)  + sLocation;
+                    float angle = Mathf.Atan2(targetDirection.y, targetDirection.x)* Mathf.Rad2Deg - 90; //Converts the vecter into a RAD angle, then into degrees. Adds 90deg as an offset
+                    Quaternion trackedRotation =   Quaternion.Euler(0,0,angle);
+                    
+                    HubArrow.GetComponent<RectTransform>().position = trackedLocation;
+                    HubArrow.transform.rotation = trackedRotation;
+                } else {
+                    HubArrow.SetActive(false);
+                }
+
     }
 
     //Pointer Location from mask layered raycast
@@ -218,16 +257,17 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     public void newDay(){ //On a new day
         resetHealth();
         myFarm = GameObject.FindGameObjectsWithTag("Plant");
+        if(IsDay == false){myCursor.setDefault();}
         IsDay = true;
         Raygun.SetActive(false);
         wateringCan.SetActive(true);
-
     }
    
     public void newNight(){
         IsDay = false;
         Raygun.SetActive(true);
         wateringCan.SetActive(false);
+        myCursor.setCombat();
     }
 
     public void onDeath(){

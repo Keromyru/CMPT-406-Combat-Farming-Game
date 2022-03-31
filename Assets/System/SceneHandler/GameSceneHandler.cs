@@ -31,9 +31,6 @@ public class GameSceneHandler: MonoBehaviour
             //AudioHandler.StartPlayList("Menus");
             MusicPlayer.StartPlayList("Menus");
         }
-        else if(GetLoadedScenes().Contains("InGame")){
-            MusicPlayer.StartPlayList("DayCycle");
-        }     
     }
 
     //Updates an Active directory of loaded  scenes

@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b2666010b669f249b78a662f94f355e, type: 3}
   m_Name: SFX_Splash
   m_EditorClassIdentifier: 
-  Name: 
-  clips: []
-  type: 0
+  Name: Splash
+  clips:
+  - {fileID: 8300000, guid: 237a4b0b65bae05418a79aab47f30206, type: 3}
+  - {fileID: 8300000, guid: 391ae92b7f5597c409741990d24fa517, type: 3}
+  type: 3
   volume: 1
   pitch: 1
   source: {fileID: 0}

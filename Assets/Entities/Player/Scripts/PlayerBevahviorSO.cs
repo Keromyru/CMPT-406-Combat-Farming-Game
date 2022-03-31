@@ -26,4 +26,8 @@ public class PlayerBevahviorSO : ScriptableObject
 
     [Header("Effects")]
     public GameObject WaterEffect;
+
+    public GameObject EnemyArrow;
+    [Tooltip("This should be only visable on the minimap")]
+    public GameObject HubArrow;
 }

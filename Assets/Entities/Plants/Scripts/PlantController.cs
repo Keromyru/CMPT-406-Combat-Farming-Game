@@ -35,8 +35,15 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     private bool isWaiting; //Is in a state of waiting before it can attack again
     private GameObject  attackTarget;
     public List<GameObject> targets;
+    // Other References
     private healthbar_Script_PlantController myHealthBar;
     private AudioSource mySource;
+
+    [Header("MiniMap Icons")]
+
+    [SerializeField] GameObject plantIcon;
+    [SerializeField] GameObject dangerIcon;
+
 
     #endregion
     ////////////////////////////////////////////////
@@ -48,6 +55,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
                 myHealthBar = this.gameObject.GetComponentInChildren<healthbar_Script_PlantController>();
             }
             mySource = this.gameObject.GetComponent<AudioSource>();
+            dangerIcon.SetActive(false);
         }
 
     private void FixedUpdate() {
@@ -108,7 +116,11 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         if (health > myPlantData.plantMaxHealth) { health = myPlantData.plantMaxHealth;}
         if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar  
         //Returns true if plant energy is now ful
-        if (health >= myPlantData.plantMaxHealth){return true;}
+        if (health >= myPlantData.plantMaxHealth){
+            plantIcon.SetActive(true);
+            dangerIcon.SetActive(false);
+            return true;
+        }
         else { return false;}
     }
 
@@ -167,7 +179,9 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         health -= onHitBehavior.onHit(damage, source, this.gameObject); //Trigger onhit behaviors
         if (myPlantData.soundHurt != null) {audioController.Play(myPlantData.soundHurt, mySource);}
         if (GetComponent<FlashEffect>() != null){GetComponent<FlashEffect>().flash();} //Flash Effect On Hit
-        if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar  
+        if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar 
+        plantIcon.SetActive(false);
+        dangerIcon.SetActive(true); 
         if (health <= 0){ onDeath();} //Death Check
     }
 
