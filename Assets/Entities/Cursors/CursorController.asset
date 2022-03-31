@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22769558ddab6394bb83447a94f67a37, type: 3}
   m_Name: CursorController
   m_EditorClassIdentifier: 
-  defaultCursor: {fileID: 2800000, guid: 0c88e532d3c2266499c5b15f1f6d1bf8, type: 3}
+  defaultCursor: {fileID: 2800000, guid: d395ffc252bb97642b9ee2db52b67236, type: 3}
   combatCursor: {fileID: 2800000, guid: 5a09d378cbbe99b4f8abdf9eab3bea69, type: 3}
   gigaCursor: {fileID: 2800000, guid: c127a089d3d129f4ea7f2393dcb6d47b, type: 3}
   hiveCursor: {fileID: 2800000, guid: 541c4411ac9d07643ad28ecb5b223f2e, type: 3}
