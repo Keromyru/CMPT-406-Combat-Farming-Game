@@ -163,10 +163,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LightType: 0
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.549
-  m_Color: {r: 0.9622642, g: 0.5492168, b: 0.9350464, a: 1}
+  m_FalloffIntensity: 0.261
+  m_Color: {r: 0.9886813, g: 0.8156863, b: 1, a: 1}
   m_Intensity: 1
-  m_LightVolumeOpacity: 0.513
+  m_LightVolumeOpacity: 0.276
   m_ApplyToSortingLayers: 00000000152988e5416d783f717dfbbfcdddbcb7
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_ShapeLightParametricSides: 6
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 3
-  m_ShapeLightFalloffSize: 1
+  m_ShapeLightFalloffSize: 6.31
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
   - {x: -0.5, y: -0.5, z: 0}

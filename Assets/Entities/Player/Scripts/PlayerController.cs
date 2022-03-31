@@ -133,7 +133,10 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
                     Quaternion trackedRotation =   Quaternion.Euler(0,0,angle);
                     EnemyArrow.transform.position = trackedLocation;
                     EnemyArrow.transform.rotation = trackedRotation;
+                } else {
+                    EnemyArrow.SetActive(false);
                 }
+                
             } else {
                 EnemyArrow.SetActive(false);
             }
@@ -271,7 +274,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         Raygun.SetActive(true);
         wateringCan.SetActive(false);
         myCursor.setCombat();
-        myLight.enabled = true;
+        StartCoroutine(ActivateLamp(5f));
     }
 
     public void onDeath(){
@@ -311,7 +314,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     // Attack Interval Coroutine
 
     //Starts attack Timer
-     public void ActionTimer(float timer){
+    public void ActionTimer(float timer){
         if (actionRoutine != null)
         {
             // In this case, we should stop it first.
@@ -331,6 +334,11 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         isWaiting = false;
         // Set the routine to null, signaling that it's finished.
         actionRoutine = null;
+    }
+
+    private IEnumerator ActivateLamp(float timer){
+        yield return new WaitForSeconds(timer);
+        myLight.enabled = true;
     }
     ////////////////////////////////////////////////
     #region Sets and Gets
