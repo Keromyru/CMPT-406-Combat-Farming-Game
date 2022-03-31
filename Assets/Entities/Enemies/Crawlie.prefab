@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2146544557583682773}
   - component: {fileID: 7652003484022800013}
   - component: {fileID: 2777180205765065190}
+  - component: {fileID: 2865816930231436522}
   m_Layer: 0
   m_Name: Crawlie
   m_TagString: Enemy
@@ -131,6 +132,35 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 5
+--- !u!114 &2865816930231436522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3927873885634108486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000152988e5416d783f717dfbbfcdddbcb7
+  m_ShapePath:
+  - {x: -0.06189263, y: -0.05107051, z: 0}
+  - {x: 0.11447841, y: -0.010641634, z: 0}
+  - {x: 0.25010377, y: -0.076115936, z: 0}
+  - {x: 0.37394148, y: 0.0050503463, z: 0}
+  - {x: 0.34588107, y: 0.15107127, z: 0}
+  - {x: 0.10980165, y: 0.19045803, z: 0}
+  - {x: -0.015125215, y: 0.12768759, z: 0}
+  m_ShapePathHash: 385699500
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -118102
 --- !u!1001 &2010934216020783967
 PrefabInstance:
   m_ObjectHideFlags: 0

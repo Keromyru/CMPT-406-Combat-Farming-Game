@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 743292186056257352}
   - component: {fileID: 4757787965768657346}
   - component: {fileID: 642993605576382392}
+  - component: {fileID: 7560546499024558550}
   m_Layer: 0
   m_Name: Hydra
   m_TagString: Plant
@@ -185,6 +186,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5119332, y: 0.47780263}
   m_EdgeRadius: 0
+--- !u!114 &7560546499024558550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3435683626492516636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000152988e5416d783f717dfbbfcdddbcb7
+  m_ShapePath:
+  - {x: 0.015494466, y: -0.3215596, z: 0}
+  - {x: 0.043985724, y: -0.19268596, z: 0}
+  - {x: 0.1282492, y: -0.0948013, z: 0}
+  - {x: 0.010233849, y: -0.06126193, z: 0}
+  - {x: -0.103465796, y: -0.07001793, z: 0}
+  - {x: -0.14342315, y: -0.1356121, z: 0}
+  - {x: -0.083943024, y: -0.19757056, z: 0}
+  - {x: -0.0641163, y: -0.31900918, z: 0}
+  m_ShapePathHash: -1116596564
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -113918
 --- !u!1001 &2939333096271154695
 PrefabInstance:
   m_ObjectHideFlags: 0
