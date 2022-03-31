@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Teleport
   clips:
-  - {fileID: 8300000, guid: b5283b8ddb70feb4eaa5747ac9853b7f, type: 3}
+  - {fileID: 8300000, guid: f781534ecb4acd84f80269c57a8b9893, type: 3}
   type: 3
   volume: 1
   pitch: 1

@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
 
     [SerializeField] Transform playerTransform;
     [SerializeField] GameObject wateringCan;
+    [SerializeField] GameObject ExoMan;
     [SerializeField] GameObject Raygun;
     [SerializeField] GameObject EnemyArrow;
     [SerializeField] GameObject HubArrow;
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     private UnityEngine.Experimental.Rendering.Universal.Light2D myLight; 
     private SpriteRenderer gunRenderer;
     private Animator wateringAni;
+    private Animator myAnimator;
 
     // Attack Data  
     private Coroutine actionRoutine; 
@@ -55,6 +57,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         myLight = GetComponent<UnityEngine.Experimental.Rendering.Universal.Light2D>();
         gunRenderer = Raygun.GetComponentInChildren<SpriteRenderer>(); //Set gun reference
         wateringAni = wateringCan.GetComponentInChildren<Animator>();
+        myAnimator = ExoMan.GetComponentInChildren<Animator>();
 
         onAttackBehavior = myPlayerData.onAttackBehavior; //Set onAttackBehavior
         onHitBehavior = myPlayerData.onHitBehavior; //Set onHitBehavior
@@ -106,6 +109,13 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
             playerTransform.rotation = aQuaternion;
             if(wateringCan.activeSelf == true){ wateringCan.transform.rotation = aQuaternion;}
         } 
+
+        if (inputVector.x != 0){
+            myAnimator.SetTrigger("Run");
+        } else {
+             myAnimator.SetTrigger("Idle");
+        }
+
         //RAYGUN ANGLE AND DIRECTION
         if(Raygun.activeSelf == true){
                
@@ -114,11 +124,10 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
             Vector3 tLocation = pointerLocation();
             Vector3 targetDirection =  (tLocation - sLocation).normalized; //Direction
 
-
             Vector3 trackedLocation = (targetDirection * firePointLength)  + sLocation;
-            float angle = Mathf.Atan2(targetDirection.y, targetDirection.x)* Mathf.Rad2Deg - 90f; //Converts the vecter into a RAD angle, then into degrees. Adds 90deg as an offset
-            Quaternion trackedRotation =   Quaternion.Euler(0,0,angle+270);
-            if(trackedLocation.x > sLocation.x){ Raygun.GetComponentInChildren<SpriteRenderer>().flipY = true ;} else {Raygun.GetComponentInChildren<SpriteRenderer>().flipY = false;}
+            float angle = Mathf.Atan2(targetDirection.y, targetDirection.x)* Mathf.Rad2Deg ; //Converts the vecter into a RAD angle, then into degrees. Adds 90deg as an offset
+            Quaternion trackedRotation =   Quaternion.Euler(0,0,angle);
+            if(trackedLocation.x < sLocation.x){ Raygun.GetComponentInChildren<SpriteRenderer>().flipY = true ;} else {Raygun.GetComponentInChildren<SpriteRenderer>().flipY = false;}
             Raygun.transform.position = trackedLocation;
             Raygun.transform.rotation = trackedRotation;
         }
