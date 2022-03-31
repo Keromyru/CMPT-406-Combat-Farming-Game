@@ -157,6 +157,8 @@ GameObject:
   - component: {fileID: 3112828491120734395}
   - component: {fileID: 3112828491120734396}
   - component: {fileID: 3112828491120734394}
+  - component: {fileID: 8445299706430817780}
+  - component: {fileID: 1336474850376300945}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -317,6 +319,73 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8445299706430817780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3112828491120734368}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 0
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.261
+  m_Color: {r: 1, g: 0.98554945, b: 0.8160377, a: 1}
+  m_Intensity: 1
+  m_LightVolumeOpacity: 0.276
+  m_ApplyToSortingLayers: 00000000152988e5416d783f717dfbbfcdddbcb7
+  m_LightCookieSprite: {fileID: 0}
+  m_UseNormalMap: 0
+  m_LightOrder: 1
+  m_AlphaBlendOnOverlap: 0
+  m_ShadowIntensity: 0
+  m_ShadowVolumeIntensity: 0
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 1
+  m_PointLightDistance: 3
+  m_PointLightQuality: 1
+  m_ShapeLightParametricSides: 6
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 3
+  m_ShapeLightFalloffSize: 6.31
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &1336474850376300945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3112828491120734368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000152988e5416d783f717dfbbfcdddbcb7
+  m_ShapePath:
+  - {x: 0.777839, y: -0.79457396, z: 0}
+  - {x: 0.98855525, y: -0.7939907, z: 0}
+  - {x: 0.9602253, y: -1.1120062, z: 0}
+  - {x: 0.75859785, y: -1.1150836, z: 0}
+  m_ShapePathHash: -2126018374
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -98410
 --- !u!1 &3112828491144241538
 GameObject:
   m_ObjectHideFlags: 0

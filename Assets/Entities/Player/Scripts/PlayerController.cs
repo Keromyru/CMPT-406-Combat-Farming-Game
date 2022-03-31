@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     UnityEvent event_PlayerHealthChange = new UnityEvent();
     public GameObject[] myFarm;
     private GameObject theHub;
+    private UnityEngine.Experimental.Rendering.Universal.Light2D myLight; 
 
     // Attack Data  
     private Coroutine actionRoutine; 
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         myCamera = GameObject.Find("Main Camera"); //Find and set camera
         playerRB = this.GetComponent<Rigidbody2D>(); //Set Rigid Body Shortcut for Blakes Code      
         theHub =  GameObject.Find("HUB"); //Find and set hub reference
+        myLight = GetComponent<UnityEngine.Experimental.Rendering.Universal.Light2D>();
 
         onAttackBehavior = myPlayerData.onAttackBehavior; //Set onAttackBehavior
         onHitBehavior = myPlayerData.onHitBehavior; //Set onHitBehavior
@@ -261,6 +263,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         IsDay = true;
         Raygun.SetActive(false);
         wateringCan.SetActive(true);
+        myLight.enabled = false;
     }
    
     public void newNight(){
@@ -268,6 +271,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         Raygun.SetActive(true);
         wateringCan.SetActive(false);
         myCursor.setCombat();
+        myLight.enabled = true;
     }
 
     public void onDeath(){

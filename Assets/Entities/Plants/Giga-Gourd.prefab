@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2795697412511022812}
   - component: {fileID: 4437445216445056233}
   - component: {fileID: 4297841826813220553}
+  - component: {fileID: 55220004977124382}
   m_Layer: 0
   m_Name: Giga-Gourd
   m_TagString: Plant
@@ -185,6 +186,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.47426397, y: 0.59542763}
   m_EdgeRadius: 0
+--- !u!114 &55220004977124382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2612463031059291451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000152988e5416d783f717dfbbfcdddbcb7
+  m_ShapePath:
+  - {x: -0.13701592, y: -0.39081264, z: 0}
+  - {x: 0.18539052, y: -0.40968633, z: 0}
+  - {x: 0.21102588, y: -0.34392446, z: 0}
+  - {x: 0.27331057, y: -0.07085997, z: 0}
+  - {x: 0.2514516, y: 0.08704462, z: 0}
+  - {x: 0.16532838, y: 0.14061421, z: 0}
+  - {x: 0.015337199, y: 0.15493208, z: 0}
+  - {x: -0.16580713, y: 0.08222593, z: 0}
+  - {x: -0.21959683, y: -0.044949494, z: 0}
+  m_ShapePathHash: -674064985
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -86544
 --- !u!1001 &388327751788409669
 PrefabInstance:
   m_ObjectHideFlags: 0

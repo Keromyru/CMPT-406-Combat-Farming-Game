@@ -7,7 +7,7 @@ public class HiveFlowerController : PlantController {
 
     private UnityEngine.Experimental.Rendering.Universal.Light2D mylight; 
     
-    void Start(){
+    void Awake(){
         mylight = GetComponent<UnityEngine.Experimental.Rendering.Universal.Light2D>();
         // Debug.Log(mylight);
     }
