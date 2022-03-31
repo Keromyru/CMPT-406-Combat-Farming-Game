@@ -35,7 +35,7 @@ public class MusicControllerSO : ScriptableObject
     }
 
     //preps and sets what list to play
-    public AudioSource StartPlayList(int locationName, AudioSource audioSourceParam = null) {
+    public MusicClipSO StartPlayList(int locationName, AudioSource audioSourceParam = null) {
         mIndex = 0;
         switch (locationName){
             case 0: 
@@ -55,14 +55,14 @@ public class MusicControllerSO : ScriptableObject
             break;
         }
         playlist[mIndex].Play(audioSourceParam);
-        return audioSourceParam;     
+        return  playlist[mIndex];     
     }
 
 
     public AudioSource PlayNext(AudioSource audioSourceParam) {
         mIndex ++;
         if(mIndex == playlist.Length){mIndex = 0;}     
-        playlist[mIndex].Play(audioSourceParam);
+        if (playlist.Length != 0) {playlist[mIndex].Play(audioSourceParam);}
         //Plays the file using it's perameters, and returns the audiosource
         return audioSourceParam;      
     }

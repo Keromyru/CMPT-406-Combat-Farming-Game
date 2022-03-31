@@ -17,7 +17,7 @@ MonoBehaviour:
   numberOfDropsOnDeath: 1
   enemyMoveSpeed: 2
   attackRate: 1
-  attackRange: 0.3
+  attackRange: 0.5
   attackDamage: 12
   priorityList:
   - name: Plants are the worst

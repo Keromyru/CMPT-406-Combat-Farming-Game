@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22769558ddab6394bb83447a94f67a37, type: 3}
+  m_Name: CursorController
+  m_EditorClassIdentifier: 
+  defaultCursor: {fileID: 2800000, guid: 0c88e532d3c2266499c5b15f1f6d1bf8, type: 3}
+  combatCursor: {fileID: 2800000, guid: 5a09d378cbbe99b4f8abdf9eab3bea69, type: 3}
+  gigaCursor: {fileID: 2800000, guid: c127a089d3d129f4ea7f2393dcb6d47b, type: 3}
+  hiveCursor: {fileID: 2800000, guid: 541c4411ac9d07643ad28ecb5b223f2e, type: 3}
+  potatCursor: {fileID: 2800000, guid: 83474dfb5b3edef4b8074fa461c1ccf1, type: 3}
+  hydraCursor: {fileID: 2800000, guid: c193d80a77d85aa4099a296628b51769, type: 3}

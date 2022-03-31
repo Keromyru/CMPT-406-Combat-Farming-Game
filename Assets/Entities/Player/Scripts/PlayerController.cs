@@ -10,8 +10,15 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
 {
     private float health = 100;
 
-    public Transform playerTransform;
-    public Transform wateringCan;
+    [SerializeField] Transform playerTransform;
+    [SerializeField] GameObject wateringCan;
+    [SerializeField] GameObject Raygun;
+    [SerializeField] GameObject EnemyArrow;
+    [SerializeField] GameObject HubArrow;
+    [SerializeField] float firePointLength = 1;
+    [SerializeField] float enemyArrowLength = 1;
+    [SerializeField] float hubArrowLength = 1;
+
 
     //Behaviors
     [SerializeField] PlayerBevahviorSO myPlayerData;
@@ -26,7 +33,8 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     private Rigidbody2D playerRB;     
     UnityEvent event_PlayerHealthChange = new UnityEvent();
     public GameObject[] myFarm;
-
+    private GameObject theHub;
+    private UnityEngine.Experimental.Rendering.Universal.Light2D myLight; 
     // Attack Data  
     private Coroutine actionRoutine; 
     private bool isWaiting; //Is in a state of waiting before it can attack again 
@@ -37,12 +45,15 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
 
     //PLAYER LOGIC
     private void Awake() { 
-    myCamera = GameObject.Find("Main Camera"); //Find and set camera
-    playerRB = this.GetComponent<Rigidbody2D>(); //Set Rigid Body Shortcut for Blakes Code
-    onAttackBehavior = myPlayerData.onAttackBehavior; //Set onAttackBehavior
-    onHitBehavior = myPlayerData.onHitBehavior; //Set onHitBehavior
-    onDeathBehavior = myPlayerData.onDeathBehavior; //Set onDeathBehavior
-    audioController = myPlayerData.audioController; //Set audioController   
+        myCamera = GameObject.Find("Main Camera"); //Find and set camera
+        playerRB = this.GetComponent<Rigidbody2D>(); //Set Rigid Body Shortcut for Blakes Code      
+        theHub =  GameObject.Find("HUB"); //Find and set hub reference
+        myLight = GetComponent<UnityEngine.Experimental.Rendering.Universal.Light2D>();
+
+        onAttackBehavior = myPlayerData.onAttackBehavior; //Set onAttackBehavior
+        onHitBehavior = myPlayerData.onHitBehavior; //Set onHitBehavior
+        onDeathBehavior = myPlayerData.onDeathBehavior; //Set onDeathBehavior
+        audioController = myPlayerData.audioController; //Set audioController   
     }
 
     private void Update() {
@@ -52,20 +63,20 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
             if(IsDay){
                 if (myFarm.Length != 0) {
                     GameObject myPlant = (myFarm.OrderBy(plants => fromPointer(plants)).First());
+                    Debug.Log("Is Day:"+IsDay+"    myPlants"+myPlant);
                     if (myPlant != null && fromPlayer(myPlant) < myPlayerData.interactionRange){
-                        // Debug.Log("in the check for harvesting");
                         if(myPlant.GetComponent<IPlantControl>().HarvestReady()){
-                            myPlant.GetComponent<IPlantControl>().onHarvest();
-                        } 
-                        // else {
-                        //     onWater(myPlant);
-                        // }
+                             Debug.Log("Harvesting "+myPlant.name);
+                            onHarvest(myPlant);
+                        } else {
+                            Debug.Log("Watering "+myPlant.name);
+                            onWater(myPlant);
+                        }
                     }
                 }    
             } 
             else {
                 onAttack();
-            
             }
         }        
     }
@@ -81,14 +92,74 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
             // Needs to be a Quaternion as rotation is only described as one
             Quaternion aQuaternion = Quaternion.Euler(0, 0, 0);
             playerTransform.rotation = aQuaternion; 
-            wateringCan.rotation = aQuaternion;
+            if(wateringCan.activeSelf == true){ wateringCan.transform.rotation = aQuaternion;}
         } else if (inputVector.x == 1){
             // flip rotational y to 180
             // Needs to be a Quaternion as rotation is only described as one
             Quaternion aQuaternion = Quaternion.Euler(0, 180, 0);
             playerTransform.rotation = aQuaternion;
-            wateringCan.rotation = aQuaternion;
+            if(wateringCan.activeSelf == true){ wateringCan.transform.rotation = aQuaternion;}
         } 
+        //RAYGUN ANGLE AND DIRECTION
+        if(Raygun.activeSelf == true){
+               
+            // a Normalized Vector * the distance from the focal point desired + from the source of the 
+            Vector3 sLocation = playerTransform.position; //Source of bullets location
+            Vector3 tLocation = pointerLocation();
+            Vector3 targetDirection =  (tLocation - sLocation).normalized; //Direction
+
+
+            Vector3 trackedLocation = (targetDirection * firePointLength)  + sLocation;
+            float angle = Mathf.Atan2(targetDirection.y, targetDirection.x)* Mathf.Rad2Deg - 90f; //Converts the vecter into a RAD angle, then into degrees. Adds 90deg as an offset
+            Quaternion trackedRotation =   Quaternion.Euler(0,0,angle+270);
+            if(trackedLocation.x > sLocation.x){ Raygun.GetComponentInChildren<SpriteRenderer>().flipY = true ;} else {Raygun.GetComponentInChildren<SpriteRenderer>().flipY = false;}
+            Raygun.transform.position = trackedLocation;
+            Raygun.transform.rotation = trackedRotation;
+        }
+        //ENEMY TRACKER
+        if(IsDay == false){
+            if (GameObject.FindGameObjectWithTag("Enemy") != null){ //If there is a baddy
+                GameObject myBaddy = (GameObject.FindGameObjectsWithTag("Enemy").OrderBy(baddy => fromPlayer(baddy)).First()); //Check all baddies, and return the closest
+                if (fromPlayer(myBaddy) > 6) {
+                    EnemyArrow.SetActive(true);
+                    // a Normalized Vector * the distance from the focal point desired + from the source of the 
+                    Vector3 sLocation = playerTransform.position; //Source of bullets location
+                    Vector3 tLocation = myBaddy.transform.position;
+                    Vector3 targetDirection =  (tLocation - sLocation).normalized; //Direction
+
+                    Vector3 trackedLocation = (targetDirection * enemyArrowLength)  + sLocation;
+                    float angle = Mathf.Atan2(targetDirection.y, targetDirection.x)* Mathf.Rad2Deg - 90; //Converts the vecter into a RAD angle, then into degrees. Adds 90deg as an offset
+                    Quaternion trackedRotation =   Quaternion.Euler(0,0,angle);
+                    EnemyArrow.transform.position = trackedLocation;
+                    EnemyArrow.transform.rotation = trackedRotation;
+                } else {
+                    EnemyArrow.SetActive(false);
+                }
+                
+            } else {
+                EnemyArrow.SetActive(false);
+            }
+        } else {
+            EnemyArrow.SetActive(false);
+        }
+        //HUB TRACKER
+         if (fromPlayer(theHub) > 10) {
+                    HubArrow.SetActive(true);
+                    // a Normalized Vector * the distance from the focal point desired + from the source of the 
+                    Vector3 sLocation = playerTransform.position; //Source of bullets location
+                    Vector3 tLocation = theHub.transform.position;
+                    Vector3 targetDirection =  (tLocation - sLocation).normalized; //Direction
+
+                    Vector3 trackedLocation = (targetDirection * hubArrowLength)  + sLocation;
+                    float angle = Mathf.Atan2(targetDirection.y, targetDirection.x)* Mathf.Rad2Deg - 90; //Converts the vecter into a RAD angle, then into degrees. Adds 90deg as an offset
+                    Quaternion trackedRotation =   Quaternion.Euler(0,0,angle);
+                    
+                    HubArrow.GetComponent<RectTransform>().position = trackedLocation;
+                    HubArrow.transform.rotation = trackedRotation;
+                } else {
+                    HubArrow.SetActive(false);
+                }
+
     }
 
     //Pointer Location from mask layered raycast
@@ -171,6 +242,8 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         else{ return 1000;}
     }
 
+
+
     //TRIGGERS
     public void onHit(float damage, GameObject source)
     {    //if it's a baddy, take the damage
@@ -188,12 +261,19 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     public void newDay(){ //On a new day
         resetHealth();
         myFarm = GameObject.FindGameObjectsWithTag("Plant");
+        if(IsDay == false){myCursor.setDefault();}
         IsDay = true;
-
+        Raygun.SetActive(false);
+        wateringCan.SetActive(true);
+        LampOff();
     }
    
     public void newNight(){
         IsDay = false;
+        Raygun.SetActive(true);
+        wateringCan.SetActive(false);
+        myCursor.setCombat();
+        LampOn();
     }
 
     public void onDeath(){
@@ -212,11 +292,19 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
             ActionTimer(onAttackBehavior.fireRate);//START TIMER
         }
     }
+    public void onHarvest(GameObject myPlant){
+        myPlant.GetComponent<IPlantControl>().onHarvest();
 
+         ActionTimer(1f);
+    }
     public void onWater(GameObject myPlant){
         if( myPlant.GetComponent<IPlantControl>() != null && fromPointer(myPlant) < 1) {
             myPlant.GetComponent<IPlantControl>().waterPlant(myPlayerData.WaterQuantity);   //Water plant
             if (myPlayerData.soundWater != null) {audioController.Play(myPlayerData.soundWater);} //Play sound if there is one
+            if (myPlayerData.WaterEffect != null) {
+                Instantiate(myPlayerData.WaterEffect,
+                new Vector3 (myPlant.transform.position.x, myPlant.transform.position.y-0.2f,0), 
+                Quaternion.identity);}
         }
         ActionTimer(myPlayerData.WaterRate); 
     }
@@ -225,7 +313,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     // Attack Interval Coroutine
 
     //Starts attack Timer
-     public void ActionTimer(float timer){
+    public void ActionTimer(float timer){
         if (actionRoutine != null)
         {
             // In this case, we should stop it first.
@@ -246,6 +334,43 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         // Set the routine to null, signaling that it's finished.
         actionRoutine = null;
     }
+
+    ////////////////////////////////////////////////////////////////
+    // LAMP EFFECTS
+    private void LampOn(){
+        StartCoroutine(LightOnRoutine(2,myPlayerData.lightOnDelay));
+    }
+    private void LampOff(){
+        StartCoroutine(LightOffRoutine(2,myPlayerData.lightOffDelay));
+    }
+
+
+    private IEnumerator LightOffRoutine( int fadeSpeed = 2, float timer = 0) { 
+        yield return new WaitForSeconds(timer);
+        float fadeKey = 1;
+        while (fadeKey > 0) {
+            fadeKey -= Time.fixedDeltaTime*(1f/fadeSpeed);
+            myLight.intensity = fadeKey;       
+            yield return null;
+        }
+        yield return new WaitForEndOfFrame();
+    }
+
+    private IEnumerator LightOnRoutine( int fadeSpeed = 2, float timer  = 0) { 
+        yield return new WaitForSeconds(timer);
+        float fadeKey = 0;
+        while (fadeKey < 1) {
+            fadeKey += Time.fixedDeltaTime*(1f/fadeSpeed);
+            myLight.intensity = fadeKey;       
+            yield return null;
+        }
+        yield return new WaitForEndOfFrame();
+    }
+
+
+
+
+
     ////////////////////////////////////////////////
     #region Sets and Gets
     ////////////////////////////////////////////////

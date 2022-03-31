@@ -25,7 +25,7 @@ public class DayNightCycle : MonoBehaviour
     public static event IsDay isNowDay;
     public static event IsNight isNowNight;
 
-    private bool daytime;
+    public bool daytime;
 
 
     public script_DayNightTracker clockTracker;
@@ -153,7 +153,7 @@ public class DayNightCycle : MonoBehaviour
             EndEclipse();
         }
 
-        if(hours >= dayStart && hours < dayStart + 1)  //Dawn at 6:00 (6:00am) - until 7:00 (7:00am)
+        if(hours >= dayStart - 1 && hours < dayStart)  //Dawn at 6:00 (6:00am) - until 7:00 (7:00am)
         {
             ppv.weight = 1 - (float)minutes / 60;  //We minus 1 because we want it to go from 1 - 0
             /*
