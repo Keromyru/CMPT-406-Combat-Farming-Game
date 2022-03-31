@@ -16,6 +16,7 @@ public static class Currency
     public static void addMoney(int moneyToAdd)
     {
         money += moneyToAdd;
+        Score.addScore(moneyToAdd);
         currencyEvent.Invoke();
     }
 
@@ -23,6 +24,7 @@ public static class Currency
     public static void addMultipleMoney(int moneyToAdd, int AmountofItemsSold)
     {
         money += (moneyToAdd * AmountofItemsSold);
+        Score.addMultipleScore(moneyToAdd, AmountofItemsSold);
         currencyEvent.Invoke();
     }
 
