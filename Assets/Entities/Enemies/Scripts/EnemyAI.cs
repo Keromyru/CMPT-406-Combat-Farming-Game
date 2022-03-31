@@ -5,7 +5,9 @@ using System.Linq;
 
 public class EnemyAI : MonoBehaviour
 {
+    // contoller 
     private EnemyController myController;
+    // for the moving
     private Rigidbody2D myRB; 
     public List<GameObject> targetList; //Dynamic List of Targets
     private GameObject myTarget; //Destination for this baddy
@@ -18,6 +20,10 @@ public class EnemyAI : MonoBehaviour
     private Vector2 force;
     private float forceTime = 0.5f;
     private Vector2 myTargetPosition;
+    private Vector2 myPostion; 
+    private float leftOrRight; 
+    private Animator myAnimation;
+    
 
     private void Start() {
         myController = this.GetComponent<EnemyController>(); //Quick Access to the controller
@@ -25,6 +31,8 @@ public class EnemyAI : MonoBehaviour
         myTarget = theHub;
         myRB = this.GetComponent<Rigidbody2D>(); 
         enemyMoveSpeed = myController.myEnemyData.enemyMoveSpeed;
+        this.myAnimation = this.GetComponent<Animator>();
+
     }
 
     private void FixedUpdate() {
@@ -59,6 +67,23 @@ public class EnemyAI : MonoBehaviour
             myRB.MovePosition(force + Vector2.Lerp( myRB.position, targetWithOffset , Time.deltaTime * enemyMoveSpeed * 0.1f)); //Actual move update
         }
         if (force.magnitude > 0){ force = force - (force*Time.deltaTime)/forceTime;} //this reduced the bounce time   
+        // Facing the right direction
+        leftOrRight = myRB.position.x - myTarget.transform.position.x;    
+        Debug.Log(leftOrRight);    
+        // checks the potion of the target, changes the direction of the enemy based on what
+        // direction their main target is. 
+        if(leftOrRight > 0)
+        {
+            Quaternion aQuaternion = Quaternion.Euler(0,0,0);
+            this.transform.rotation = aQuaternion;
+
+       }
+        else if(leftOrRight < 0 )
+        {
+            Quaternion aQuaternion = Quaternion.Euler(0,180,0);
+            this.transform.rotation = aQuaternion;
+            
+        }
     }
     //Triggers When Something enters its range
     private void OnTriggerEnter2D(Collider2D entity) {
@@ -69,6 +94,8 @@ public class EnemyAI : MonoBehaviour
         if (avoidList.Contains(entity.tag)) {
             friendsList.Add(entity.gameObject); // Adds the friends to its list of friends 
         }
+        
+    
     }
         //Triggers When Something leaves its range
     private void OnTriggerExit2D(Collider2D entity) {
@@ -80,7 +107,7 @@ public class EnemyAI : MonoBehaviour
         if (avoidList.Contains(entity.tag)) {
             friendsList.Remove(entity.gameObject); // Adds the friends to its list of friends 
         }
-    }
+        }
 
     private void CheckTarget(){ //If the target doesn't exist, or it's out of range, or it's daytime;
         if( (myTarget == null || myDistance() > myController.myEnemyData.attackRange)){
