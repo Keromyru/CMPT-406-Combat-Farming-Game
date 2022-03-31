@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6095334081708874891}
   - component: {fileID: 1054755725036545544}
   - component: {fileID: 843532526889870308}
+  - component: {fileID: 8981699196680082683}
   m_Layer: 0
   m_Name: Egg-Root
   m_TagString: Plant
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4348077702683041689}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3, y: -0.2, z: 0}
+  m_LocalPosition: {x: 0.299, y: -0.201, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_Children:
   - {fileID: 5622104060484797180}
@@ -148,6 +149,38 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2218555, y: 0.445365}
   m_EdgeRadius: 0
+--- !u!114 &8981699196680082683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4348077702683041689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000152988e5416d783f717dfbbfcdddbcb7
+  m_ShapePath:
+  - {x: -0.101768345, y: -0.112413704, z: 0}
+  - {x: 0.10886522, y: -0.10531678, z: 0}
+  - {x: 0.18667388, y: -0.037810095, z: 0}
+  - {x: 0.116054334, y: 0.030420009, z: 0}
+  - {x: 0.105408944, y: 0.18655242, z: 0}
+  - {x: 0.06236525, y: 0.25414777, z: 0}
+  - {x: -0.06834448, y: 0.25119218, z: 0}
+  - {x: -0.094671376, y: 0.2011253, z: 0}
+  - {x: -0.11104736, y: 0.05171079, z: 0}
+  - {x: -0.18496928, y: -0.032785326, z: 0}
+  m_ShapePathHash: -1655707819
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 46074
 --- !u!1001 &2353097283972007022
 PrefabInstance:
   m_ObjectHideFlags: 0

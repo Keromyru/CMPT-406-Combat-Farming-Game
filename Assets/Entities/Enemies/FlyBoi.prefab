@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7163151896021058168}
   - component: {fileID: 661610903572710601}
   - component: {fileID: 4187088799533935340}
+  - component: {fileID: 3520390912273987064}
   m_Layer: 0
   m_Name: FlyBoi
   m_TagString: Enemy
@@ -131,6 +132,34 @@ CircleCollider2D:
   m_Offset: {x: 0.04780042, y: 0}
   serializedVersion: 2
   m_Radius: 4
+--- !u!114 &3520390912273987064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8564703261774401514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000152988e5416d783f717dfbbfcdddbcb7
+  m_ShapePath:
+  - {x: -0.1137982, y: -0.07725451, z: 0}
+  - {x: 0.0024422072, y: -0.14339131, z: 0}
+  - {x: 0.15308766, y: -0.103040636, z: 0}
+  - {x: 0.18825057, y: 0.07251093, z: 0}
+  - {x: 0.01885156, y: 0.14494449, z: 0}
+  - {x: -0.11145401, y: 0.07719931, z: 0}
+  m_ShapePathHash: -1241163448
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -120812
 --- !u!1001 &1180284705348641832
 PrefabInstance:
   m_ObjectHideFlags: 0
