@@ -14,21 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: SplitStrider
   enemyMaxHealth: 50
-  numberOfDropsOnDeath: 1
   enemyMoveSpeed: 1
   attackRate: 3
   attackRange: 0.5
-  attackDamage: 10
+  attackDamage: 30
   priorityList:
-  - name: I hate Plnts
-    tag: plant
-    distance: 1
-  - name: I  hate the player
+  - name: Priority Hub
+    tag: Structure
+    distance: 3
+  - name: Else Player
     tag: Player
-    distance: 10
-  - name: i really do not like the plants
+    distance: 2
+  - name: I guess a plant is around
     tag: Plant
-    distance: 10
+    distance: 4
+  - name: Nope, I hate structures
+    tag: Structure
+    distance: 8
   SoundOnHit: 
   SoundOnAttack: 
   SoundOnDeath: 

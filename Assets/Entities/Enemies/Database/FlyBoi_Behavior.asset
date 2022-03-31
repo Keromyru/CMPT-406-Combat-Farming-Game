@@ -14,21 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Fly Boy
   enemyMaxHealth: 70
-  numberOfDropsOnDeath: 1
   enemyMoveSpeed: 2
-  attackRate: 1
+  attackRate: 0.33
   attackRange: 0.5
-  attackDamage: 12
+  attackDamage: 5
   priorityList:
-  - name: Plants are the worst
-    tag: Plant
-    distance: 1
-  - name: I really do not like the exo man
+  - name: ExoMan Must Die
     tag: Player
-    distance: 3
-  - name: Plants are the worst for real tho
-    tag: Plant
     distance: 10
+  - name: I guess plants will do
+    tag: Plant
+    distance: 3
   SoundOnHit: 
   SoundOnAttack: 
   SoundOnDeath: 
