@@ -35,6 +35,6 @@ MonoBehaviour:
   SoundAggression: 
   onAttackBehavior: {fileID: 11400000, guid: 4a1935208412a034784c540d19326110, type: 2}
   onHitBehavior: {fileID: 11400000, guid: 326dcce30e9055545b48ea8fe69798ca, type: 2}
-  onDeathBehavior: {fileID: 11400000, guid: fa26b73d0eb5dae4489765e52f06354d, type: 2}
+  onDeathBehavior: {fileID: 11400000, guid: f1cce40e49e03dc44a294458d3614059, type: 2}
   enemyPrefab: {fileID: 7131914366683757558, guid: 2a7570d4f91bc8e478922601680a2f6a, type: 3}
   audioController: {fileID: 11400000, guid: 61664c2b36929b7409adee2b27202783, type: 2}
