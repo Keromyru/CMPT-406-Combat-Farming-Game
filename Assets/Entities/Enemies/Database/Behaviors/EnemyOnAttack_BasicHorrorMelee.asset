@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 238cfecbf62c9c8468cdbecc70674e43, type: 3}
   m_Name: EnemyOnAttack_BasicHorrorMelee
   m_EditorClassIdentifier: 
-  firePointLength: 0.5
+  firePointLength: 0.2
   attackEffect: {fileID: 7110422898886935531, guid: 221b616aabd5a384e87671fa5e5e31ec, type: 3}
