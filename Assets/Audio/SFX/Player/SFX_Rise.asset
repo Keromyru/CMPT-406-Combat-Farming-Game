@@ -9,10 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 407b2b38ec354b340a66453a87b174fc, type: 3}
-  m_Name: GUIAudioController
+  m_Script: {fileID: 11500000, guid: 8b2666010b669f249b78a662f94f355e, type: 3}
+  m_Name: SFX_Rise
   m_EditorClassIdentifier: 
-  type: 0
-  instances:
-  - {fileID: 11400000, guid: 42715ad379b6be248812839bde56dd12, type: 2}
-  - {fileID: 11400000, guid: 71cd890d9624eba4d864b1e6d26f0052, type: 2}
+  Name: Rise
+  clips:
+  - {fileID: 8300000, guid: 74b42044da4489a41aab6effa1ad3d6b, type: 3}
+  type: 3
+  volume: 0.725
+  pitch: 1
+  source: {fileID: 0}

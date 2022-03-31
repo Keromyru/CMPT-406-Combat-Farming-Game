@@ -11,4 +11,5 @@ public interface IPlayerControl
     public Vector2 getLocation();
     public void setLocation(Vector2 newLocation);
     public void resetHealth();
+    public void setNewOnAttack(PlayerOnAttackSO newAttack);
 }
