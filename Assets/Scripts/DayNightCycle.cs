@@ -121,7 +121,9 @@ public class DayNightCycle : MonoBehaviour
     public void ControlPPV()  //Used to adjust the post processing slider.
     {
         //ppv.weight = 0;
-        if(hours >= 21 && hours < 22)  //Dusk at 21:00 (9:00pm) - untill 22:00 (10:00pm)
+        // changes this so the dynamic lighting happens depending on what we change
+        // so the day end then the hour after will darken the screen
+        if(hours >= dayEnd && hours < dayEnd + 1)  //Dusk at 21:00 (9:00pm) - untill 22:00 (10:00pm)
         {
             ppv.weight = (float)minutes / 60;  //Since dusk is 1hr, we just divide the min by 60 which will slowly increase from 0 - 1
 
@@ -151,7 +153,7 @@ public class DayNightCycle : MonoBehaviour
             EndEclipse();
         }
 
-        if(hours >= 6 && hours < 7)  //Dawn at 6:00 (6:00am) - until 7:00 (7:00am)
+        if(hours >= dayStart && hours < dayStart + 1)  //Dawn at 6:00 (6:00am) - until 7:00 (7:00am)
         {
             ppv.weight = 1 - (float)minutes / 60;  //We minus 1 because we want it to go from 1 - 0
             /*
@@ -210,7 +212,7 @@ public class DayNightCycle : MonoBehaviour
     {
         seconds = 0;
         minutes = 0;
-        hours = 7;
+        hours = dayStart;
         // since this method circumvents the normal passage of time need to ensure that this is called
         isNowDay();
         daytime = true;
@@ -220,7 +222,7 @@ public class DayNightCycle : MonoBehaviour
     {
         seconds = 0;
         minutes = 0;
-        hours = 10;
+        hours = dayEnd;
 
         //At night end Eclipse
         if(activeEclipse == true)
