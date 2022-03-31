@@ -7,6 +7,7 @@ public class MusicClipSO : AudioClipSO
 {
     [Header("Music Specific Settings")]
     public location musicLocation;
+    public int priority;
 
 
     public enum location

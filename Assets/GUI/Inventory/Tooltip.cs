@@ -15,7 +15,10 @@ public class Tooltip : MonoBehaviour
     // update the tooltip description upon adding an item
     // just grabs the information from the Item SO.
     public void UpdateTooltip(Item item) {
-        itemName.text = item.name;
+
+        if (itemName != null) {
+            itemName.text = item.name;
+        }
 
         itemDescription.text = item.description;
 
@@ -25,7 +28,9 @@ public class Tooltip : MonoBehaviour
 
     // no item? no info.
     public void ClearTooltip() {
-        itemName.text = "";
+        if (itemName != null) {
+            itemName.text = "";
+        }
         itemDescription.text = "";
         itemStats.text = "";
     }

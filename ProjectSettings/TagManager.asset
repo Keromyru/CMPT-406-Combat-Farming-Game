@@ -8,6 +8,9 @@ TagManager:
   - Structure
   - Plant
   - Effect
+  - AudioClip
+  - Obstacle
+  - randomObstacle
   layers:
   - Default
   - TransparentFX
@@ -19,8 +22,10 @@ TagManager:
   - Midground
   - Foreground
   - Player
+  - MinimapIcons
   - 
-  - 
+  - Interest
+  - Wall
   - 
   - 
   - 

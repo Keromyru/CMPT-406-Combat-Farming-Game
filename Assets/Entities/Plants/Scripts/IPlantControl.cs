@@ -18,7 +18,7 @@ public interface IPlantControl
     void setGrowAge(int age);
     int getGrowAge();
     float getRemaining(); //Get Remaining Water Level
-
+    bool HarvestReady();
     bool waterPlant(float quantity); //Water Plant Action
 
     float getMaxHealth();

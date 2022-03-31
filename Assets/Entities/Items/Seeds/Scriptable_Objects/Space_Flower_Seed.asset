@@ -17,6 +17,7 @@ MonoBehaviour:
   isSellable: 1
   price: 200
   available: 0
-  description: These seeds will grow into a Space Flower.
+  description: These seeds will grow into a Hive Plant. Hive Plants let off a bioluminescent
+    glow at night, lighting up the world around them.
   isPlantable: 1
   spawnName: HiveFlower

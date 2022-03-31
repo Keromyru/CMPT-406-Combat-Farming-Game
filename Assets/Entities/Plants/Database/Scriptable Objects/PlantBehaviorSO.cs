@@ -11,6 +11,7 @@ public class PlantBehaviorSO : ScriptableObject
     public float plantMaxHealth;
     public float plantMaxEnergy;
     public type plantType;
+    public int plantAgroValue;
     
     
     [Header("Plant Attack")]
@@ -21,11 +22,7 @@ public class PlantBehaviorSO : ScriptableObject
     [Header("Plant Growth")]
     public int matureAge;
     public bool harvestable;
-    public int harvestCycle;
-    public int deathAge;
-    public int seedDropMin;
-    public int seedDropMax;
-    public int harvestValue;
+    public int DaysUntilHarvest;
 
     [Header("Audio Files")]
     public string soundDeath;
@@ -36,8 +33,7 @@ public class PlantBehaviorSO : ScriptableObject
     
 
     [Header("PreFabs")]
-    
-    public GameObject harvestPrefab;
+    public GameObject GrowPhaseEffect;
     public GameObject plantPrefab;
     public PlantBehaviorSO nextPhase;
     public AudioControllerSO audioController;
@@ -105,6 +101,7 @@ public class PlantBehaviorSO : ScriptableObject
 
     //This one is for the next growphase. Passing on Damage and Energy loss
     public GameObject spawnNextPlant(string name, Vector3 tileLocation, float healthLoss, float energyLoss){
+        if (GrowPhaseEffect != null){Instantiate(GrowPhaseEffect, tileLocation, Quaternion.identity);}
         GameObject plant = spawnPlant(name,tileLocation);
         //Grab the interface of the newly created plant
         IPlantControl plantControl = plant.GetComponent<IPlantControl>();

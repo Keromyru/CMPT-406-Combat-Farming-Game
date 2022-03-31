@@ -10,15 +10,18 @@ public class Healthbar_HUBController : FadeOutEffect {
 	
 	// The fill bar to display remainder of health
 	[Space, Header("HUB healthbar Settings")]
+	private HubController myController;
 	public Image fillBar;
 	private float maxHealth; // The max health of the HUB
 	private float currHealth; // Current health
+
+
 	
 	/* Initialize the values for the health bar */
 	void Start() {
-		HubController.HubAttacked += updateHB;
-		// Set the starting health to max
-		currHealth = maxHealth;
+		myController = this.transform.parent.gameObject.GetComponent<HubController>();
+		maxHealth = myController.hubMaxHealth;
+		currHealth = maxHealth;// Set the starting health to max
 		fillBar.fillAmount = maxHealth / maxHealth; // Normalize value between 0.0 - 1.0
 		fadeCheck();
 	}
@@ -47,6 +50,7 @@ public class Healthbar_HUBController : FadeOutEffect {
 
 	
 	public void updateHB(int health){
+		//Debug.Log("Health Event :"+ health);
 		setHealth(health);
 		fadeCheck();
 	}
@@ -57,7 +61,7 @@ public class Healthbar_HUBController : FadeOutEffect {
 	*/
 	private void fadeCheck(){
 		if(currHealth == maxHealth){ FadeOut();}
-		else { FadeIn();}
+		else if(IsFaded()) { FadeIn();}
 	}
 	
 }

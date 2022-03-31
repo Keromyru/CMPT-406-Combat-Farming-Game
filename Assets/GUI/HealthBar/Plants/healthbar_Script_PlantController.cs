@@ -13,13 +13,14 @@ public class healthbar_Script_PlantController : FadeOutEffect {
 	private float maxHealth; // The max health of the HUB
 	private float currHealth; // Current health
 	PlantController myPlant; 
+	public Image healthBar;
 	
 	/* Initialize the values for the health bar */
 	void Start() {
 		myPlant = this.gameObject.transform.parent.GetComponent<PlantController>(); //Set Plant Data
 		maxHealth = myPlant.getMaxHealth(); //Set Max Health
 		setHealth(maxHealth);
-		fadeCheck();
+		MakeTransparent();
 	}
     
 	/* Set current health of the HUB
@@ -55,7 +56,11 @@ public class healthbar_Script_PlantController : FadeOutEffect {
 	*/
 	private void fadeCheck(){
 		if(currHealth == maxHealth){ FadeOut();}
-		else { FadeIn();}
+		else if(IsFaded()) { FadeIn();}
+	}
+
+	public void setColor(Color newcolor){
+		healthBar.color = newcolor;
 	}
 	
 }

@@ -4,28 +4,14 @@ using UnityEngine;
 
 public class SoundTest : MonoBehaviour
 {   
-
     [SerializeField] AudioControllerSO myController;
-    float timer = 0;
-    bool startSound = true;
-    void FixedUpdate()
+    void Awake()
     {
-         if(timer < 1)
-
-         timer += Time.deltaTime; 
-
-         else if (startSound) {
-            startSound = false;
+            //SoundPlayer.ClearAudio();
             //This is in place of the game trigger
-            gameObject.GetComponent<AudioHandler>().SetPlayList("DayCycle");
-            gameObject.GetComponent<AudioHandler>().PlayNext();
-
+            //gameObject.GetComponent<AudioHandler>().StartPlayList("DayCycle");
+            // gameObject.GetComponent<AudioHandler>().PlayNext();
+            //gameObject.GetComponent<AudioHandler>().PlaySong("Day_1");
             //Play Audio File From Selected Controller
-            //myController.Play("Menu Select");
-         }
-
     }
-
-
-
 }

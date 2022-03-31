@@ -10,4 +10,5 @@ public interface IPlayerControl
     public void heal(float healValue);
     public Vector2 getLocation();
     public void setLocation(Vector2 newLocation);
+    public void resetHealth();
 }

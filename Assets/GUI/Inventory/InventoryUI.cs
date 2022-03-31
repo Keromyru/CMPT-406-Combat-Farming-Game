@@ -24,7 +24,7 @@ public class InventoryUI : MonoBehaviour
     private InputAction closeInventory;
     private bool unassigned = true;  // used to see if the InputActions have been properly assigned
 
-    public bool isDay = true;  // is it day or night time? to be updated
+    bool isDay;
     
 
     // Start is called before the first frame update
@@ -40,6 +40,19 @@ public class InventoryUI : MonoBehaviour
         // fill arrays with all the slots on scene
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
         hotbarSlots = hotbarParent.GetComponentsInChildren<HotbarSlot>();
+
+        DayNightCycle.isNowDay += NowDay;
+        DayNightCycle.isNowNight += NowNight;
+    }
+
+    void NowDay() {
+        isDay = true;
+        UpdateUI();
+    }
+
+    void NowNight() {
+        isDay = false;
+        UpdateUI();
     }
 
     // input stuff to toggle inventory visibility. hotbar doesn't toggle.

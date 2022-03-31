@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: EnemyOnDeathSeedDrop
   m_EditorClassIdentifier: 
   seeds:
-  - {fileID: 2461136832130653689, guid: ea91555851aee2c4e8a4257f2e8297f1, type: 3}
+  - {fileID: 8566680422367292101, guid: 9ab8bea8728daec4ebaaeba8ca732fd9, type: 3}
+  - {fileID: 6403223338433610526, guid: 7c1facdbc716cb24cb2da51a14ae77e9, type: 3}
+  - {fileID: 1680092049937385966, guid: 1e80f40a0e2983c4794d7b6f437c3438, type: 3}
+  - {fileID: 4260015578173857193, guid: bba3a00450a45c34e8a830329b1311b1, type: 3}

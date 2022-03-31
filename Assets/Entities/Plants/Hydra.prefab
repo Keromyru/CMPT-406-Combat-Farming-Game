@@ -13,9 +13,11 @@ GameObject:
   - component: {fileID: 3435683626492516637}
   - component: {fileID: 8227830116943569222}
   - component: {fileID: 743292186056257352}
+  - component: {fileID: 4757787965768657346}
+  - component: {fileID: 642993605576382392}
   m_Layer: 0
   m_Name: Hydra
-  m_TagString: Untagged
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,6 +140,46 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 8
+--- !u!114 &4757787965768657346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3435683626492516636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8074fc0edef90488dd8d511a352ce7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashDuration: 0.2
+  flashMaterial: {fileID: 2100000, guid: 250ac310d9e363d49a286d36ba11ce8d, type: 2}
+--- !u!61 &642993605576382392
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3435683626492516636}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0051196218, y: -0.14164183}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5119332, y: 0.47780263}
+  m_EdgeRadius: 0
 --- !u!1001 &2939333096271154695
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -153,6 +195,10 @@ PrefabInstance:
       propertyPath: m_FillAmount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 596798478640814373, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 8318452230188647566}
     - target: {fileID: 1646422260702074186, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
       propertyPath: m_Name
       value: healthbar_Prefab_PlantHealthBar
@@ -166,8 +212,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7972031425957119634, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.000635706
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972031425957119634, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.000555706
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972031425957119634, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.007
+      value: -0.019
       objectReference: {fileID: 0}
     - target: {fileID: 7972031425957119634, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -216,6 +270,17 @@ Transform:
 --- !u!114 &3253366797102133167 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 426958222978982312, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
+  m_PrefabInstance: {fileID: 2939333096271154695}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8318452230188647566 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6610035045681449609, guid: a97eaaebb7ff0e24d84499ce5f6e6af6, type: 3}
   m_PrefabInstance: {fileID: 2939333096271154695}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

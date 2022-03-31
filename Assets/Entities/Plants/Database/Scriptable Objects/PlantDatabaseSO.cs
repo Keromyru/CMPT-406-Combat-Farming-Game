@@ -8,20 +8,16 @@ using System.Linq;
 public class PlantDatabaseSO : ScriptableObject
 {
     [SerializeField] GameObject SpawnInEffect; 
-    [Header("This List Updates Itself Dynamicaly"), SerializeField] List<PlantBehaviorSO> plantList;
+    [Header("This List Updates Itself Dynamicaly"), SerializeField] 
+    PlantBehaviorSO[] plantList;
     private void OnEnable() {
-        //plantList = new List<PlantBehaviorSO>(); //Just in case it needs to be reset on startup
         //Searches for all the PlantBehaviorSO then checks them one by one
-        foreach (PlantBehaviorSO item in Resources.FindObjectsOfTypeAll<PlantBehaviorSO>())
-        {   //If the PlantBehaviorSO isn't already on the list it'll add it 
-            if(!plantList.Contains(item)) {plantList.Add(item);}
-        }
+        plantList = plantList.Union(Resources.FindObjectsOfTypeAll<PlantBehaviorSO>()).ToArray();
     }
 
     public GameObject spawnPlant(string name, Vector2 location){
         if (SpawnInEffect != null) {Instantiate(SpawnInEffect, location, Quaternion.identity);}
-        PlantBehaviorSO plant = plantList.Find(x => x.plantName.Contains(name));
-        
+        PlantBehaviorSO plant = plantList.First(x => x.plantName.Contains(name));
         return plant.spawnPlant(name, location);
     }
     //This one is for the load system to put things back as is.
@@ -31,8 +27,7 @@ public class PlantDatabaseSO : ScriptableObject
         return plant;
     }
 
-
-    public string getTooltip(string name){ return plantList.Find(x => x.getName().Contains(name)).getTooltip();}
-
+    public string getTooltip(string name){ return plantList.First(x => x.getName().Contains(name)).getTooltip();}
 }
+
 

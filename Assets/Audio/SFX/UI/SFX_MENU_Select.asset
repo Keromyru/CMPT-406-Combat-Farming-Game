@@ -15,6 +15,7 @@ MonoBehaviour:
   Name: Menu Select
   clips:
   - {fileID: 8300000, guid: b9a0e6ba1f1057344af0d70d4260f186, type: 3}
-  volume: 1
+  type: 0
+  volume: 0.4
   pitch: 1
   source: {fileID: 0}
