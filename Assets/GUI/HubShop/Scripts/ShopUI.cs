@@ -48,6 +48,11 @@ public class ShopUI : MonoBehaviour
 
     void Nighttime() {
         isNight = true;
+        
+        // goodbye store, we are not trapped in IKEA overnight
+        shopUI.SetActive(false);
+        minimap.SetActive(true);
+        tracker.SetActive(true);
     }
 
     void Daytime() {
