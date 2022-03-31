@@ -12,6 +12,7 @@ public class NormalPlantOndeathSO : PlantOnDeathSO
     {
         //Plays a death effect if there is one
         if(deathEffect != null) {Instantiate(this.deathEffect, thisObject.transform.position, thisObject.transform.rotation);}
+        GameObject.Find("HexGrid").GetComponentInChildren<GridClickListener>().restoreTile(thisObject.GetComponent<IPlantControl>().getLocation());
         Destroy(thisObject);
     }
 

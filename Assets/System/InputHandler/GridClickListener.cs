@@ -90,4 +90,8 @@ public class GridClickListener : MonoBehaviour
     public void setItemToPlant(Seed seed){
        seedToPlant = seed;
     }
+
+    public void restoreTile(Vector3 location){
+        plantLocationCollection.Remove(location);
+    }
 }
