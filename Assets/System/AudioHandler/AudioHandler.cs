@@ -46,14 +46,6 @@ public class AudioHandler : MonoBehaviour
         return controller.PlayNext(musicPlayer);    
     }
 
-    //Given a Location in string form this will contact the SO to clear everything and start the playlist
-    public void StartPlayList(string location){ 
-        location lName = (location)System.Enum.Parse( typeof(location), location );
-        StopMusic();
-        isPaused = false;
-        controller.StartPlayList((int)lName, musicPlayer);
-    }
-
     //Night Time
     public void newNight(){ this.StartPlayList("NightCycle");}
 
@@ -85,6 +77,41 @@ public class AudioHandler : MonoBehaviour
         NightCycle,
         Other,
     }
+
+    //Given a Location in string form this will contact the SO to clear everything and start the playlist
+    public void StartPlayList(string location){ 
+        location lName = (location)System.Enum.Parse( typeof(location), location );
+        isPaused = false;
+        StartCoroutine(FadeMusicOut((int)lName));
+    }
+
+    ////////////////////////////
+    // FADE CONTROLLER
+    private IEnumerator FadeMusicOut( int lName, int fadeSpeed = 2) { 
+        float fadeKey = musicPlayer.volume;
+        while (fadeKey > 0) {
+            fadeKey -= Time.fixedDeltaTime*(1f/fadeSpeed);
+            musicPlayer.volume = fadeKey;       
+            yield return null;
+        }
+        yield return new WaitForEndOfFrame();
+        StopMusic();
+        MusicClipSO myClip = controller.StartPlayList(lName, musicPlayer);
+        musicPlayer.volume = 0;
+        StartCoroutine(FadeMusicIn(myClip.volume));
+    }
+
+    private IEnumerator FadeMusicIn( float maxVolume, int fadeSpeed = 2) { 
+        float fadeKey = 0;
+        while (fadeKey < maxVolume) {
+            fadeKey += Time.fixedDeltaTime*(1f/fadeSpeed);
+            musicPlayer.volume = fadeKey;       
+            yield return null;
+        }
+        yield return new WaitForEndOfFrame();
+    }
+
+
 }
 public static class MusicPlayer{
     public static void ResumeMusic(){ GameObject.Find("AudioHandler").GetComponent<AudioHandler>().ResumeMusic();}
