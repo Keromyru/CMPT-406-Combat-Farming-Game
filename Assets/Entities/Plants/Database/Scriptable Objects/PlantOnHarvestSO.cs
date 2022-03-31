@@ -16,7 +16,7 @@ public class PlantOnHarvestSO : ScriptableObject, IPlantOnHarvest
             Vector3 SpawnSpread = Random.insideUnitSphere * Spread;
             SpawnSpread.z = 0;
             GameObject newDrop = Instantiate(dropPool[Random.Range(0,dropPool.Length-1)], thisObject.transform.position + SpawnSpread, Quaternion.identity);
-            thisObject.GetComponent<PlantController>().onDeath();
-        }  
+        } 
+        thisObject.GetComponent<PlantController>().onDeath(); 
     }
 }
