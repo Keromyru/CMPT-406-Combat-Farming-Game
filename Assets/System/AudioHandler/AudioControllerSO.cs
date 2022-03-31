@@ -12,7 +12,9 @@ public class AudioControllerSO : ScriptableObject
     
     private void OnEnable() {
         //Checks all the AudioClipSO's and adds the one with the correct type to it's list
-        instances = instances.Union(Resources.FindObjectsOfTypeAll<AudioClipSO>()).ToArray();
+        instances = instances.Union(
+        Resources.FindObjectsOfTypeAll<AudioClipSO>().Where(clip => (int)clip.type == (int)this.type)).ToArray();            
+
     }
 
     public AudioSource Play(string name, AudioSource audioSourceParam = null) {

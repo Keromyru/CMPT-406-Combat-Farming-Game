@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Player Behavior", menuName = "Player Data/Player Action/OnAttack Ranged ")]
 public class ProjectilePlayerOnAttackSO : PlayerOnAttackSO
 {
+    
     public override void OnAttack(float damage, Vector2 targetLocation, GameObject thisObject){
       //Gets Normalized direction of the target
       Vector3 sLocation = thisObject.transform.position; //Source of bullets location

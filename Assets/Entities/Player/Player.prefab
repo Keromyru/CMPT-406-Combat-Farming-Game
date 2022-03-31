@@ -87,7 +87,7 @@ Transform:
   m_GameObject: {fileID: 3809839216709636176}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
+  m_LocalScale: {x: 0.04, y: 0.04, z: 1}
   m_Children: []
   m_Father: {fileID: 3809839216673375809}
   m_RootOrder: 0
@@ -132,7 +132,7 @@ SpriteRenderer:
   m_SortingLayerID: -1074037391
   m_SortingLayer: 3
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: dd667be5caeff154f8d79b681b4d214f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4bcb0b34f71d35344ba8905e3205dd42, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -232,6 +232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 3809839217958463188}
   wateringCan: {fileID: 3809839217673321641}
+  ExoMan: {fileID: 3809839218053451473}
   Raygun: {fileID: 3809839216673375808}
   EnemyArrow: {fileID: 3809839217539195945}
   HubArrow: {fileID: 3809839217363243452}
@@ -418,7 +419,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -5446
+  m_InstanceId: -11354
 --- !u!1 &3809839216884466027
 GameObject:
   m_ObjectHideFlags: 0
@@ -989,7 +990,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3809839217626265829}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3809839217363243453}
@@ -1151,36 +1152,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &3809839217914048333
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3809839217914048334}
-  m_Layer: 0
-  m_Name: FirePoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3809839217914048334
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3809839217914048333}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.862, y: -0.886, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3809839218007432124}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3809839217925575783
 GameObject:
   m_ObjectHideFlags: 0
@@ -1240,7 +1211,6 @@ Transform:
   m_Children:
   - {fileID: 3809839217673321642}
   - {fileID: 3809839216673375809}
-  - {fileID: 3809839217914048334}
   m_Father: {fileID: 3809839217958463188}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1255,7 +1225,7 @@ GameObject:
   - component: {fileID: 3809839218053451474}
   - component: {fileID: 3809839218053451475}
   m_Layer: 8
-  m_Name: EXO Man 2
+  m_Name: 'EXO Man '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1290,7 +1260,7 @@ Animator:
   m_GameObject: {fileID: 3809839218053451473}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6e7c5e784c53341f8a5a0f9797dd1d4b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6db0d894f3e89ac45951c15c5bb38c49, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
