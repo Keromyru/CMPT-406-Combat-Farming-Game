@@ -9,6 +9,10 @@ public class EffectsController : MonoBehaviour
     //Deletes The Effect When It's Done
      void Start () {
          if (SoundEffects != null) { SoundEffects.Play();}
-         Destroy (gameObject, this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length + delay); 
+         if (this.GetComponent<Animator>() == null){
+             Destroy (gameObject, this.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length + delay); 
+         } else {
+             Destroy (gameObject, this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length + delay); 
+         }
      }
 }

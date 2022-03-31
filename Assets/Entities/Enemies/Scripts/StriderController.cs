@@ -8,6 +8,7 @@ public class StriderController : EnemyController
 	public Rigidbody2D enemyRb;
     // these are inherting base behavaiour from the enemy controller. 
     public override void onAttack(){
+        gameObject.GetComponentInChildren<Animator>().SetTrigger("Attack");
         base.onAttack();
     }
     public override void onDeath() {

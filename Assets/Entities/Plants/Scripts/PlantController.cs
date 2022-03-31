@@ -33,10 +33,16 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     // Attack Data  
     private Coroutine attackRoutine; 
     private bool isWaiting; //Is in a state of waiting before it can attack again
-    private GameObject  attackTarget;
-    public List<GameObject> targets;
+    [SerializeField] List<GameObject> targets;
+    // Other References
     private healthbar_Script_PlantController myHealthBar;
     private AudioSource mySource;
+
+    [Header("MiniMap Icons")]
+
+    [SerializeField] GameObject plantIcon;
+    [SerializeField] GameObject dangerIcon;
+
 
     #endregion
     ////////////////////////////////////////////////
@@ -48,13 +54,19 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
                 myHealthBar = this.gameObject.GetComponentInChildren<healthbar_Script_PlantController>();
             }
             mySource = this.gameObject.GetComponent<AudioSource>();
+            dangerIcon.SetActive(false);
         }
 
     private void FixedUpdate() {
         //Target Check  is not day, is not waiting, is able to attack, has a target, and the target is available
-        if (!dayTime && myPlantData.canAttack && !isWaiting && targets.Count > 0 && CheckTarget()){
-            onAttack(); //Does the Attack Action
-            AttackTimer(); //starts the timer coroutine
+        
+        if (!dayTime && myPlantData.canAttack && !isWaiting && targets.Count > 0){
+            targets = targets.OrderBy(t => distance(t)).ToList();
+            if (distance(targets[0]) <= onAttackBehavior.attackRange){
+                onAttack(); //Does the Attack Action
+                AttackTimer(); //starts the timer coroutine
+            }
+
         } 
     }
 
@@ -62,14 +74,13 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     //Basically when things enter it's zone it'll add it to a tracking list, and if it leaves it'll remove it.
     private void OnTriggerEnter2D(Collider2D entity) {
         if (entity.tag == "Enemy" && myPlantData.canAttack) {
-            targets.Add(entity.gameObject);
+            targets.Add(entity.gameObject);     
         }
     }
 
     private void OnTriggerExit2D(Collider2D entity) {
         if (entity.tag == "Enemy"  && myPlantData.canAttack){
             targets.Remove(entity.gameObject); //Remove That Object From Its Attack List
-            if (targets.Count == 0) { attackTarget = null;} //Clears the target if there are not more options
         }
     }
     void OnEnable() {
@@ -82,22 +93,6 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         DayNightCycle.isNowNight -= newNight;
     } //unsubscribe to on Scene Loaded Event
 
-    private bool CheckTarget(){ //If the target doesn't exist, or it's out of range, or it's daytime;
-        if( (attackTarget == null || distance(attackTarget) > onAttackBehavior.attackRange)){
-            attackTarget = null;
-            return SetTarget();
-        } else{ return true; }
-    }
-    private bool SetTarget(){
-        if (targets.Count() > 0){
-            targets = targets.OrderBy(t => distance(t)).ToList();
-            attackTarget = targets[0];
-            return true;
-        }
-        attackTarget = null;
-        return false;
-    }
-
     private float distance(GameObject baddy){
         return Vector3.Distance(baddy.transform.position, gameObject.transform.position);
     }
@@ -108,7 +103,11 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         if (health > myPlantData.plantMaxHealth) { health = myPlantData.plantMaxHealth;}
         if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar  
         //Returns true if plant energy is now ful
-        if (health >= myPlantData.plantMaxHealth){return true;}
+        if (health >= myPlantData.plantMaxHealth){
+            plantIcon.SetActive(true);
+            dangerIcon.SetActive(false);
+            return true;
+        }
         else { return false;}
     }
 
@@ -167,7 +166,9 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         health -= onHitBehavior.onHit(damage, source, this.gameObject); //Trigger onhit behaviors
         if (myPlantData.soundHurt != null) {audioController.Play(myPlantData.soundHurt, mySource);}
         if (GetComponent<FlashEffect>() != null){GetComponent<FlashEffect>().flash();} //Flash Effect On Hit
-        if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar  
+        if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar 
+        plantIcon.SetActive(false);
+        dangerIcon.SetActive(true); 
         if (health <= 0){ onDeath();} //Death Check
     }
 
@@ -178,7 +179,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     }
 
     public void onAttack(){
-        onAttackBehavior.OnAttack(onAttackBehavior.attackDamage,attackTarget,this.gameObject);
+        onAttackBehavior.OnAttack(onAttackBehavior.attackDamage,targets,this.gameObject);
         //Attack Sound
         if (myPlantData.soundAttack != null) { audioController.Play(myPlantData.soundAttack, mySource);}
     }

@@ -14,6 +14,7 @@ public class CrawlieController : EnemyController
     // these are inherting base behavaiour from the enemy controller. 
     
         base.onAttack();
+        gameObject.GetComponentInChildren<Animator>().SetTrigger("Attack");
     }
     public override void onDeath() {
         base.onDeath();

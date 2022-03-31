@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 27152650}
   - component: {fileID: 27152651}
-  - component: {fileID: 27152652}
   - component: {fileID: 27152653}
   m_Layer: 0
   m_Name: AudioHandler
@@ -169,19 +168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 11400000, guid: 1ae026e7ef1bff643866593afead3c96, type: 2}
---- !u!114 &27152652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 27152649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f82fd9d1adb1684e8c60d5b890e92b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myController: {fileID: 11400000, guid: f2136afd6d8f29a458336d9e89975267, type: 2}
 --- !u!82 &27152653
 AudioSource:
   m_ObjectHideFlags: 0
@@ -289,6 +275,7 @@ GameObject:
   - component: {fileID: 558774347}
   - component: {fileID: 558774348}
   - component: {fileID: 558774349}
+  - component: {fileID: 558774350}
   m_Layer: 0
   m_Name: SessionHandler
   m_TagString: Untagged
@@ -337,6 +324,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baddies: {fileID: 11400000, guid: 8afe92503b2738d408b63877c8805055, type: 2}
   numOfBaddies: 10
+--- !u!114 &558774350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558774346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aac9f75352d5f2740b97aad720e78c84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCursor: {fileID: 11400000, guid: 0d8cd259569acf44991c435849c1f538, type: 2}
 --- !u!1 &1179859205
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,7 +25,7 @@ public class DayNightCycle : MonoBehaviour
     public static event IsDay isNowDay;
     public static event IsNight isNowNight;
 
-    private bool daytime;
+    public bool daytime;
 
 
     public script_DayNightTracker clockTracker;
