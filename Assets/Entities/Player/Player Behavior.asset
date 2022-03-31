@@ -28,5 +28,5 @@ MonoBehaviour:
   WaterEffect: {fileID: 7722823594116667174, guid: b83d2cea3d98f9949839c0b3b1fcc446, type: 3}
   EnemyArrow: {fileID: 0}
   HubArrow: {fileID: 0}
-  lightOnDelay: 9
+  lightOnDelay: 6
   lightOffDelay: 0

@@ -62,7 +62,7 @@ public class MusicControllerSO : ScriptableObject
     public AudioSource PlayNext(AudioSource audioSourceParam) {
         mIndex ++;
         if(mIndex == playlist.Length){mIndex = 0;}     
-        playlist[mIndex].Play(audioSourceParam);
+        if (playlist.Length != 0) {playlist[mIndex].Play(audioSourceParam);}
         //Plays the file using it's perameters, and returns the audiosource
         return audioSourceParam;      
     }

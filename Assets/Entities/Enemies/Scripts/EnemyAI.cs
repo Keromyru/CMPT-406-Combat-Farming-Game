@@ -68,8 +68,7 @@ public class EnemyAI : MonoBehaviour
         }
         if (force.magnitude > 0){ force = force - (force*Time.deltaTime)/forceTime;} //this reduced the bounce time   
         // Facing the right direction
-        leftOrRight = myRB.position.x - myTarget.transform.position.x;    
-        Debug.Log(leftOrRight);    
+        leftOrRight = myRB.position.x - myTarget.transform.position.x;       
         // checks the potion of the target, changes the direction of the enemy based on what
         // direction their main target is. 
         if(leftOrRight > 0)

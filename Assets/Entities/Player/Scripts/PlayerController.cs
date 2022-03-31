@@ -338,7 +338,6 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     ////////////////////////////////////////////////////////////////
     // LAMP EFFECTS
     private void LampOn(){
-        Debug.Log("Lamp on");
         StartCoroutine(LightOnRoutine(2,myPlayerData.lightOnDelay));
     }
     private void LampOff(){
