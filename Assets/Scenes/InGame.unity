@@ -80478,6 +80478,90 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5515936068223022772, guid: 25bc2dce31c6a2646a88bf6049b3e59c, type: 3}
+      propertyPath: timeBetweenWaves
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515936068223022772, guid: 25bc2dce31c6a2646a88bf6049b3e59c, type: 3}
+      propertyPath: waves.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515936068223022772, guid: 25bc2dce31c6a2646a88bf6049b3e59c, type: 3}
+      propertyPath: waves.Array.data[1].rate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515936068223022772, guid: 25bc2dce31c6a2646a88bf6049b3e59c, type: 3}
+      propertyPath: waves.Array.data[2].rate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515936068223022772, guid: 25bc2dce31c6a2646a88bf6049b3e59c, type: 3}
+      propertyPath: waves.Array.data[3].rate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515936068223022772, guid: 25bc2dce31c6a2646a88bf6049b3e59c, type: 3}
+      propertyPath: waves.Array.data[4].rate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515936068223022772, guid: 25bc2dce31c6a2646a88bf6049b3e59c, type: 3}
+      propertyPath: waves.Array.data[0].count
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515936068223022772, guid: 25bc2dce31c6a2646a88bf6049b3e59c, type: 3}
+      propertyPath: waves.Array.data[1].count
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515936068223022772, guid: 25bc2dce31c6a2646a88bf6049b3e59c, type: 3}
+      propertyPath: waves.Array.data[2].count
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515936068223022772, guid: 25bc2dce31c6a2646a88bf6049b3e59c, type: 3}
+      propertyPath: waves.Array.data[3].count
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515936068223022772, guid: 25bc2dce31c6a2646a88bf6049b3e59c, type: 3}
+      propertyPath: waves.Array.data[4].count
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515936068223022772, guid: 25bc2dce31c6a2646a88bf6049b3e59c, type: 3}
+      propertyPath: waves.Array.data[0].waveName
+      value: CrawlieWave1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515936068223022772, guid: 25bc2dce31c6a2646a88bf6049b3e59c, type: 3}
+      propertyPath: waves.Array.data[1].waveName
+      value: SplitStriderWave1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515936068223022772, guid: 25bc2dce31c6a2646a88bf6049b3e59c, type: 3}
+      propertyPath: waves.Array.data[2].waveName
+      value: FlyBoyWave1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515936068223022772, guid: 25bc2dce31c6a2646a88bf6049b3e59c, type: 3}
+      propertyPath: waves.Array.data[3].waveName
+      value: SplitStriderWave1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515936068223022772, guid: 25bc2dce31c6a2646a88bf6049b3e59c, type: 3}
+      propertyPath: waves.Array.data[4].waveName
+      value: SplitStriderWave1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515936068223022772, guid: 25bc2dce31c6a2646a88bf6049b3e59c, type: 3}
+      propertyPath: waves.Array.data[0].enemyName
+      value: Crawlie
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515936068223022772, guid: 25bc2dce31c6a2646a88bf6049b3e59c, type: 3}
+      propertyPath: waves.Array.data[1].enemyName
+      value: SplitStrider
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515936068223022772, guid: 25bc2dce31c6a2646a88bf6049b3e59c, type: 3}
+      propertyPath: waves.Array.data[2].enemyName
+      value: Fly Boy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515936068223022772, guid: 25bc2dce31c6a2646a88bf6049b3e59c, type: 3}
+      propertyPath: waves.Array.data[3].enemyName
+      value: SplitStrider
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515936068223022772, guid: 25bc2dce31c6a2646a88bf6049b3e59c, type: 3}
+      propertyPath: waves.Array.data[4].enemyName
+      value: SplitStrider
+      objectReference: {fileID: 0}
     - target: {fileID: 8361129700830883648, guid: 25bc2dce31c6a2646a88bf6049b3e59c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.31
