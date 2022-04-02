@@ -148,7 +148,6 @@ public class WaveSpawner : MonoBehaviour
     private IEnumerator SpawnWave(Wave _wave)
     {
         Debug.Log("Spawning Wave: " + _wave.waveName);
-        NightStats.enemiesKilledPerNight += _wave.count;
         state = SpawnState.SPAWNING;
 
         Transform spawningLocation = EnemySpawnList.getFirstSpawn();
@@ -193,15 +192,12 @@ public class WaveSpawner : MonoBehaviour
     // Deletes all enemies
     private void ClearAllEnemies()
     {
-        NightStats.enemiesKilledPerNight -= GameObject.FindGameObjectsWithTag("Enemy").Length;
-
         System.Array.ForEach(GameObject.FindGameObjectsWithTag("Enemy"), b => Destroy(b));
     }
 
     // When day hits all enemies are deleted (This will need to be implemented to day night cycle)
     private void onDay()
     {
-        NightStats.moneyPerNight = Currency.getMoney() - NightStats.moneyPerNight;
         isNight = false;
         aliveEnemies = false;
         ClearAllEnemies();
@@ -212,7 +208,5 @@ public class WaveSpawner : MonoBehaviour
     private void onNight()
     {
         isNight = true;
-        NightStats.enemiesKilledPerNight = 0;
-        NightStats.moneyPerNight = Currency.getMoney();
     }
 }
