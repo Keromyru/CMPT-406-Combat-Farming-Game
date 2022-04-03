@@ -17,6 +17,9 @@ public class InventoryUI : MonoBehaviour
     private int maxHotbarSlots;  // maximum number of hotbar slots
 
     public GameObject inventoryUI;  // reference to the actual GameObject
+    public GameObject hotbarUI;  // reference to hotbar gameobject
+
+    public GameObject healthBar; // player health to display at night
 
     /* input handling
     private PlayerInput playerInput;
@@ -49,11 +52,23 @@ public class InventoryUI : MonoBehaviour
     void NowDay() {
         isDay = true;
         UpdateUI();
+        HideHealth();
     }
 
     void NowNight() {
         isDay = false;
+        DisplayHealth();
         UpdateUI();
+    }
+
+    void DisplayHealth() {
+        healthBar.SetActive(true);
+        hotbarUI.SetActive(false);
+    }
+
+    void HideHealth() {
+        healthBar.SetActive(false);
+        hotbarUI.SetActive(true);
     }
 
     /* input stuff to toggle inventory visibility. hotbar doesn't toggle.
