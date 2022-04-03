@@ -21,16 +21,28 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
     private Coroutine attackRoutine; 
     private bool isWaiting; //Is in a state of waiting before it can attack again
     public GameObject attackTarget; // <--- STILL NEEDS TARGET LOGIC
-    //
+    // Animations~
+    public Animator myAnimation;
+	public Rigidbody2D enemyRb;
+    private bool itsMoving;
+    private bool toTransform;
+
+    // slow stuff
+
+    private float slowTimer;
+    public List<int> slowTickTimers = new List<int>();
+    
+
 
     ////////////////////////////////////////////////
     // LOGICS
+
 
     private void FixedUpdate() {
         //Death Check
         if (enemyHealth <= 0){ onDeath();}
 
-
+        
         // This is the when it decides to attack... So whatever we need to determin if its target is applicable
         // There is no logic in this script to determin a target or to decide when to attack
         //  onAttackBehavior.attackRange is how you get it's attacking range
@@ -42,7 +54,16 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
                 AttackTimer(); //starts the timer coroutine
             }
         }
+
+        // Directional Control 
+
+
     }
+
+    // making the animations flip directions
+
+
+    
     ////////////////////////////////////////////////
     //Triggers
     ////////////////////////////////////////////////
@@ -71,7 +92,34 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
       this.gameObject);      
     }
     
+    // Status Effect 
+    // when enemy enters the area, 
+    // it goes slower
 
+    public void ApplySlow(int ticks)
+    {
+        this.slowTimer = slowTimer;
+        if(slowTimer <= 0)
+        {
+            slowTimer.Add(ticks);
+            StartCoroutine(Slow());
+        }
+        else
+        {
+            slowTimer.Add(ticks);
+        }
+    }
+
+    IEnumerator Slow(){
+        while(slowTimer.Count > 0){
+            for(int i = 0; i < slowTickTimers.Count; i++)
+            {
+                slowTickTimers[i]--;
+            }
+            slowTickTimers.RemoveAll(i >= i == 0);
+
+        }
+    }
 
 
     ////////////////////////////////////////////////
