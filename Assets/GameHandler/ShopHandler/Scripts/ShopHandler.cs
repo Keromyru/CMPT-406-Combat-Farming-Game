@@ -39,6 +39,9 @@ public class ShopHandler : MonoBehaviour
 
     public float special_discount = 1.15f;  // mark speciality items up to 15% in shop
 
+    public static int itemsBought = 0;  // total items bought by player
+    public static int itemsSold = 0;  // total items sold by player
+
 
     // generate a list of items for sale
     private void generateItems() {
@@ -103,6 +106,7 @@ public class ShopHandler : MonoBehaviour
 
         item.Sell();
         Inventory.instance.RemoveItem(item);
+        itemsSold++;
 
         current_money = Currency.getMoney();
 
@@ -145,6 +149,7 @@ public class ShopHandler : MonoBehaviour
             item.Buy(shop_item.price);
             Inventory.instance.AddItem(item);
             shopItems[current].amount -= 1;
+            itemsBought++;
         }
 
         current_money = Currency.getMoney();
@@ -153,5 +158,13 @@ public class ShopHandler : MonoBehaviour
         if (onShopRefreshCallback != null) {
             onShopRefreshCallback.Invoke();
         }
+    }
+
+    public int getItemsBought() {
+        return itemsBought;
+    }
+
+    public int getItemsSold() {
+        return itemsSold;
     }
 }

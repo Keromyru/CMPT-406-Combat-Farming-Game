@@ -18,11 +18,12 @@ public class InventoryUI : MonoBehaviour
 
     public GameObject inventoryUI;  // reference to the actual GameObject
 
-    // input handling
+    /* input handling
     private PlayerInput playerInput;
     private InputAction openInventory;
     private InputAction closeInventory;
     private bool unassigned = true;  // used to see if the InputActions have been properly assigned
+    */
 
     bool isDay;
     
@@ -55,7 +56,7 @@ public class InventoryUI : MonoBehaviour
         UpdateUI();
     }
 
-    // input stuff to toggle inventory visibility. hotbar doesn't toggle.
+    /* input stuff to toggle inventory visibility. hotbar doesn't toggle.
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -101,6 +102,7 @@ public class InventoryUI : MonoBehaviour
             }
         }
     }
+    */
 
     // update UI for hotbar & inventory
     void UpdateUI() {
