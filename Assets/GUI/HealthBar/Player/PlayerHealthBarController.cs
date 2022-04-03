@@ -2,29 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+
+// Mace
 
 public class PlayerHealthBarController : MonoBehaviour
 {
     private float max_health;
     private float current_health;
 
-    public GameObject player;
+    public PlayerController player;
 
     public Slider healthBar;
 
     // Start is called before the first frame update
     void Start()
     {
-        max_health = player.GetComponent<PlayerController>().getMaxHealth();
-        current_health = player.GetComponent<PlayerController>().getHealth();
+        max_health = player.getMaxHealth();
+        current_health = player.getHealth();
         healthBar.maxValue = max_health;
         healthBar.value = current_health;
     }
 
-    // Update is called once per frame
+    void UpdateHealth()
+    {
+        current_health = player.getHealth();
+        healthBar.value = current_health;
+    }
+
     void Update()
     {
-        current_health = player.GetComponent<PlayerController>().getHealth();
-        healthBar.value = current_health;
+        if (current_health != player.getHealth()) {
+            UpdateHealth();
+        }
     }
 }
