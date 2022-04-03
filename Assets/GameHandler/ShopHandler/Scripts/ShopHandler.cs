@@ -48,10 +48,19 @@ public class ShopHandler : MonoBehaviour
 
         shopItems.Clear();  // kill the old shop. new shop now.
 
+        int pick1 = 3;
+        int pick2 = 3;
+        int pick3 = 3;
+
         // grab random seeds
-        int pick1 = Random.Range(0, AllSeeds.Length);
-        int pick2 = Random.Range(0, AllSeeds.Length);
-        int pick3 = Random.Range(0, AllSeeds.Length);
+        while (((pick1 == pick2) && (pick2 == pick3)) && (pick3 == 3)) {
+            pick1 = Random.Range(0, AllSeeds.Length);
+            pick2 = Random.Range(0, AllSeeds.Length);
+            pick3 = Random.Range(0, AllSeeds.Length);
+            //Debug.Log("Ran shop generation, picks " + pick1 + " & " + pick2 + " & " + pick3);
+        }
+
+        
 
         // grab random values between min & max, add to list of items
         int amount = Random.Range(min_seeds, max_seeds);
