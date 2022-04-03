@@ -64,4 +64,10 @@ public class DialogueHandler : MonoBehaviour
     {
         animator.SetBool("IsOpen", false);
     }
+
+    public void SkipDialogue()
+    {
+        sentences.Clear();
+        EndDialogue();
+    }
 }
