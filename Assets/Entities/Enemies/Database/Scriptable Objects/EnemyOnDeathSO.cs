@@ -6,6 +6,6 @@ public class EnemyOnDeathSO : ScriptableObject
 {
     public virtual void onDeath(GameObject thisObject)
     {
-        
+        GameStats.AddKill();
     }
 }

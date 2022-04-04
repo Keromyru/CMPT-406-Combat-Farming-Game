@@ -22,7 +22,7 @@ public static class Score
     // Add multiple amounts to the score counter
     public static void addMultipleScore(int scoreToAdd, int AmountofItemsSold)
     {
-        score += (scoreToAdd * AmountofItemsSold);
+        addScore(scoreToAdd * AmountofItemsSold);
         scoreEvent.Invoke();
     }
 
