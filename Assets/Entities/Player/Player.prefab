@@ -306,7 +306,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e63edaa92fee2c48bdd94607dd928eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 3809839217958463188}
+  myPlayer: {fileID: 3809839216865564368}
+  myModel: {fileID: 3809839218053451473}
   wateringCan: {fileID: 3809839217673321641}
   ExoMan: {fileID: 3809839218053451473}
   Raygun: {fileID: 3809839216673375808}
@@ -496,7 +497,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 33412
+  m_InstanceId: 68506
 --- !u!1 &3809839216884466027
 GameObject:
   m_ObjectHideFlags: 0
