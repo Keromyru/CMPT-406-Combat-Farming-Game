@@ -15,7 +15,6 @@ public class HiveFlowerController : PlantController {
     }
     public override void newDay(){
         base.newDay();
-        myLight.enabled = false;
         LampOff();
     }
 
@@ -25,7 +24,6 @@ public class HiveFlowerController : PlantController {
     }
 
     private void LampOn(){
-        Debug.Log("Lamp on");
         StartCoroutine(LightOnRoutine(3,lightOnDelay));
     }
     private void LampOff(){
