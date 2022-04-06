@@ -9,13 +9,14 @@ using System.Linq;
 public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
 {
     private float health = 100;
-
-    [SerializeField] Transform playerTransform;
+    [SerializeField] GameObject myPlayer;
+    [SerializeField] GameObject myModel;    
     [SerializeField] GameObject wateringCan;
     [SerializeField] GameObject ExoMan;
     [SerializeField] GameObject Raygun;
     [SerializeField] GameObject EnemyArrow;
     [SerializeField] GameObject HubArrow;
+    [SerializeField] GameObject SpawnArrow;
     [SerializeField] float firePointLength = 1;
     [SerializeField] float enemyArrowLength = 1;
     [SerializeField] float hubArrowLength = 1;
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     private SpriteRenderer gunRenderer;
     private Animator wateringAni;
     private Animator myAnimator;
+    private Transform spawnLocation;
 
     // Attack Data  
     private Coroutine actionRoutine; 
@@ -46,6 +48,10 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     private Vector2 force;
     private float forceTime = 0.2f;
     bool IsDay; //Just for reference if it's day
+
+    // Other
+    bool canMove = true;
+    private Coroutine actionFreeze;
     
     void Start(){GameCamera.SetTarget(this.gameObject);}//Sets the player as the camera focus
 
@@ -68,7 +74,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     private void Update() {
         //Checks if the mouse click is down, and if the reset timer isn't set
         //The behavior of this will be shots so long as  the left-click is held
-        if ((playerInput.actions["PrimaryAction"].ReadValue<float>() > 0) && !isWaiting){
+        if ((playerInput.actions["PrimaryAction"].ReadValue<float>() > 0) && !isWaiting && canMove){
             if(IsDay){
                 if (myFarm.Length != 0) {
                     GameObject myPlant = (myFarm.OrderBy(plants => fromPointer(plants)).First());
@@ -93,34 +99,34 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     private void FixedUpdate() {
         // Written by Blake Williams
         // Gets the movement input and applies a constant velocity to the player
-        Vector2 inputVector = playerInput.actions["PlayerMovement"].ReadValue<Vector2>();
-        playerRB.MovePosition(playerRB.position + force + new Vector2(inputVector.x, inputVector.y) * myPlayerData.moveRate);
-        if (force.magnitude > 0){ force = force - (force*Time.deltaTime)/forceTime;} // Reduces the force added
-        if (inputVector.x == -1){
-            // flip rotational y to 0
-            // Needs to be a Quaternion as rotation is only described as one
-            Quaternion aQuaternion = Quaternion.Euler(0, 0, 0);
-            playerTransform.rotation = aQuaternion; 
-            if(wateringCan.activeSelf == true){ wateringCan.transform.rotation = aQuaternion;}
-        } else if (inputVector.x == 1){
-            // flip rotational y to 180
-            // Needs to be a Quaternion as rotation is only described as one
-            Quaternion aQuaternion = Quaternion.Euler(0, 180, 0);
-            playerTransform.rotation = aQuaternion;
-            if(wateringCan.activeSelf == true){ wateringCan.transform.rotation = aQuaternion;}
-        } 
-
-        if (inputVector.x != 0){
-            myAnimator.SetTrigger("Run");
-        } else {
-             myAnimator.SetTrigger("Idle");
+        if(canMove){
+            Vector2 inputVector = playerInput.actions["PlayerMovement"].ReadValue<Vector2>();
+            playerRB.MovePosition(playerRB.position + force + new Vector2(inputVector.x, inputVector.y) * myPlayerData.moveRate);
+            if (force.magnitude > 0){ force = force - (force*Time.deltaTime)/forceTime;} // Reduces the force added
+            if (inputVector.x == -1){
+                // flip rotational y to 0
+                // Needs to be a Quaternion as rotation is only described as one
+                Quaternion aQuaternion = Quaternion.Euler(0, 0, 0);
+                myPlayer.transform.rotation = aQuaternion; 
+                if(wateringCan.activeSelf == true){ wateringCan.transform.rotation = aQuaternion;}
+            } else if (inputVector.x == 1){
+                // flip rotational y to 180
+                // Needs to be a Quaternion as rotation is only described as one
+                Quaternion aQuaternion = Quaternion.Euler(0, 180, 0);
+                 myPlayer.transform.rotation = aQuaternion;
+                if(wateringCan.activeSelf == true){ wateringCan.transform.rotation = aQuaternion;}
+            } 
+                if (inputVector.x != 0){
+                    myAnimator.SetTrigger("Run");
+                } else {
+                    myAnimator.SetTrigger("Idle");
+                }
         }
-
         //RAYGUN ANGLE AND DIRECTION
         if(Raygun.activeSelf == true){
                
             // a Normalized Vector * the distance from the focal point desired + from the source of the 
-            Vector3 sLocation = playerTransform.position; //Source of bullets location
+            Vector3 sLocation =  myPlayer.transform.position; //Source of bullets location
             Vector3 tLocation = pointerLocation();
             Vector3 targetDirection =  (tLocation - sLocation).normalized; //Direction
 
@@ -138,7 +144,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
                 if (fromPlayer(myBaddy) > 6) {
                     EnemyArrow.SetActive(true);
                     // a Normalized Vector * the distance from the focal point desired + from the source of the 
-                    Vector3 sLocation = playerTransform.position; //Source of bullets location
+                    Vector3 sLocation =  myPlayer.transform.position; //Source of bullets location
                     Vector3 tLocation = myBaddy.transform.position;
                     Vector3 targetDirection =  (tLocation - sLocation).normalized; //Direction
 
@@ -161,7 +167,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
          if (fromPlayer(theHub) > 10) {
                     HubArrow.SetActive(true);
                     // a Normalized Vector * the distance from the focal point desired + from the source of the 
-                    Vector3 sLocation = playerTransform.position; //Source of bullets location
+                    Vector3 sLocation =  myPlayer.transform.position; //Source of bullets location
                     Vector3 tLocation = theHub.transform.position;
                     Vector3 targetDirection =  (tLocation - sLocation).normalized; //Direction
 
@@ -173,6 +179,23 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
                     HubArrow.transform.rotation = trackedRotation;
                 } else {
                     HubArrow.SetActive(false);
+                }
+        //Enemy Spawn TRACKER
+         if ( Vector2.Distance(EnemySpawnList.getFirstSpawn().position, this.transform.position ) > 3) {
+                    SpawnArrow.SetActive(true);
+                    // a Normalized Vector * the distance from the focal point desired + from the source of the 
+                    Vector3 sLocation =  myPlayer.transform.position; //Source of bullets location
+                    Vector3 tLocation = EnemySpawnList.getFirstSpawn().position;
+                    Vector3 targetDirection =  (tLocation - sLocation).normalized; //Direction
+
+                    Vector3 trackedLocation = (targetDirection * hubArrowLength)  + sLocation;
+                    float angle = Mathf.Atan2(targetDirection.y, targetDirection.x)* Mathf.Rad2Deg - 90; //Converts the vecter into a RAD angle, then into degrees. Adds 90deg as an offset
+                    Quaternion trackedRotation =   Quaternion.Euler(0,0,angle);
+                    
+                    SpawnArrow.GetComponent<RectTransform>().position = trackedLocation;
+                    SpawnArrow.transform.rotation = trackedRotation;
+                } else {
+                    SpawnArrow.SetActive(false);
                 }
 
     }
@@ -383,7 +406,39 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         }
         yield return new WaitForEndOfFrame();
     }
+     ////////////////////////////////////////////////////////////////
+    // Can't Move, with Reset
+    public void PlayerDeath(float timer, GameObject unfreezeEffect, Vector2 resetLocation){
+        if (actionFreeze != null)
+        {
+            // In this case, we should stop it first.
+            // Multiple AttackRoutine at the same time would cause bugs.
+            StopCoroutine(actionFreeze);
+        }
+        // Start the Coroutine, and store the reference for it.
+        actionFreeze = StartCoroutine(PlayerDeathRoutine(timer,unfreezeEffect,resetLocation));            
+     }
 
+    private IEnumerator PlayerDeathRoutine(float timer,  GameObject unfreezeEffect, Vector2 resetLocation){
+        //toggles on the screen shake function
+        this.transform.position = resetLocation;
+        myModel.SetActive(false);
+        Raygun.SetActive(false);
+        resetHealth();
+        canMove = false;
+        // Pause the execution of this function for "duration" seconds.
+        yield return new WaitForSeconds(timer);
+        // After the pause, swap back to the original material.
+        
+        resetHealth();
+        Instantiate(unfreezeEffect, this.transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(0.2f);
+        myModel.SetActive(true);
+        Raygun.SetActive(true);
+        canMove = true;
+        // Set the routine to null, signaling that it's finished.
+        actionRoutine = null;
+    }
 
 
 

@@ -15,6 +15,7 @@ MonoBehaviour:
   attackRange: 4
   attackRate: 0.75
   attackDamage: 10
+  myObject: {fileID: 0}
   projectileSpeed: 4
   projectilePrefab: {fileID: 6859866009509100607, guid: 9860ba4c442d4b94a955edfa88b20815, type: 3}
   firePointLength: 1
