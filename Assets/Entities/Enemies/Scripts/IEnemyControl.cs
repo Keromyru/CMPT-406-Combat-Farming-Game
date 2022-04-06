@@ -11,5 +11,6 @@ public interface IEnemyControl
     void setOnDeath(EnemyOnDeathSO newOneDeath);
     void setOnAttack(EnemyOnAttackSO newOnAttack);
     void setAudioController( AudioControllerSO newAudioController);
+    void ApplySlow(float newSlowMulti, float duration);
     
 }

@@ -701,6 +701,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1110050539217705780}
+  - component: {fileID: 5770028396811201017}
   - component: {fileID: 2017765244682736537}
   - component: {fileID: 6432883078201197488}
   - component: {fileID: 8005830111688046034}
@@ -730,6 +731,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5770028396811201017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7131914366683757558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8074fc0edef90488dd8d511a352ce7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashDuration: 0.2
+  flashMaterial: {fileID: 2100000, guid: 39303205d05eb9c4d84dea656dd1d923, type: 2}
 --- !u!114 &2017765244682736537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -744,8 +759,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myEnemyData: {fileID: 11400000, guid: 1e10f59e6fbf42a4f8fdace42699eebc, type: 2}
   attackTarget: {fileID: 0}
-  myAnim: {fileID: 0}
+  myAnimation: {fileID: 0}
   enemyRb: {fileID: 0}
+  slowMulti: 1
+  slowTickTimers: 
 --- !u!114 &6432883078201197488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -797,7 +814,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 8
 --- !u!61 &9131774107654000570
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -852,7 +869,7 @@ MonoBehaviour:
   - {x: -0.21722257, y: 0.21675563, z: 0}
   m_ShapePathHash: -1300586904
   m_Mesh: {fileID: 0}
-  m_InstanceId: -123902
+  m_InstanceId: 70598
 --- !u!1 &8498494261318432206
 GameObject:
   m_ObjectHideFlags: 0

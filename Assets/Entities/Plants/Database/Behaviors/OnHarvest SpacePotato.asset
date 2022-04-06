@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropPool:
   - {fileID: 9068179564084199155, guid: 842de95a319a840449ccf621ba3833ed, type: 3}
-  - {fileID: 6403223338433610526, guid: 7c1facdbc716cb24cb2da51a14ae77e9, type: 3}
+  - {fileID: 8566680422367292101, guid: 9ab8bea8728daec4ebaaeba8ca732fd9, type: 3}
   - {fileID: 8566680422367292101, guid: 9ab8bea8728daec4ebaaeba8ca732fd9, type: 3}
   - {fileID: 6403223338433610526, guid: 7c1facdbc716cb24cb2da51a14ae77e9, type: 3}
   - {fileID: 6403223338433610526, guid: 7c1facdbc716cb24cb2da51a14ae77e9, type: 3}
-  - {fileID: 8566680422367292101, guid: 9ab8bea8728daec4ebaaeba8ca732fd9, type: 3}
+  - {fileID: 6403223338433610526, guid: 7c1facdbc716cb24cb2da51a14ae77e9, type: 3}
+  - {fileID: 6403223338433610526, guid: 7c1facdbc716cb24cb2da51a14ae77e9, type: 3}
+  - {fileID: 1680092049937385966, guid: 1e80f40a0e2983c4794d7b6f437c3438, type: 3}
   minYield: 3
   maxYield: 5
   dropRadius: 1

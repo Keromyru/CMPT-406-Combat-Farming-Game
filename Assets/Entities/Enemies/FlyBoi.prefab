@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6248761672750800113}
+  - component: {fileID: 7191031705751143791}
   - component: {fileID: 5927564949017336266}
   - component: {fileID: 2214737455625607185}
   - component: {fileID: 7163151896021058168}
@@ -38,6 +39,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7191031705751143791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8564703261774401514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8074fc0edef90488dd8d511a352ce7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashDuration: 0.2
+  flashMaterial: {fileID: 2100000, guid: 39303205d05eb9c4d84dea656dd1d923, type: 2}
 --- !u!114 &5927564949017336266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52,8 +67,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myEnemyData: {fileID: 11400000, guid: a915caa23919cb44eac14fe8d5eaca06, type: 2}
   attackTarget: {fileID: 0}
-  myAnim: {fileID: 0}
+  myAnimation: {fileID: 0}
   enemyRb: {fileID: 0}
+  slowMulti: 1
+  slowTickTimers: 
 --- !u!114 &2214737455625607185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +148,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.04780042, y: 0}
   serializedVersion: 2
-  m_Radius: 4
+  m_Radius: 10
 --- !u!114 &3520390912273987064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +176,7 @@ MonoBehaviour:
   - {x: -0.11145401, y: 0.07719931, z: 0}
   m_ShapePathHash: -1241163448
   m_Mesh: {fileID: 0}
-  m_InstanceId: 46092
+  m_InstanceId: 70974
 --- !u!1001 &1180284705348641832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -312,6 +329,18 @@ PrefabInstance:
     - target: {fileID: 1342460606831927041, guid: ac3bd118eaa524272a2375e5bfe5e21a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342460606831927042, guid: ac3bd118eaa524272a2375e5bfe5e21a, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342460606831927042, guid: ac3bd118eaa524272a2375e5bfe5e21a, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342460606831927042, guid: ac3bd118eaa524272a2375e5bfe5e21a, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1342460606831927043, guid: ac3bd118eaa524272a2375e5bfe5e21a, type: 3}
       propertyPath: m_Bounds.m_Center.y
