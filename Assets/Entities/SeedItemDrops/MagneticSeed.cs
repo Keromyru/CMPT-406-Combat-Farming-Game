@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Magnetic : MonoBehaviour
+public class MagneticSeed : MonoBehaviour
 {
     [Header("Magnetic Behavior")]
-    float pickUpRange = 0.5f;
-    float magnetRange = 5f;
+    [SerializeField] float pickUpRange = 0.5f;
+    [SerializeField] float magnetRange = 2f;
     [SerializeField] AudioClipSO SoundPickup;
     private GameObject player;
 
@@ -15,7 +15,6 @@ public class Magnetic : MonoBehaviour
     }
     private void FixedUpdate() {
         float distance = Vector3.Distance(player.transform.position, this.gameObject.transform.position);
-        
         if (distance < pickUpRange){
             if (SoundPickup != null){SoundPickup.Play();}
                 onPickup();
@@ -23,13 +22,14 @@ public class Magnetic : MonoBehaviour
         }
         else if (distance < magnetRange) {            
         //Float towrds player
-            float speed = 5/distance * 0.7f;
-            gameObject.transform.position =  Vector3.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
             this.transform.Rotate (0,0,360*Time.deltaTime); //Spins it around because it's funny
+            float speed = 5/distance * 0.7f;
+            gameObject.transform.position =  Vector3.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime); 
         }
     }
 
-    public virtual void onPickup(){
+    public void onPickup(){
+        this.gameObject.GetComponent<ItemPickup>().Pickup();
 
     }
 }
