@@ -58,7 +58,7 @@ public class WaveSpawner : MonoBehaviour
         List<Transform> spawnPointsReduction = new List<Transform>(spawnPoints);
         spawnPointsReduction = spawnPointsReduction.OrderBy(x => Random.value).ToList();
         EnemySpawnList.setList(spawnPointsReduction);
-
+        
         waveCountdown = timeBetweenWaves;
         DayNightCycle.isNowDay += onDay;
         DayNightCycle.isNowNight += onNight;

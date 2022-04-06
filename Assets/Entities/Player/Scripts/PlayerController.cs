@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     [SerializeField] GameObject Raygun;
     [SerializeField] GameObject EnemyArrow;
     [SerializeField] GameObject HubArrow;
+    [SerializeField] GameObject SpawnArrow;
     [SerializeField] float firePointLength = 1;
     [SerializeField] float enemyArrowLength = 1;
     [SerializeField] float hubArrowLength = 1;
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     private SpriteRenderer gunRenderer;
     private Animator wateringAni;
     private Animator myAnimator;
+    private Transform spawnLocation;
 
     // Attack Data  
     private Coroutine actionRoutine; 
@@ -173,6 +175,23 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
                     HubArrow.transform.rotation = trackedRotation;
                 } else {
                     HubArrow.SetActive(false);
+                }
+        //Enemy Spawn TRACKER
+         if ( Vector2.Distance(EnemySpawnList.getFirstSpawn().position, this.transform.position ) > 3) {
+                    SpawnArrow.SetActive(true);
+                    // a Normalized Vector * the distance from the focal point desired + from the source of the 
+                    Vector3 sLocation = playerTransform.position; //Source of bullets location
+                    Vector3 tLocation = EnemySpawnList.getFirstSpawn().position;
+                    Vector3 targetDirection =  (tLocation - sLocation).normalized; //Direction
+
+                    Vector3 trackedLocation = (targetDirection * hubArrowLength)  + sLocation;
+                    float angle = Mathf.Atan2(targetDirection.y, targetDirection.x)* Mathf.Rad2Deg - 90; //Converts the vecter into a RAD angle, then into degrees. Adds 90deg as an offset
+                    Quaternion trackedRotation =   Quaternion.Euler(0,0,angle);
+                    
+                    SpawnArrow.GetComponent<RectTransform>().position = trackedLocation;
+                    SpawnArrow.transform.rotation = trackedRotation;
+                } else {
+                    SpawnArrow.SetActive(false);
                 }
 
     }
