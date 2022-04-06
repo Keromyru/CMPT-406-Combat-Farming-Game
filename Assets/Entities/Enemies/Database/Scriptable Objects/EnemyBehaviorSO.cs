@@ -7,10 +7,9 @@ public class EnemyBehaviorSO : ScriptableObject
   [Header("Enemy Stats")]
   public string enemyName;
   public float enemyMaxHealth;
-
-  public int numberOfDropsOnDeath;
   public float enemyMoveSpeed;
   [Header("Enemy Attack")]
+  [Tooltip("This is time between attacks, lower is faster")]
   public float attackRate;
   public float attackRange;
   public float attackDamage;
