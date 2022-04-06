@@ -14,18 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Crawlie
   enemyMaxHealth: 50
-  numberOfDropsOnDeath: 1
-  enemyMoveSpeed: 0.5
+  enemyMoveSpeed: 1.25
   attackRate: 1
-  attackRange: 0.5
+  attackRange: 0.65
   attackDamage: 10
   priorityList:
   - name: Plants are bad
     tag: Plant
-    distance: 1
+    distance: 3
   - name: I do not like the player
     tag: Player
-    distance: 3
+    distance: 2
   - name: Plants at max range
     tag: Plant
     distance: 10
@@ -34,7 +33,7 @@ MonoBehaviour:
   SoundOnDeath: 
   SoundAggression: 
   onAttackBehavior: {fileID: 11400000, guid: 4a1935208412a034784c540d19326110, type: 2}
-  onHitBehavior: {fileID: 11400000, guid: 326dcce30e9055545b48ea8fe69798ca, type: 2}
+  onHitBehavior: {fileID: 11400000, guid: f3a4e05386fe3904e816ea7a1b87e495, type: 2}
   onDeathBehavior: {fileID: 11400000, guid: f1cce40e49e03dc44a294458d3614059, type: 2}
   enemyPrefab: {fileID: 3927873885634108486, guid: b6785e25584db204f86dabee959d742c, type: 3}
   audioController: {fileID: 11400000, guid: 61664c2b36929b7409adee2b27202783, type: 2}

@@ -144,7 +144,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7be6fb4682e7994c9b45dfe328d76a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpRange: 0.5
-  magnetRange: 10
   SoundPickup: {fileID: 11400000, guid: acab1048d5c75a144a700aaf3fcad6a5, type: 2}
-  spaceMoneyValue: 375
+  spaceMoneyValue: 200

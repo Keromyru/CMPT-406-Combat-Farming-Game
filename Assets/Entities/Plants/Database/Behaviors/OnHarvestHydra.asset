@@ -15,6 +15,9 @@ MonoBehaviour:
   dropPool:
   - {fileID: 2099945048107503429, guid: af5818c84fb304136a09eaeabc38bf9d, type: 3}
   - {fileID: 4260015578173857193, guid: bba3a00450a45c34e8a830329b1311b1, type: 3}
+  - {fileID: 4260015578173857193, guid: bba3a00450a45c34e8a830329b1311b1, type: 3}
+  - {fileID: 4260015578173857193, guid: bba3a00450a45c34e8a830329b1311b1, type: 3}
+  - {fileID: 4260015578173857193, guid: bba3a00450a45c34e8a830329b1311b1, type: 3}
   minYield: 1
   maxYield: 2
   dropRadius: 1

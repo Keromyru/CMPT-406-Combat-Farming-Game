@@ -12,4 +12,5 @@ public interface IPlayerControl
     public void setLocation(Vector2 newLocation);
     public void resetHealth();
     public void setNewOnAttack(PlayerOnAttackSO newAttack);
+    public void PlayerDeath(float timer,  GameObject unfreezeEffect, Vector2 resetLocation);
 }

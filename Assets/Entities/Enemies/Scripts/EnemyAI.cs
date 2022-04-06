@@ -23,6 +23,8 @@ public class EnemyAI : MonoBehaviour
     private Vector2 myPostion; 
     private float leftOrRight; 
     private Animator myAnimation;
+    //SlowStuffs
+    
     
 
     private void Start() {
@@ -64,7 +66,7 @@ public class EnemyAI : MonoBehaviour
                 (myTargetPosition - myRB.position).normalized // Direction
                 * (10 - myDistance())  //Displacement of 10 units
                 + myTargetPosition);
-            myRB.MovePosition(force + Vector2.Lerp( myRB.position, targetWithOffset , Time.deltaTime * enemyMoveSpeed * 0.1f)); //Actual move update
+            myRB.MovePosition(force + Vector2.Lerp( myRB.position, targetWithOffset , Time.deltaTime * enemyMoveSpeed*myController.slowMulti * 0.1f)); //Actual move update
         }
         if (force.magnitude > 0){ force = force - (force*Time.deltaTime)/forceTime;} //this reduced the bounce time   
         // Facing the right direction

@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class FlyBoiController : EnemyController
 {
-     // animator varilibles
-    public Animator myAnim;
-	public Rigidbody2D enemyRb;
     // these are inherting base behavaiour from the enemy controller. 
     public override void onAttack(){
         gameObject.GetComponentInChildren<Animator>().SetTrigger("Attack");

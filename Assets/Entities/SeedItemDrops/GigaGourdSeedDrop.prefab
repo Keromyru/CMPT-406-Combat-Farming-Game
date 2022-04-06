@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8057161355292697997}
   - component: {fileID: 8513357810238814206}
   - component: {fileID: 8386038432129591049}
+  - component: {fileID: 8395332405665843976}
   - component: {fileID: 75051243077832301}
   - component: {fileID: 5047406543275751845}
   m_Layer: 0
@@ -98,6 +99,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 812553aa57fa2b74188ecdf61e0ef0b0, type: 2}
+--- !u!114 &8395332405665843976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7944093273229674206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94b2341bdd610654c9e3fda16f65e581, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickUpRange: 0.5
+  magnetRange: 2
+  SoundPickup: {fileID: 0}
 --- !u!61 &75051243077832301
 BoxCollider2D:
   m_ObjectHideFlags: 0
