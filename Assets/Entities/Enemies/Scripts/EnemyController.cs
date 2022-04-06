@@ -24,12 +24,14 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
     // Animations~
     public Animator myAnimation;
 	public Rigidbody2D enemyRb;
+    private SpriteRenderer myRenderer;
     private bool itsMoving;
     private bool toTransform;
 
     // slow stuff
 
     private float slowTimer;
+    public float slowMulti = 1; 
     public List<int> slowTickTimers = new List<int>();
     
 
@@ -37,12 +39,13 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
     ////////////////////////////////////////////////
     // LOGICS
 
-
+    private void Start() {
+        myRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
+    }
     private void FixedUpdate() {
         //Death Check
         if (enemyHealth <= 0){ onDeath();}
 
-        
         // This is the when it decides to attack... So whatever we need to determin if its target is applicable
         // There is no logic in this script to determin a target or to decide when to attack
         //  onAttackBehavior.attackRange is how you get it's attacking range
@@ -54,16 +57,15 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
                 AttackTimer(); //starts the timer coroutine
             }
         }
-
-        // Directional Control 
-
-
+        //SLOW CHECK
+        if (slowTimer > 0){
+            slowTimer = slowTimer - Time.deltaTime;
+            myRenderer.color = new Color(255,0,255,255);
+        } else{
+            myRenderer.color = new Color(255,255,255,255);
+        }
     }
 
-    // making the animations flip directions
-
-
-    
     ////////////////////////////////////////////////
     //Triggers
     ////////////////////////////////////////////////
@@ -96,30 +98,33 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
     // when enemy enters the area, 
     // it goes slower
 
-    public void ApplySlow(int ticks)
+
+    public void ApplySlow(float newSlowMulti, float duration)
     {
-        this.slowTimer = slowTimer;
-        if(slowTimer <= 0)
-        {
-            slowTimer.Add(ticks);
-            StartCoroutine(Slow());
-        }
-        else
-        {
-            slowTimer.Add(ticks);
-        }
+        // this.slowTimer = slowTimer;
+        // if(slowTimer <= 0)
+        // {
+        //     slowTimer.Add(ticks);
+        //     StartCoroutine(Slow());
+        // }
+        // else
+        // {
+        //     slowTimer.Add(ticks);
+        // }
+        slowTimer = duration;
+        slowMulti = newSlowMulti;
     }
 
-    IEnumerator Slow(){
-        while(slowTimer.Count > 0){
-            for(int i = 0; i < slowTickTimers.Count; i++)
-            {
-                slowTickTimers[i]--;
-            }
-            slowTickTimers.RemoveAll(i >= i == 0);
+    // IEnumerator Slow(){
+    //     while(slowTimer.Count > 0){
+    //         for(int i = 0; i < slowTickTimers.Count; i++)
+    //         {
+    //             slowTickTimers[i]--;
+    //         }
+    //         slowTickTimers.RemoveAll(i >= i == 0);
 
-        }
-    }
+    //     }
+    // }
 
 
     ////////////////////////////////////////////////
@@ -141,7 +146,7 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
         //toggles on the screen shake function
         isWaiting = true;
         // Pause the execution of this function for "duration" seconds.
-        yield return new WaitForSeconds(myEnemyData.attackRate);
+        yield return new WaitForSeconds(myEnemyData.attackRate*(1/slowMulti));
         // After the pause, swap back to the original material.
         isWaiting = false;
         // Set the routine to null, signaling that it's finished.

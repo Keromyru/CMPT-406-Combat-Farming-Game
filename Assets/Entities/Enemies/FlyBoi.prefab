@@ -52,8 +52,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myEnemyData: {fileID: 11400000, guid: a915caa23919cb44eac14fe8d5eaca06, type: 2}
   attackTarget: {fileID: 0}
-  myAnim: {fileID: 0}
+  myAnimation: {fileID: 0}
   enemyRb: {fileID: 0}
+  slowMulti: 1
+  slowTickTimers: 
 --- !u!114 &2214737455625607185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +161,7 @@ MonoBehaviour:
   - {x: -0.11145401, y: 0.07719931, z: 0}
   m_ShapePathHash: -1241163448
   m_Mesh: {fileID: 0}
-  m_InstanceId: 46092
+  m_InstanceId: 46908
 --- !u!1001 &1180284705348641832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -312,6 +314,18 @@ PrefabInstance:
     - target: {fileID: 1342460606831927041, guid: ac3bd118eaa524272a2375e5bfe5e21a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342460606831927042, guid: ac3bd118eaa524272a2375e5bfe5e21a, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342460606831927042, guid: ac3bd118eaa524272a2375e5bfe5e21a, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342460606831927042, guid: ac3bd118eaa524272a2375e5bfe5e21a, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1342460606831927043, guid: ac3bd118eaa524272a2375e5bfe5e21a, type: 3}
       propertyPath: m_Bounds.m_Center.y
