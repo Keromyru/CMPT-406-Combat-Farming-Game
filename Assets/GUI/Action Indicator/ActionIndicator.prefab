@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3630683880031826180}
   - component: {fileID: 3630683880031826183}
   - component: {fileID: 3630683880031826182}
-  - component: {fileID: 4591033654083872410}
+  - component: {fileID: 2364355306576377236}
   m_Layer: 5
   m_Name: ActionIndicator
   m_TagString: Untagged
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &4591033654083872410
+--- !u!114 &2364355306576377236
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,11 +112,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3630683880031826187}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 521c3bcde7c937b45b233e360daf2bc3, type: 3}
+  m_Script: {fileID: 11500000, guid: e7521d308b1f22142bb926bf0dbc44f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WateringCan: {fileID: 4863735594902179727}
-  RayGun: {fileID: 6559196829761358525}
+  WateringCan: {fileID: 0}
+  RayGun: {fileID: 0}
 --- !u!1 &4863735594902179727
 GameObject:
   m_ObjectHideFlags: 0

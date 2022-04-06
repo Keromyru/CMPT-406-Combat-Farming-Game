@@ -16,7 +16,7 @@ MonoBehaviour:
   enemyMaxHealth: 50
   enemyMoveSpeed: 0.75
   attackRate: 1
-  attackRange: 0.5
+  attackRange: 0.65
   attackDamage: 10
   priorityList:
   - name: Plants are bad

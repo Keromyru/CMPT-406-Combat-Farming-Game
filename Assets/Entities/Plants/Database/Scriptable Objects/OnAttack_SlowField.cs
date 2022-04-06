@@ -7,6 +7,7 @@ public class OnAttack_SlowField : PlantOnAttackSO
 
 {   
     public float slowDuration = 2;
+    public float slowRatio = 0.7f;
     public GameObject zapeffect;
     public override void OnAttack(float damage, List<GameObject> targetList, GameObject thisObject){
     myObject = thisObject;
@@ -16,8 +17,9 @@ public class OnAttack_SlowField : PlantOnAttackSO
             if(zapeffect != null){Instantiate(zapeffect,b.transform.position,Quaternion.identity);}
             IEnemyControl mybaddy = b.GetComponent<IEnemyControl>();
             if(mybaddy != null){
-                mybaddy.ApplySlow(damage, 2);
+                mybaddy.ApplySlow(slowRatio, 2);
             }
+            b.GetComponent<ITakeDamage>().onHit(damage,thisObject);
         }
     });
 

@@ -58,7 +58,7 @@ MonoBehaviour:
   targets: []
   plantIcon: {fileID: 4544276603462518704}
   dangerIcon: {fileID: 3373985824466214108}
-  lightOnDelay: 0
+  lightOnDelay: 1
   lightOffDelay: 4
 --- !u!114 &-5067242147814769670
 MonoBehaviour:

@@ -76,6 +76,7 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
         //This can accomedate for any kind of damage negation that may be needed.
         //This also passes this game object so that the script may do whatever it needs with it, or it's position
         if (myEnemyData.SoundOnHit != null && myEnemyData.SoundOnHit.Length < 1) {audioController.Play(myEnemyData.SoundOnHit);}
+        if (GetComponent<FlashEffect>() != null){GetComponent<FlashEffect>().flash();} //Flash Effect On Hit
         enemyHealth -= onHitBehavior.onHit(damage, source, this.gameObject); //Trigger onhit behaviors
     }
 

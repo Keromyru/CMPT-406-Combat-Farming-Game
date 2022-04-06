@@ -80,20 +80,28 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
                     GameObject myPlant = (myFarm.OrderBy(plants => fromPointer(plants)).First());
                     Debug.Log("Is Day:"+IsDay+"    myPlants"+myPlant);
                     if (myPlant != null && fromPlayer(myPlant) < myPlayerData.interactionRange){
-                        if(myPlant.GetComponent<IPlantControl>().HarvestReady()){
-                             Debug.Log("Harvesting "+myPlant.name);
-                            onHarvest(myPlant);
-                        } else {
-                            Debug.Log("Watering "+myPlant.name);
-                            onWater(myPlant);
-                        }
+                        Debug.Log("Watering "+myPlant.name);
+                        onWater(myPlant);
                     }
                 }    
             } 
             else {
                 onAttack();
             }
-        }        
+        } 
+        if ((playerInput.actions["SecondaryAction"].ReadValue<float>() > 0) && !isWaiting && canMove){ 
+             if(IsDay){
+                if (myFarm.Length != 0) {
+                    GameObject myPlant = (myFarm.OrderBy(plants => fromPointer(plants)).First());
+                    if (myPlant != null && fromPlayer(myPlant) < myPlayerData.interactionRange){
+                        if(myPlant.GetComponent<IPlantControl>().HarvestReady()){
+                             Debug.Log("Harvesting "+myPlant.name);
+                            onHarvest(myPlant);
+                        }
+                    }
+                }    
+            } 
+        }      
     }
 
     private void FixedUpdate() {

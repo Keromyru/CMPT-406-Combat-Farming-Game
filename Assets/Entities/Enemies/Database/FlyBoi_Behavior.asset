@@ -16,7 +16,7 @@ MonoBehaviour:
   enemyMaxHealth: 70
   enemyMoveSpeed: 2
   attackRate: 0.33
-  attackRange: 0.5
+  attackRange: 0.6
   attackDamage: 5
   priorityList:
   - name: ExoMan Must Die
