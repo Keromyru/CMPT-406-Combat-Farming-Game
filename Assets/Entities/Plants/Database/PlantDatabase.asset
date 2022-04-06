@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnInEffect: {fileID: 3704521463509072633, guid: 42637a383b7711d4da92cc615226b04d, type: 3}
   plantList:
+  - {fileID: 11400000, guid: 0d7f8c4309e35514f8fb3ab60458b535, type: 2}
   - {fileID: 11400000, guid: 0e8eeb399c3f59541ace11f44ca17f82, type: 2}
-  - {fileID: 11400000, guid: 1d00f60138d740e46a00c01a007fcd48, type: 2}
-  - {fileID: 11400000, guid: c57bf534093e8594e85ab1a8051b4544, type: 2}
+  - {fileID: 11400000, guid: cdf5d3a1346771742bb6f287383d9b54, type: 2}
   - {fileID: 11400000, guid: 04126cc2b0c246b4e9a2eb1dc637826c, type: 2}
+  - {fileID: 11400000, guid: 6c4910949429d6b4b9af1b272701061a, type: 2}
+  - {fileID: 11400000, guid: c57bf534093e8594e85ab1a8051b4544, type: 2}
+  - {fileID: 11400000, guid: a2aa04827295ceb42a1f3005b858c230, type: 2}
+  - {fileID: 11400000, guid: 1d00f60138d740e46a00c01a007fcd48, type: 2}

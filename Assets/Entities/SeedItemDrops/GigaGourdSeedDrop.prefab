@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickUpRange: 0.5
   magnetRange: 2
-  SoundPickup: {fileID: 0}
+  SoundPickup: {fileID: 11400000, guid: 45cf25829cea9874ebdf400d433914ec, type: 2}
 --- !u!61 &75051243077832301
 BoxCollider2D:
   m_ObjectHideFlags: 0

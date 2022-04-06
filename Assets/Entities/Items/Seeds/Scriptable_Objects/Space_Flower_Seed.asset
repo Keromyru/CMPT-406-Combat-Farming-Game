@@ -20,4 +20,4 @@ MonoBehaviour:
   description: These seeds will grow into a Hive Plant. Hive Plants let off a bioluminescent
     glow at night, lighting up the world around them.
   isPlantable: 1
-  spawnName: HiveFlower
+  spawnName: HiveFlower_Baby
