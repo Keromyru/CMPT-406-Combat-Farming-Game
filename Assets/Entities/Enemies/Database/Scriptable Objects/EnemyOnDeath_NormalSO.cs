@@ -8,6 +8,7 @@ public class EnemyOnDeath_NormalSO : EnemyOnDeathSO
     [SerializeField] GameObject deathEffect;
     public override void onDeath(GameObject thisObject)
     {
+        base.onDeath(thisObject);
         if (deathEffect != null) {Instantiate(deathEffect,thisObject.transform.position,thisObject.transform.rotation);}
         Destroy(thisObject);
 
