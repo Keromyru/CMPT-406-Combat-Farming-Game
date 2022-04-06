@@ -338,7 +338,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     }
     public void onWater(GameObject myPlant){
         if( myPlant.GetComponent<IPlantControl>() != null && fromPointer(myPlant) < 1) {
-            myPlant.GetComponent<IPlantControl>().waterPlant(myPlayerData.WaterQuantity);   //Water plant
+            myPlant.GetComponent<IPlantControl>().waterPlant(myPlant.GetComponent<IPlantControl>().getMaxHealth()*(myPlayerData.WaterQuantity/100));   //Water plant
             if (myPlayerData.soundWater != null) {audioController.Play(myPlayerData.soundWater);} //Play sound if there is one
             if (myPlayerData.WaterEffect != null) {
                 Instantiate(myPlayerData.WaterEffect,
