@@ -11,6 +11,7 @@ public class PlayerBevahviorSO : ScriptableObject
     public float WaterQuantity;
     public float WaterRate;
     public float interactionRange;
+    public float fromPointer;
 
     [Header("Audio Files")]
     public string soundDeath;
