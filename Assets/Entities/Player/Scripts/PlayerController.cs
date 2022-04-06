@@ -79,21 +79,33 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
                 if (myFarm.Length != 0) {
                     GameObject myPlant = (myFarm.OrderBy(plants => fromPointer(plants)).First());
                     Debug.Log("Is Day:"+IsDay+"    myPlants"+myPlant);
-                    if (myPlant != null && fromPlayer(myPlant) < myPlayerData.interactionRange){
-                        if(myPlant.GetComponent<IPlantControl>().HarvestReady()){
-                             Debug.Log("Harvesting "+myPlant.name);
-                            onHarvest(myPlant);
-                        } else {
-                            Debug.Log("Watering "+myPlant.name);
-                            onWater(myPlant);
-                        }
+                    if (myPlant != null && 
+                        fromPlayer(myPlant) < myPlayerData.interactionRange &&
+                        fromPointer(myPlant) < myPlayerData.fromPointer ){
+                        Debug.Log("Watering "+myPlant.name);
+                        onWater(myPlant);
                     }
                 }    
             } 
             else {
                 onAttack();
             }
-        }        
+        } 
+        if ((playerInput.actions["SecondaryAction"].ReadValue<float>() > 0) && !isWaiting && canMove){ 
+             if(IsDay){
+                if (myFarm.Length != 0) {
+                    GameObject myPlant = (myFarm.OrderBy(plants => fromPointer(plants)).First());
+                    if (myPlant != null && 
+                        fromPlayer(myPlant) < myPlayerData.interactionRange &&
+                        fromPointer(myPlant) < myPlayerData.fromPointer ){
+                        if(myPlant.GetComponent<IPlantControl>().HarvestReady()){
+                             Debug.Log("Harvesting "+myPlant.name);
+                            onHarvest(myPlant);
+                        }
+                    }
+                }    
+            } 
+        }      
     }
 
     private void FixedUpdate() {
@@ -338,7 +350,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
     }
     public void onWater(GameObject myPlant){
         if( myPlant.GetComponent<IPlantControl>() != null && fromPointer(myPlant) < 1) {
-            myPlant.GetComponent<IPlantControl>().waterPlant(myPlayerData.WaterQuantity);   //Water plant
+            myPlant.GetComponent<IPlantControl>().waterPlant(myPlant.GetComponent<IPlantControl>().getMaxHealth()*(myPlayerData.WaterQuantity/100));   //Water plant
             if (myPlayerData.soundWater != null) {audioController.Play(myPlayerData.soundWater);} //Play sound if there is one
             if (myPlayerData.WaterEffect != null) {
                 Instantiate(myPlayerData.WaterEffect,

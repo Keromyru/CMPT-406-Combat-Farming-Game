@@ -16,7 +16,7 @@ MonoBehaviour:
   enemyMaxHealth: 50
   enemyMoveSpeed: 1
   attackRate: 3
-  attackRange: 0.5
+  attackRange: 0.6
   attackDamage: 30
   priorityList:
   - name: Priority Hub
