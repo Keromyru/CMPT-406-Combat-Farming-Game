@@ -20,4 +20,4 @@ MonoBehaviour:
   description: These seeds will grow into a Hydra Tulip. A Hydra Tulip is a vicious
     plant that unleashes far-range attacks on enemy lifeforms.
   isPlantable: 1
-  spawnName: Hydra
+  spawnName: Hydra_Baby

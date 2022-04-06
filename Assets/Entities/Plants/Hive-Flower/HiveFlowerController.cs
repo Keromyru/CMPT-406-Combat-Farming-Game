@@ -12,6 +12,7 @@ public class HiveFlowerController : PlantController {
     
     void Awake(){
         myLight = GetComponent<UnityEngine.Experimental.Rendering.Universal.Light2D>();
+        LampOn();
     }
     public override void newDay(){
         base.newDay();

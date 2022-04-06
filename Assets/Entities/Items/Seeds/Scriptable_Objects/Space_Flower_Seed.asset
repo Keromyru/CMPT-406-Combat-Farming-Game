@@ -21,4 +21,4 @@ MonoBehaviour:
     glow at night, lighting up the world around them. Enemies who get too near will
     find themselves slowed by the light.
   isPlantable: 1
-  spawnName: HiveFlower
+  spawnName: HiveFlower_Baby

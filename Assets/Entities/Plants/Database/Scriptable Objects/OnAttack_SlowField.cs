@@ -9,7 +9,9 @@ public class OnAttack_SlowField : PlantOnAttackSO
     public float slowDuration = 2;
     public float slowRatio = 0.7f;
     public GameObject zapeffect;
+    public GameObject localEffect;
     public override void OnAttack(float damage, List<GameObject> targetList, GameObject thisObject){
+    if(localEffect != null){Instantiate(localEffect,thisObject.transform.position,Quaternion.identity);}
     myObject = thisObject;
     Array.ForEach(targetList.ToArray(), b => {
         Debug.Log("SlowField Engaged");

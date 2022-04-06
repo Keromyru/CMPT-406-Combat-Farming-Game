@@ -10,29 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3d4d25e19bdedd47a8343930d0f97a6, type: 3}
-  m_Name: GigaGourd_Behavio
+  m_Name: HiveFlower_Baby
   m_EditorClassIdentifier: 
-  plantName: GigaGourd_Mature
+  plantName: HiveFlower_Baby
   toolTip: 
-  plantMaxHealth: 500
-  plantMaxEnergy: 250
+  plantMaxHealth: 100
+  plantMaxEnergy: 100
   plantType: 0
   plantAgroValue: 0
   canAttack: 0
   matureAge: 0
-  harvestable: 1
-  DaysUntilHarvest: 5
+  harvestable: 0
+  DaysUntilHarvest: 0
   soundDeath: 
   soundAttack: 
   soundHarvested: 
   soundHurt: 
   soundGrowth: 
-  GrowPhaseEffect: {fileID: 0}
-  plantPrefab: {fileID: 2612463031059291451, guid: 6e71a4712c644a84cb317afe874b8975, type: 3}
-  nextPhase: {fileID: 0}
+  GrowPhaseEffect: {fileID: 3704521463509072633, guid: 42637a383b7711d4da92cc615226b04d, type: 3}
+  plantPrefab: {fileID: 8086673927909815910, guid: 63fae1ace82899a4eb73ae5856a640c1, type: 3}
+  nextPhase: {fileID: 11400000, guid: 1d00f60138d740e46a00c01a007fcd48, type: 2}
   audioController: {fileID: 11400000, guid: 61664c2b36929b7409adee2b27202783, type: 2}
-  TileOffset: {x: -0.04, y: 0.24}
-  onHit: {fileID: 11400000, guid: 537f4efbaa5a3ec4aaaebd488eca02d8, type: 2}
+  TileOffset: {x: -0.04, y: 0.2}
+  onHit: {fileID: 11400000, guid: c22c187a6ef38ae439dabd299ead49ae, type: 2}
   onAttack: {fileID: 11400000, guid: d97243c8f1669e84b84de4d3a9f1ae6d, type: 2}
   onDeath: {fileID: 11400000, guid: 169f5d4cc04e2c4448ac8618714d612f, type: 2}
-  onHarvest: {fileID: 11400000, guid: 93887afd903fc4732b84f30b6242dff1, type: 2}
+  onHarvest: {fileID: 11400000, guid: 4a76a62ad014749e9b4a2fe83e9956ed, type: 2}
