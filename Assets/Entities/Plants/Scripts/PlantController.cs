@@ -201,6 +201,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
 
     public void onHarvestReady(){
         health = health - myPlantData.plantMaxHealth*0.5f*(growAge-myPlantData.matureAge);
+        if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar 
         if (health < 5f) { onDeath();} 
     }
     
