@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d4d25e19bdedd47a8343930d0f97a6, type: 3}
   m_Name: GigaGourd_Behavio
   m_EditorClassIdentifier: 
-  plantName: GigaGourd
+  plantName: GigaGourd_Mature
   toolTip: 
   plantMaxHealth: 500
   plantMaxEnergy: 250

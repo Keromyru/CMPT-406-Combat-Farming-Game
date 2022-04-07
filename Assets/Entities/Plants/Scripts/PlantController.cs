@@ -116,6 +116,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     private void nextGrowthPhase(){
         if (myPlantData.soundGrowth != null) {audioController.Play(myPlantData.soundGrowth, mySource);} //Play soundGrowth if the file has been declared
         //Spawns the next plant in line
+        if(myPlantData.GrowPhaseEffect != null){Instantiate(myPlantData.GrowPhaseEffect,this.transform.position,Quaternion.identity);}
         myPlantData.nextPhase.spawnNextPlant(
             myPlantData.nextPhase.name,
             this.location,
@@ -178,7 +179,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         onDeathBehavior.onDeath(this.gameObject);
     }
 
-    public void onAttack(){
+    public virtual void onAttack(){
         onAttackBehavior.OnAttack(onAttackBehavior.attackDamage,targets,this.gameObject);
         //Attack Sound
         if (myPlantData.soundAttack != null) { audioController.Play(myPlantData.soundAttack, mySource);}

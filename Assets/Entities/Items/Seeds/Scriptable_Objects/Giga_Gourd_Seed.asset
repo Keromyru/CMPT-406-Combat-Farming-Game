@@ -20,4 +20,4 @@ MonoBehaviour:
   description: These seeds will grow into a Giga Gourd. Giga Gourds attract enemies.
     Its thick shell allows it to withstand many hits.
   isPlantable: 1
-  spawnName: GigaGourd
+  spawnName: GigaGourd_Baby

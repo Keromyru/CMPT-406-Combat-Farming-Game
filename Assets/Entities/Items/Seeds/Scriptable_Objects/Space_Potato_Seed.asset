@@ -20,4 +20,4 @@ MonoBehaviour:
   description: These seeds will grow into an Eggroot. The Eggroot is a simple plant,
     quick to ripen for harvest and easy to sell.
   isPlantable: 1
-  spawnName: Eggroot
+  spawnName: Eggroot_Baby

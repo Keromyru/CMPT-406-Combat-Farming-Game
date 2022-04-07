@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d4d25e19bdedd47a8343930d0f97a6, type: 3}
+  m_Name: Egg_Baby Behavior
+  m_EditorClassIdentifier: 
+  plantName: Eggroot_Baby
+  toolTip: 
+  plantMaxHealth: 50
+  plantMaxEnergy: 100
+  plantType: 1
+  plantAgroValue: 0
+  canAttack: 0
+  matureAge: 0
+  harvestable: 0
+  DaysUntilHarvest: 0
+  soundDeath: 
+  soundAttack: 
+  soundHarvested: 
+  soundHurt: 
+  soundGrowth: 
+  GrowPhaseEffect: {fileID: 3704521463509072633, guid: 42637a383b7711d4da92cc615226b04d, type: 3}
+  plantPrefab: {fileID: 890959197961665522, guid: 0b58a6b5cadb43c4fbe3bffbc3f0f0bf, type: 3}
+  nextPhase: {fileID: 11400000, guid: 04126cc2b0c246b4e9a2eb1dc637826c, type: 2}
+  audioController: {fileID: 11400000, guid: 61664c2b36929b7409adee2b27202783, type: 2}
+  TileOffset: {x: -0.05, y: 0.18}
+  onHit: {fileID: 11400000, guid: c22c187a6ef38ae439dabd299ead49ae, type: 2}
+  onAttack: {fileID: 11400000, guid: d97243c8f1669e84b84de4d3a9f1ae6d, type: 2}
+  onDeath: {fileID: 11400000, guid: 169f5d4cc04e2c4448ac8618714d612f, type: 2}
+  onHarvest: {fileID: 11400000, guid: 33d6fcfb63f28fc48969670615f3a599, type: 2}
