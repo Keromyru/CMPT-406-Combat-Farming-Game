@@ -16,6 +16,7 @@ public static class Score
     public static void addScore(int scoreToAdd)
     {
         score += scoreToAdd;
+        GameStats.AddScore(scoreToAdd);
         scoreEvent.Invoke();
     }
 
@@ -23,6 +24,7 @@ public static class Score
     public static void addMultipleScore(int scoreToAdd, int AmountofItemsSold)
     {
         addScore(scoreToAdd * AmountofItemsSold);
+        GameStats.AddScore(scoreToAdd * AmountofItemsSold);
         scoreEvent.Invoke();
     }
 
