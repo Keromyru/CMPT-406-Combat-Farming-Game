@@ -186,6 +186,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hubMaxHealth: 500
+  onDeathEffect: {fileID: 0}
+  onHitSound: {fileID: 11400000, guid: b73652358be33dd43a4b31f9cf2f8b5b, type: 2}
+  onDeathSound: {fileID: 11400000, guid: 03248dce25931724bb0c5729cf5bdd1d, type: 2}
 --- !u!114 &1033879734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,7 +231,7 @@ MonoBehaviour:
   - {x: -20.9039, y: 29.271282, z: 0}
   m_ShapePathHash: 945993175
   m_Mesh: {fileID: 0}
-  m_InstanceId: 21172
+  m_InstanceId: 35082
 --- !u!1 &2220848005951987523
 GameObject:
   m_ObjectHideFlags: 0
