@@ -6,10 +6,12 @@ using TMPro;
 
 public class script_DayEndScreenController : MonoBehaviour {
 	
+	/*
+		Simple script made by Wilson
+	*/
+	
 	// Store each display text to display stats
 	public TextMeshProUGUI days, monsters, money, score;
-
-	public Animator animator;
 	
     /*
 		Sets the values for each text
@@ -21,19 +23,6 @@ public class script_DayEndScreenController : MonoBehaviour {
 			score - Integer of score
 		Returns: None
 	*/
-	
-	void Start(){
-		DayNightCycle.isNowDay += setDataOnNewDay;
-	}
-
-	public void setDataOnNewDay(){
-		this.setMonsters(GameStats.getNightKills());
-		this.setMoney(GameStats.getNightMoney());
-		this.setScore(GameStats.getNightScore());
-		GameStats.NightStatReset();
-		animator.Play("anim-DayEndScreenEnter");
-	}
-
     public void SetStats( int days, int monsters, int money, int score ) {
 		
 		this.days.text = days.ToString();
@@ -43,19 +32,5 @@ public class script_DayEndScreenController : MonoBehaviour {
 		
     }
 
-	public void setDays(int days){
-		this.days.text = days.ToString();
-	}
-
-	public void setMonsters(int monsters){
-		this.monsters.text = monsters.ToString();
-	}
-
-	public void setMoney(int money){
-		this.money.text = money.ToString();
-	}
-	
-	public void setScore(int score){
-		this.score.text = score.ToString();
-	}
+   
 }

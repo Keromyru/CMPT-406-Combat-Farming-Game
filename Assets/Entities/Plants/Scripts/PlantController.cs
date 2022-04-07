@@ -19,6 +19,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     private bool dayTime = false;  
     [SerializeField] private bool isReady = false;
 
+
     private PlantBehaviorSO myPlantData; //References the plants Entry in the Database
     private PlantDatabaseSO myPlantSpawner; //References the spawner to it can call it's decendants
     private AudioControllerSO audioController;
@@ -56,15 +57,9 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
             dangerIcon.SetActive(false);
         }
 
-    // private void Update() { //Triggers NewDAY for testing
-    //         if (Input.GetKeyDown("space")){
-    //         newDay();
-    //         Debug.Log("New Day "+myPlantData.name+" is "+growAge+" days old      "+(growAge-myPlantData.DaysUntilHarvest));
-    //     }
-    // }
-
     private void FixedUpdate() {
         //Target Check  is not day, is not waiting, is able to attack, has a target, and the target is available
+        
         if (!dayTime && !isReady && myPlantData.canAttack && !isWaiting && targets.Count > 0){
             targets = targets.OrderBy(t => distance(t)).ToList();
             if (distance(targets[0]) <= onAttackBehavior.attackRange){
@@ -132,8 +127,10 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
 
     private void checkGrowthPhase(){
         if(myPlantData.nextPhase != null && 
-            growAge >= myPlantData.matureAge ) {
+            growAge >= myPlantData.matureAge )
+        {
             nextGrowthPhase();
+    
         }
     }
     
@@ -154,9 +151,8 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
             SpriteRenderer mySprite = GetComponent<SpriteRenderer>();
             mySprite.color = new Color(.5f, .5f, .5f);
         }
-        if(isReady){ onHarvestReady();}
         if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar
-        
+        if(isReady){ onHarvestReady();}
     }
 
     public virtual void newNight(){
@@ -204,8 +200,9 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     }
 
     public void onHarvestReady(){
-        health -= ((growAge - myPlantData.DaysUntilHarvest)*myPlantData.plantMaxHealth*0.5f);
-        if (health <= 0){ onDeath();} //Death Check }    
+        health = health - myPlantData.plantMaxHealth*0.5f*(growAge-myPlantData.matureAge);
+        if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar 
+        if (health < 5f) { onDeath();} 
     }
     
     ////////////////////////////////////////////////

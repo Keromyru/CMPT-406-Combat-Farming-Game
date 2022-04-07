@@ -45,10 +45,9 @@ public class WaveSpawner : MonoBehaviour
     // Checks if enemies are still alive
     public bool aliveEnemies = false;
 
+
     // Bool to check if it is night time
     public bool isNight = true;
-
-    public script_DayEndScreenController DayEndScreenScript;
 
     private void Start()
     {
@@ -59,7 +58,7 @@ public class WaveSpawner : MonoBehaviour
         List<Transform> spawnPointsReduction = new List<Transform>(spawnPoints);
         spawnPointsReduction = spawnPointsReduction.OrderBy(x => Random.value).ToList();
         EnemySpawnList.setList(spawnPointsReduction);
-
+        
         waveCountdown = timeBetweenWaves;
         DayNightCycle.isNowDay += onDay;
         DayNightCycle.isNowNight += onNight;
@@ -188,15 +187,15 @@ public class WaveSpawner : MonoBehaviour
     {
         if (dayCount != 0)
         {
-            if (dayCount % 1 == 0)
+            if (dayCount % 2 == 0)
             {
                 upgradeEnemiesAssist("Crawlie");
             }
-            if (dayCount % 2 == 0)
+            if (dayCount % 3 == 0)
             {
                 upgradeEnemiesAssist("SplitStrider");
             }
-            if (dayCount % 3 == 0)
+            if (dayCount % 4 == 0)
             {
                 upgradeEnemiesAssist("Fly Boy");
             }
@@ -224,7 +223,6 @@ public class WaveSpawner : MonoBehaviour
     // When day hits all enemies are deleted (This will need to be implemented to day night cycle)
     private void onDay()
     {
-        DayEndScreenScript.setDays(dayCount);
         EnemySpawnList.removeFirstSpawn();
         isNight = false;
         aliveEnemies = false;
