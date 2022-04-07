@@ -13,6 +13,8 @@ public class DialogueHandler : MonoBehaviour
 
     private Queue<string> sentences;
 
+    [SerializeField] DayNightCycle daynight;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,7 @@ public class DialogueHandler : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        daynight.slowTime();
         animator.SetBool("IsOpen", true);
 
         nameText.text = dialogue.name;
@@ -63,6 +66,7 @@ public class DialogueHandler : MonoBehaviour
     void EndDialogue()
     {
         animator.SetBool("IsOpen", false);
+        daynight.normalTime();
     }
 
     public void SkipDialogue()
