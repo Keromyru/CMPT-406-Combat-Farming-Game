@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b2666010b669f249b78a662f94f355e, type: 3}
+  m_Name: SFX_Punch
+  m_EditorClassIdentifier: 
+  Name: Punch
+  clips:
+  - {fileID: 8300000, guid: 95e2e53f9dc8db9449a366a94ad4263a, type: 3}
+  - {fileID: 8300000, guid: ec97a64aa90cea545a26da1e8efdcf54, type: 3}
+  - {fileID: 8300000, guid: b6a0c994b9eff2c499cf9e121a9115cb, type: 3}
+  - {fileID: 8300000, guid: 1f034ed3f527cbe4291ed41fab512f32, type: 3}
+  - {fileID: 8300000, guid: c3502ff1760c3bd47a88e6e9a85297fd, type: 3}
+  - {fileID: 8300000, guid: 43838f74b0177054eb8682a11d5cde84, type: 3}
+  - {fileID: 8300000, guid: d15625b33d0d1cf46bfb4e837998ac7d, type: 3}
+  - {fileID: 8300000, guid: 51d2445758eb96c448fe070d8e1f3f44, type: 3}
+  - {fileID: 8300000, guid: db330f1530cbe334da1921e6a42804ab, type: 3}
+  - {fileID: 8300000, guid: 8317644930a86b84f94f7c6fb8f5693b, type: 3}
+  - {fileID: 8300000, guid: 0167c66016d883949b680a384d5b6521, type: 3}
+  - {fileID: 8300000, guid: 2e55a127c5859d7438030e0c40eceb4d, type: 3}
+  - {fileID: 8300000, guid: a12efb7eced654449b9f4eef8a73b9c1, type: 3}
+  type: 1
+  volume: 0.34
+  pitch: 1
+  source: {fileID: 0}

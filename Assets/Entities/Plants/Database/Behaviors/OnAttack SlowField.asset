@@ -19,4 +19,4 @@ MonoBehaviour:
   slowDuration: 2
   slowRatio: 0.5
   zapeffect: {fileID: 8663721665076195307, guid: 0d119084cb59e614e80c463c053040bc, type: 3}
-  localEffect: {fileID: 0}
+  localEffect: {fileID: 4946897193836027161, guid: 5b4e9c14c9f0f684293dc4607609de9d, type: 3}

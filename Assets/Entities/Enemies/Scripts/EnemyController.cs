@@ -52,7 +52,7 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
         // this is set up to attack when a target 
         if (!isWaiting  && attackTarget != null ) {
             if( Vector2.Distance(this.transform.position, attackTarget.transform.position) < myEnemyData.attackRange ||
-            (attackTarget.tag == "Structure" && attackTarget.GetComponents<Collider2D>().Any(s => (Vector2.Distance(this.transform.position, s.ClosestPoint(this.transform.position)) < myEnemyData.attackRange )))) {
+            (attackTarget.tag == "Structure" && attackTarget.GetComponents<Collider2D>().Any(s => (Vector2.Distance(this.transform.position, s.ClosestPoint(this.transform.position)) < myEnemyData.attackRange+ 0.5f )))) {
                 onAttack(); //Does the Attack Action
                 AttackTimer(); //starts the timer coroutine
             }
@@ -83,16 +83,17 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
     public virtual void onDeath(){
         //Triggers the attached Deal Trigger
         //if (myEnemyData.SoundOnDeath != null) {audioController.Play(myEnemyData.SoundOnDeath);} //Play SoundOnDeath if the file has been declared
-         if (myEnemyData.SoundOnDeath != null && myEnemyData.SoundOnDeath.Length < 1) {audioController.Play(myEnemyData.SoundOnDeath);}
+        if (myEnemyData.SoundOnDeath != null) {audioController.Play(myEnemyData.SoundOnDeath);}
         onDeathBehavior.onDeath(this.gameObject);
     }
 
     public virtual void onAttack(){
         if (myEnemyData.SoundOnAttack != null && myEnemyData.SoundOnAttack.Length > 0) {audioController.Play(myEnemyData.SoundOnAttack);} //Play SoundOnAttack if the file has been declared  
-        Debug.Log(this.gameObject.name+" is doing an attack!");
-      onAttackBehavior.OnAttack(myEnemyData.attackDamage,
-      attackTarget,// <<<<<<<<<<<<<<<----------------------------------This is where on object that is to be attacked is chosen;
-      this.gameObject);      
+        Debug.Log(this.gameObject.name+" is doing an attack against the "+ attackTarget.name);
+        onAttackBehavior.OnAttack(
+            myEnemyData.attackDamage,
+            attackTarget,// <<<<<<<<<<<<<<<----------------------------------This is where on object that is to be attacked is chosen;
+            this.gameObject);      
     }
     
     // Status Effect 

@@ -9,5 +9,6 @@ public class PlayerOnDeathTeleport : PlayerOnDeathSO
     [SerializeField]Vector2 spawnPoint;
     public override void onDeath(GameObject thisObject) {
         GameObject.Find("Player").GetComponent<IPlayerControl>().PlayerDeath(DeathPenalty,deathEffect,spawnPoint);
+        Currency.setMoney((int)(Currency.getMoney()*0.8));
     }
 }

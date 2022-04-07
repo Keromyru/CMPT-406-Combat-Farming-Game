@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plantName: GigaGourd_Mature
   toolTip: 
-  plantMaxHealth: 500
+  plantMaxHealth: 300
   plantMaxEnergy: 250
   plantType: 0
   plantAgroValue: 0
@@ -22,11 +22,11 @@ MonoBehaviour:
   matureAge: 0
   harvestable: 1
   DaysUntilHarvest: 5
-  soundDeath: 
+  soundDeath: CartoonSplat
   soundAttack: 
   soundHarvested: 
   soundHurt: 
-  soundGrowth: 
+  soundGrowth: Pop
   GrowPhaseEffect: {fileID: 0}
   plantPrefab: {fileID: 2612463031059291451, guid: 6e71a4712c644a84cb317afe874b8975, type: 3}
   nextPhase: {fileID: 0}

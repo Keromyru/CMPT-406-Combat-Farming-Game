@@ -31,7 +31,7 @@ MonoBehaviour:
     distance: 10
   SoundOnHit: Thud
   SoundOnAttack: AttackSwoop
-  SoundOnDeath: 
+  SoundOnDeath: MonsterGrowl
   SoundAggression: 
   onAttackBehavior: {fileID: 11400000, guid: 4a1935208412a034784c540d19326110, type: 2}
   onHitBehavior: {fileID: 11400000, guid: f3a4e05386fe3904e816ea7a1b87e495, type: 2}

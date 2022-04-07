@@ -27,8 +27,8 @@ MonoBehaviour:
     tag: Plant
     distance: 3
   SoundOnHit: 
-  SoundOnAttack: 
-  SoundOnDeath: 
+  SoundOnAttack: Slaps
+  SoundOnDeath: Growl
   SoundAggression: 
   onAttackBehavior: {fileID: 11400000, guid: 4a1935208412a034784c540d19326110, type: 2}
   onHitBehavior: {fileID: 11400000, guid: 326dcce30e9055545b48ea8fe69798ca, type: 2}

@@ -33,8 +33,8 @@ MonoBehaviour:
     tag: Structure
     distance: 8
   SoundOnHit: 
-  SoundOnAttack: 
-  SoundOnDeath: 
+  SoundOnAttack: Punch
+  SoundOnDeath: MonsterGrowl
   SoundAggression: 
   onAttackBehavior: {fileID: 11400000, guid: 4a1935208412a034784c540d19326110, type: 2}
   onHitBehavior: {fileID: 11400000, guid: 326dcce30e9055545b48ea8fe69798ca, type: 2}

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b2666010b669f249b78a662f94f355e, type: 3}
+  m_Name: SFX_MonsterGrowls
+  m_EditorClassIdentifier: 
+  Name: MonsterGrowl
+  clips:
+  - {fileID: 8300000, guid: 8af03253d356c7948a5a7fd7eac7d65f, type: 3}
+  - {fileID: 8300000, guid: 3a48410f430154840b06f782fc348519, type: 3}
+  - {fileID: 8300000, guid: 994e53e2ee6a2714dacdf8edaf95742b, type: 3}
+  - {fileID: 8300000, guid: ab57dd0857014f14a8b89f7889b30071, type: 3}
+  - {fileID: 8300000, guid: be0120477cc755b469db0b763c061f44, type: 3}
+  - {fileID: 8300000, guid: c86a6d6523e719940bb9e7c5746342b2, type: 3}
+  - {fileID: 8300000, guid: 2ad5729f0071b0b4db97d94e07e5c703, type: 3}
+  - {fileID: 8300000, guid: ecec04aacde0d504aac524cc2052a4c7, type: 3}
+  - {fileID: 8300000, guid: a6fe54234e433f34eae9328e2f65d5d8, type: 3}
+  - {fileID: 8300000, guid: 632ff648295427349bf982fc613e0c8d, type: 3}
+  - {fileID: 8300000, guid: 2d2b132cf90976e4798e35b0c0284b99, type: 3}
+  - {fileID: 8300000, guid: 2395a2e857a584741b7effdace2f7d21, type: 3}
+  - {fileID: 8300000, guid: 2be47b020aaf9ac4aabe85fa335993bc, type: 3}
+  - {fileID: 8300000, guid: 33d2c2f7909729b48b7dbea2d0979a8c, type: 3}
+  - {fileID: 8300000, guid: dabf96d2f60184e4189fdeb96bb53a33, type: 3}
+  - {fileID: 8300000, guid: 469ffa1a5a3a38d40a61b8497659e6fb, type: 3}
+  - {fileID: 8300000, guid: 944ca1890ec65a043a283891e34053b6, type: 3}
+  type: 1
+  volume: 0.7
+  pitch: 1
+  source: {fileID: 0}

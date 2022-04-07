@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa13a47587b98b74d998b410c77abcec, type: 3}
   m_Name: OnHit Reflect
   m_EditorClassIdentifier: 
-  reflectPercentage: 15
+  reflectPercentage: 5

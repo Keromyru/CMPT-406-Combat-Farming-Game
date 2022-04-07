@@ -22,11 +22,11 @@ MonoBehaviour:
   matureAge: 1
   harvestable: 1
   DaysUntilHarvest: 4
-  soundDeath: 
+  soundDeath: CartoonSplat
   soundAttack: AttackSwoop
   soundHarvested: 
   soundHurt: 
-  soundGrowth: 
+  soundGrowth: Pop
   GrowPhaseEffect: {fileID: 0}
   plantPrefab: {fileID: 3435683626492516636, guid: fbce66f114478b3439300f1a144f0ac4, type: 3}
   nextPhase: {fileID: 0}
