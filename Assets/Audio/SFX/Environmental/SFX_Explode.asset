@@ -9,7 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa13a47587b98b74d998b410c77abcec, type: 3}
-  m_Name: OnHit Reflect
+  m_Script: {fileID: 11500000, guid: 8b2666010b669f249b78a662f94f355e, type: 3}
+  m_Name: SFX_Explode
   m_EditorClassIdentifier: 
-  reflectPercentage: 3
+  Name: Explode
+  clips:
+  - {fileID: 8300000, guid: 5c655424d64e40245b8ce8c01cbbe460, type: 3}
+  type: 0
+  volume: 1
+  pitch: 1
+  source: {fileID: 0}

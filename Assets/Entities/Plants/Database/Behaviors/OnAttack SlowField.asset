@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 4
   attackRate: 1
-  attackDamage: 3
+  attackDamage: 2
   myObject: {fileID: 0}
   slowDuration: 2
   slowRatio: 0.5
