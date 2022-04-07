@@ -412,7 +412,7 @@ MonoBehaviour:
   nameText: {fileID: 46235066026420778}
   dialogueText: {fileID: 46235066184495323}
   animator: {fileID: 46235066663236254}
-  typingSpeed: 0.025
+  typingSpeed: 0.007
 --- !u!1 &46235066026420780
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,7 +480,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 40
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -491,7 +491,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: NPC Name
+  m_Text: EXO Corp Agent
 --- !u!1 &46235066066788506
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,11 +638,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: EXO Corp
+    name: EXO Corp Agent
     sentences:
-    - Wake up Gary!
-    - We sent you to this planet to make us some money.
-    - Dont disappoint us!
+    - "Ah, Welcome\u2026"
+    - "\u201CGary?\u201D\u2026"
+    - This is your first assignment with us?
+    - Great!
+    - "Your suit protects you from some of the harsher elements of this planet\u2026"
+    - "Where are we? Don\u2019t you know? You\u2019d think you\u2019d have known
+      this before you accepted the assignment."
+    - "This is EXO-Beta-129. It\u2019s a class-4 planet, meaning it needs a lot of
+      re-vegetation."
+    - "Let\u2019s go through some basic controls."
+    - "You move your suit with the \u2018W\u2019 \u2018A\u2019 \u2018S\u2019 \u2018D\u2019
+      keys on your keyboard."
+    - "hitting the \u2018ESC\u2019 allows you to stop time and pause. You can also
+      abort your mission from there. But I would not recommend that."
+    - You can purchase local crops from the hub station, just walk into the big building
+      to shop. They are specially engineered for this planet.
+    - "Your job is to make a profit. You do this by harvesting space potatoes you
+      plant. Harvest with the mouse\u2019s right click."
+    - Other plants do other things, more information on those is provided within
+      the hub.
+    - Keep in mind each plant has to grow also.  Afterall, that is an important part
+      of being a space faring farmer.
+    - Oh, at night, you have to protect the hub. The hub dies, you die. So be mindful
+      of that.  You have to protect the hub.
+    - What do you mean you have to protect the hub? Did you not read the brief at
+      all?
+    - 'There are a variety of local fauna that, frankly, do not want you here. You
+      need to defend both the plants, and the hub from them. '
+    - "At night your water-dispenser becomes a high powered plasma blaster. Use it
+      wisely. To fire your plasma blaster, use your mouse\u2019s left click. "
+    - The fauna drop EXO-coins. These can be used to buy more crops.
+    - Should your crops get damaged, you can water them using your left mouse click.
+    - "picking up other things is done with the \u2018E\u2019 key on your keyboard."
+    - I think that's about all for me. Good luck, Gary. Profit, for the Glory of
+      EXO-Corp.
 --- !u!1 &46235066184495325
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,7 +753,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Dialogue Text
+  m_Text: I think that's about all for me. Good luck, Gary. Profit, for the Glory
+    of EXO-Corp.
 --- !u!1 &46235066663236226
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,7 +794,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 374}
+  m_AnchoredPosition: {x: 1429, y: 374}
   m_SizeDelta: {x: 800, y: 275}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &46235066663236255
