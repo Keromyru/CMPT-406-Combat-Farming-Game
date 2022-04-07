@@ -15,6 +15,7 @@ MonoBehaviour:
   enemyName: SplitStrider
   enemyMaxHealth: 50
   enemyMoveSpeed: 1.5
+  AdditiveLerpRange: 15
   attackRate: 3
   attackRange: 0.6
   attackDamage: 30

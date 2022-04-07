@@ -15,6 +15,7 @@ MonoBehaviour:
   enemyName: Fly Boy
   enemyMaxHealth: 70
   enemyMoveSpeed: 2
+  AdditiveLerpRange: 15
   attackRate: 0.33
   attackRange: 0.6
   attackDamage: 5
