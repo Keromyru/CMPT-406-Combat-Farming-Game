@@ -523,7 +523,6 @@ MonoBehaviour:
   money: {fileID: 337744260832164164}
   score: {fileID: 4104004711863273064}
   animator: {fileID: 3936078559346916110}
-  screenObj: {fileID: 4562701117756011502}
 --- !u!1 &5049715616925205336
 GameObject:
   m_ObjectHideFlags: 0
