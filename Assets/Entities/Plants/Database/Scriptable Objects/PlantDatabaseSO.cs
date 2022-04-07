@@ -8,6 +8,7 @@ using System.Linq;
 public class PlantDatabaseSO : ScriptableObject
 {
     [SerializeField] GameObject SpawnInEffect; 
+    [SerializeField] AudioClipSO SpawnInSounds;
     [Header("This List Updates Itself Dynamicaly"), SerializeField] 
     PlantBehaviorSO[] plantList;
     private void OnEnable() {
@@ -17,6 +18,7 @@ public class PlantDatabaseSO : ScriptableObject
 
     public GameObject spawnPlant(string name, Vector2 location){
         if (SpawnInEffect != null) {Instantiate(SpawnInEffect, location, Quaternion.identity);}
+        if (SpawnInSounds != null) {SpawnInSounds.Play();}
         PlantBehaviorSO plant = plantList.First(x => x.plantName.Contains(name));
         return plant.spawnPlant(name, location);
     }

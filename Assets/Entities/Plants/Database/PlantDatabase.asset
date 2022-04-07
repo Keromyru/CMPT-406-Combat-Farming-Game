@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PlantDatabase
   m_EditorClassIdentifier: 
   SpawnInEffect: {fileID: 3704521463509072633, guid: 42637a383b7711d4da92cc615226b04d, type: 3}
+  SpawnInSounds: {fileID: 11400000, guid: f46c688b812af7149b96ce03b322647a, type: 2}
   plantList:
   - {fileID: 11400000, guid: 0d7f8c4309e35514f8fb3ab60458b535, type: 2}
   - {fileID: 11400000, guid: 0e8eeb399c3f59541ace11f44ca17f82, type: 2}
