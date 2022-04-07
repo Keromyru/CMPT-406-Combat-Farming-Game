@@ -188,15 +188,15 @@ public class WaveSpawner : MonoBehaviour
     {
         if (dayCount != 0)
         {
-            if (dayCount % 2 == 0)
+            if (dayCount % 1 == 0)
             {
                 upgradeEnemiesAssist("Crawlie");
             }
-            if (dayCount % 3 == 0)
+            if (dayCount % 2 == 0)
             {
                 upgradeEnemiesAssist("SplitStrider");
             }
-            if (dayCount % 4 == 0)
+            if (dayCount % 3 == 0)
             {
                 upgradeEnemiesAssist("Fly Boy");
             }
