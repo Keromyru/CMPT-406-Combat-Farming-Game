@@ -640,11 +640,6 @@ MonoBehaviour:
   dialogue:
     name: EXO Corp
     sentences:
-<<<<<<< HEAD
-    - Wake up Gary!
-    - We sent you to this planet to make us some money.
-    - Dont disappoint us!
-=======
     - "Ah, Welcome\u2026"
     - "\u201CGary?\u201D\u2026"
     - This is your first assignment with us?
@@ -685,10 +680,9 @@ MonoBehaviour:
     - Should your crops get damaged, you can water them using your left mouse click.
     - Your suit will vacuum up coins and seed packets on the ground to save your
       back from bending over; we care about your health Gary.
-    - If you die it really affects our bottom line
+    - If you die it really affects our bottom line.
     - I think that's about all for me. Good luck, Gary. Profit, for the Glory of
       EXO-Corp.
->>>>>>> ff99c2f... updated the prefab so i can try and solve in game conflicts
 --- !u!1 &46235066184495325
 GameObject:
   m_ObjectHideFlags: 0
