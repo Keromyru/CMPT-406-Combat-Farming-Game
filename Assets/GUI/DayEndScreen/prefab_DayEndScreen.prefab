@@ -274,7 +274,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8d8ff703e8aca2446be34bc396878772, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1c2b5cae76b31ac48bd0b3eda3ffadfd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -518,10 +518,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 020f490cf163fce40a2d3f807783002c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  days: {fileID: 0}
-  monsters: {fileID: 0}
-  money: {fileID: 0}
-  score: {fileID: 0}
+  days: {fileID: 8840215044935246458}
+  monsters: {fileID: 5849372256526126197}
+  money: {fileID: 337744260832164164}
+  score: {fileID: 4104004711863273064}
+  animator: {fileID: 3936078559346916110}
 --- !u!1 &5049715616925205336
 GameObject:
   m_ObjectHideFlags: 0
