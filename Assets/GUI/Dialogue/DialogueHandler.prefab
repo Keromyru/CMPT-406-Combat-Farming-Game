@@ -528,7 +528,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 589, y: 505}
+  m_AnchoredPosition: {x: -821, y: 225}
   m_SizeDelta: {x: 122.3432, y: 22.9393}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &46235066066788501
@@ -652,14 +652,20 @@ MonoBehaviour:
     - "Let\u2019s go through some basic controls."
     - "You move your suit with the \u2018W\u2019 \u2018A\u2019 \u2018S\u2019 \u2018D\u2019
       keys on your keyboard."
-    - "hitting the \u2018ESC\u2019 allows you to stop time and pause. You can also
+    - "Hitting the \u2018ESC\u2019 allows you to stop time and pause. You can also
       abort your mission from there. But I would not recommend that."
     - You can purchase local crops from the hub station, just walk into the big building
       to shop. They are specially engineered for this planet.
-    - "Your job is to make a profit. You do this by harvesting space potatoes you
-      plant. Harvest with the mouse\u2019s right click."
-    - Other plants do other things, more information on those is provided within
-      the hub.
+    - To plant, first press the associated number on the keyboard OR click the seed
+      packet on the hotbar.
+    - 'Then to have your suit execute planting right click on a hex tile. '
+    - Your job is to make a profit. You do this by harvesting space potatoes- ahem,
+      eggroot, you plant.
+    - " Harvest with the mouse\u2019s right click when plants get more... brown."
+    - I don't know why we engineered them to be this way but brown means ready, like
+      a good cooked loaf of giga-gourd bread.
+    - Other plants do other things, more information on those is provided in the
+      HUB and hotbar on hover.
     - Keep in mind each plant has to grow also.  Afterall, that is an important part
       of being a space faring farmer.
     - Oh, at night, you have to protect the hub. The hub dies, you die. So be mindful
@@ -672,7 +678,9 @@ MonoBehaviour:
       wisely. To fire your plasma blaster, use your mouse\u2019s left click. "
     - The fauna drop EXO-coins. These can be used to buy more crops.
     - Should your crops get damaged, you can water them using your left mouse click.
-    - "picking up other things is done with the \u2018E\u2019 key on your keyboard."
+    - Your suit will vacuum up coins and seed packets on the ground to save your
+      back from bending over; we care about your health Gary.
+    - If you die it really affects our bottom line
     - I think that's about all for me. Good luck, Gary. Profit, for the Glory of
       EXO-Corp.
 --- !u!1 &46235066184495325
