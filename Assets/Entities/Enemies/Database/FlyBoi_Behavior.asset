@@ -26,7 +26,7 @@ MonoBehaviour:
   - name: I guess plants will do
     tag: Plant
     distance: 3
-  SoundOnHit: 
+  SoundOnHit: Thud
   SoundOnAttack: Slaps
   SoundOnDeath: Growl
   SoundAggression: 

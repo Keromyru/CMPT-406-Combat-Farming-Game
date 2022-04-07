@@ -75,7 +75,7 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
         //The Method Existing on the SO will trigger as well as pass final damage to the enemy itself.
         //This can accomedate for any kind of damage negation that may be needed.
         //This also passes this game object so that the script may do whatever it needs with it, or it's position
-        if (myEnemyData.SoundOnHit != null && myEnemyData.SoundOnHit.Length < 1) {audioController.Play(myEnemyData.SoundOnHit);}
+        if (myEnemyData.SoundOnHit != "" && myEnemyData.SoundOnHit.Length < 1) {audioController.Play(myEnemyData.SoundOnHit);}
         if (GetComponent<FlashEffect>() != null){GetComponent<FlashEffect>().flash();} //Flash Effect On Hit
         enemyHealth -= onHitBehavior.onHit(damage, source, this.gameObject); //Trigger onhit behaviors
     }
@@ -83,12 +83,12 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
     public virtual void onDeath(){
         //Triggers the attached Deal Trigger
         //if (myEnemyData.SoundOnDeath != null) {audioController.Play(myEnemyData.SoundOnDeath);} //Play SoundOnDeath if the file has been declared
-        if (myEnemyData.SoundOnDeath != null) {audioController.Play(myEnemyData.SoundOnDeath);}
+        if (myEnemyData.SoundOnDeath != "") {audioController.Play(myEnemyData.SoundOnDeath);}
         onDeathBehavior.onDeath(this.gameObject);
     }
 
     public virtual void onAttack(){
-        if (myEnemyData.SoundOnAttack != null && myEnemyData.SoundOnAttack.Length > 0) {audioController.Play(myEnemyData.SoundOnAttack);} //Play SoundOnAttack if the file has been declared  
+        if (myEnemyData.SoundOnAttack != "" && myEnemyData.SoundOnAttack.Length > 0) {audioController.Play(myEnemyData.SoundOnAttack);} //Play SoundOnAttack if the file has been declared  
         Debug.Log(this.gameObject.name+" is doing an attack against the "+ attackTarget.name);
         onAttackBehavior.OnAttack(
             myEnemyData.attackDamage,

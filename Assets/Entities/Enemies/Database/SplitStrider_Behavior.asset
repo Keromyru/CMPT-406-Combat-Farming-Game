@@ -32,7 +32,7 @@ MonoBehaviour:
   - name: Nope, I hate structures
     tag: Structure
     distance: 8
-  SoundOnHit: 
+  SoundOnHit: Thud
   SoundOnAttack: Punch
   SoundOnDeath: MonsterGrowl
   SoundAggression: 

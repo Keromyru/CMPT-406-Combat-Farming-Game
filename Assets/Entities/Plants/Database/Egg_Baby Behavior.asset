@@ -25,7 +25,7 @@ MonoBehaviour:
   soundDeath: CartoonSplat
   soundAttack: 
   soundHarvested: 
-  soundHurt: 
+  soundHurt: PlantImpact
   soundGrowth: Pop
   GrowPhaseEffect: {fileID: 3704521463509072633, guid: 42637a383b7711d4da92cc615226b04d, type: 3}
   plantPrefab: {fileID: 890959197961665522, guid: 0b58a6b5cadb43c4fbe3bffbc3f0f0bf, type: 3}
