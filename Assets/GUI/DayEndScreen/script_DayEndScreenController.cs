@@ -31,7 +31,13 @@ public class script_DayEndScreenController : MonoBehaviour {
 		this.setMoney(GameStats.getNightMoney());
 		this.setScore(GameStats.getNightScore());
 		GameStats.NightStatReset();
-		animator.Play("anim-DayEndScreenEnter");
+		StartCoroutine(animationControl());
+	}
+
+	IEnumerator animationControl(){
+		animator.Play("anim_DayEndScreenEnter");
+		yield return new WaitForSeconds(5f);
+		animator.Play("anim_DayEndScreenExit");
 	}
 
     public void SetStats( int days, int monsters, int money, int score ) {
