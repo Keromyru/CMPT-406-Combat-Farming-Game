@@ -10,7 +10,6 @@ public class script_DayEndScreenController : MonoBehaviour {
 	public TextMeshProUGUI days, monsters, money, score;
 
 	public Animator animator;
-	
     /*
 		Sets the values for each text
 		function SetStats
@@ -36,7 +35,7 @@ public class script_DayEndScreenController : MonoBehaviour {
 
 	IEnumerator animationControl(){
 		animator.Play("anim_DayEndScreenEnter");
-		yield return new WaitForSeconds(5f);
+		yield return new WaitForSeconds(4f);
 		animator.Play("anim_DayEndScreenExit");
 	}
 
