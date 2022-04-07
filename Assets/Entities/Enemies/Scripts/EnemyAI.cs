@@ -64,7 +64,7 @@ public class EnemyAI : MonoBehaviour
         if (myDistance() > myController.myEnemyData.attackRange - 0.2f){ //Moves to attack range
             Vector3 targetWithOffset = (
                 (myTargetPosition - myRB.position).normalized // Direction
-                * (10 - myDistance())  //Displacement of 10 units
+                * (myController.myEnemyData.AdditiveLerpRange - myDistance())  //Displacement of 10 units
                 + myTargetPosition);
             myRB.MovePosition(force + Vector2.Lerp( myRB.position, targetWithOffset , Time.deltaTime * enemyMoveSpeed*myController.slowMulti * 0.1f)); //Actual move update
         }

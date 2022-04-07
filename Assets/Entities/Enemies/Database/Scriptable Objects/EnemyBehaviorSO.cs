@@ -8,6 +8,8 @@ public class EnemyBehaviorSO : ScriptableObject
   public string enemyName;
   public float enemyMaxHealth;
   public float enemyMoveSpeed;
+  [Range(1,100)]
+  public float AdditiveLerpRange = 10;
   [Header("Enemy Attack")]
   [Tooltip("This is time between attacks, lower is faster")]
   public float attackRate;
