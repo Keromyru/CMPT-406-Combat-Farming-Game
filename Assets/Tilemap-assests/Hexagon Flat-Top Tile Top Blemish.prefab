@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5650478113585573123}
   m_Layer: 11
   m_Name: Hexagon Flat-Top Tile Top Blemish
-  m_TagString: randomObstacle
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
