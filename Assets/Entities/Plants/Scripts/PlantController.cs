@@ -60,7 +60,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     private void FixedUpdate() {
         //Target Check  is not day, is not waiting, is able to attack, has a target, and the target is available
         
-        if (!dayTime && myPlantData.canAttack && !isWaiting && targets.Count > 0){
+        if (!dayTime && !isReady && myPlantData.canAttack && !isWaiting && targets.Count > 0){
             targets = targets.OrderBy(t => distance(t)).ToList();
             if (distance(targets[0]) <= onAttackBehavior.attackRange){
                 onAttack(); //Does the Attack Action
@@ -152,6 +152,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
             mySprite.color = new Color(.5f, .5f, .5f);
         }
         if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar
+        if(isReady){ onHarvestReady();}
     }
 
     public virtual void newNight(){
@@ -196,6 +197,12 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         else {
             return false;
         }
+    }
+
+    public void onHarvestReady(){
+        health = health - myPlantData.plantMaxHealth*0.5f*(growAge-myPlantData.matureAge);
+        if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar 
+        if (health < 5f) { onDeath();} 
     }
     
     ////////////////////////////////////////////////
