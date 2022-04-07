@@ -225,6 +225,7 @@ public class WaveSpawner : MonoBehaviour
     private void onDay()
     {
         DayEndScreenScript.setDays(dayCount);
+        GameStats.AddDay(1);
         EnemySpawnList.removeFirstSpawn();
         isNight = false;
         aliveEnemies = false;

@@ -11,6 +11,12 @@ public static class GameStats
     static int nightKills = 0;
     static int totalKills = 0;
 
+    static int totalMoney = 0;
+
+    static int totalScore = 0;
+
+    static int totalDays = 0;
+
     public static void NightStatReset()
     {
         nightMoney = 0;
@@ -27,11 +33,17 @@ public static class GameStats
     public static void AddScore(int newScore)
     {
         nightScore += newScore;
+        totalScore += newScore;
     }
 
     public static void AddMoney(int newMoney)
     {
         nightMoney += newMoney;
+        totalMoney += newMoney;
+    }
+
+    public static void AddDay(int day){
+        totalDays += day;
     }
 
     #region Sets and Gets
@@ -48,6 +60,22 @@ public static class GameStats
     public static int getNightScore()
     {
         return nightScore;
+    }
+
+    public static int getTotalKills(){
+        return totalKills;
+    }
+
+    public static int getTotalScore(){
+        return totalScore;
+    }
+
+    public static int getTotalMoney(){
+        return totalMoney;
+    }
+
+    public static int getTotalDays(){
+        return totalDays;
     }
     #endregion Sets and Gets
 

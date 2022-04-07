@@ -12,6 +12,8 @@ public class HubController : MonoBehaviour, ITakeDamage
     GameObject onDeathEffect;
     AudioClipSO onHitSound;
     AudioClipSO onDeathSound;
+
+    [SerializeField] GameObject endGameObject;
     
     private void Start() {
         myHealthbar = GetComponentInChildren<Healthbar_HUBController>();
@@ -29,6 +31,8 @@ public class HubController : MonoBehaviour, ITakeDamage
         if (onDeathEffect != null){ Instantiate(onDeathEffect, this.transform.position, this.transform.rotation); }
         if (onDeathSound != null) { onDeathSound.Play();} //Play onDeathSound
         Debug.Log("You have lost the game my dude");
+        endGameObject.GetComponent<script_EndgameController>().setStats();
+        endGameObject.SetActive(true);
     }
 
     public void Restore(){
