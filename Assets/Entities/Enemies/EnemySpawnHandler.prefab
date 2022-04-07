@@ -52,11 +52,11 @@ MonoBehaviour:
   waves:
   - waveName: CrawlieWave1
     enemyName: Crawlie
-    count: 2
+    count: 4
     rate: 1
   - waveName: SplitStriderWave1
     enemyName: SplitStrider
-    count: 2
+    count: 3
     rate: 1
   - waveName: FlyBoyWave1
     enemyName: Fly Boy
@@ -69,7 +69,7 @@ MonoBehaviour:
   - {fileID: 1092850840246546873}
   - {fileID: 1092850840202913719}
   - {fileID: 1092850840424507729}
-  timeBetweenWaves: 7.5
+  timeBetweenWaves: 3.5
   waveCountdown: 0
   dayCount: 0
   baddies: {fileID: 11400000, guid: 8afe92503b2738d408b63877c8805055, type: 2}
