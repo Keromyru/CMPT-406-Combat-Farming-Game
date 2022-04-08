@@ -25,6 +25,7 @@ public class script_EndgameController : MonoBehaviour {
 		
 		GameStats.ResetAll();
 		SceneManager.LoadScene( "MainMenu", LoadSceneMode.Single );
+		SceneManager.LoadScene( "System", LoadSceneMode.Additive );
 		
 	}
 		
