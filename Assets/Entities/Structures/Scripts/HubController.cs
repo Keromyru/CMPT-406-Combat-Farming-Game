@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class HubController : MonoBehaviour, ITakeDamage
 {
     [Header("Hub Configeration")]
     public float hubMaxHealth;
+	public GameObject transitionEffect;
     private Healthbar_HUBController myHealthbar;
     private float hubHealth = 1;
 
@@ -40,10 +42,23 @@ public class HubController : MonoBehaviour, ITakeDamage
             if (onDeathSound != null) { onDeathSound.Play();} //Play onDeathSound
             Debug.Log("You have lost the game my dude");
             endGameObject.GetComponent<script_EndgameController>().setStats();
-            endGameObject.SetActive(true);
+			// Play the transition effect
+			playTransition();
+			// Load the end screen
+            SceneManager.LoadScene( "EndScreen", LoadSceneMode.Single );
         }
 
     }
+	
+	IEnumerator playTransition() {
+		
+		// Play animation and wait for delay
+		transitionEffect.SetActive( true );
+		transitionEffect.GetComponent<Animator>().Play("anim_TransitionEnter");
+		
+		yield return new WaitForSeconds( 1f );
+		
+	}	
 
     public void newDay(){
        hubHealth +=  (int)(hubMaxHealth*0.2f);
