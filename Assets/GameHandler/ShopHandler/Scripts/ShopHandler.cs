@@ -39,16 +39,28 @@ public class ShopHandler : MonoBehaviour
 
     public float special_discount = 1.15f;  // mark speciality items up to 15% in shop
 
+    public static int itemsBought = 0;  // total items bought by player
+    public static int itemsSold = 0;  // total items sold by player
+
 
     // generate a list of items for sale
     private void generateItems() {
 
         shopItems.Clear();  // kill the old shop. new shop now.
 
+        int pick1 = 3;
+        int pick2 = 3;
+        int pick3 = 3;
+
         // grab random seeds
-        int pick1 = Random.Range(0, AllSeeds.Length);
-        int pick2 = Random.Range(0, AllSeeds.Length);
-        int pick3 = Random.Range(0, AllSeeds.Length);
+        while (((pick1 == pick2) && (pick2 == pick3)) && (pick3 == 3)) {
+            pick1 = Random.Range(0, AllSeeds.Length);
+            pick2 = Random.Range(0, AllSeeds.Length);
+            pick3 = Random.Range(0, AllSeeds.Length);
+            //Debug.Log("Ran shop generation, picks " + pick1 + " & " + pick2 + " & " + pick3);
+        }
+
+        
 
         // grab random values between min & max, add to list of items
         int amount = Random.Range(min_seeds, max_seeds);
@@ -103,6 +115,7 @@ public class ShopHandler : MonoBehaviour
 
         item.Sell();
         Inventory.instance.RemoveItem(item);
+        itemsSold++;
 
         current_money = Currency.getMoney();
 
@@ -145,6 +158,7 @@ public class ShopHandler : MonoBehaviour
             item.Buy(shop_item.price);
             Inventory.instance.AddItem(item);
             shopItems[current].amount -= 1;
+            itemsBought++;
         }
 
         current_money = Currency.getMoney();
@@ -153,5 +167,13 @@ public class ShopHandler : MonoBehaviour
         if (onShopRefreshCallback != null) {
             onShopRefreshCallback.Invoke();
         }
+    }
+
+    public int getItemsBought() {
+        return itemsBought;
+    }
+
+    public int getItemsSold() {
+        return itemsSold;
     }
 }

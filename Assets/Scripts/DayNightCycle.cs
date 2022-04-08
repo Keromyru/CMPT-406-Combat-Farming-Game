@@ -241,6 +241,15 @@ public class DayNightCycle : MonoBehaviour
         activeEclipse = true;
     }
 
+    public void slowTime(){
+        oldTick = tick;
+        tick = tick * .01f;
+    }
+
+    public void normalTime(){
+        tick = oldTick;
+    }
+
     public void EndEclipse()  //Sets the time speed back to normal.
     {
         if(activeEclipse == true)

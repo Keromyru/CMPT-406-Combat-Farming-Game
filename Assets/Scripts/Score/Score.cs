@@ -16,13 +16,15 @@ public static class Score
     public static void addScore(int scoreToAdd)
     {
         score += scoreToAdd;
+        GameStats.AddScore(scoreToAdd);
         scoreEvent.Invoke();
     }
 
     // Add multiple amounts to the score counter
     public static void addMultipleScore(int scoreToAdd, int AmountofItemsSold)
     {
-        score += (scoreToAdd * AmountofItemsSold);
+        addScore(scoreToAdd * AmountofItemsSold);
+        GameStats.AddScore(scoreToAdd * AmountofItemsSold);
         scoreEvent.Invoke();
     }
 

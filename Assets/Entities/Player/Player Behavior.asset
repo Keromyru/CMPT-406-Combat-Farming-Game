@@ -17,6 +17,7 @@ MonoBehaviour:
   WaterQuantity: 5
   WaterRate: 0.5
   interactionRange: 2
+  fromPointer: 0.25
   soundDeath: Teleport
   soundHurt: Beep
   soundHeal: Rise

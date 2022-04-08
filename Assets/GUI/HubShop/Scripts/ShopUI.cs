@@ -28,6 +28,8 @@ public class ShopUI : MonoBehaviour
 
     public GameObject tracker;  // same deal as minimap, gets too cluttered
 
+    public GameObject scoreCounter;  // clutter management again
+
     private bool isNight = false;
     
 
@@ -53,6 +55,7 @@ public class ShopUI : MonoBehaviour
         shopUI.SetActive(false);
         minimap.SetActive(true);
         tracker.SetActive(true);
+        scoreCounter.SetActive(true);
     }
 
     void Daytime() {
@@ -74,12 +77,14 @@ public class ShopUI : MonoBehaviour
             shopUI.SetActive(true);
             minimap.SetActive(false);
             tracker.SetActive(false);
+            scoreCounter.SetActive(false);
         }
         // no, hide shop and display minimap & time tracker
         else {
             shopUI.SetActive(false);
             minimap.SetActive(true);
             tracker.SetActive(true);
+            scoreCounter.SetActive(true);
         }
     }
 

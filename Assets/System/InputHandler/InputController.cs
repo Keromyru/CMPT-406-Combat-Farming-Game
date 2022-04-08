@@ -31,8 +31,8 @@ public class InputController : MonoBehaviour
         playerInput.actions["CloseMenu"].performed += DisableMenu;
 
         // Inputs to open/close UI/Inventory
-        playerInput.actions["OpenInventory"].performed += EnableInventory;
-        playerInput.actions["CloseInventory"].performed += DisableInventory;
+        //playerInput.actions["OpenInventory"].performed += EnableInventory;
+        //playerInput.actions["CloseInventory"].performed += DisableInventory;
 
 
 /*        // Tests
@@ -49,8 +49,8 @@ public class InputController : MonoBehaviour
         playerInput.actions["CloseMenu"].performed -= DisableMenu;
 
         // Inputs to open/close UI/Inventory
-        playerInput.actions["OpenInventory"].performed -= EnableInventory;
-        playerInput.actions["CloseInventory"].performed -= DisableInventory;
+        //playerInput.actions["OpenInventory"].performed -= EnableInventory;
+        //playerInput.actions["CloseInventory"].performed -= DisableInventory;
     }
 
 
@@ -61,17 +61,17 @@ public class InputController : MonoBehaviour
         {
             playerInput.SwitchCurrentActionMap("InputPlayer");
         }
-        else
-        {
-            playerInput.SwitchCurrentActionMap("InputUI");
-        }
+        //else
+        //{
+        //    playerInput.SwitchCurrentActionMap("InputUI");
+        //}
     }
 
     // Enables the UI action map
-    private void EnableInventory(InputAction.CallbackContext context)
-    {
-        playerInput.SwitchCurrentActionMap("InputUI");
-    }
+    //private void EnableInventory(InputAction.CallbackContext context)
+    //{
+    //    playerInput.SwitchCurrentActionMap("InputUI");
+    //}
 
     // Disables the UI action map
     private void DisableInventory(InputAction.CallbackContext context)

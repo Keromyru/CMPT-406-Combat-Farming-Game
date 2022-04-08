@@ -14,24 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: SplitStrider
   enemyMaxHealth: 50
-  numberOfDropsOnDeath: 1
-  enemyMoveSpeed: 1
+  enemyMoveSpeed: 1.5
+  AdditiveLerpRange: 15
   attackRate: 3
-  attackRange: 0.5
-  attackDamage: 10
+  attackRange: 0.6
+  attackDamage: 30
   priorityList:
-  - name: I hate Plnts
-    tag: plant
-    distance: 1
-  - name: I  hate the player
+  - name: Priority Hub
+    tag: Structure
+    distance: 3
+  - name: Else Player
     tag: Player
-    distance: 10
-  - name: i really do not like the plants
+    distance: 2
+  - name: I guess a plant is around
     tag: Plant
-    distance: 10
-  SoundOnHit: 
-  SoundOnAttack: 
-  SoundOnDeath: 
+    distance: 4
+  - name: Nope, I hate structures
+    tag: Structure
+    distance: 8
+  SoundOnHit: Thud
+  SoundOnAttack: Punch
+  SoundOnDeath: MonsterGrowl
   SoundAggression: 
   onAttackBehavior: {fileID: 11400000, guid: 4a1935208412a034784c540d19326110, type: 2}
   onHitBehavior: {fileID: 11400000, guid: 326dcce30e9055545b48ea8fe69798ca, type: 2}

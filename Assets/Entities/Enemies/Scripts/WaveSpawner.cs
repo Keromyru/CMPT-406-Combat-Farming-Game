@@ -26,11 +26,12 @@ public class WaveSpawner : MonoBehaviour
     // Spawn points for all enemies
     public Transform[] spawnPoints;
     // The radius the enemies can spawn randomly within
-    private float spawnRadius = 4f;
+    private float spawnRadius = 6f;
 
     // Will be replaced later for enemys spawning at night
-    public float timeBetweenWaves = 5f;
+    public float timeBetweenWaves;
     public float waveCountdown;
+    public int dayCount = 0;
 
     // Checks if there are enemies every second given (default is checks if there are enemies every 1 second)
     // Basically to lower resource cost on computer
@@ -44,9 +45,10 @@ public class WaveSpawner : MonoBehaviour
     // Checks if enemies are still alive
     public bool aliveEnemies = false;
 
-
     // Bool to check if it is night time
     public bool isNight = true;
+
+    public script_DayEndScreenController DayEndScreenScript;
 
     private void Start()
     {
@@ -83,10 +85,13 @@ public class WaveSpawner : MonoBehaviour
 
             if (waveCountdown <= 0)
             {
-                if (state != SpawnState.SPAWNING)
+                if (dayCount != 0)
                 {
-                    // Start spawning wave
-                    StartCoroutine(SpawnWave(waves[nextWave]));
+                    if (state != SpawnState.SPAWNING)
+                    {
+                        // Start spawning wave
+                        StartCoroutine(SpawnWave(waves[nextWave]));
+                    }
                 }
             }
             else
@@ -119,7 +124,6 @@ public class WaveSpawner : MonoBehaviour
         if (nextWave + 1 > waves.Length - 1)
         {
             nextWave = 0;
-            upgradeEnemies();
             Debug.Log("Completed all waves. Looping...");
         }
         else
@@ -151,7 +155,6 @@ public class WaveSpawner : MonoBehaviour
         state = SpawnState.SPAWNING;
 
         Transform spawningLocation = EnemySpawnList.getFirstSpawn();
-        EnemySpawnList.removeFirstSpawn();
 
         // Spawn
         for (int i = 0; i < _wave.count; i++)
@@ -176,16 +179,39 @@ public class WaveSpawner : MonoBehaviour
     {
         // Spawn Enemy
         Debug.Log("Spawning Enemy: " + _enemy);
-        Vector2 randomSpawningPoint = new Vector2(Random.insideUnitCircle.x * spawnRadius, Random.insideUnitCircle.y * spawnRadius/2);
+        Vector2 randomSpawningPoint = new Vector2(Random.insideUnitCircle.x * spawnRadius, Random.insideUnitCircle.y * spawnRadius / 3.5f);
         baddies.spawnEnemy(_enemy, location.position + new Vector3(randomSpawningPoint.x, randomSpawningPoint.y, location.position.z));
     }
 
     // Used to upgrade the enemies count and their stats after each night
     private void upgradeEnemies()
     {
+        if (dayCount != 0)
+        {
+            if (dayCount % 1 == 0)
+            {
+                upgradeEnemiesAssist("Crawlie");
+            }
+            if (dayCount % 2 == 0)
+            {
+                upgradeEnemiesAssist("SplitStrider");
+            }
+            if (dayCount % 3 == 0)
+            {
+                upgradeEnemiesAssist("Fly Boy");
+            }
+        }
+    }
+
+    // Used only by upgradeEnemies
+    private void upgradeEnemiesAssist(string name)
+    {
         foreach (Wave theWave in waves)
         {
-            theWave.count += 1;
+            if (theWave.enemyName == name)
+            {
+                theWave.count += 1;
+            }
         }
     }
 
@@ -198,15 +224,20 @@ public class WaveSpawner : MonoBehaviour
     // When day hits all enemies are deleted (This will need to be implemented to day night cycle)
     private void onDay()
     {
+        DayEndScreenScript.setDays(dayCount);
+        GameStats.AddDay(1);
+        EnemySpawnList.removeFirstSpawn();
         isNight = false;
         aliveEnemies = false;
         ClearAllEnemies();
         upgradeEnemies();
+        waveCountdown = timeBetweenWaves;
     }
 
     // When night hits enemies start to spawn (This will need to be implemented to day night cycle)
     private void onNight()
     {
         isNight = true;
+        dayCount += 1;
     }
 }

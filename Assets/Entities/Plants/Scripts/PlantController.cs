@@ -19,7 +19,6 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     private bool dayTime = false;  
     [SerializeField] private bool isReady = false;
 
-
     private PlantBehaviorSO myPlantData; //References the plants Entry in the Database
     private PlantDatabaseSO myPlantSpawner; //References the spawner to it can call it's decendants
     private AudioControllerSO audioController;
@@ -57,10 +56,16 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
             dangerIcon.SetActive(false);
         }
 
+    // private void Update() { //Triggers NewDAY for testing
+    //         if (Input.GetKeyDown("space")){
+    //         newDay();
+    //         Debug.Log("New Day "+myPlantData.name+" is "+growAge+" days old      "+(growAge-myPlantData.DaysUntilHarvest));
+    //     }
+    // }
+
     private void FixedUpdate() {
         //Target Check  is not day, is not waiting, is able to attack, has a target, and the target is available
-        
-        if (!dayTime && myPlantData.canAttack && !isWaiting && targets.Count > 0){
+        if (!dayTime && !isReady && myPlantData.canAttack && !isWaiting && targets.Count > 0){
             targets = targets.OrderBy(t => distance(t)).ToList();
             if (distance(targets[0]) <= onAttackBehavior.attackRange){
                 onAttack(); //Does the Attack Action
@@ -114,8 +119,9 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     //Replaces The Current Plant With Its next phase.
     //Going to be checked on the "Newday" trigger
     private void nextGrowthPhase(){
-        if (myPlantData.soundGrowth != null) {audioController.Play(myPlantData.soundGrowth, mySource);} //Play soundGrowth if the file has been declared
+        if (myPlantData.soundGrowth != "") {audioController.Play(myPlantData.soundGrowth, mySource);} //Play soundGrowth if the file has been declared
         //Spawns the next plant in line
+        if(myPlantData.GrowPhaseEffect != null){Instantiate(myPlantData.GrowPhaseEffect,this.transform.position,Quaternion.identity);}
         myPlantData.nextPhase.spawnNextPlant(
             myPlantData.nextPhase.name,
             this.location,
@@ -126,10 +132,8 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
 
     private void checkGrowthPhase(){
         if(myPlantData.nextPhase != null && 
-            growAge >= myPlantData.matureAge )
-        {
+            growAge >= myPlantData.matureAge ) {
             nextGrowthPhase();
-    
         }
     }
     
@@ -150,7 +154,9 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
             SpriteRenderer mySprite = GetComponent<SpriteRenderer>();
             mySprite.color = new Color(.5f, .5f, .5f);
         }
+        if(isReady){ onHarvestReady();}
         if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar
+        
     }
 
     public virtual void newNight(){
@@ -164,7 +170,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         //This can accomedate for any kind of damage negation that may be needed.
         //This also passes this game object so that the script may do whatever it needs with it, or it's position
         health -= onHitBehavior.onHit(damage, source, this.gameObject); //Trigger onhit behaviors
-        if (myPlantData.soundHurt != null) {audioController.Play(myPlantData.soundHurt, mySource);}
+        if (myPlantData.soundHurt != "") {audioController.Play(myPlantData.soundHurt, mySource);}
         if (GetComponent<FlashEffect>() != null){GetComponent<FlashEffect>().flash();} //Flash Effect On Hit
         if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar 
         plantIcon.SetActive(false);
@@ -174,19 +180,19 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
 
     public void onDeath(){
         //Triggers the attached Deal Trigger
-        if (myPlantData.soundDeath != null) {audioController.Play(myPlantData.soundDeath, mySource);}
+        if (myPlantData.soundDeath != "") {audioController.Play(myPlantData.soundDeath, mySource);}
         onDeathBehavior.onDeath(this.gameObject);
     }
 
-    public void onAttack(){
+    public virtual void onAttack(){
         onAttackBehavior.OnAttack(onAttackBehavior.attackDamage,targets,this.gameObject);
         //Attack Sound
-        if (myPlantData.soundAttack != null) { audioController.Play(myPlantData.soundAttack, mySource);}
+        if (myPlantData.soundAttack != "") { audioController.Play(myPlantData.soundAttack, mySource);}
     }
 
     public bool onHarvest(){
         if(myPlantData.harvestable && isReady){
-            if (myPlantData.soundHarvested != null) {audioController.Play(myPlantData.soundHarvested, mySource);}
+            if (myPlantData.soundHarvested != "") {audioController.Play(myPlantData.soundHarvested, mySource);}
             onHarvestBehavior.OnHarvest(this.gameObject);
             growAge = 0;
             isReady = false;
@@ -195,6 +201,11 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         else {
             return false;
         }
+    }
+
+    public void onHarvestReady(){
+        health -= ((growAge - myPlantData.DaysUntilHarvest)*myPlantData.plantMaxHealth*0.5f);
+        if (health <= 0){ onDeath();} //Death Check }    
     }
     
     ////////////////////////////////////////////////

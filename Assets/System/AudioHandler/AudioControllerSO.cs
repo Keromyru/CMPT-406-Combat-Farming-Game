@@ -18,11 +18,14 @@ public class AudioControllerSO : ScriptableObject
     }
 
     public AudioSource Play(string name, AudioSource audioSourceParam = null) {
-        var source = audioSourceParam;
-        //Looks for the element that shares it's name with the input
-        AudioClipSO AD = instances.First(m => m.Name.Contains(name));
-        //Plays the file using it's perameters, and returns the audiosource
-        return AD.Play(audioSourceParam);      
+        if(name != ""){
+            var source = audioSourceParam;
+            //Looks for the element that shares it's name with the input
+            AudioClipSO AD = instances.First(m => m.Name.Contains(name));
+            //Plays the file using it's perameters, and returns the audiosource
+            return AD.Play(audioSourceParam);  
+        }   
+        return audioSourceParam; 
     }
     public enum Type
     {

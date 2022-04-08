@@ -5,8 +5,8 @@ using UnityEngine;
 public class Magnetic : MonoBehaviour
 {
     [Header("Magnetic Behavior")]
-    [SerializeField] float pickUpRange = 1.0f;
-    [SerializeField] float magnetRange = 10f;
+    float pickUpRange = 0.5f;
+    float magnetRange = 5f;
     [SerializeField] AudioClipSO SoundPickup;
     private GameObject player;
 
@@ -15,7 +15,7 @@ public class Magnetic : MonoBehaviour
     }
     private void FixedUpdate() {
         float distance = Vector3.Distance(player.transform.position, this.gameObject.transform.position);
-        this.transform.Rotate (0,0,360*Time.deltaTime); //Spins it around because it's funny
+        
         if (distance < pickUpRange){
             if (SoundPickup != null){SoundPickup.Play();}
                 onPickup();
@@ -25,8 +25,7 @@ public class Magnetic : MonoBehaviour
         //Float towrds player
             float speed = 5/distance * 0.7f;
             gameObject.transform.position =  Vector3.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
-            //Scale Pickup As it approaches
-            if (distance < 1){ transform.localScale = new Vector3((1-distance)/2,(1-distance)/2, 0);} 
+            this.transform.Rotate (0,0,360*Time.deltaTime); //Spins it around because it's funny
         }
     }
 
