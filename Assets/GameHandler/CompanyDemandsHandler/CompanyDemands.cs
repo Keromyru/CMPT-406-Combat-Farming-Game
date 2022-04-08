@@ -8,20 +8,24 @@ public class CompanyDemands : MonoBehaviour
     // To allow dialogues for the demands
     private Dialogue dialogue;
     public DialogueHandler dialogueHandler;
+    public GameObject player;
+    public PlayerOnAttackSO gunUpgrade;
+    private PlayerController playerController;
 
     // All the demands info
-    private int[] prices = new int[3] { 100, 500, 1000 };
+    public int[] prices;
     private int priceIndex = 0;
-    private int companyTaxDay = 5;
+    public int companyTaxDay;
 
     // Keeps count of days
-    public int dayCount = -1;
+    private int dayCount = -1;
 
     // Start is called before the first frame update
     void Start()
     {
         DayNightCycle.isNowDay += CheckDay;
         dialogue = new Dialogue();
+        playerController = player.GetComponent<PlayerController>();
     }
 
     // At start of day checks if it is a tax day. If it is then player gets money taken (if they dont have enough then lose condition).
@@ -29,6 +33,16 @@ public class CompanyDemands : MonoBehaviour
     {
         dayCount += 1;
 
+        // For first message
+        if (dayCount == 0)
+        {
+            dialogue.name = "EXO Corp";
+            dialogue.sentences = new string[2] { "This is your boss speaking. If you need any help with controls then click the tutorial button.", "You owe money to the company. If there isn't " + prices[0] +
+                " coins in your bank in " + companyTaxDay + " days then be ready to lose more than just your job." };
+            dialogueHandler.StartDialogue(dialogue);
+        }
+
+        // For every CompanyTaxDay
         if (dayCount <= (prices.Length * companyTaxDay))
         {
             if (dayCount % companyTaxDay == 0 && dayCount != 0)
@@ -50,19 +64,27 @@ public class CompanyDemands : MonoBehaviour
 
                     if (priceIndex < prices.Length)
                     {
-                        dialogue.sentences = new string[1] { "Thanks for the " + prices[priceIndex] + " dollars. If there isn't " + prices[priceIndex] + " in your bank in " + companyTaxDay + " days, be ready to lose your job." };
-                        dialogueHandler.StartDialogue(dialogue);
+                        dialogue.sentences = new string[1] { "Thanks for the " + prices[priceIndex - 1] + " dollars. But if there isn't " + prices[priceIndex] + " in your " +
+                            "bank in " + companyTaxDay + " days then be ready to lose more than just your job." };
                     }
                     else
                     {
-                        dialogue.sentences = new string[1] { "Thanks for the " + prices[priceIndex - 1] + " dollars. Keep working hard!" };
-                        dialogueHandler.StartDialogue(dialogue);
+                        dialogue.sentences = new string[1] { "Thanks for the " + prices[priceIndex - 1] + " dollars. We have decided to stop taxing you for now, keep working hard!" };
+                    }
+
+                    // Day 10 weapon upgrade
+                    if (dayCount == 10)
+                    { 
+                        dialogue.sentences = new string[2] { dialogue.sentences[0], "For surviving this long we at the Corporation decided to give you an reward. We have upgraded your gun, have fun with it." };
+
+                        playerController.setNewOnAttack(gunUpgrade);
                     }
                     
-                    // Some type of reward?
+                    dialogueHandler.StartDialogue(dialogue);
                 }
             }
         }
+        // Company demands are done
         else
         {
             DayNightCycle.isNowDay -= CheckDay;

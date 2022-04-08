@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eaaedb2d6a40094ebbba65842fdb218, type: 3}
   m_Name: Rifle-1 OnAttack
   m_EditorClassIdentifier: 
-  damage: 5
-  projectileLife: 6
-  projectileSpeed: 8
+  damage: 6
+  projectileLife: 1
+  projectileSpeed: 10
   projectilePrefab: {fileID: 2064249973378197166, guid: 691ee2a3b37f7ee4bb7f8815f72a9ea4, type: 3}
   firePointLength: 0.3
-  fireRate: 0.1
+  fireRate: 0.3
   GunSprite: {fileID: 21300000, guid: 6af30f6ce8bb7764480057228c7346ab, type: 3}
