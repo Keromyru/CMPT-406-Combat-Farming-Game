@@ -17,7 +17,7 @@ MonoBehaviour:
   enemyMoveSpeed: 1.5
   AdditiveLerpRange: 15
   attackRate: 3
-  attackRange: 0.6
+  attackRange: 0.3
   attackDamage: 30
   priorityList:
   - name: Priority Hub

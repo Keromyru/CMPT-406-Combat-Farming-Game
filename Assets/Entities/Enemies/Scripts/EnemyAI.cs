@@ -24,8 +24,6 @@ public class EnemyAI : MonoBehaviour
     private float leftOrRight; 
     private Animator myAnimation;
     //SlowStuffs
-    
-    
 
     private void Start() {
         myController = this.GetComponent<EnemyController>(); //Quick Access to the controller
@@ -34,7 +32,6 @@ public class EnemyAI : MonoBehaviour
         myRB = this.GetComponent<Rigidbody2D>(); 
         enemyMoveSpeed = myController.myEnemyData.enemyMoveSpeed;
         this.myAnimation = this.GetComponent<Animator>();
-
     }
 
     private void FixedUpdate() {
@@ -73,17 +70,14 @@ public class EnemyAI : MonoBehaviour
         leftOrRight = myRB.position.x - myTarget.transform.position.x;       
         // checks the potion of the target, changes the direction of the enemy based on what
         // direction their main target is. 
-        if(leftOrRight > 0)
-        {
+        if(leftOrRight > 0) {
             Quaternion aQuaternion = Quaternion.Euler(0,0,0);
             this.transform.rotation = aQuaternion;
-
-       }
+        }
         else if(leftOrRight < 0 )
         {
             Quaternion aQuaternion = Quaternion.Euler(0,180,0);
             this.transform.rotation = aQuaternion;
-            
         }
     }
     //Triggers When Something enters its range
@@ -95,8 +89,6 @@ public class EnemyAI : MonoBehaviour
         if (avoidList.Contains(entity.tag)) {
             friendsList.Add(entity.gameObject); // Adds the friends to its list of friends 
         }
-        
-    
     }
         //Triggers When Something leaves its range
     private void OnTriggerExit2D(Collider2D entity) {
@@ -142,9 +134,11 @@ public class EnemyAI : MonoBehaviour
     }
 
     //Returns The Distance Between the baddy and its target;
+    //this.GetComponent<BoxCollider2D>().ClosestPoint(attackTarget.transform.position), attackTarget.GetComponent<BoxCollider2D>().ClosestPoint(this.transform.position)
     private float myDistance(){ 
         if(targetList.Count == 0){ myTarget = theHub;}
         else if (myTarget == null){ CheckTarget(); }
-        return Vector3.Distance(this.transform.position, myTarget.transform.position); }
+        return Vector3.Distance(this.GetComponent<BoxCollider2D>().ClosestPoint(myTarget.transform.position), myTarget.GetComponent<BoxCollider2D>().ClosestPoint(this.transform.position)); 
+        }
     private void SetTarget(GameObject myNewTarget){myController.attackTarget = myNewTarget; myTarget = myNewTarget;}
 }
