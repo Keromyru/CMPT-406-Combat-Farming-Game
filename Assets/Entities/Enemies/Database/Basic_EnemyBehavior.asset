@@ -14,10 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Basic_enemy
   enemyMaxHealth: 30
-  numberOfDropsOnDeath: 1
-  cashPerDrop: 100
   enemyMoveSpeed: 1
-  attackRate: 1
+  attackRate: 0.33
   attackRange: 0.6
   attackDamage: 5
   priorityList:

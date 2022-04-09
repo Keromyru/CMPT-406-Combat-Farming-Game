@@ -50,7 +50,7 @@ public class Healthbar_HUBController : FadeOutEffect {
 
 	
 	public void updateHB(int health){
-		Debug.Log("Health Event :"+ health);
+		//Debug.Log("Health Event :"+ health);
 		setHealth(health);
 		fadeCheck();
 	}

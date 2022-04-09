@@ -17,6 +17,7 @@ MonoBehaviour:
   isSellable: 1
   price: 300
   available: 0
-  description: These seeds will grow into a Giga Gourd.
+  description: These seeds will grow into a Giga Gourd. Giga Gourds attract enemies.
+    Its thick shell allows it to withstand many hits.
   isPlantable: 1
-  spawnName: GigaGourd
+  spawnName: GigaGourd_Baby

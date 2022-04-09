@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4036f4bcb47c2244fa83b74e5d3aefa2, type: 3}
+  m_Name: SplitStrider_Behavior
+  m_EditorClassIdentifier: 
+  enemyName: SplitStrider
+  enemyMaxHealth: 50
+  enemyMoveSpeed: 1.5
+  AdditiveLerpRange: 15
+  attackRate: 3
+  attackRange: 0.6
+  attackDamage: 30
+  priorityList:
+  - name: Priority Hub
+    tag: Structure
+    distance: 3
+  - name: Else Player
+    tag: Player
+    distance: 2
+  - name: I guess a plant is around
+    tag: Plant
+    distance: 4
+  - name: Nope, I hate structures
+    tag: Structure
+    distance: 8
+  SoundOnHit: Thud
+  SoundOnAttack: Punch
+  SoundOnDeath: MonsterGrowl
+  SoundAggression: 
+  onAttackBehavior: {fileID: 11400000, guid: 4a1935208412a034784c540d19326110, type: 2}
+  onHitBehavior: {fileID: 11400000, guid: 326dcce30e9055545b48ea8fe69798ca, type: 2}
+  onDeathBehavior: {fileID: 11400000, guid: f1cce40e49e03dc44a294458d3614059, type: 2}
+  enemyPrefab: {fileID: 7131914366683757558, guid: 2a7570d4f91bc8e478922601680a2f6a, type: 3}
+  audioController: {fileID: 11400000, guid: 61664c2b36929b7409adee2b27202783, type: 2}

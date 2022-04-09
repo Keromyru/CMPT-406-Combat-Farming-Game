@@ -9,7 +9,10 @@ public class AudioHandler : MonoBehaviour
     public MusicControllerSO controller;
     private AudioSource musicPlayer;
     private bool isPaused = true;
-    private void Awake(){ musicPlayer = this.gameObject.GetComponent<AudioSource>();} //Sets the Audio source for easy recall
+    private void Awake(){ 
+        isPaused = true;
+        musicPlayer = this.gameObject.GetComponent<AudioSource>();
+        } //Sets the Audio source for easy recall
     private void FixedUpdate(){ 
         //Starts next file when song is over
         if (!musicPlayer.isPlaying && !isPaused ){ PlayNext();}
@@ -21,6 +24,15 @@ public class AudioHandler : MonoBehaviour
     void OnApplicationPause(bool pauseStatus){
         isPaused = pauseStatus;
     }
+    void OnEnable() {
+        DayNightCycle.isNowDay += newDay;
+        DayNightCycle.isNowNight += newNight;
+        } //Subscribe to on Scene Loaded Event
+
+    void OnDisable() {
+        DayNightCycle.isNowDay -= newDay;
+        DayNightCycle.isNowNight -= newNight;
+        } //unsubscribe to on Scene Loaded Event
 
     public AudioSource PlaySong(string name) {
         StopMusic();
@@ -34,19 +46,11 @@ public class AudioHandler : MonoBehaviour
         return controller.PlayNext(musicPlayer);    
     }
 
-    //Given a Location in string form this will contact the SO to clear everything and start the playlist
-    public void StartPlayList(string location){ 
-        location lName = (location)System.Enum.Parse( typeof(location), location );
-        StopMusic();
-        isPaused = false;
-        controller.StartPlayList((int)lName, musicPlayer);
-    }
-
     //Night Time
-    public void onNight(){ this.StartPlayList("NightCycle");}
+    public void newNight(){ this.StartPlayList("NightCycle");}
 
     //Day Time
-    public void OnDay(){this.StartPlayList("DayCycle");}
+    public void newDay(){this.StartPlayList("DayCycle");}
 
     //Stops the Player
     public void StopMusic(){
@@ -73,6 +77,41 @@ public class AudioHandler : MonoBehaviour
         NightCycle,
         Other,
     }
+
+    //Given a Location in string form this will contact the SO to clear everything and start the playlist
+    public void StartPlayList(string location){ 
+        location lName = (location)System.Enum.Parse( typeof(location), location );
+        isPaused = false;
+        StartCoroutine(FadeMusicOut((int)lName));
+    }
+
+    ////////////////////////////
+    // FADE CONTROLLER
+    private IEnumerator FadeMusicOut( int lName, int fadeSpeed = 2) { 
+        float fadeKey = musicPlayer.volume;
+        while (fadeKey > 0) {
+            fadeKey -= Time.fixedDeltaTime*(1f/fadeSpeed);
+            musicPlayer.volume = fadeKey;       
+            yield return null;
+        }
+        yield return new WaitForEndOfFrame();
+        StopMusic();
+        MusicClipSO myClip = controller.StartPlayList(lName, musicPlayer);
+        musicPlayer.volume = 0;
+        StartCoroutine(FadeMusicIn(myClip.volume));
+    }
+
+    private IEnumerator FadeMusicIn( float maxVolume, int fadeSpeed = 2) { 
+        float fadeKey = 0;
+        while (fadeKey < maxVolume) {
+            fadeKey += Time.fixedDeltaTime*(1f/fadeSpeed);
+            musicPlayer.volume = fadeKey;       
+            yield return null;
+        }
+        yield return new WaitForEndOfFrame();
+    }
+
+
 }
 public static class MusicPlayer{
     public static void ResumeMusic(){ GameObject.Find("AudioHandler").GetComponent<AudioHandler>().ResumeMusic();}

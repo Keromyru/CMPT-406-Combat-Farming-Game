@@ -7,7 +7,13 @@ public class PlantOnAttackSO : ScriptableObject, IPlantOnAttack
     public float attackRange;
     public float attackRate;
     public float attackDamage;
-    public virtual void OnAttack(float damage, GameObject target, GameObject thisObject){
+    public GameObject myObject;
+    public virtual void OnAttack(float damage, List<GameObject> target, GameObject thisObject){
+        myObject = thisObject;
+    }
 
+    
+    public float fromMe(GameObject baddy){
+        return Vector3.Distance(baddy.transform.position, myObject.transform.position);
     }
 }

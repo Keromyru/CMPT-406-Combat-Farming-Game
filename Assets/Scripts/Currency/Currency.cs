@@ -16,14 +16,15 @@ public static class Currency
     public static void addMoney(int moneyToAdd)
     {
         money += moneyToAdd;
+        Score.addScore(moneyToAdd);
+        GameStats.AddMoney(moneyToAdd);
         currencyEvent.Invoke();
     }
 
     // Add multiple amounts to the money counter (most likely used for selling seeds, items, etc)
     public static void addMultipleMoney(int moneyToAdd, int AmountofItemsSold)
     {
-        money += (moneyToAdd * AmountofItemsSold);
-        currencyEvent.Invoke();
+        addMoney(moneyToAdd * AmountofItemsSold);
     }
 
     // Subtract a given amount of money from the inventory

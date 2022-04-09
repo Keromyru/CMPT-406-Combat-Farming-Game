@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bff3d6966b6c19d45af824b8effcbba9, type: 3}
+  m_Name: OnHarvestGigaGourd
+  m_EditorClassIdentifier: 
+  dropPool:
+  - {fileID: 7944093273229674206, guid: 9da478cbc57474196aa1e34754c24d26, type: 3}
+  - {fileID: 1680092049937385966, guid: 1e80f40a0e2983c4794d7b6f437c3438, type: 3}
+  - {fileID: 1680092049937385966, guid: 1e80f40a0e2983c4794d7b6f437c3438, type: 3}
+  - {fileID: 4260015578173857193, guid: bba3a00450a45c34e8a830329b1311b1, type: 3}
+  - {fileID: 4260015578173857193, guid: bba3a00450a45c34e8a830329b1311b1, type: 3}
+  minYield: 1
+  maxYield: 3
+  dropRadius: 1
+  credValue: 0
+  Spread: 0

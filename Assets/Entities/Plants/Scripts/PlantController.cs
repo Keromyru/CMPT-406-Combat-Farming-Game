@@ -17,8 +17,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     [SerializeField] private int growAge;
     [SerializeField]private Vector3 location; //Location is just where it lives, this is stored for easy Save Retrieval
     private bool dayTime = false;  
-    private bool isReady = false;
-
+    [SerializeField] private bool isReady = false;
 
     private PlantBehaviorSO myPlantData; //References the plants Entry in the Database
     private PlantDatabaseSO myPlantSpawner; //References the spawner to it can call it's decendants
@@ -30,15 +29,19 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     private PlantOnDeathSO onDeathBehavior;
     private PlantOnHarvestSO onHarvestBehavior;
 
-    
-
     // Attack Data  
     private Coroutine attackRoutine; 
     private bool isWaiting; //Is in a state of waiting before it can attack again
-    private GameObject  attackTarget;
-    public List<GameObject> targets;
+    [SerializeField] List<GameObject> targets;
+    // Other References
     private healthbar_Script_PlantController myHealthBar;
     private AudioSource mySource;
+
+    [Header("MiniMap Icons")]
+
+    [SerializeField] GameObject plantIcon;
+    [SerializeField] GameObject dangerIcon;
+
 
     #endregion
     ////////////////////////////////////////////////
@@ -50,13 +53,25 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
                 myHealthBar = this.gameObject.GetComponentInChildren<healthbar_Script_PlantController>();
             }
             mySource = this.gameObject.GetComponent<AudioSource>();
+            dangerIcon.SetActive(false);
         }
+
+    // private void Update() { //Triggers NewDAY for testing
+    //         if (Input.GetKeyDown("space")){
+    //         newDay();
+    //         Debug.Log("New Day "+myPlantData.name+" is "+growAge+" days old      "+(growAge-myPlantData.DaysUntilHarvest));
+    //     }
+    // }
 
     private void FixedUpdate() {
         //Target Check  is not day, is not waiting, is able to attack, has a target, and the target is available
-        if (!dayTime && myPlantData.canAttack && !isWaiting && targets.Count > 0 && CheckTarget()){
-            onAttack(); //Does the Attack Action
-            AttackTimer(); //starts the timer coroutine
+        if (!dayTime && !isReady && myPlantData.canAttack && !isWaiting && targets.Count > 0){
+            targets = targets.OrderBy(t => distance(t)).ToList();
+            if (distance(targets[0]) <= onAttackBehavior.attackRange){
+                onAttack(); //Does the Attack Action
+                AttackTimer(); //starts the timer coroutine
+            }
+
         } 
     }
 
@@ -64,32 +79,24 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     //Basically when things enter it's zone it'll add it to a tracking list, and if it leaves it'll remove it.
     private void OnTriggerEnter2D(Collider2D entity) {
         if (entity.tag == "Enemy" && myPlantData.canAttack) {
-            targets.Add(entity.gameObject);
+            targets.Add(entity.gameObject);     
         }
     }
 
     private void OnTriggerExit2D(Collider2D entity) {
         if (entity.tag == "Enemy"  && myPlantData.canAttack){
             targets.Remove(entity.gameObject); //Remove That Object From Its Attack List
-            if (targets.Count == 0) { attackTarget = null;} //Clears the target if there are not more options
         }
     }
+    void OnEnable() {
+        DayNightCycle.isNowDay += newDay;
+        DayNightCycle.isNowNight += newNight;
+    } //Subscribe to on Scene Loaded Event
 
-    private bool CheckTarget(){ //If the target doesn't exist, or it's out of range, or it's daytime;
-        if( (attackTarget == null || distance(attackTarget) > onAttackBehavior.attackRange)){
-            attackTarget = null;
-            return SetTarget();
-        } else{ return true; }
-    }
-    private bool SetTarget(){
-        if (targets.Count() > 0){
-            targets = targets.OrderBy(t => distance(t)).ToList();
-            attackTarget = targets[0];
-            return true;
-        }
-        attackTarget = null;
-        return false;
-    }
+    void OnDisable() {
+        DayNightCycle.isNowDay -= newDay;
+        DayNightCycle.isNowNight -= newNight;
+    } //unsubscribe to on Scene Loaded Event
 
     private float distance(GameObject baddy){
         return Vector3.Distance(baddy.transform.position, gameObject.transform.position);
@@ -98,18 +105,23 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     public bool waterPlant(float amount){
         health += amount;
         //Catch to prevent overfilling
-        if (energy > myPlantData.plantMaxHealth) { health = myPlantData.plantMaxHealth;}
-
+        if (health > myPlantData.plantMaxHealth) { health = myPlantData.plantMaxHealth;}
+        if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar  
         //Returns true if plant energy is now ful
-        if (health >= myPlantData.plantMaxHealth){return true;}
+        if (health >= myPlantData.plantMaxHealth){
+            plantIcon.SetActive(true);
+            dangerIcon.SetActive(false);
+            return true;
+        }
         else { return false;}
     }
 
     //Replaces The Current Plant With Its next phase.
     //Going to be checked on the "Newday" trigger
     private void nextGrowthPhase(){
-        if (myPlantData.soundGrowth != null) {audioController.Play(myPlantData.soundGrowth, mySource);} //Play soundGrowth if the file has been declared
+        if (myPlantData.soundGrowth != "") {audioController.Play(myPlantData.soundGrowth, mySource);} //Play soundGrowth if the file has been declared
         //Spawns the next plant in line
+        if(myPlantData.GrowPhaseEffect != null){Instantiate(myPlantData.GrowPhaseEffect,this.transform.position,Quaternion.identity);}
         myPlantData.nextPhase.spawnNextPlant(
             myPlantData.nextPhase.name,
             this.location,
@@ -118,28 +130,38 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         Destroy(this.gameObject);
     }
 
+    private void checkGrowthPhase(){
+        if(myPlantData.nextPhase != null && 
+            growAge >= myPlantData.matureAge ) {
+            nextGrowthPhase();
+        }
+    }
+    
 
     ////////////////////////////////////////////////
     //Triggers
     ////////////////////////////////////////////////
     //This should be a call that would be triggered by the time control system as an event or an interated list of
     //the IPlantControl interface
-    public void newDay(){
+    public virtual void newDay(){
         growAge++; 
+        Debug.Log(growAge);
         dayTime = true;
         targets.Clear(); //Clear Attack List
-        if(myPlantData.nextPhase != null && myPlantData.matureAge != 0){
-            nextGrowthPhase();
-        }
-        if (myPlantData.harvestable && growAge >= myPlantData.harvestCycle){
+        checkGrowthPhase();
+        if (myPlantData.harvestable && growAge >= myPlantData.DaysUntilHarvest){
             isReady = true;
+            SpriteRenderer mySprite = GetComponent<SpriteRenderer>();
+            mySprite.color = new Color(.5f, .5f, .5f);
         }
+        if(isReady){ onHarvestReady();}
         if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar
-
+        
     }
 
-    public void newNight(){
+    public virtual void newNight(){
         dayTime = false;
+        checkGrowthPhase();
     }
 
     //Onhit is referenced by ITakeDamage interface
@@ -148,27 +170,29 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         //This can accomedate for any kind of damage negation that may be needed.
         //This also passes this game object so that the script may do whatever it needs with it, or it's position
         health -= onHitBehavior.onHit(damage, source, this.gameObject); //Trigger onhit behaviors
-        if (myPlantData.soundHurt != null) {audioController.Play(myPlantData.soundHurt, mySource);}
+        if (myPlantData.soundHurt != "") {audioController.Play(myPlantData.soundHurt, mySource);}
         if (GetComponent<FlashEffect>() != null){GetComponent<FlashEffect>().flash();} //Flash Effect On Hit
-        if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar  
+        if(myHealthBar != null) {myHealthBar.updateHB();} //update Healthbar 
+        plantIcon.SetActive(false);
+        dangerIcon.SetActive(true); 
         if (health <= 0){ onDeath();} //Death Check
     }
 
     public void onDeath(){
         //Triggers the attached Deal Trigger
-        if (myPlantData.soundDeath != null) {audioController.Play(myPlantData.soundDeath, mySource);}
+        if (myPlantData.soundDeath != "") {audioController.Play(myPlantData.soundDeath, mySource);}
         onDeathBehavior.onDeath(this.gameObject);
     }
 
-    public void onAttack(){
-        onAttackBehavior.OnAttack(onAttackBehavior.attackDamage,attackTarget,this.gameObject);
+    public virtual void onAttack(){
+        onAttackBehavior.OnAttack(onAttackBehavior.attackDamage,targets,this.gameObject);
         //Attack Sound
-        if (myPlantData.soundAttack != null) { audioController.Play(myPlantData.soundAttack, mySource);}
+        if (myPlantData.soundAttack != "") { audioController.Play(myPlantData.soundAttack, mySource);}
     }
 
     public bool onHarvest(){
         if(myPlantData.harvestable && isReady){
-            if (myPlantData.soundHarvested != null) {audioController.Play(myPlantData.soundHarvested, mySource);}
+            if (myPlantData.soundHarvested != "") {audioController.Play(myPlantData.soundHarvested, mySource);}
             onHarvestBehavior.OnHarvest(this.gameObject);
             growAge = 0;
             isReady = false;
@@ -177,6 +201,11 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
         else {
             return false;
         }
+    }
+
+    public void onHarvestReady(){
+        health -= ((growAge - myPlantData.DaysUntilHarvest)*myPlantData.plantMaxHealth*0.5f);
+        if (health <= 0){ onDeath();} //Death Check }    
     }
     
     ////////////////////////////////////////////////
@@ -224,7 +253,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     public void setOnAttack(PlantOnAttackSO newOnAttack){ onAttackBehavior = newOnAttack; }
     public void setOnHarvest(PlantOnHarvestSO newOnHarvest){ onHarvestBehavior = newOnHarvest; }
     public void setAudioController( AudioControllerSO newAudioController) { audioController = newAudioController;}
-    public float getRemaining() { return myPlantData.plantMaxEnergy - energy; }
+    public float getRemaining() { return myPlantData.plantMaxHealth - health; }
    
     public void setMyPlantData(PlantBehaviorSO newPlantData) {myPlantData = newPlantData; }
     public void setMyPlantSpawner(PlantDatabaseSO newPlantSpawner) {myPlantSpawner = newPlantSpawner; }
@@ -234,6 +263,7 @@ public class PlantController : MonoBehaviour, IPlantControl, ITakeDamage
     public void setGrowAge(int newGrowAge){ growAge = newGrowAge; }
     public int getGrowAge(){ return growAge; }
 
+    public bool HarvestReady(){ return isReady; }
     public void setHealth(float newHealth){ health = newHealth;}
     public float getHealth(){return health;}
     public float getMaxHealth(){return myPlantData.plantMaxHealth;}

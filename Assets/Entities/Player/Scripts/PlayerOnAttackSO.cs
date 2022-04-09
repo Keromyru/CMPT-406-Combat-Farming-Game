@@ -10,6 +10,7 @@ public class PlayerOnAttackSO : ScriptableObject
     public GameObject projectilePrefab;
     public float firePointLength;
     public float fireRate;
+    public Sprite GunSprite;
     private Rigidbody2D rb;
 
 

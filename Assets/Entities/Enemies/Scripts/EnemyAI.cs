@@ -5,17 +5,27 @@ using System.Linq;
 
 public class EnemyAI : MonoBehaviour
 {
+    // contoller 
     private EnemyController myController;
+    // for the moving
     private Rigidbody2D myRB; 
     public List<GameObject> targetList; //Dynamic List of Targets
     private GameObject myTarget; //Destination for this baddy
     private float enemyMoveSpeed;
     private GameObject theHub;
     public List<GameObject> friendsList; //Dynamic List of Friendly Enemies
+    private string[] avoidList = {"Enemy","Obstacle","Structure"};
+    private string[] findList = {"Plant", "Player","Structure"};
     [SerializeField] float socialDistance = 1; //sets the distance of the friendly enmies that is acceptable  **which should obviously be 6m b/c yea
     private Vector2 force;
     private float forceTime = 0.5f;
     private Vector2 myTargetPosition;
+    private Vector2 myPostion; 
+    private float leftOrRight; 
+    private Animator myAnimation;
+    //SlowStuffs
+    
+    
 
     private void Start() {
         myController = this.GetComponent<EnemyController>(); //Quick Access to the controller
@@ -23,6 +33,8 @@ public class EnemyAI : MonoBehaviour
         myTarget = theHub;
         myRB = this.GetComponent<Rigidbody2D>(); 
         enemyMoveSpeed = myController.myEnemyData.enemyMoveSpeed;
+        this.myAnimation = this.GetComponent<Animator>();
+
     }
 
     private void FixedUpdate() {
@@ -30,13 +42,7 @@ public class EnemyAI : MonoBehaviour
         //This Makes the Baddy Run Up To The Target
         //Finding the location of my target
         if (myTarget.tag == "Structure") {  // Some magic to find the closest point of a structure
-            if (Vector2.Distance(myRB.position,myTarget.GetComponent<PolygonCollider2D>().ClosestPoint(myRB.position)) <  // What's closer?
-                Vector2.Distance(myRB.position,myTarget.GetComponent<BoxCollider2D>().ClosestPoint(myRB.position))){
-                    myTargetPosition = myTarget.GetComponent<PolygonCollider2D>().ClosestPoint(myRB.position);
-                }
-                else {
-                    myTargetPosition = myTarget.GetComponent<BoxCollider2D>().ClosestPoint(myRB.position);
-                }
+           myTargetPosition = myTarget.GetComponents<Collider2D>().OrderBy(col => Vector2.Distance(myRB.position,col.ClosestPoint(myRB.position))).First().ClosestPoint(myRB.position);
         } else {myTargetPosition = myTarget.transform.position;} //otherwise business as usual
 
         // SOCIAL DISTANCING
@@ -55,44 +61,54 @@ public class EnemyAI : MonoBehaviour
         }     
 
         //Updating movement
-        if (myDistance() > myController.myEnemyData.attackRange - 0.2f){ //Moves to attack range
+        if (myDistance() > myController.myEnemyData.attackRange - 0.1f){ //Moves to attack range
             Vector3 targetWithOffset = (
                 (myTargetPosition - myRB.position).normalized // Direction
-                * (10 - myDistance())  //Displacement of 10 units
+                * (myController.myEnemyData.AdditiveLerpRange - myDistance())  //Displacement of 10 units
                 + myTargetPosition);
-            myRB.MovePosition(force + Vector2.Lerp( myRB.position, targetWithOffset , Time.deltaTime * enemyMoveSpeed * 0.1f)); //Actual move update
+            myRB.MovePosition(force + Vector2.Lerp( myRB.position, targetWithOffset , Time.deltaTime * enemyMoveSpeed*myController.slowMulti * 0.1f)); //Actual move update
         }
         if (force.magnitude > 0){ force = force - (force*Time.deltaTime)/forceTime;} //this reduced the bounce time   
+        // Facing the right direction
+        leftOrRight = myRB.position.x - myTarget.transform.position.x;       
+        // checks the potion of the target, changes the direction of the enemy based on what
+        // direction their main target is. 
+        if(leftOrRight > 0)
+        {
+            Quaternion aQuaternion = Quaternion.Euler(0,0,0);
+            this.transform.rotation = aQuaternion;
+
+       }
+        else if(leftOrRight < 0 )
+        {
+            Quaternion aQuaternion = Quaternion.Euler(0,180,0);
+            this.transform.rotation = aQuaternion;
+            
+        }
     }
     //Triggers When Something enters its range
     private void OnTriggerEnter2D(Collider2D entity) {
-        if (entity.tag == "Plant" ||
-            entity.tag == "Player" ||
-            entity.tag == "Structure") {
+        if (findList.Contains(entity.tag)) {
             targetList.Add(entity.gameObject); //Adds That Object From Its Attack List
             CheckTarget();
         }
-        if (entity.tag == "Enemy" ||
-            entity.tag == "Obstacle" ||
-            entity.tag == "Structure") {
+        if (avoidList.Contains(entity.tag)) {
             friendsList.Add(entity.gameObject); // Adds the friends to its list of friends 
         }
+        
+    
     }
         //Triggers When Something leaves its range
     private void OnTriggerExit2D(Collider2D entity) {
-        if (entity.tag == "Plant" ||
-            entity.tag == "Player" ||
-            entity.tag == "Structure") {
+        if (findList.Contains(entity.tag)) {
             targetList.Remove(entity.gameObject); //Remove That Object From Its Attack List
             CheckTarget();
             if (targetList.Count == 0) { myTarget = theHub;} //Clears the target if there are not more options
         }
-        if (entity.tag == "Enemy" || 
-            entity.tag == "Obstacle"||
-            entity.tag == "Structure") {
+        if (avoidList.Contains(entity.tag)) {
             friendsList.Remove(entity.gameObject); // Adds the friends to its list of friends 
         }
-    }
+        }
 
     private void CheckTarget(){ //If the target doesn't exist, or it's out of range, or it's daytime;
         if( (myTarget == null || myDistance() > myController.myEnemyData.attackRange)){

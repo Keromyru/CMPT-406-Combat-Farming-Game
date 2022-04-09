@@ -6,6 +6,28 @@ using UnityEngine.Rendering;  //Used to access the volume component
 
 public class DayNightCycle : MonoBehaviour
 {
+    // event delegate for others to subscribe too
+    public delegate void IsDay();
+    public delegate void IsNight();
+
+    /* 
+        Anything that needs to know what time of day it is, needs to subscribe to these events
+        can be done by having a specific method that adds a function to these two below like:
+        DayNightCycle.isNowDay += myDayEventInDifferentScript;
+        DayNightCycle.isNowNight += myNightEventInDifferentScript;
+
+        If someones does not want to forever be subscribed it can remove its reference with a 
+        DayNightCycle.isNowDay -= myDayEventInDifferentScript;
+
+        Typically this with onEnable and onDisable however i am sure that can be done at specific points
+        where it makes sense
+    */
+    public static event IsDay isNowDay;
+    public static event IsNight isNowNight;
+
+    public bool daytime;
+
+
     public script_DayNightTracker clockTracker;
 
     // public TextMeshProUGUI timeDisplay;  //Display time
@@ -70,13 +92,23 @@ public class DayNightCycle : MonoBehaviour
             minutes = 0;
             hours += 1;
         }
+        // it is now day time
         if( hours >= dayStart && hours < dayEnd )  // Change when day ends and when day starts
         {
             clockTracker.swapDayNight( true );  // Tell tracker it is day
+            if (daytime != true) {
+                daytime = true;
+                isNowDay();
+            }
         }
+        /// it is now night time
 		if( hours < dayStart || hours >= dayEnd )
 		{
 			clockTracker.swapDayNight( false ); // Tell tracker it is night
+            if (daytime == true) {
+                daytime = false;
+                isNowNight();
+            }
 		}
         if(hours >= 24)  //24hr = 1 day
         {
@@ -89,7 +121,9 @@ public class DayNightCycle : MonoBehaviour
     public void ControlPPV()  //Used to adjust the post processing slider.
     {
         //ppv.weight = 0;
-        if(hours >= 21 && hours < 22)  //Dusk at 21:00 (9:00pm) - untill 22:00 (10:00pm)
+        // changes this so the dynamic lighting happens depending on what we change
+        // so the day end then the hour after will darken the screen
+        if(hours >= dayEnd && hours < dayEnd + 1)  //Dusk at 21:00 (9:00pm) - untill 22:00 (10:00pm)
         {
             ppv.weight = (float)minutes / 60;  //Since dusk is 1hr, we just divide the min by 60 which will slowly increase from 0 - 1
 
@@ -119,7 +153,7 @@ public class DayNightCycle : MonoBehaviour
             EndEclipse();
         }
 
-        if(hours >= 6 && hours < 7)  //Dawn at 6:00 (6:00am) - until 7:00 (7:00am)
+        if(hours >= dayStart - 1 && hours < dayStart)  //Dawn at 6:00 (6:00am) - until 7:00 (7:00am)
         {
             ppv.weight = 1 - (float)minutes / 60;  //We minus 1 because we want it to go from 1 - 0
             /*
@@ -151,7 +185,7 @@ public class DayNightCycle : MonoBehaviour
         */
 
         // Random Eclipse start between 8:00 (8:00am) - 18:00 untill (6:00pm)
-        if(hours > 7 && hours <= 18 && activeEclipse == false)
+        if(hours > dayStart && hours <= dayEnd && activeEclipse == false)
         {
             //Get a random time
             int randomTime = Random.Range(8,18);
@@ -178,20 +212,26 @@ public class DayNightCycle : MonoBehaviour
     {
         seconds = 0;
         minutes = 0;
-        hours = 7;
+        hours = dayStart;
+        // since this method circumvents the normal passage of time need to ensure that this is called
+        isNowDay();
+        daytime = true;
     }
 
     public void EndDay()  //Ending the day to progress to night time for 22:00 (10:00pm)
     {
         seconds = 0;
         minutes = 0;
-        hours = 10;
+        hours = dayEnd;
 
         //At night end Eclipse
         if(activeEclipse == true)
         {
             EndEclipse();
         }
+        // this method circumvents the normal passage of time need to ensure that this is called
+        isNowNight();
+        daytime = false;
     }
 
     public void StartEclipse()  //Starts the Eclipses that causes days to be shortened drastically.
@@ -199,6 +239,15 @@ public class DayNightCycle : MonoBehaviour
         oldTick = tick;
         tick = tick * eclipseRate;
         activeEclipse = true;
+    }
+
+    public void slowTime(){
+        oldTick = tick;
+        tick = tick * .01f;
+    }
+
+    public void normalTime(){
+        tick = oldTick;
     }
 
     public void EndEclipse()  //Sets the time speed back to normal.

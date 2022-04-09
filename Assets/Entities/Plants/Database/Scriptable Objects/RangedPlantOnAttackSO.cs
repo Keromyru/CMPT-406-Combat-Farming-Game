@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 //This Class Inharits from PlantOnAttackSO, that is not accessible in the editor, and only has virtual classes that should be overwrittem
 // This Object also inharits the interface "IPlantOnAttack" so that a generic plant controller can access it if it gets complicated
@@ -14,14 +15,16 @@ public class RangedPlantOnAttackSO : PlantOnAttackSO
 
    private Vector3 trackedLocation;
    private Vector3 trackedRotation;
+   private GameObject attackTarget;
    private Rigidbody2D rb;
 
-   public override void OnAttack(float damage, GameObject target, GameObject thisObject){
-
-      
+   public override void OnAttack(float damage, List<GameObject> targetList, GameObject thisObject){
+      myObject = thisObject;
+      targetList = targetList.OrderBy(t => fromMe(t)).ToList();
+      attackTarget = targetList[0];
       //Gets Normalized direction of the target
       Vector3 sourceLocation = thisObject.transform.position + new Vector3(offset.x,offset.y,0);
-      Vector3 targetLocation = (target.transform.position);
+      Vector3 targetLocation = (attackTarget.transform.position);
       Vector3 targetDirection =  (targetLocation - sourceLocation).normalized;
       
       // a Normalized Vector * the distance from the focal point desired + from the source of the 
@@ -37,5 +40,7 @@ public class RangedPlantOnAttackSO : PlantOnAttackSO
       Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>(); //gets the force component
       rb.AddForce(projectile.transform.up*projectileSpeed, ForceMode2D.Impulse); //Applies an impulse force in an up direction
    }
+
+
 
 }

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5372c6c0e4782474f82a5e929ff21696, type: 3}
   m_Name: OnDeath Normal
   m_EditorClassIdentifier: 
-  deathEffect: {fileID: 0}
+  deathEffect: {fileID: 4975496700205027953, guid: 12d749037fae4bb4d9d0667af707271f, type: 3}

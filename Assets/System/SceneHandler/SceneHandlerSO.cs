@@ -118,6 +118,9 @@ public class SceneHandlerSO : ScriptableObject
         if (!ListOfLoadedScenes().Contains("System")){
             SceneManager.LoadScene("System", LoadSceneMode.Additive);
         }
+        // if (!ListOfLoadedScenes().Contains("EndGame")){
+        //     SceneManager.LoadScene("EndGame", LoadSceneMode.Additive);
+        // }
     }
 
 

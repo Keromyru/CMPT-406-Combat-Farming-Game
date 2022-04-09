@@ -17,14 +17,18 @@ public class InventoryUI : MonoBehaviour
     private int maxHotbarSlots;  // maximum number of hotbar slots
 
     public GameObject inventoryUI;  // reference to the actual GameObject
+    public GameObject hotbarUI;  // reference to hotbar gameobject
 
-    // input handling
+    public GameObject healthBar; // player health to display at night
+
+    /* input handling
     private PlayerInput playerInput;
     private InputAction openInventory;
     private InputAction closeInventory;
     private bool unassigned = true;  // used to see if the InputActions have been properly assigned
+    */
 
-    public bool isDay = true;  // is it day or night time? to be updated
+    bool isDay;
     
 
     // Start is called before the first frame update
@@ -40,9 +44,34 @@ public class InventoryUI : MonoBehaviour
         // fill arrays with all the slots on scene
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
         hotbarSlots = hotbarParent.GetComponentsInChildren<HotbarSlot>();
+
+        DayNightCycle.isNowDay += NowDay;
+        DayNightCycle.isNowNight += NowNight;
     }
 
-    // input stuff to toggle inventory visibility. hotbar doesn't toggle.
+    void NowDay() {
+        isDay = true;
+        UpdateUI();
+        HideHealth();
+    }
+
+    void NowNight() {
+        isDay = false;
+        DisplayHealth();
+        UpdateUI();
+    }
+
+    void DisplayHealth() {
+        healthBar.SetActive(true);
+        hotbarUI.SetActive(false);
+    }
+
+    void HideHealth() {
+        healthBar.SetActive(false);
+        hotbarUI.SetActive(true);
+    }
+
+    /* input stuff to toggle inventory visibility. hotbar doesn't toggle.
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -88,6 +117,7 @@ public class InventoryUI : MonoBehaviour
             }
         }
     }
+    */
 
     // update UI for hotbar & inventory
     void UpdateUI() {

@@ -23,6 +23,9 @@ public class Inventory : MonoBehaviour
             return;
         }
         instance = this;
+
+        DayNightCycle.isNowDay += IsDay;
+        DayNightCycle.isNowNight += IsNight;
     }
     // end adding singleton
 
@@ -48,7 +51,7 @@ public class Inventory : MonoBehaviour
     public bool AddItem(Item item) {
         // is there space for an item?
         if (items.Count >= max_space) {
-            Debug.Log("Inventory is full.");
+            // Debug.Log("Inventory is full.");
             return false;
         }
 
@@ -57,7 +60,7 @@ public class Inventory : MonoBehaviour
 
             // if there's too many items to stack
             if (items[item] >= max_stack) {
-                Debug.Log("Cannot hold anymore items of this type.");
+                // Debug.Log("Cannot hold anymore items of this type.");
                 return false;
             }
             
@@ -96,6 +99,20 @@ public class Inventory : MonoBehaviour
         if (onItemChangedCallback != null) {
             onItemChangedCallback.Invoke();
         }
+    }
+
+
+    // change to night inventory
+    void IsNight() {
+        day = false;
+        SortInventory();
+    }
+
+
+    // change to day inventory
+    void IsDay() {
+        day = true;
+        SortInventory();
     }
 
 
@@ -147,5 +164,14 @@ public class Inventory : MonoBehaviour
                 items.Add(daytime.Key, daytime.Value);
             }
         }
+
+        // send out an alert that inventory changed
+        if (onItemChangedCallback != null) {
+            onItemChangedCallback.Invoke();
+        }
+    }
+
+    public int getItemAmount(Item item){
+        return items.ContainsKey(item) ? items[item] : 0;
     }
 }

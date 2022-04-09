@@ -12,15 +12,20 @@ public class AudioControllerSO : ScriptableObject
     
     private void OnEnable() {
         //Checks all the AudioClipSO's and adds the one with the correct type to it's list
-        instances = instances.Union(Resources.FindObjectsOfTypeAll<AudioClipSO>()).ToArray();
+        instances = instances.Union(
+        Resources.FindObjectsOfTypeAll<AudioClipSO>().Where(clip => (int)clip.type == (int)this.type)).ToArray();            
+
     }
 
     public AudioSource Play(string name, AudioSource audioSourceParam = null) {
-        var source = audioSourceParam;
-        //Looks for the element that shares it's name with the input
-        AudioClipSO AD = instances.First(m => m.Name.Contains(name));
-        //Plays the file using it's perameters, and returns the audiosource
-        return AD.Play(audioSourceParam);      
+        if(name != ""){
+            var source = audioSourceParam;
+            //Looks for the element that shares it's name with the input
+            AudioClipSO AD = instances.First(m => m.Name.Contains(name));
+            //Plays the file using it's perameters, and returns the audiosource
+            return AD.Play(audioSourceParam);  
+        }   
+        return audioSourceParam; 
     }
     public enum Type
     {

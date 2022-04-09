@@ -18,8 +18,8 @@ public class ItemPickup : Interactable
     }
     
     // custom pick-up actions for items, nothing too fancy right now
-    void Pickup() {
-        Debug.Log("Picking up " + item.name);
+    public void Pickup() {
+        // Debug.Log("Picking up " + item.name);
 
         // stick it into the inventory
         bool wasPickedUp = Inventory.instance.AddItem(item);
