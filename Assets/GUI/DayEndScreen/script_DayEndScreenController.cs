@@ -10,6 +10,11 @@ public class script_DayEndScreenController : MonoBehaviour {
 	public TextMeshProUGUI days, monsters, money, score;
 
 	public Animator animator;
+	public GameObject clipboard;
+	
+	// Prevent the screen from showing at the start of the game
+	private int shouldStart = 0;
+	
     /*
 		Sets the values for each text
 		function SetStats
@@ -22,7 +27,10 @@ public class script_DayEndScreenController : MonoBehaviour {
 	*/
 	
 	void Start(){
+		
+		clipboard.SetActive( false );
 		DayNightCycle.isNowDay += setDataOnNewDay;
+		
 	}
 
 	public void setDataOnNewDay(){
@@ -30,13 +38,24 @@ public class script_DayEndScreenController : MonoBehaviour {
 		this.setMoney(GameStats.getNightMoney());
 		this.setScore(GameStats.getNightScore());
 		GameStats.NightStatReset();
-		StartCoroutine(animationControl());
+		if ( shouldStart == 1 ) {
+			clipboard.SetActive( true );
+			StartCoroutine(animationControl());
+		} else {
+			
+			shouldStart = 1;
+			
+		}
 	}
 
 	IEnumerator animationControl(){
-		animator.Play("anim_DayEndScreenEnter");
+		//animator.Play("anim_DayEndScreenEnter");
+		animator.SetTrigger( "Enter" );
 		yield return new WaitForSeconds(4f);
-		animator.Play("anim_DayEndScreenExit");
+		animator.SetTrigger( "Exit" );
+		yield return new WaitForSeconds(2f);
+		clipboard.SetActive( false );
+		//animator.Play("anim_DayEndScreenExit");
 	}
 
     public void SetStats( int days, int monsters, int money, int score ) {
