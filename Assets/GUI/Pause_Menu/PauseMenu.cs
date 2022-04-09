@@ -11,8 +11,6 @@ public class PauseMenu : MonoBehaviour
     // The inputs from the input system
     private PlayerInput playerInput;
 
-    public GameObject inventoryui;
-
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI; 
@@ -37,12 +35,7 @@ public void Resume(){
     pauseMenuUI.SetActive(false);
     Time.timeScale =  1f;
     GameIsPaused = false;
-    if(inventoryui.active){
-        playerInput.SwitchCurrentActionMap("InputUI");
-    }
-    else{
-        playerInput.SwitchCurrentActionMap("InputPlayer");
-    }
+    playerInput.SwitchCurrentActionMap("InputPlayer");
 }
 
 //paused state
