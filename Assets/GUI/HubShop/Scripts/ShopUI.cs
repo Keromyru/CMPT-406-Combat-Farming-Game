@@ -30,6 +30,8 @@ public class ShopUI : MonoBehaviour
 
     public GameObject scoreCounter;  // clutter management again
 
+    public GameObject openButton;  // open the store?
+
     private bool isNight = false;
 
     private bool playerClosed = false;
@@ -74,10 +76,7 @@ public class ShopUI : MonoBehaviour
         // yes, make shop appear, remove minimap & time tracker
         if (inRange) {
             if (!playerClosed) {
-                shopUI.SetActive(true);
-                minimap.SetActive(false);
-                tracker.SetActive(false);
-                scoreCounter.SetActive(false);
+                openButton.SetActive(true);
             }
         }
         else {
@@ -86,7 +85,17 @@ public class ShopUI : MonoBehaviour
             minimap.SetActive(true);
             tracker.SetActive(true);
             scoreCounter.SetActive(true);
+            openButton.SetActive(false);
         }
+    }
+
+    public void OpenStore() {
+        shopUI.SetActive(true);
+        minimap.SetActive(false);
+        tracker.SetActive(false);
+        scoreCounter.SetActive(false);
+        openButton.SetActive(false);
+        playerClosed = true;
     }
 
     public void ForceClose() {
@@ -94,6 +103,7 @@ public class ShopUI : MonoBehaviour
         minimap.SetActive(true);
         tracker.SetActive(true);
         scoreCounter.SetActive(true);
+        openButton.SetActive(false);
 
         playerClosed = true;
     }
