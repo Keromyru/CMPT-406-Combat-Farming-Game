@@ -22,7 +22,10 @@ public class script_DayEndScreenController : MonoBehaviour {
 	*/
 	
 	void Start(){
+		
+		animator.Play( "anim_DayEndScreenOffScreen" );
 		DayNightCycle.isNowDay += setDataOnNewDay;
+		
 	}
 
 	public void setDataOnNewDay(){
