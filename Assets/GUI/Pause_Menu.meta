@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/GUI/Pause_Menu.meta
 guid: 90cb3b39146df44faaaf3d6c80270b99
 folderAsset: yes
+=======
+guid: ca78e7b203e3f6a4db1d48be7ac62e08
+>>>>>>> 0ef83f509b08a0422714e75049ee6557db27f770:Assets/Scenes/EndScreen.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
