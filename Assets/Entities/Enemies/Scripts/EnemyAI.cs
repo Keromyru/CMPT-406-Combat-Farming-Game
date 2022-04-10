@@ -145,6 +145,6 @@ public class EnemyAI : MonoBehaviour
     private float myDistance(){ 
         if(targetList.Count == 0){ myTarget = theHub;}
         else if (myTarget == null){ CheckTarget(); }
-        return Vector3.Distance(this.transform.position, myTarget.transform.position); }
+        return Vector3.Distance(this.GetComponent<BoxCollider2D>().ClosestPoint(myTarget.transform.position), myTarget.transform.position); }
     private void SetTarget(GameObject myNewTarget){myController.attackTarget = myNewTarget; myTarget = myNewTarget;}
 }
