@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5062460942681803487}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5177640053499455567}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Money
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 5943249459474725354}
   - component: {fileID: 5834460911235996596}
   - component: {fileID: 5849372256526126197}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Monsters_Number
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 8599962825903424600}
   - component: {fileID: 3693810544598193242}
   - component: {fileID: 2061743207101658186}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Clipboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,7 +314,7 @@ RectTransform:
   m_GameObject: {fileID: 3010571846255213359}
   m_LocalRotation: {x: -0, y: -0, z: 0.963933, w: 0.26614505}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children:
   - {fileID: 3656403578425186959}
   - {fileID: 3075414181990596111}
@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: 7302163062800477285}
   - component: {fileID: 8685052775287105240}
   - component: {fileID: 33222860009311276}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Monsters_Header
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -509,7 +509,7 @@ GameObject:
   - component: {fileID: 5557938476575283043}
   - component: {fileID: 5276841383456701640}
   - component: {fileID: 466785513583050896}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -530,10 +530,10 @@ RectTransform:
   m_Father: {fileID: 6910317738018089791}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 842, y: 464}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5276841383456701640
 CanvasRenderer:
@@ -637,14 +637,14 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!114 &-4634281632907444572
 MonoBehaviour:
@@ -731,7 +731,7 @@ GameObject:
   - component: {fileID: 6878708041880458007}
   - component: {fileID: 186669358297753283}
   - component: {fileID: 4104004711863273064}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Score_Number
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -986,7 +986,7 @@ GameObject:
   - component: {fileID: 6997976550279494628}
   - component: {fileID: 8707703658957847018}
   - component: {fileID: 2768389191078274943}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Money_Header
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1118,7 +1118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4913133453965663351}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Day
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1157,7 +1157,7 @@ GameObject:
   - component: {fileID: 1667452872070331826}
   - component: {fileID: 3231000119493589820}
   - component: {fileID: 9214252512118731507}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Day_Header
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1291,7 +1291,7 @@ GameObject:
   - component: {fileID: 6133136157332520665}
   - component: {fileID: 768435483700849249}
   - component: {fileID: 8745910837394587669}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Score_Header
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1425,7 +1425,7 @@ GameObject:
   - component: {fileID: 3075414181990596111}
   - component: {fileID: 4372860836549873914}
   - component: {fileID: 8374114673426727778}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Terminated
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1441,7 +1441,7 @@ RectTransform:
   m_GameObject: {fileID: 6675405837615761942}
   m_LocalRotation: {x: -0, y: -0, z: 0.25297877, w: 0.96747184}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8599962825903424600}
   m_RootOrder: 1
@@ -1499,7 +1499,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3656403578425186959}
   - component: {fileID: 4285229699950194036}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text_Boundary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1515,7 +1515,7 @@ RectTransform:
   m_GameObject: {fileID: 7010103613381089377}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 4913133453965663351}
   - {fileID: 8013612012105581606}
@@ -1566,7 +1566,7 @@ GameObject:
   - component: {fileID: 4789106536975812454}
   - component: {fileID: 1646930709051364502}
   - component: {fileID: 8840215044935246458}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Day_Number
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1700,7 +1700,7 @@ GameObject:
   - component: {fileID: 4993654568929454614}
   - component: {fileID: 1178937610429365251}
   - component: {fileID: 337744260832164164}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Money_Number
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1832,7 +1832,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8013612012105581606}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Monsters
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/GUI/DayEndScreen/prefab_DayEndScreenNew.prefab.meta
+guid: 7b0e36e749c6c6247b6201b97d9a1189
+=======
 guid: eb1380345defe4a4c941234f2fee1838
+>>>>>>> 0ef83f509b08a0422714e75049ee6557db27f770:Assets/GUI/EndScreen/prefab_Transition.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
