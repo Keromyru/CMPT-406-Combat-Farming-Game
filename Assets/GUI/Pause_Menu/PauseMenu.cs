@@ -47,19 +47,13 @@ void Pause(){
 
 //load the main menu
 public void LoadMenu(){
+    Resume();
     SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
-
 }
 
 //quit the game
 public void QuitGame(){
     Application.Quit();
-}
-
-//save game in current state
-public void SaveGame(){
-    //TODO
-    
 }
 
 // Next three functions are to get the Player Input from the other scene
