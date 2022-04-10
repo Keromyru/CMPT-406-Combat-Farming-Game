@@ -20,6 +20,8 @@ public class CompanyDemands : MonoBehaviour
     // Keeps count of days
     private int dayCount = -1;
 
+    public GameObject transitionEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +53,9 @@ public class CompanyDemands : MonoBehaviour
                 if (Currency.getMoney() < prices[priceIndex])
                 {
                     Debug.Log("You Lose game from Company Demands");
-                    //TODO
+                    // End the game
+                    transitionEffect.SetActive(true);
+                    transitionEffect.GetComponent<EndGame>().EndTheGame();
                 }
                 // Winning condition goes here
                 else

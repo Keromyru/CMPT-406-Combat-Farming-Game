@@ -48,3 +48,4 @@ MonoBehaviour:
   gunUpgrade: {fileID: 11400000, guid: 2c85ab26631ff0c4da929b89c24ff62d, type: 2}
   prices: fa000000f4010000e8030000
   companyTaxDay: 5
+  transitionEffect: {fileID: 0}
