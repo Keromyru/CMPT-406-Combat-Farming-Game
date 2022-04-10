@@ -231,7 +231,11 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
+<<<<<<< Updated upstream
   m_InstanceId: 66570
+=======
+  m_InstanceId: -6042
+>>>>>>> Stashed changes
 --- !u!1 &3809839216884466027
 >>>>>>> Stashed changes
 GameObject:
