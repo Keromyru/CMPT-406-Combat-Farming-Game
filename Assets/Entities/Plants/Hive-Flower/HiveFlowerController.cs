@@ -34,7 +34,7 @@ public class HiveFlowerController : PlantController {
 
     private IEnumerator LightOffRoutine( int fadeSpeed = 2, float timer = 0) { 
         yield return new WaitForSeconds(timer);
-        float fadeKey = 1;
+        float fadeKey = 0.5f;
         while (fadeKey > 0) {
             fadeKey -= Time.fixedDeltaTime*(1f/fadeSpeed);
             myLight.intensity = fadeKey;       
