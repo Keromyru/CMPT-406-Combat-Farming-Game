@@ -470,5 +470,10 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         onAttackBehavior = newAttack;
         Raygun.GetComponentInChildren<SpriteRenderer>().sprite = onAttackBehavior.GunSprite;
     }
+    public void setCanMove(bool canHe){
+        canMove = canHe;
+    }
+
+
     #endregion Sets and Gets
 }
