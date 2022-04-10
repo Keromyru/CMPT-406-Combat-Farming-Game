@@ -17,15 +17,18 @@ MonoBehaviour:
   enemyMoveSpeed: 2
   AdditiveLerpRange: 15
   attackRate: 0.33
-  attackRange: 0.6
+  attackRange: 0.5
   attackDamage: 5
   priorityList:
   - name: ExoMan Must Die
     tag: Player
-    distance: 10
+    distance: 6
   - name: I guess plants will do
     tag: Plant
     distance: 3
+  - name: Screw the hub
+    tag: Plant
+    distance: 1
   SoundOnHit: Thud
   SoundOnAttack: Slaps
   SoundOnDeath: Growl

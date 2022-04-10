@@ -17,7 +17,7 @@ MonoBehaviour:
   enemyMoveSpeed: 1.25
   AdditiveLerpRange: 15
   attackRate: 1
-  attackRange: 0.65
+  attackRange: 0.55
   attackDamage: 10
   priorityList:
   - name: Plants are bad
@@ -26,6 +26,9 @@ MonoBehaviour:
   - name: I do not like the player
     tag: Player
     distance: 2
+  - name: Attack Structure
+    tag: Structure
+    distance: 1
   - name: Plants at max range
     tag: Plant
     distance: 10
