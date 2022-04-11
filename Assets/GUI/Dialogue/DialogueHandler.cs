@@ -44,6 +44,8 @@ public class DialogueHandler : MonoBehaviour
     {
         daynight.pause();
         animator.SetBool("IsOpen", true);
+		//animator.SetTrigger("Enter");
+		
         myPlayer.setCanMove(false);
 
         nameText.text = dialogue.name;
@@ -86,6 +88,7 @@ public class DialogueHandler : MonoBehaviour
     void EndDialogue()
     {
         animator.SetBool("IsOpen", false);
+		//animator.SetTrigger("Exit");
         daynight.resume();
         myPlayer.setCanMove(true);
     }

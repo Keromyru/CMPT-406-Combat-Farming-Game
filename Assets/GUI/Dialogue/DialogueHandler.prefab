@@ -276,6 +276,7 @@ GameObject:
   - component: {fileID: 46235065447964390}
   - component: {fileID: 46235065447964391}
   - component: {fileID: 46235065447964392}
+  - component: {fileID: 7655807878007545711}
   m_Layer: 5
   m_Name: DialogueCanvas
   m_TagString: Untagged
@@ -365,6 +366,25 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!95 &7655807878007545711
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46235065447964394}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5b249750554e16f4495435f65751b644, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &46235065755682143
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,9 +431,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 46235066026420778}
   dialogueText: {fileID: 46235066184495323}
-  animator: {fileID: 46235066663236254}
+  animator: {fileID: 7655807878007545711}
   typingSpeed: 0.007
   daynight: {fileID: 0}
+  TutorialButton: {fileID: 0}
 --- !u!1 &46235066026420780
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,7 +795,6 @@ GameObject:
   - component: {fileID: 46235066663236225}
   - component: {fileID: 46235066663236255}
   - component: {fileID: 46235066663236224}
-  - component: {fileID: 46235066663236254}
   m_Layer: 5
   m_Name: DialogueBox
   m_TagString: Untagged
@@ -843,22 +863,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!95 &46235066663236254
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 46235066663236226}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5b249750554e16f4495435f65751b644, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
