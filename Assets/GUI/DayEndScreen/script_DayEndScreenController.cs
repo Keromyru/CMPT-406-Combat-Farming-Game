@@ -51,7 +51,7 @@ public class script_DayEndScreenController : MonoBehaviour {
 	IEnumerator animationControl(){
 		//animator.Play("anim_DayEndScreenEnter");
 		animator.SetTrigger( "Enter" );
-		yield return new WaitForSeconds(4f);
+		yield return new WaitForSeconds(6f);
 		animator.SetTrigger( "Exit" );
 		yield return new WaitForSeconds(2f);
 		clipboard.SetActive( false );
