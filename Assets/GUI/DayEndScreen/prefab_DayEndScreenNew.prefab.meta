@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/GUI/DayEndScreen/prefab_DayEndScreenNew.prefab.meta
 guid: c41fc298c36198448bf53fdf14333486
 PrefabImporter:
+=======
+guid: 95a14c639730e0641bc2af16673f1e97
+NativeFormatImporter:
+>>>>>>> 70fa1d9319bffd2be129760d45872e3923f98749:Assets/GUI/Dialogue/DialogueBoxIdle.anim.meta
   externalObjects: {}
+  mainObjectFileID: 7400000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
