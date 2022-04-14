@@ -48,7 +48,7 @@ void Pause(){
 //load the main menu
 public void LoadMenu(){
     Resume();
-    SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+    SceneManager.LoadScene("StartPoint", LoadSceneMode.Single);
 }
 
 //quit the game
