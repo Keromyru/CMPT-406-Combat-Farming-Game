@@ -51,8 +51,10 @@ public class EnemyController : MonoBehaviour, IEnemyControl, ITakeDamage
         //  onAttackBehavior.attackRange is how you get it's attacking range
         // this is set up to attack when a target 
         if (!isWaiting  && attackTarget != null ) {
-            if( Vector2.Distance(this.transform.position, attackTarget.transform.position) < myEnemyData.attackRange ||
-            (attackTarget.tag == "Structure" && attackTarget.GetComponents<Collider2D>().Any(s => (Vector2.Distance(this.transform.position, s.ClosestPoint(this.transform.position)) < myEnemyData.attackRange+ 0.5f )))) {
+            if( Vector2.Distance(
+                this.GetComponent<BoxCollider2D>().ClosestPoint(attackTarget.GetComponent<BoxCollider2D>().ClosestPoint(this.transform.position)), attackTarget.GetComponent<BoxCollider2D>().ClosestPoint(this.transform.position)) < myEnemyData.attackRange ||
+                (attackTarget.tag == "Structure" && 
+                attackTarget.GetComponents<Collider2D>().Any(s => (Vector2.Distance(this.GetComponent<BoxCollider2D>().ClosestPoint(s.GetComponent<BoxCollider2D>().ClosestPoint(this.transform.position)), s.ClosestPoint(this.transform.position)) < myEnemyData.attackRange+ 0.5f )))) {
                 onAttack(); //Does the Attack Action
                 AttackTimer(); //starts the timer coroutine
             }

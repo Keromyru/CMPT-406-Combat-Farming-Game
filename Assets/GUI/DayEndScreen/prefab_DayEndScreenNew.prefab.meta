@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD:Assets/GUI/DayEndScreen/prefab_DayEndScreenNew.prefab.meta
+guid: c41fc298c36198448bf53fdf14333486
+PrefabImporter:
+=======
+guid: 95a14c639730e0641bc2af16673f1e97
+NativeFormatImporter:
+>>>>>>> 70fa1d9319bffd2be129760d45872e3923f98749:Assets/GUI/Dialogue/DialogueBoxIdle.anim.meta
+  externalObjects: {}
+  mainObjectFileID: 7400000
+=======
+<<<<<<< HEAD:Assets/GUI/Pause_Menu/Pause_Canvas.prefab.meta
+guid: 710c9280134244a7180a78ea8a70fa15
+=======
+guid: c41fc298c36198448bf53fdf14333486
+>>>>>>> 66605fbcb7454abbbab72995090d8f2d199f70d6:Assets/GUI/DayEndScreen/prefab_DayEndScreenNew.prefab.meta
+PrefabImporter:
+  externalObjects: {}
+>>>>>>> 66605fbcb7454abbbab72995090d8f2d199f70d6
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

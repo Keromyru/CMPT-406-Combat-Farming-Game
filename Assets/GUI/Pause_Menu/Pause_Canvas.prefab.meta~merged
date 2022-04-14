@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD:Assets/GUI/Pause_Menu/Pause_Canvas.prefab.meta
+guid: 710c9280134244a7180a78ea8a70fa15
+=======
+guid: c41fc298c36198448bf53fdf14333486
+>>>>>>> 66605fbcb7454abbbab72995090d8f2d199f70d6:Assets/GUI/DayEndScreen/prefab_DayEndScreenNew.prefab.meta
+=======
+guid: 710c9280134244a7180a78ea8a70fa15
+>>>>>>> 66605fbcb7454abbbab72995090d8f2d199f70d6
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

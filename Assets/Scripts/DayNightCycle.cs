@@ -25,6 +25,7 @@ public class DayNightCycle : MonoBehaviour
     public static event IsDay isNowDay;
     public static event IsNight isNowNight;
 
+
     public bool daytime;
 
 
@@ -49,6 +50,8 @@ public class DayNightCycle : MonoBehaviour
 	[Header("Day-Night Switch Time")]
 	public int dayStart = 0; // When the day light starts
 	public int dayEnd = 0; // When the day light ends
+    [Header("Other")]
+    [SerializeField] bool isPaused = false;
 
     // [Header("Lights")]
     // public bool activateLights;  //Check if lights are on
@@ -74,8 +77,14 @@ public class DayNightCycle : MonoBehaviour
     //Update is called once per frame
     void FixedUpdate()  //Used fixed update, since update is frame dependant.
     {
-        CalcTime();
-        DisplayTime(); 
+        if (!isPaused){
+            CalcTime();
+        }
+        
+        DisplayTime();
+        // if(isSlow && DialogueCheck.GetCurrentAnimatorStateInfo(0).IsName("DialogueBoxClose")){
+        //     this.normalTime();
+        // } 
     }
 
     public void CalcTime()  //Used to calculate sec, min and hours
@@ -275,4 +284,12 @@ public class DayNightCycle : MonoBehaviour
         //Do somthing
     }
     */
+
+    public void pause(){
+        isPaused = true;
+    }
+
+    public void resume(){
+        isPaused = false;
+    }
 }

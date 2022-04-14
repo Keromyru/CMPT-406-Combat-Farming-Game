@@ -30,7 +30,11 @@ public class ShopUI : MonoBehaviour
 
     public GameObject scoreCounter;  // clutter management again
 
+    public GameObject openButton;  // open the store?
+
     private bool isNight = false;
+
+    private bool playerClosed = false;
     
 
     // Start is called before the first frame update
@@ -52,10 +56,7 @@ public class ShopUI : MonoBehaviour
         isNight = true;
         
         // goodbye store, we are not trapped in IKEA overnight
-        shopUI.SetActive(false);
-        minimap.SetActive(true);
-        tracker.SetActive(true);
-        scoreCounter.SetActive(true);
+        ForceClose();
     }
 
     void Daytime() {
@@ -74,18 +75,37 @@ public class ShopUI : MonoBehaviour
 
         // yes, make shop appear, remove minimap & time tracker
         if (inRange) {
-            shopUI.SetActive(true);
-            minimap.SetActive(false);
-            tracker.SetActive(false);
-            scoreCounter.SetActive(false);
+            if (!playerClosed) {
+                openButton.SetActive(true);
+            }
         }
-        // no, hide shop and display minimap & time tracker
         else {
+            playerClosed = false;
             shopUI.SetActive(false);
             minimap.SetActive(true);
             tracker.SetActive(true);
             scoreCounter.SetActive(true);
+            openButton.SetActive(false);
         }
+    }
+
+    public void OpenStore() {
+        shopUI.SetActive(true);
+        minimap.SetActive(false);
+        tracker.SetActive(false);
+        scoreCounter.SetActive(false);
+        openButton.SetActive(false);
+        playerClosed = true;
+    }
+
+    public void ForceClose() {
+        shopUI.SetActive(false);
+        minimap.SetActive(true);
+        tracker.SetActive(true);
+        scoreCounter.SetActive(true);
+        openButton.SetActive(false);
+
+        playerClosed = true;
     }
 
 

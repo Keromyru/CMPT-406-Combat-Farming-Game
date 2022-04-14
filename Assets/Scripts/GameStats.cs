@@ -16,6 +16,18 @@ public static class GameStats
     static int totalScore = 0;
 
     static int totalDays = 0;
+	
+	public static void ResetAll() {
+		
+		nightScore = 0;
+		nightMoney = 0;
+		nightKills = 0;
+		totalKills = 0;
+		totalMoney = 0;
+		totalScore = 0;
+		totalDays = 0;
+	
+	}
 
     public static void NightStatReset()
     {

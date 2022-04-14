@@ -9,6 +9,8 @@ public class HubController : MonoBehaviour, ITakeDamage
     public float hubMaxHealth;
     private Healthbar_HUBController myHealthbar;
     private float hubHealth = 1;
+	
+	public GameObject transitionEffect;
 
     [SerializeField] GameObject onDeathEffect;
     [SerializeField] AudioClipSO onHitSound;
@@ -40,7 +42,10 @@ public class HubController : MonoBehaviour, ITakeDamage
             if (onDeathSound != null) { onDeathSound.Play();} //Play onDeathSound
             Debug.Log("You have lost the game my dude");
             endGameObject.GetComponent<script_EndgameController>().setStats();
-            endGameObject.SetActive(true);
+			// End the game
+			transitionEffect.SetActive( true );
+			transitionEffect.GetComponent<EndGame>().EndTheGame();
+			
         }
 
     }

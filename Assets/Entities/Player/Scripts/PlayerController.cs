@@ -436,6 +436,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         this.transform.position = resetLocation;
         myModel.SetActive(false);
         Raygun.SetActive(false);
+        this.GetComponent<BoxCollider2D>().enabled = false;
         resetHealth();
         canMove = false;
         // Pause the execution of this function for "duration" seconds.
@@ -447,6 +448,7 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         yield return new WaitForSeconds(0.2f);
         myModel.SetActive(true);
         Raygun.SetActive(true);
+        this.GetComponent<BoxCollider2D>().enabled = true;
         canMove = true;
         // Set the routine to null, signaling that it's finished.
         actionRoutine = null;
@@ -468,5 +470,10 @@ public class PlayerController : MonoBehaviour, IPlayerControl, ITakeDamage
         onAttackBehavior = newAttack;
         Raygun.GetComponentInChildren<SpriteRenderer>().sprite = onAttackBehavior.GunSprite;
     }
+    public void setCanMove(bool canHe){
+        canMove = canHe;
+    }
+
+
     #endregion Sets and Gets
 }
